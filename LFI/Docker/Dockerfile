@@ -3,7 +3,8 @@ MAINTAINER Glenn ten Cate <glenn.ten.cate@owasp.org>
 RUN apk update --no-cache && apk add python3 \
 python3-dev \
 py3-pip \ 
-git
+git \
+bash
 
 #RUN apt-get install -y git python-pip python-dev build-essential
 #RUN pip install -r requirements.txt
