@@ -10,5 +10,4 @@ git
 RUN git clone https://github.com/blabla1337/skf-labs.git
 WORKDIR /skf-labs/LFI
 RUN pip3 install -r requirements.txt
-EXPOSE 5000
 CMD [ "python3", "./LFI.py" ]
