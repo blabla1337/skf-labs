@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Live demonstrations</title>
+
+<link href="/static/css/bootstrap.min.css" rel="stylesheet">
+<link href="/static/css/datepicker3.css" rel="stylesheet">
+<link href="/static/css/styles.css" rel="stylesheet">
+
+<!--Icons-->
+<script src="/static//static/js/lumino.glyphs.js"></script>
+<script src="/static/js/jquery.min.js"></script>
+<script>
+
+	var normal = 'foo:  As you can see the application is still under heavy development. There are a lot of functions still that are simply being mocked since it is not yet fully functional. The aim is to have an MVP running that is presentable before the end of the month! so we have a lot more development to do! :-)';
+	
+	  $(document).ready(function(){
+	  $("#des").click(function(){
+		  $('#textarea').text('');
+		  $('#textarea').text(normal);
+	  });
+	});
+	
+	</script>
+</head>
+
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header"><img src="/static/img/green.svg" width="75px" height="75px">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<ul class="user-menu">
+					<li class="dropdown pull-right">
+
+						<ul class="dropdown-menu" role="menu">
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div><!-- /.container-fluid -->
+	</nav>
+		
+	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+	<br/><br/>
+						<center><img src="/static/img/logo.png" width="150px" height="150px"/> </center>
+	</div><!--/.sidebar-->
+		
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
+		<div class="row">
+
+		</div><!--/.row-->
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">Live demonstration!</h1>
+			</div>
+		</div><!--/.row-->
+				
+	<center style="margin-bottom:10px;">
+          <button id="des" class="button btn-warning">Normal Yaml file</button>
+    </center>
+    
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">Python Deserialization attack!</div>
+					<div class="panel-body">
+						<div class="col-md-6">
+               						load the yaml file using the URL: http://127.0.0.1:5000/information/&file=file.yml
+							<textarea id="textarea" name="des"></textarea>
+						</div>
+					</div>
+				</div>
+			</div><!-- /.col-->
+		</div><!-- /.row -->
+	
+     <center> <p style="font-size:2em;"> {% autoescape false %} {{content}} {% endautoescape %}</p></center>
+	
+	</div><!--/.main-->
+   <style>
+   textarea {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    text-align:center;
+    height:30%;
+}
+
+   </style>
+	<script src="/static/js/jquery-1.11.1.min.js"></script>
+	<script src="/static/js/bootstrap.min.js"></script>
+	<script>
+		!function ($) {
+			$(document).on("click","ul.nav li.parent > a > span.icon", function(){		  
+				$(this).find('em:first').toggleClass("glyphicon-minus");	  
+			}); 
+			$(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+		}(window.jQuery);
+
+		$(window).on('resize', function () {
+		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
+		})
+		$(window).on('resize', function () {
+		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
+		})
+	</script>	
+</body>
+
+</html>
+
