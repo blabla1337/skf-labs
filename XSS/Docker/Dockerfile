@@ -7,7 +7,6 @@ git \
 bash
 
 RUN git clone https://github.com/blabla1337/skf-labs.git
-WORKDIR /skf-labs/DES-Yaml
+WORKDIR /skf-labs/XSS
 RUN pip3 install -r requirements.txt
-CMD [ "python3", "./DES.py" ]
-CMD [ "python3", "./evil_server.py" ]
+CMD [ "python3", "./XSS.py" ]
