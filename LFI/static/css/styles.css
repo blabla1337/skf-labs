@@ -492,6 +492,27 @@ a.bg-danger:hover {
 	border: 0;
 }
 
+.skflogo{
+	width: 3%;
+	height: 3%;
+	margin-top:1%;
+	float:left;
+}
+
+.navbar{max-height: 20%;}
+
+.navbar-inverse{
+	background: #515594;
+	background: -moz-linear-gradient(-45deg, #515594 0%, #e56769 100%);
+	background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#515594), color-stop(100%,#e56769));
+	background: -webkit-linear-gradient(-45deg, #515594 0%,#e56769 100%);
+	background: -o-linear-gradient(-45deg, #515594 0%,#e56769 100%);
+	background: -ms-linear-gradient(-45deg, #515594 0%,#e56769 100%);
+	background: linear-gradient(135deg, #515594 0%,#e56769 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#515594', endColorstr='#e56769',GradientType=1 ); 
+	max-height: 20%;
+}
+
 .navbar input {
 	border: 0;
 	background: #444;
@@ -551,7 +572,7 @@ a.bg-danger:hover {
 		padding: 0;
 		overflow-x: hidden;
 		overflow-y: auto; 
-		background-color: #fff;
+		background-color: #d4d7db;
 		box-shadow: 1px 0px 10px rgba(0, 0, 0, .05);
 	}
 	.navbar-header {
@@ -835,14 +856,7 @@ h1.page-header {
 	font-size: 16px;
 }
 
-.container-fluid {
-    height: 90px;
-    width: 100%;
-	background-image: url('/static/img/banner-skf.jpg');
-    background-size: cover;
-	background-position: left;
-	object-fit: cover;
-}
+
 .fixed-table-container tbody td {
 	border: 1px solid #eee;
 }
