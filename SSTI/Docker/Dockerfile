@@ -7,6 +7,6 @@ git \
 bash
 
 RUN git clone https://github.com/blabla1337/skf-labs.git
-WORKDIR /skf-labs/LFI
+WORKDIR /skf-labs/SSTI
 RUN pip install -r requirements.txt
 CMD [ "python2", "./SSTI.py" ]

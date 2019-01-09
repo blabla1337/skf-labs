@@ -6,8 +6,6 @@ py3-pip \
 git \
 bash
 
-#RUN apt-get install -y git python-pip python-dev build-essential
-#RUN pip install -r requirements.txt
 RUN git clone https://github.com/blabla1337/skf-labs.git
 WORKDIR /skf-labs/LFI
 RUN pip3 install -r requirements.txt

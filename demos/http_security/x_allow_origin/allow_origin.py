@@ -4,7 +4,7 @@ from flask import Flask, request, url_for, render_template_string, redirect, mak
 from flask.ext.cors import CORS, cross_origin
 
 
-app = Flask(__name__, static_url_path='/static', static_folder='../../static')
+app = Flask(__name__, static_url_path='/static', static_folder='static')
 
 @app.after_request
 def add_headers(response):
