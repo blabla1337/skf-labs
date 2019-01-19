@@ -75,11 +75,12 @@
                			</div>
 						</form>
 					</div>
+					<center> 		
+						<img id="imageBox" src="" width="100%" height="100%"/> 		<br/>
+					</center>
 				</div>
 			</div><!-- /.col-->
 		</div><!-- /.row -->
-	
-     <center> <p style="font-size:2em;">    {% autoescape false %}{{xss}}{% endautoescape %} </p></center>
 	
 	</div><!--/.main-->
 
@@ -99,6 +100,13 @@
 		$(window).on('resize', function () {
 		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
 		})
+
+		function getRndInteger(min, max) {
+			return Math.floor(Math.random() * (max - min + 1) ) + min;
+		}
+		var nr = getRndInteger(99999999,99999999999);
+		document.getElementById('imageBox').src = "/static/img/bones.png?" + nr;
+
 	</script>	
 </body>
 

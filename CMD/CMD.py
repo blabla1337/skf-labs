@@ -13,7 +13,7 @@ def start():
 @app.route("/home", methods=['POST'])
 def home():
     sizeImg = request.form['size']
-    os.system('convert static/img/bones.png -resize '+sizeImg+'% ')
+    os.system('convert static/img/bones.png -resize '+sizeImg+'% static/img/bones.png')
     return render_template("index.html")
 
 if __name__ == '__main__':
