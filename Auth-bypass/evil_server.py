@@ -10,7 +10,7 @@ app = Flask(__name__, static_url_path='/static', static_folder='static')
 # Load default config and override config from an environment variable
 # You can also replace password with static password:  PASSWORD='pass!@#example'
 app.config.update(dict(
-    SECRET_KEY= "woopie",
+    SECRET_KEY= "e5ac-4ebf-03e5-9e29-a3f562e10b22",
     SESSION_COOKIE_HTTPONLY = False
 ))
 
