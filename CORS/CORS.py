@@ -20,6 +20,7 @@ app.config.update(dict(
 def start():
     return render_template("index.html")
 
+
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     sqli  = Classes()
@@ -32,6 +33,7 @@ def login():
             color = pref[0][0]
             return redirect(url_for('xhr_get_info_stealing'))
     return render_template("index.html")
+
 
 @app.route("/confidential", methods=['GET', 'POST'])
 def xhr_get_info_stealing():
