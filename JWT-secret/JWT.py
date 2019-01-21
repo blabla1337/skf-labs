@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_jwt import JWT, jwt_required, current_identity
 from werkzeug.security import safe_str_cmp
 
@@ -30,14 +30,18 @@ app.config['SECRET_KEY'] = 'secret'
 
 jwt = JWT(app, authenticate, identity)
 
+@app.route("/")
+def start():
+    return render_template("index.html")
+
 @app.route('/protected')
 @jwt_required()
 def protected():
-    return 'Here is the super secret string!'
+    return '%s' % current_identity
 
 if __name__ == '__main__':
     app.run()
 
 #curl --header "Content-Type: application/json" --request POST --data '{"username":"admin","password":"admin"}' http://localhost:5000/auth
 
-#curl -i -H "Accept: application/json" -H "Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6MSwiaWF0IjoxNTQ3ODE4NTgxLCJuYmYiOjE1NDc4MTg1ODEsImV4cCI6MTU0NzgxODg4MX0.GlbN6GnRRIqxrpdlNu8uObHYkV_5gt2mhUGVDYLsubs" http://localhost:5000/protected
+#curl -i -H "Accept: application/json" -H "Authorization: JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NDgwOTgxNjEsImlhdCI6MTU0ODA5Nzg2MSwibmJmIjoxNTQ4MDk3ODYxLCJpZGVudGl0eSI6Mn0.vUnhorZy454Iw01WFDsgigu0YpCMzhxx-hPGTuFpwCk" http://localhost:5000/protected

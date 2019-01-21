@@ -13,6 +13,37 @@
 <!--Icons-->
 <script src="/static/js/lumino.glyphs.js"></script>
 
+<script>
+	function login(){
+		var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+		xmlhttp.open("POST", "http://localhost:5000/auth");
+		xmlhttp.setRequestHeader("Content-Type", "application/json");
+		foo = xmlhttp.send(JSON.stringify({username:"admin", password:"admin"}));
+		
+		xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+			var response = JSON.parse(xmlhttp.responseText)
+			localStorage.setItem('access_token', response.access_token);
+        }
+      }
+	}
+
+	function getUserID(){
+		var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+		xmlhttp.open("GET", "http://localhost:5000/protected");
+		xmlhttp.setRequestHeader("Content-Type", "application/json");
+		xmlhttp.setRequestHeader("Authorization", "JWT "+ localStorage.getItem('access_token'));
+		foo = xmlhttp.send(JSON.stringify({username:"admin", password:"admin"}));
+		
+		xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+			var response = xmlhttp.responseText;
+			alert(response);
+        }
+      }
+	}
+</script>
+
 </head>
 
 <body>
@@ -39,7 +70,8 @@
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 	<br/><br/>
     	<center> 		
-			<img src="/static/img/logo.svg" width="60%" height="60%"/> 		<br/> 		
+			<img src="/static/img/logo.svg" width="60%" height="60%"/> 		
+			<br/> 		
 			<p style="color:#515594; font-size:1.7em;">OWASP S.K.F</p>  	
 		</center>
 	</div><!--/.sidebar-->
@@ -54,19 +86,16 @@
 				<h1 class="page-header">Live demonstration!</h1>
 			</div>
 		</div><!--/.row-->
-				
 		
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">File upload injection!</div>
+					<div class="panel-heading">JWT weak secrets!</div>
 					<div class="panel-body">
 						<div class="col-md-6">
-							<form method="post" action="" enctype="multipart/form-data">
-                			<input type="file" name="file"/><br/>
-               			    <button class="btn btn-primary" type="submit">Submit Button</button>
+							   <button class="btn btn-success" onclick="login()" type="submit">Authenticate</button>
+							   <button class="btn btn-primary" onclick="getUserID()" type="submit">Show userId</button>
                			</div>
-						</form>
 					</div>
 				</div>
 			</div><!-- /.col-->
@@ -78,6 +107,10 @@
 
 	<script src="/static/js/jquery-1.11.1.min.js"></script>
 	<script src="/static/js/bootstrap.min.js"></script>
+	<script src="/static/js/chart.min.js"></script>
+	<script src="/static/js/chart-data.js"></script>
+	<script src="/static/js/easypiechart.js"></script>
+	<script src="/static/js/easypiechart-data.js"></script>
 	<script src="/static/js/bootstrap-datepicker.js"></script>
 	<script>
 		!function ($) {
