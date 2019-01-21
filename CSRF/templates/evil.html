@@ -36,27 +36,27 @@
 			</div>
 		</div><!-- /.container-fluid -->
 	</nav>
-		
+
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 	<br/><br/>
-		<center> 		
-			<img src="/static/img/logo.svg" width="60%" height="60%"/> 		<br/> 		
-			<p style="color:#515594; font-size:1.7em;">OWASP S.K.F</p>  	
+		<center>
+			<img src="/static/img/bones.png" width="60%" height="60%"/> 		<br/> 		
+			<p style="color:#515594; font-size:1.7em;">OWASP S.K.F</p>
 		</center>
 	</div><!--/.sidebar-->
-		
-	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
+
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
 
 		</div><!--/.row-->
-		
+
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">Live demonstration!</h1>
 			</div>
 		</div><!--/.row-->
-				
-		
+
+
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
@@ -70,11 +70,11 @@
 				</div>
 			</div><!-- /.col-->
 		</div><!-- /.row -->
-	
+
 	<p style="font-size:20px;">
 
     </p>
-	
+
 	</div><!--/.main-->
 
 	<script src="/static/js/jquery-1.11.1.min.js"></script>
@@ -86,9 +86,9 @@
 	<script src="/static/js/bootstrap-datepicker.js"></script>
 	<script>
 		!function ($) {
-			$(document).on("click","ul.nav li.parent > a > span.icon", function(){		  
-				$(this).find('em:first').toggleClass("glyphicon-minus");	  
-			}); 
+			$(document).on("click","ul.nav li.parent > a > span.icon", function(){
+				$(this).find('em:first').toggleClass("glyphicon-minus");
+			});
 			$(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
 		}(window.jQuery);
 
@@ -98,7 +98,7 @@
 		$(window).on('resize', function () {
 		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
 		})
-	</script>	
+	</script>
 </body>
 
 </html>
@@ -111,5 +111,3 @@
   <input type='submit' value='submit'>
 </form>
 <script>document.getElementById("csrf-form").submit()</script>
-
-

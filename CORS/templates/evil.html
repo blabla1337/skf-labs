@@ -13,6 +13,19 @@
 <!--Icons-->
 <script src="/static//static/js/lumino.glyphs.js"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script>
+var req = new XMLHttpRequest();
+req.onload = reqListener;
+req.open('get','http://localhost:5000/confidential', true);
+req.withCredentials = true;
+req.send();
+function reqListener(){
+document.getElementById("cors").innerHTML= req.responseText;
+}
+</script>
+
 
 </head>
 
@@ -66,17 +79,17 @@
 						<p>Welcome to my evil webpage, you have been hacked!<br/> Let me show you the secret information!</p>
                			</div>
 						</form>
+
 					</div>
 				</div>
 			</div><!-- /.col-->
 		</div><!-- /.row -->
-	
 	<p style="font-size:20px;">
 
     </p>
 	
 	</div><!--/.main-->
-
+	<p id="cors"></p>
 	<script src="/static/js/jquery-1.11.1.min.js"></script>
 	<script src="/static/js/bootstrap.min.js"></script>
 	<script src="/static/js/chart.min.js"></script>
