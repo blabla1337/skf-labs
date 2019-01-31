@@ -1,8 +1,8 @@
-import pickle, sys, yaml
-import urllib.request
-#from StringIO import StringIO  # Python2
+from flask import Flask, render_template, request, redirect
 from io import StringIO  # Python3
-from flask import Flask, request, url_for, render_template, redirect
+import sys
+import yaml
+import base64
 
 app = Flask(__name__, static_url_path='/static', static_folder='static')
 app.config['DEBUG'] = True
@@ -10,32 +10,19 @@ app.config['DEBUG'] = True
 
 @app.route("/")
 def start():
-    return render_template("index.html")
+    return redirect("/information/eWFtbDogVGhlIGluZm9ybWF0aW9uIHBhZ2UgaXMgc3RpbGwgdW5kZXIgY29uc3RydWNhdGlvbiwgdXBkYXRlcyBjb21taW5nIHNvb24h", code=302)
 
-@app.route("/information/&file=<path:filename>", methods=['GET'])
-def deserialization(filename):
-     print(filename, file=sys.stdout)
-     if filename == 'file.yml':
-         with open(filename, 'rb') as handle:
-            if filename == 'file.yml':
-                # Import the PyYAML dependency
-                with open(filename) as yaml_file:
-                # Unsafely deserialize the contents of the YAML file
-                    content = yaml.load(yaml_file)
-     else:
-         response = urllib.request.urlopen(filename)
-         res = response.read()
-         text_file = open("hacker_input.txt", "wb")
-         attack = str(res)
-         text_file.write(res)
-         text_file.close()
-         with open("hacker_input.txt") as yaml_file:
-         # Unsafely deserialize the contents of the YAML file
-             content = yaml.load(yaml_file)
-
-     return render_template("index.html", content = content["foo"])
+@app.route("/information/<input>", methods=['GET'])
+def deserialization(input): 
+    try: 
+            if not input:
+                return render_template("information/index.html")
+            yaml_file = base64.b64decode(input)
+            content = yaml.load(yaml_file)
+    except:
+            content = "The application was unable to unsserialize object!"
+    return render_template("index.html", content = content['yaml'])
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
 	
- 
