@@ -4,7 +4,7 @@
 import sqlite3 as lite
 import sys
 
-con = lite.connect('Database.db')
+con = lite.connect('config/Database.db')
 
 with con:
     
