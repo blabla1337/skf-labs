@@ -6,9 +6,12 @@
 function loadWelcomeMessage() {
     setTimeout(function(){
 	endpoint = location.hash.slice(5);
-        var script = document.createElement("script");  
-    	script.src = endpoint + "/static/js/welcome.js"; 
-
+        var script = document.createElement("script"); 
+	if endpoint {  
+    	    script.src = endpoint + "/static/js/welcome.js"; 
+	} else {
+	    script.src = "/static/js/welcome.js";	
+	}
     	document.head.appendChild(script);  
     }, 2000);
 }
@@ -72,7 +75,7 @@ function loadWelcomeMessage() {
 			<div class="col-lg-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">DOM XSS with user-controllable Javascript file imported!</div>
-					<div id="panel-body">
+					<div class="panel-body">
 					</div>
 				</div>
 			</div><!-- /.col-->
