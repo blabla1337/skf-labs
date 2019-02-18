@@ -20,7 +20,7 @@ def deserialization(input):
             yaml_file = base64.b64decode(input)
             content = yaml.load(yaml_file)
     except:
-            content = "The application was unable to unsserialize object!"
+            content = "The application was unable to  to deserialize the object!"
     return render_template("index.html", content = content['yaml'])
 
 if __name__ == "__main__":
