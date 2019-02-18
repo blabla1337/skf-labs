@@ -7,7 +7,7 @@ function loadWelcomeMessage() {
     setTimeout(function(){
 	endpoint = location.hash.slice(5);
         var script = document.createElement("script"); 
-	if endpoint {  
+	if (endpoint) {  
     	    script.src = endpoint + "/static/js/welcome.js"; 
 	} else {
 	    script.src = "/static/js/welcome.js";	
