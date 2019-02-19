@@ -7,6 +7,6 @@ git \
 bash
 
 RUN git clone https://github.com/giuliocomi/skf-labs.git
-WORKDIR /skf-labs/LFI
+WORKDIR /skf-labs/SSRF
 RUN pip3 install -r requirements.txt
 CMD [ "python3", "./SSRF.py" ]
