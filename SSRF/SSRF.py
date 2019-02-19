@@ -7,7 +7,7 @@ app.config['DEBUG'] = True
 def ssrf():
     url = request.form['url']
     try:
-	r = requests.get(url)
+    r = requests.get(url)
     except requests.exceptions.RequestException as e:
 	if "refused" in str(e):
 	    result = "Target not reacheable."
