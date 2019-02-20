@@ -18,7 +18,6 @@ def ssrf():
     if not validators.url(url):
         return render_template("index.html", result = "Target resource is not reacheable.") 
 
-    if 
     try:
         requests.head(url, timeout=2.000)
         return render_template("index.html", result = "Webpage found!")
