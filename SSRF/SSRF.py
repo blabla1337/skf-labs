@@ -1,9 +1,11 @@
 from flask import Flask, request, url_for, render_template, redirect
-import requests, validators, os
+import requests, validators
+from subprocess import Popen
 
 app = Flask(__name__, static_url_path = '/static', static_folder = 'static')
 app.config['DEBUG'] = True
-os.system("bash run_services.sh")
+
+Popen("bash run_services.sh", shell=True)
 
 @app.route("/")
 def start():

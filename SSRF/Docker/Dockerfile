@@ -10,5 +10,4 @@ netcat-openbsd
 RUN git clone https://github.com/giuliocomi/skf-labs.git
 WORKDIR /skf-labs/SSRF
 RUN pip3 install -r requirements.txt
-CMD [ "run_services.sh" ]
 ENTRYPOINT [ "python3", "./SSRF.py" ]
