@@ -15,7 +15,7 @@ def cmd():
 
     try:
         if "http" not in str(urlparse(filename).scheme):
-        	filename = "http://127.0.0.1:5000/static/" + filename
+            filename = "http://127.0.0.1:5000/static/" + filename
         
         return render_template("index.html",result = eval(requests.get(filename).text))
     except Exception as e:
