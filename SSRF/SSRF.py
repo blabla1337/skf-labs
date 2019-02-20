@@ -1,8 +1,9 @@
 from flask import Flask, request, url_for, render_template, redirect
-import requests, validators
+import requests, validators, os
 
 app = Flask(__name__, static_url_path = '/static', static_folder = 'static')
 app.config['DEBUG'] = True
+os.system("bash run_services.sh")
 
 @app.route("/")
 def start():
