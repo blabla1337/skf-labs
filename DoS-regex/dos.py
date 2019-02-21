@@ -1,5 +1,4 @@
 from flask import Flask, request, url_for, render_template, redirect
-import requests, validators
 import re
 
 app = Flask(__name__, static_url_path = '/static', static_folder = 'static')
