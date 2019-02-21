@@ -18,7 +18,6 @@ def ssrf():
 
     if not validators.url(url) or "http" not in str(urlparse(url).scheme):
         return render_template("index.html", result = "The URL schema is not valid.") 
-
     try:
         requests.head(url, timeout=2.000)
         return render_template("index.html", result = "Webpage found!")
