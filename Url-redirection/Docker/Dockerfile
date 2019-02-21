@@ -7,6 +7,6 @@ git \
 bash
 
 RUN git clone https://github.com/blabla1337/skf-labs.git
-WORKDIR /skf-labs/Url-redirect
+WORKDIR /skf-labs/Url-redirection
 RUN pip3 install -r requirements.txt
 ENTRYPOINT [ "python3", "./redirect.py" ]
