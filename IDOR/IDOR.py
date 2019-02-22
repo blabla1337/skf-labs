@@ -27,6 +27,7 @@ def create_pdf_pool():
  
 @app.route("/")
 def start():
+    create_pdf_pool()
     return render_template("index.html")
 
 @app.route("/download", methods = ['POST'])
