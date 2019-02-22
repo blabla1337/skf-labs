@@ -45,7 +45,7 @@ def create():
     while True:
         new_id = random.randint(0, 1500)
         if new_id not in pdf_ids:
-            pdf_ids.add(new_id)
+            pdf_ids.append(new_id)
             generate_pdf(new_id, message)
             return render_template("index.html", result = "Pdf created successfully! ID:" + new_id)
 
