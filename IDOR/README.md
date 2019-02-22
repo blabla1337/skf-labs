@@ -5,7 +5,7 @@ pip3 install -r requirements.txt
 ```
 
 ```
-python3 SSRF.py
+python3 IDOR.py
 ```
 
 Visit the SKF Labs:
