@@ -13,7 +13,7 @@ def generate_pdf(id, message):
     pdf.add_page()
     pdf.set_font('Arial', 'B', 16)
     pdf.cell(40, 10, message)
-    pdf.output(id + '.pdf', 'F')
+    pdf.output(str(id) + '.pdf', 'F')
 
 def create_pdf_pool():
     # generate a bunch of dummy pdf files    
