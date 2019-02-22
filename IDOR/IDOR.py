@@ -1,7 +1,6 @@
 from flask import Flask, request, url_for, render_template, send_from_directory
-import requests
-from fpdf import FPDF
 import random
+from fpdf import FPDF
 
 app = Flask(__name__, static_url_path = '/static', static_folder = 'static')
 app.config['DEBUG'] = True
@@ -18,12 +17,11 @@ def generate_pdf(id, message):
 
 def create_pdf_pool():
     # generate a bunch of dummy pdf files    
-
     for id in pdf_ids[:]:
         generate_pdf(id, 'Try again!')
 
     # generate the secret pdf
-    generate_pdf(pdf_ids[random.randint(0, 600)], 'You have found the secret pdf. Congratulations!')
+    generate_pdf(pdf_ids[random.randint(0, 600)], 'You have found the secret pdf, congratulations!')
  
 @app.route("/")
 def start():
@@ -43,12 +41,14 @@ def download():
 def create():
     message = request.form['message']
 
-    while True:
+    while len(pdf_ids) < 1500:
         new_id = random.randint(0, 1500)
-        if new_id not in pdf_ids: #TODO fix condition when all list is full of already present values and the while loop will become infinite...
+        if new_id not in pdf_ids:
             pdf_ids.append(new_id)
             generate_pdf(new_id, message)
             return render_template("index.html", result = "Pdf created successfully! ID:" + str(new_id))
+
+    return render_template("index.html")
 
 if __name__ == "__main__":
   app.run(host = '0.0.0.0')
