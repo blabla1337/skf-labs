@@ -7,6 +7,7 @@ app = Flask(__name__, static_url_path = '/static', static_folder = 'static')
 app.config['DEBUG'] = True
 
 pdf_ids= random.sample(range(0, 1500), 600)
+print(pdf_ids)
 
 def generate_pdf(id, message):
     pdf = FPDF()
@@ -46,6 +47,7 @@ def create():
     if new_id not in pdf_ids:
         pdf_ids.add(new_id)
         generate_pdf(new_id, message)
+        break
     else:
         return render_template("index.html", result = "Pdf created successfully! ID:" + new_id)
  
