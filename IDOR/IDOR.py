@@ -6,6 +6,7 @@ import random
 app = Flask(__name__, static_url_path = '/static', static_folder = 'static')
 app.config['DEBUG'] = True
 
+pdf_ids= random.sample(range(0, 1500), 600)
 create_pdf_pool()
 
 def generate_pdf(id, message):
@@ -17,7 +18,7 @@ def generate_pdf(id, message):
 
 def create_pdf_pool():
     # generate a bunch of dummy pdf files    
-    global pdf_ids = random.sample(range(0, 1500), 600)
+
     for id in pdf_ids[:]:
         generate_pdf(id, 'Try again!')
 
