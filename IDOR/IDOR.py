@@ -35,7 +35,7 @@ def download():
         pdfname = str(pdf_id) + ".pdf"
         return send_from_directory(directory=".", filename= pdfname, mimetype='application/pdf')
     else:
-        return render_template("index.html", result = "Pdf not found. Try with another id between 500 and 1500.")
+        return render_template("index.html", result = "Pdf not found. Try with another id between 1 and 1500.")
 
 @app.route("/create", methods = ['POST'])
 def create():
