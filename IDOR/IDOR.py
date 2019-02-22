@@ -1,4 +1,4 @@
-from flask import Flask, request, url_for, render_template, send_file
+from flask import Flask, request, url_for, render_template, send_from_directory
 import requests
 from fpdf import FPDF
 import random
