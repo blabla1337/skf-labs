@@ -35,7 +35,6 @@ def download():
     pdf_id = request.form['pdf_id']
     if int(pdf_id) in pdf_ids:
         pdfname = str(pdf_id) + ".pdf"
-        print(pdfname)
         return send_from_directory(directory=".", filename= pdfname, mimetype='application/pdf')
     else:
         return render_template("index.html", result = "Pdf not found. Try with another id between 500 and 1500.")
@@ -46,12 +45,10 @@ def create():
 
     while True:
         new_id = random.randint(0, 1500)
-        if new_id not in pdf_ids:
+        if new_id not in pdf_ids: #TODO fix condition when all list is full of already present values and the while loop will become infinite...
             pdf_ids.append(new_id)
             generate_pdf(new_id, message)
             return render_template("index.html", result = "Pdf created successfully! ID:" + str(new_id))
 
-
- 
 if __name__ == "__main__":
   app.run(host = '0.0.0.0')
