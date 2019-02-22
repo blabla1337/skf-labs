@@ -42,7 +42,7 @@ def create():
     message = request.form['message']
 
     while True:
-        new_id = ramdon.randint(0, 1500)
+        new_id = random.randint(0, 1500)
     if new_id not in pdf_ids:
         pdf_ids.add(new_id)
         generate_pdf(new_id, message)
