@@ -22,7 +22,7 @@ def create_pdf_pool():
         generate_pdf(id, 'Try again!')
 
     # generate the secret pdf
-    generate_pdf(pdf_ids[random.randint(600)], 'You have found the secret pdf. Congratulations!')
+    generate_pdf(pdf_ids[random.randint(0, 600)], 'You have found the secret pdf. Congratulations!')
  
 @app.route("/")
 def start():
