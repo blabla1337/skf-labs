@@ -32,7 +32,7 @@ def start():
 @app.route("/download", methods = ['POST'])
 def download():
     pdf_id = request.form['pdf_id']
-    if (pdf_id in dummy_ids):
+    if (pdf_id in pdf_ids):
     	return send_from_directory(directory="./", filename=pdf_id + '.pdf', mimetype='application/pdf')
     else:
         return render_template("index.html", result = "Pdf not found. Try with another id between 500 and 1500.")
