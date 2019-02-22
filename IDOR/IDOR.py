@@ -35,7 +35,7 @@ def download():
     pdf_id = request.form['pdf_id']
     if (pdf_id in pdf_ids):
         pdfname = str(pdf_id) + ".pdf"
-    	return send_from_directory(directory=".", filename= pdfname, mimetype='application/pdf')
+        return send_from_directory(directory=".", filename= pdfname, mimetype='application/pdf')
     else:
         return render_template("index.html", result = "Pdf not found. Try with another id between 500 and 1500.")
 
