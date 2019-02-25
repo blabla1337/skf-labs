@@ -3,10 +3,9 @@ MAINTAINER Giulio Comi
 RUN apk update --no-cache && apk add python3 \
 python3-dev \
 py3-pip \ 
-git \
-bash
+git 
 
-RUN git clone https://github.com/blabla1337/skf-labs.git
-WORKDIR /skf-labs/Url-redirection
+RUN git clone https://github.com/giuliocomi/skf-labs.git
+WORKDIR /skf-labs/IDOR
 RUN pip3 install -r requirements.txt
-ENTRYPOINT [ "python3", "./redirect.py" ]
+ENTRYPOINT [ "python3", "./IDOR.py" ]
