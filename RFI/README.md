@@ -1,11 +1,11 @@
 # Challenge start
 
 ```
-pip3 install -r requirements.txt
+pip2 install -r requirements.txt
 ```
 
 ```
-python3 RFI.py
+python2 RFI.py
 ```
 
 Visit the SKF Labs:
