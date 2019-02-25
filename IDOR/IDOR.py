@@ -6,7 +6,6 @@ app = Flask(__name__, static_url_path = '/static', static_folder = 'static')
 app.config['DEBUG'] = True
 
 pdf_ids= random.sample(range(0, 1500), 600)
-print(pdf_ids)
 
 def generate_pdf(id, message):
     pdf = FPDF()
