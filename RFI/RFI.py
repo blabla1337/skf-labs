@@ -15,7 +15,8 @@ def cmd():
     filename = request.form['filename']
     try:
         if "http" not in str(urlparse(filename).scheme):
-            filename = "http://"+request.url+":5000/static/" + filename
+            host = request.url[:-4]
+            filename = host+"/static/" + filename
             result = eval(requests.get(filename).text)
         return render_template("index.html", result=result)
     except Exception:
