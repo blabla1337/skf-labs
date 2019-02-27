@@ -26,7 +26,7 @@ def redirector():
     landing_page = request.args.get('newurl')
 
     if blacklist(landing_page):
-    	return render_template("index.html", content = "Sorry, you cannot use \".\" in the redirect")
+    	return render_template("index.html", content = "Sorry, you cannot use \".\" and \"/\" in the redirect. Good luck!")
 
 
     return redirect(landing_page, 302)
