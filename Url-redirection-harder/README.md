@@ -1,11 +1,11 @@
 # Challenge start
 
 ```
-pip2 install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 ```
-python2 IDOR.py
+python3 redirect.py
 ```
 
 Visit the SKF Labs:
