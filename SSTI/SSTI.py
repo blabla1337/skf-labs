@@ -50,7 +50,7 @@ def page_not_found(e):
 	<center>
 		<img src="/static/img/logo.svg" width="60%" height="60%"/>
 		<br/>
-		<p style="color:#515594; font-size:1.7em;">OWASP S.K.F</p> 
+		<p style="color:#515594; font-size:1.7em;">OWASP S.K.F.</p> 
 	</center>
 	</div><!--/.sidebar-->
 		
