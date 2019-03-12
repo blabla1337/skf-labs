@@ -7,7 +7,7 @@ from subprocess import Popen
 app = Flask(__name__, static_url_path='/static', static_folder='static')
 app.config['DEBUG'] = True
 
-Popen("cd /tmp; echo \"Congratulations!\" > secret.txt; python3 -m http.server -b 127.0.0.1 80", shell=True)
+Popen("cd /tmp; echo \"Congratulations!\" > secret.txt; python3 -m http.server -b 127.0.0.1 8080", shell=True)
 
 @app.route("/")
 def start():
@@ -28,10 +28,10 @@ def rebind():
         except:
     	        return render_template("index.html", read = "The service to access is listening on localhost (port 80). For DNS rebinding attacks you are expected to control the DNS resolution. </br>For such purpose, you have to setup an authoritative DNS for one of your domains... or use one already <a href=\"https://github.com/brannondorsey/whonow\">available</a>.")
 
-    return render_template("index.html", read = "The service to access is listening on localhost (port 80). For DNS rebinding attacks you are expected to control the DNS resolution. </br>For such purpose, you have to setup an authoritative DNS for one of your domains... or use one already <a href=\"https://github.com/brannondorsey/whonow\">available</a>.")
+    return render_template("index.html", read = "The service to access is listening on localhost (port 8080). For DNS rebinding attacks you are expected to control the DNS resolution. </br>For such purpose, you have to setup an authoritative DNS for one of your domains... or use one already <a href=\"https://github.com/brannondorsey/whonow\">available</a>.")
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0:5000')
+    app.run(host='0.0.0.0')
 
 	
 
