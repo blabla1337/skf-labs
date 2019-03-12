@@ -7,7 +7,7 @@ from subprocess import Popen
 app = Flask(__name__, static_url_path='/static', static_folder='static')
 app.config['DEBUG'] = True
 
-Popen("cd /tmp; echo \"Congratulations!\" > secret.txt; python3 -m http.server -b 127.0.0.1 8080", shell=True)
+Popen("cd /tmp; echo \"Congratulations!\" > secret.txt; python3 -m http.server -b 127.0.0.1 80", shell=True)
 
 @app.route("/")
 def start():
