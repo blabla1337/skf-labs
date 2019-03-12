@@ -5,7 +5,7 @@ pip3 install -r requirements.txt
 ```
 
 ```
-python3 LFI.py
+python3 rebind.py
 ```
 
 Visit the SKF Labs:
