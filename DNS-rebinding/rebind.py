@@ -23,7 +23,7 @@ def rebind():
     	try:
             if (socket.gethostbyname(request.args.get('hostname')) == "127.0.0.1"): # just to prevent SSRF against other websites
                 return render_template("index.html", read = requests.get("http://" + request.args.get('hostname')).text)
-	    else:
+            else:
                 return render_template("index.html", read = "Only loopback requests are allowed here.")
 	except:
     	        return render_template("index.html", read = "The service to access is listening on localhost (port 80). For DNS rebinding attacks you are expected to control the DNS resolution. </br>For such purpose, you have to setup an authoritative DNS for one of your domains... or use one already <a href=\"https://github.com/brannondorsey/whonow\">available</a>.")
