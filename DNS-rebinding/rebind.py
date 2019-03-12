@@ -20,12 +20,12 @@ def rebind():
     if((str(request.args.get('hostname')).lower() == "localhost".lower() or str(request.args.get('hostname') == "127.0.0.1") and not re.search('[A-Za-z]+', str(request.args.get('hostname'))))):
         return render_template("index.html", read = "'localhost' and '127.0.0.1' are filtered but... (un)luckily the DNS resolution is performed afterwards this filter.")
     else:
-    	try:
+        try:
             if (socket.gethostbyname(request.args.get('hostname')) == "127.0.0.1"): # just to prevent SSRF against other websites
                 return render_template("index.html", read = requests.get("http://" + request.args.get('hostname')).text)
             else:
                 return render_template("index.html", read = "Only loopback requests are allowed here.")
-	except:
+        except:
     	        return render_template("index.html", read = "The service to access is listening on localhost (port 80). For DNS rebinding attacks you are expected to control the DNS resolution. </br>For such purpose, you have to setup an authoritative DNS for one of your domains... or use one already <a href=\"https://github.com/brannondorsey/whonow\">available</a>.")
 
     return render_template("index.html", read = "The service to access is listening on localhost (port 80). For DNS rebinding attacks you are expected to control the DNS resolution. </br>For such purpose, you have to setup an authoritative DNS for one of your domains... or use one already <a href=\"https://github.com/brannondorsey/whonow\">available</a>.")
