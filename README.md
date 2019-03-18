@@ -28,3 +28,4 @@ OWASP ZAP proxy:
 [https://www.owasp.org/index.php/OWASP\_Zed\_Attack\_Proxy\_Project](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project)
 {% endhint %}
 
+How to add a write up
