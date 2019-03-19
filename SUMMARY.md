@@ -27,4 +27,5 @@
 * [KBID 268 - Insecure direct object references](kbid-268-insecure-direct-object-references.md)
 * [KBID 270 - SMTP IMAP injection](kbid-270-smtp-imap-injection.md)
 * [KBID 271 - Deserialisation Yaml](kbid-xxx-deserialisation-yaml.md)
+* [KBID 7006 - JWT Null](kbid-7006-JWT-null.md)
 * [template](template.md)
