@@ -13,6 +13,8 @@ $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:clickjacki
 ```
 
 Now that the app is running let's go hacking!
+![Docker image and write-ip thanks to ING!](.gitbook/assets/ING_Primary_Logo.png)
+
  
 ## Reconnaissance
 
