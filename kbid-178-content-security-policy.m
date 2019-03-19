@@ -36,4 +36,4 @@ With CSP in place, when we try to perform a XSS attack we notice that CSP header
 
 ## Additional sources
 
-https://www.owasp.org/index.php/Content_Security_Policy#Countermeasure
+https://www.owasp.org/index.php/Content_Security_Policy
