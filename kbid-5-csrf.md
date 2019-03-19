@@ -2,7 +2,7 @@
 
 ## Running the app
 
-```
+```text
 $ sudo docker pull blabla1337/owasp-skf-lab:cross-site-request-forgery
 ```
 
@@ -11,7 +11,7 @@ $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:cross-site
 ```
 
 {% hint style="success" %}
- Now that the app is running let's go hacking!
+Now that the app is running let's go hacking!
 {% endhint %}
 
 ![Docker Image and write-up thanks to ContraHack!](.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
@@ -28,7 +28,7 @@ Lets start the application and login with the default credentials.
 
 {% hint style="info" %}
 username : admin  
-password:  admin
+password: admin
 {% endhint %}
 
 ![](.gitbook/assets/screen-shot-2019-03-04-at-21.00.48.png)
@@ -107,7 +107,5 @@ Also when we refresh the original page of the application we can see that the ne
 
 ## Additional sources
 
-{% embed url="https://www.owasp.org/index.php/Cross-Site\_Request\_Forgery\_\(CSRF\)" %}
-
-
+{% embed url="https://www.owasp.org/index.php/Cross-Site\_Request\_Forgery\_\(CSRF\)" caption="" %}
 

@@ -4,7 +4,7 @@
 
 For this challenge we are going to use the SQL injection lab, to see how an exception can result in sensitive information disclosure.
 
-```
+```text
 $ sudo docker pull blabla1337/owasp-skf-lab:sql-injection
 ```
 
@@ -13,13 +13,6 @@ $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:sql-inject
 ```
 
 {% hint style="success" %}
- Now that the app is running let's go hacking!
+Now that the app is running let's go hacking!
 {% endhint %}
-
-
-
-
-
-
-
 

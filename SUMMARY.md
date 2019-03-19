@@ -28,5 +28,6 @@
 * [KBID 270 - SMTP IMAP injection](kbid-270-smtp-imap-injection.md)
 * [KBID 271 - Deserialisation Yaml](kbid-xxx-deserialisation-yaml.md)
 * [KBID 20 - Clickjacking](kbid-20-clickjacking.md)
-* [KBID 178 - Content-Security-Policy](kbid-178-content-security-policy.m)
+* [KBID 178 - Content-Security-Policy](kbid-178-content-security-policy.md)
 * [template](template.md)
+
