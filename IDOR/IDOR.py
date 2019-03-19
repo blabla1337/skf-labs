@@ -5,7 +5,7 @@ from fpdf import FPDF
 app = Flask(__name__, static_url_path = '/static', static_folder = 'static')
 app.config['DEBUG'] = True
 
-pdf_ids= random.sample(range(0, 1500), 600)
+pdf_ids= random.sample(range(0, 100), 60)
 
 def generate_pdf(id, message):
     pdf = FPDF()
@@ -20,7 +20,7 @@ def create_pdf_pool():
         generate_pdf(id, 'Try again!')
 
     # generate the secret pdf
-    generate_pdf(pdf_ids[random.randint(0, 600)], 'You have found the secret pdf, congratulations!')
+    generate_pdf(pdf_ids[random.randint(0, 60)], 'You have found the secret pdf, congratulations!')
  
 @app.route("/")
 def start():

@@ -4,7 +4,8 @@ RUN apk update --no-cache && apk add python3 \
 python3-dev \
 py3-pip \ 
 git \
-bash
+bash \ 
+zip
 
 RUN git clone https://github.com/blabla1337/skf-labs.git
 WORKDIR /skf-labs/CMD2
