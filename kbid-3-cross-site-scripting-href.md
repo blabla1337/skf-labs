@@ -46,8 +46,7 @@ Autoescape is disabled by default so every characters will be reflected in the f
 
 #### Step 1
 
-Now we have seen where the user input is being reflected in the href, we can craft the payload to trigger an alert box and exploit our XSS. 
-
+Now we have seen where the user input is being reflected in the href, we can craft the payload to trigger an alert box and exploit our XSS.
 
 ```html
 javascript:alert('XSS')
