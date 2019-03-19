@@ -18,7 +18,7 @@
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="container-fluid">
-			<div class="navbar-header">
+			<div class="navbar-header"> 
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
@@ -38,10 +38,11 @@
 		
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 	<br/><br/>
-    	<center> 		
-			<img src="/static/img/logo.svg" width="60%" height="60%"/> 		<br/> 		
-			<p style="color:#515594; font-size:1.0em;"><a href="https://github.com/blabla1337/skf-flask" style="color:#515594; font-size:1.7em;">OWASP S.K.F.</a></p>  	 			<p><a href="https://gitter.im/Security-Knowledge-Framework/Lobby" rel="nofollow"> 				<img src="/static/img/badge.svg" alt="Join the chat at https://gitter.im/Security-Knowledge-Framework/Lobby" data-canonical-src="/static/img/badge.svg" style="max-width:100%;"></a> 			</p>  	
-		</center>
+	<center>
+		<img src="/static/img/logo.svg" width="60%" height="60%"/>
+		<br/>
+		<p style="color:#515594; font-size:1.0em;"><a href="https://github.com/blabla1337/skf-flask" style="color:#515594; font-size:1.7em;">OWASP S.K.F.</a></p>  	 			<p><a href="https://gitter.im/Security-Knowledge-Framework/Lobby" rel="nofollow"> 				<img src="/static/img/badge.svg" alt="Join the chat at https://gitter.im/Security-Knowledge-Framework/Lobby" data-canonical-src="/static/img/badge.svg" style="max-width:100%;"></a> 			</p> 
+	</center>
 	</div><!--/.sidebar-->
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
@@ -54,43 +55,33 @@
 				<h1 class="page-header">Live demonstration!</h1>
 			</div>
 		</div><!--/.row-->
+				
+		
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">File upload CMD injection!</div>
+					<div class="panel-heading">DNS Rebinding</div>
 					<div class="panel-body">
-						<div class="col-md-6">
-							<form method="post" action="" enctype="multipart/form-data">
-                			<input type="file" name="file"/><br/>
-               			    <button class="btn btn-primary" type="submit">Submit Button</button>
-               			</div>
+                        			<form method="get" action="/rebind" enctype="multipart/form-data">
+                           			<label>Input a crafted hostname to leverage the DNS rebinding technique and exfiltrate info from the localhost hidden service (port 80).</label>  
+						<input type="text" placeholder="localhost" name="hostname" class="form-control">
+                         			<button class="btn btn-primary" type="submit">Submit Button</button>
+
+               					</div>
+
 						</form>
 					</div>
 				</div>
 			</div><!-- /.col-->
 		</div><!-- /.row -->
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="panel panel-primary">
-					<div class="panel-heading">
-						Monitoring website files system_call('ls -lart *')
-					</div>
-					<div class="panel-body">
-						<pre>{{system_call('ls -lart *')}}</pre>         
-					</div>
-					<div class="panel-footer">
-						Hacking challenges
-					</div>
-				</div>
-			</div><!-- /.col-->
-		</div><!-- /.row -->
-{% autoescape false %} {{uploaded}} {% endautoescape %}
+		
+	
+     <center> <p style="font-size:2em;"> {% autoescape false %} {{read}} {% endautoescape %} </p></center>
 	
 	</div><!--/.main-->
 
 	<script src="/static/js/jquery-1.11.1.min.js"></script>
 	<script src="/static/js/bootstrap.min.js"></script>
-	<script src="/static/js/bootstrap-datepicker.js"></script>
 	<script>
 		!function ($) {
 			$(document).on("click","ul.nav li.parent > a > span.icon", function(){		  

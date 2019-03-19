@@ -1,13 +1,12 @@
 FROM alpine:3.7
-MAINTAINER Semen Rozkhov <life.start.rs@gmail.com>
+MAINTAINER Alberto Rafael Rodríguez Iglesias <albertocysec@gmail.com / alberto.iglesias@owasp.org>
 RUN apk update --no-cache && apk add python3 \
 python3-dev \
 py3-pip \ 
 git \
-bash \ 
-zip
+bash
 
 RUN git clone https://github.com/blabla1337/skf-labs.git
-WORKDIR /skf-labs/CMD2
+WORKDIR /skf-labs/CSSI
 RUN pip3 install -r requirements.txt
-CMD [ "python3", "./CMD2.py" ]
+CMD [ "python3", "./CSSI.py" ]
