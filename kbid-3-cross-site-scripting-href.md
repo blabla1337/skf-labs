@@ -1,4 +1,4 @@
-# KBID 3 - Cross site scripting \(attribute\)
+# KBID 3 - Cross site scripting \(href\)
 
 ## Running the app
 
