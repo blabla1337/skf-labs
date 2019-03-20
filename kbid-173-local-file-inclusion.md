@@ -27,9 +27,11 @@ Warning: To successfully test for this flaw, the tester needs to have knowledge 
 
 Some Examples:
 
+```text
 http://example.com/getUserProfile.jsp?item=../../../../etc/passwd
 
 Cookie: USER=1826cc8f:PSTYLE=../../../../etc/passwd
+```
 
 ## Exploitation
 
@@ -43,13 +45,13 @@ Denial of Service (DoS)
 Sensitive Information Disclosure
 
 Lets spin up the server:
- 
+ ```text
  cd /LFI
  
  python3 LFI.py
  
  URL: http://0.0.0.0:5000/
-
+```
 
 Let us see how can we exploit the file inclusion vulnerability in a real world scenario, the application here allows us to view details on Intro, Chapter1, Chapter2 and so on.
 
