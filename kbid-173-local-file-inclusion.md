@@ -28,6 +28,7 @@ Warning: To successfully test for this flaw, the tester needs to have knowledge 
 Some Examples:
 
 http://example.com/getUserProfile.jsp?item=../../../../etc/passwd
+
 Cookie: USER=1826cc8f:PSTYLE=../../../../etc/passwd
 
 ## Exploitation
