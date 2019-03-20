@@ -31,5 +31,6 @@
 * [KBID 7006 - JWT Null](kbid-7006-JWT-null.md)
 * [KBID 20 - Clickjacking](kbid-20-clickjacking.md)
 * [KBID 178 - Content-Security-Policy](kbid-178-content-security-policy.md)
+* [KBID 104 - Content-Type-Headers] (kbid-104-content-type-headers.md)
 * [template](template.md)
 
