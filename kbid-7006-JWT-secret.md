@@ -1,13 +1,13 @@
-# KBID 7007 - JWT NULL
+# KBID 7006 - JWT Secret
 
 ## Running the app
 
 ```
-$ sudo docker pull blabla1337/owasp-skf-lab:jwt-null
+$ sudo docker pull blabla1337/owasp-skf-lab:jwt-secret
 ```
 
 ```text
-$ sudo docker run -ti -p localhost:5000:5000 blabla1337/owasp-skf-lab:jwt-null
+$ sudo docker run -ti -p localhost:5000:5000 blabla1337/owasp-skf-lab:jwt-secret
 ```
 
  Now that the app is running let's go hacking!
@@ -20,11 +20,11 @@ $ sudo docker run -ti -p localhost:5000:5000 blabla1337/owasp-skf-lab:jwt-null
 
 The application shows a dropdown menu from which we can choose an intro or chapters to be displayed on the client-side. 
 
-![](.gitbook/assets/jwt-null-1.png)
+![](.gitbook/assets/jwt-1.png)
 
 First thing we need to do know is to do more investigation on the requests that are being made. We do this by setting up our intercepting proxy so we can gain more understanding of the application under test.
 
-After we set up our favourite intercepting proxy we are going to look at the traffic between the server and the front-end. Enter the credentials: *username: user* | *password:user*
+After we set up our favourite intercepting proxy we are going to look at the traffic between the server and the front-end. Click on *Authenticate*.
 
 The first thing to notice is after sucessful logon, the response contains an access token.   
 
@@ -58,7 +58,7 @@ Last encrypted part, containing the digital signature for the token..
 
 ## Exploitation
 
-#### Step 1
+#### Step1
 
 A potential attacker can now decode the token in http://jwt.io website to check its content. 
 
@@ -70,45 +70,34 @@ As shown in the above picture, there are 2 points which can be tampered.
 
 - indentity: this information is used by the application to identify which user ID is currently authenticated. 
 
-How about checking if the server is blindly accepting the digital signature algorithm as stored by token. Of course, changing the signature would also change the token signature, but, what if the server accepts NONE algorithm?
+How about checking if the server used a weak secret key for digital signature algorithm?
 
-The NONE algorithm means signature is not required, so the token can be tampered and will be accepted by the server. 
+Checking the code below it's possible to see a weak secret key is being used, which can be easily guessed by a dictionary attack using tools available on internet and in your favorite PenTest distro.  
 
-##### Header tampering
+```python
+app = Flask(__name__)
+app.debug = True
+app.config['SECRET_KEY'] = 'secret'
 
+jwt = JWT(app, authenticate, identity)
 ```
-{
-  "typ": "NONE",
-  "alg": "HS256"
-}
-#base64 eyJ0eXAiOiJKV1QiLCAiYWxnIjoiTk9ORSJ9
-```
-
-Now, let's play with the identity:
-
-```
-{
-  "exp": 1553003718,
-  "iat": 1553003418,
-  "nbf": 1553003418,
-  "identity": 2
-}
-```
-
-As the signature is not required, the new tampered JWT token will look like this:
-
-> eyJ0eXAiOiJKV1QiLCAiYWxnIjoiTk9ORSJ9.eyJleHAiOjE1NTMwMDM3MTgsImlhdCI6MTU1MzAwMzQxOCwibmJmIjoxNTUzMDAzNDE4LCJpZGVudGl0eSI6Mn0. 
 
 #### Step 2
 
 
-Open the local storage tab within the browser and replace the original token:
+Using the weak secret key, let's change the *identity* value.
 
-![](.gitbook/assets/jwt-null-4.png)
+![gitbook\assets\jwt-2](.gitbook\assets\jwt-2.png)
 
-Now hit the *Admin* button and check if the tampered token was accepted.
+#### Step 3
 
-![](.gitbook/assets/jwt-null-5.png)
+Now, let's use the new generated JWT token to replace the one stored in browser's local storage.
+
+![](.gitbook/assets/jwt-3.png)
+
+And click on *Show userID* to check if the server accepted the tampered token.
+
+![](.gitbook/assets/jwt-4.png)
 
 Yes! The server accepted the tampered access-token. Can we check if there are more users available which can be impersonated?
 
