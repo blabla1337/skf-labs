@@ -6,11 +6,11 @@
 Becoming a super hero is a fairly straight forward process:
 
 ```text
-$ sudo docker pull blabla1337/owasp-skf-lab:local-file-inclusion
+$ sudo docker pull blabla1337/owasp-skf-lab:filename-injection
 ```
 
 ```text
-$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:local-file-inclusion
+$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:filename-injection
 ```
 
 {% hint style="success" %}
