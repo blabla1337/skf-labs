@@ -30,11 +30,11 @@ Imagine an attacker who builds a web site that has a button on it that says "cli
 
 In order to exploit this vulnerability, the attacker would place an iframe with the malicious link behind a valid actionable button and make it transparent to capture the clicks.
 
-(.gitbook/assets/Click1.png)
+![](.gitbook/assets/Click1.png)
 
 In our sitation if you click on show evil, we can notice the attacker in reality wants to capture facebook likes behind "Click me for free stuff!" button.
 
-(.gitbook/assets/Click2.png)
+![](.gitbook/assets/Click2.png)
 
 ## Additional sources : 
 
