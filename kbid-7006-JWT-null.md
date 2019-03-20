@@ -58,7 +58,7 @@ Last encrypted part, containing the digital signature for the token..
 
 ## Exploitation
 
-#### Step1
+#### Step 1
 
 A potential attacker can now decode the token in http://jwt.io website to check its content. 
 
@@ -99,6 +99,9 @@ As the signature is not required, the new tampered JWT token will look like this
 
 > eyJ0eXAiOiJKV1QiLCAiYWxnIjoiTk9ORSJ9.eyJleHAiOjE1NTMwMDM3MTgsImlhdCI6MTU1MzAwMzQxOCwibmJmIjoxNTUzMDAzNDE4LCJpZGVudGl0eSI6Mn0. 
 
+#### Step 2
+
+
 Open the local storage tab within the browser and replace the original token:
 
 ![](.gitbook/assets/jwt-null-4.png)
@@ -108,6 +111,8 @@ Now hit the *Admin* button and check if the tampered token was accepted.
 ![](.gitbook/assets/jwt-null-5.png)
 
 Yes! The server accepted the tampered access-token. Can we check if there are more users available which can be impersonated?
+
+## Additional Resources
 
 Please refer to the JWT.io information for more information regarding JWT.
 
