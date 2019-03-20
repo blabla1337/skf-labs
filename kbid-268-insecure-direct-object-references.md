@@ -76,7 +76,7 @@ So from the fuzzing results, if we observe closesly the index ID="51" seems inte
 
 ![](.gitbook/assets/idor8.png)
 
-And we captured the right flag :-), so we could access the document belonging to some other user bypassing access contol of the application.
+And we captured the right flag :-), so we could access the document belonging to some other user bypassing access controls of the application.
 
 ## Additional Sources
 
