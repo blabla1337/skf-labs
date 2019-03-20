@@ -18,18 +18,25 @@ Now that the app is running let's go hacking!
 
 ## Reconnaissance
 
-### Step1
+![Alt text](https://i.postimg.cc/8zyR0bLX/loginform.jpg "Login Form")
+
 
 The application shows a admin login form, but we don't have the credentials, we'll have to somehow login inorder to solve the challenge, the name of the
 challenge is 'Ratelimiting', from that we know that we need to bruteforce login, but what would be the username?
 
-![](.gitbook/assets/screen-shot-2019-01-10-at-12.45.png)
+
 
 Let's do more investigation, upon viewing the source code, there is a base64 message commented out there.
+
+
+![Alt text](https://i.postimg.cc/d0L2PTBs/sourcecode.jpg "Source Code")
+
+
+
 <!-- dev metadata: RGV2ZWxvcGVyIHVzZXJuYW1lOiBkZXZ0ZWFtCkNsaWVudDogUm9ja3lvdQ== -->
 We are going to decrypt the base64 encoded string using terminal as shown in the below image.
 
-![](.gitbook/assets/lfi2.png)
+![Alt text](https://i.postimg.cc/qMxX8rqT/base64decoding.jpg "Base64 Decode")
 
 abhi@sh3ll:~$ echo 'RGV2ZWxvcGVyIHVzZXJuYW1lOiBkZXZ0ZWFtCkNsaWVudDogUm9ja3lvdQ==' | base64 --decode
 abhi@sh3ll:~$ Developer username: devteam
@@ -66,6 +73,9 @@ http-post-form is used to specify that this is a http-post-form.
 
  
 After you launch a bruteforce attack against the login function, after several minutes, you'll get the password like the below screenshot.
+
+
+![Alt text](https://i.postimg.cc/HLRQpsZQ/bruteforcesuccess.jpg "Bruteforce Success")
 
 
 
