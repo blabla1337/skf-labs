@@ -54,15 +54,15 @@ Lets spin up the server:
 
 Let us see how can we exploit the file inclusion vulnerability in a real world scenario, the application here allows us to view details on Intro, Chapter1, Chapter2 and so on.
 
-(.gitbook/assets/LFI1.png)
+![](.gitbook/assets/LFI1.png)
 
-(.gitbook/assets/LFI2.png)
+![](.gitbook/assets/LFI2.png)
 
 To exploit let us try to modify the "Intro item" and attempt to access the world-readable /etc/passwd file by directory traversal.
 
-(.gitbook/assets/LFI3.png)
+![](.gitbook/assets/LFI3.png)
 
-(.gitbook/assets/LFI4.png)
+![](.gitbook/assets/LFI4.png)
 
 {% hint style="success" %} Success! As we observed, we can access the /etc/passwd file through LFI.
 
