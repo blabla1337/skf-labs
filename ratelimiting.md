@@ -38,11 +38,12 @@ abhi@sh3ll:~$ Client: Rockyou
 From this, it seems that the developer has an account with username devteam, so we probably need to bruteforce into that =)
 Client, rockyou? Are we referring to the rockyou wordlist? 
 
-```
 
 Rockyou Wordlist - https://github.com/danielmiessler/SecLists/blob/master/Passwords/Leaked-Databases/rockyou-20.txt
 
 So we'll have to bruteforce the login form which is post based using some tool, I prefer hydra & burp suite's intruder to do this, in this writeup, i'll demonstrate this using hydra.
+
+```
 
 ## Bruteforcing using Hydra
 
@@ -57,6 +58,9 @@ let's make this clear since it might be confusing for newbies or those who have 
 http-post-form is used to specify that this is a http-post-form.
  "/:username=^USER^&password=^PASS^ <-- These are the post parameters which are being bruteforced.
  F=Invalid <-- This parameter is used to filter out invalid logins.
+ 
+ ```
+
  
 After you launch a bruteforce attack against the login function, after several minutes, you'll get the password like the below screenshot.
 
