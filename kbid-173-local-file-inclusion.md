@@ -6,6 +6,7 @@
 Becoming a super hero is a fairly straight forward process:
 
 ```text
+
 $ sudo docker pull blabla1337/owasp-skf-lab:local-file-inclusion
 ```
 
