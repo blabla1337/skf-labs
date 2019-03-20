@@ -100,5 +100,3 @@ This would work if we would have used the latest version of Angular and escaped 
 {% embed url="https://docs.angularjs.org/guide/security"%}
 
 
-
-

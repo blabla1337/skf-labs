@@ -7,18 +7,18 @@ $ sudo docker pull blabla1337/owasp-skf-lab:cross-site-scripting-url
 ```
 
 ```text
-$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:cross-site-scripting-url 
+$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:cross-site-scripting-url
 ```
 
 {% hint style="success" %}
- Now that the app is running let's go hacking!
+Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker image and write-up thanks to ING!](.gitbook/assets/ING_Primary_Logo.png)
+![Docker image and write-up thanks to ING!](https://github.com/blabla1337/skf-labs/tree/33e30a8a2b1f7bbe312758e1e2a79cd320b6b05f/.gitbook/assets/ING_Primary_Logo.png)
 
 ## Reconnaissance
 
-#### Step 1
+### Step 1
 
 The application invites you to fill a website in the input box, that will be used from the "visit my website!" link to redirect to it.
 
@@ -52,15 +52,14 @@ Now we have seen where the user input is being reflected in the href, we can cra
 javascript:alert('XSS')
 ```
 
-
 and clicking the button, we achieve what we were looking for. 
 
 ![](.gitbook/assets/xss-href-3.png)
-
 
 ## Additional sources
 
 Please refer to the OWASP testing guide for a full complete description about path traversal with all the edge cases over different platforms!
 
 {% embed url="https://www.owasp.org/index.php/Testing\_for\_Reflected\_Cross\_site\_scripting\_\(OTG-INPVAL-001\)" %}
+
 
