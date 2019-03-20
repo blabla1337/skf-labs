@@ -22,20 +22,20 @@ Clickjacking, also known as a "UI redress attack", is when an attacker uses mult
 
 Using a similar technique, keystrokes can also be hijacked. With a carefully crafted combination of stylesheets, iframes, and text boxes, a user can be led to believe they are typing in the password to their email or bank account, but are instead typing into an invisible frame controlled by the attacker.
 
-
+Examples:
+Imagine an attacker who builds a web site that has a button on it that says "click here for a free iPod". However, on top of that web page, the attacker has loaded an iframe with your mail account, and lined up exactly the "delete all messages" button directly on top of the "free iPod" button. The victim tries to click on the "free iPod" button but instead actually clicked on the invisible "delete all messages" button. In essence, the attacker has "hijacked" the user's click, hence the name "Clickjacking".
 
 ## Exploitation
 
-In order to exploit this vulnerability, we need to place an iframe with the malicious link behind a valid actionable button and make it transparent to capture the clicks.
+In order to exploit this vulnerability, the attacker would place an iframe with the malicious link behind a valid actionable button and make it transparent to capture the clicks.
 
-![Docker image and write-ip thanks to ING!](.gitbook/assets/Screenshot 2019-03-19 at 13.09.57.png)
+(.gitbook/assets/Click1.png)
 
-Once you click on show evil, we can notice in this scenario we actual capture facebook likes behind "Click me for free stuff!" button.
+In our sitation if you click on show evil, we can notice the attacker in reality wants to capture facebook likes behind "Click me for free stuff!" button.
 
-![Docker image and write-ip thanks to ING!](.gitbook/assets/Screenshot 2019-03-19 at 13.23.58.png)
+(.gitbook/assets/Click2.png)
 
-Paragrapgh
+## Additional sources : 
 
-## Additional sources : https://www.owasp.org/index.php/Clickjacking
-
-par
+Please refer the link below:
+https://www.owasp.org/index.php/Clickjacking
