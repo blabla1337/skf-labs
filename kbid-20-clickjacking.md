@@ -1,10 +1,11 @@
-KBID 20 - Clickjacking
+# KBID 20 - Clickjacking
+
 
 ## Running the app
 
 Becoming a super hero is a fairly straight forward process:
 
-```
+```text
 $ sudo docker pull blabla1337/owasp-skf-lab:clickjacking
 ```
 
@@ -15,7 +16,7 @@ $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:clickjacki
 Now that the app is running let's go hacking!
 ![Docker image and write-ip thanks to ING!](.gitbook/assets/ING_Primary_Logo.png)
 
- 
+
 ## Reconnaissance
 
 Clickjacking, also known as a "UI redress attack", is when an attacker uses multiple transparent or opaque layers to trick a user into clicking on a button or link on another page when they were intending to click on the top level page. Thus, the attacker is "hijacking" clicks meant for their page and routing them to another page, most likely owned by another application, domain, or both.
@@ -39,3 +40,4 @@ In our sitation if you click on show evil, we can notice the attacker in reality
 
 Please refer the link below:
 https://www.owasp.org/index.php/Clickjacking
+
