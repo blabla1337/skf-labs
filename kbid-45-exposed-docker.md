@@ -115,7 +115,7 @@ CONTAINER ID        IMAGE                      COMMAND                  CREATED 
 b90babce1037        jeroenpeeters/docker-ssh   "npm start"              18 months ago       Up 2 hours          22/tcp, 8022/tcp       content_ssh_1
 ```
 
-#### exploitation
+### exploitation
 
 Now, we want to become root on the Docker host machine, we can achieve this by running a special container.
 
