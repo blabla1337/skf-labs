@@ -74,7 +74,8 @@ How about checking if the server is blindly accepting the digital signature algo
 
 The NONE algorithm means signature is not required, so the token can be tampered and will be accepted by the server. 
 
-##### Header tampering
+#### Step 2
+
 
 ```
 {
@@ -98,6 +99,8 @@ Now, let's play with the identity:
 As the signature is not required, the new tampered JWT token will look like this:
 
 > eyJ0eXAiOiJKV1QiLCAiYWxnIjoiTk9ORSJ9.eyJleHAiOjE1NTMwMDM3MTgsImlhdCI6MTU1MzAwMzQxOCwibmJmIjoxNTUzMDAzNDE4LCJpZGVudGl0eSI6Mn0. 
+
+Step 3
 
 Open the local storage tab within the browser and replace the original token:
 

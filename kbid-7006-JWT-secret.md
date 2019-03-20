@@ -82,11 +82,14 @@ app.config['SECRET_KEY'] = 'secret'
 jwt = JWT(app, authenticate, identity)
 ```
 
-##### Token tampering
+#### Step 2
+
 
 Using the weak secret key, let's change the *identity* value.
 
 ![gitbook\assets\jwt-2](.gitbook\assets\jwt-2.png)
+
+#### Step 3
 
 Now, let's use the new generated JWT token to replace the one stored in browser's local storage.
 
