@@ -1,4 +1,4 @@
-# KBID 1 - Rate Limiting \(RL\)
+# KBID XXX - Rate Limiting \(RL\)
 
 ## Running the app
 
