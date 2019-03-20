@@ -24,15 +24,15 @@ The main use of the content security policy header is to, detect, report, and re
 
 In the first scenario we explore the execution of an XSS attack without CSP in place.
 
-![Docker image and write-ip thanks to ING!](.gitbook/assets/XSS-without-CSP.png)
+(.gitbook/assets/XSS-without-CSP.png)
 
-![Docker image and write-ip thanks to ING!](.gitbook/assets/XSS-without-CSP1.png)
+(.gitbook/assets/XSS-without-CSP1.png)
 
 With CSP in place, when we try to perform a XSS attack we notice that CSP header block the scripts since the inclusion of inline scripts is not permitted.
 
-![Docker image and write-ip thanks to ING!](.gitbook/assets/XSS-with-CSP.png)
+(.gitbook/assets/XSS-with-CSP.png)
 
-![Docker image and write-ip thanks to ING!](.gitbook/assets/XSS-with-CSP1.png)
+(.gitbook/assets/XSS-with-CSP1.png)
 
 ## Additional sources
 
