@@ -17,7 +17,7 @@ $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:content-ty
 
 Now that the app is running let's go hacking! 
 
-(.gitbook/assets/ING_Primary_Logo.png)
+![](.gitbook/assets/ING_Primary_Logo.png)
 
 ## Reconnaissance
 
@@ -38,15 +38,15 @@ To check if the user input is reflected lets see if the application accepts user
 xss
 ```
 
-(.gitbook/assets/reco1.png)
+![](.gitbook/assets/reco1.png)
 
 Step2:
 
 Lets check the response, for what looks like a JSON data however also notice the content-type to be set as text/html which looks suspicipus and can help us perform a Cross Site Scripting(XSS) attack. 
 
-(.gitbook/assets/reco2.png)
+![](.gitbook/assets/reco2.png)
 
-(.gitbook/assets/reco3.png)
+![](.gitbook/assets/reco3.png)
 
 ## Exploitation
 
@@ -57,17 +57,17 @@ With no content type headers restrictions imposed by the server, lets check if w
 ```text
 <svg onload=alert(1)>
 ```
-(.gitbook/assets/content1.png)
+![](.gitbook/assets/content1.png)
 
-(.gitbook/assets/content2.png)
+![](.gitbook/assets/content2.png)
 
 Step 2: Lets check how the application behaves to our malicious input, we notice the content-type is set to text/html and data looks like a JSON and we still succeed to perfrom a XSS attack:
 
-(.gitbook/assets/content3.png)
+![](.gitbook/assets/content3.png)
 
-(.gitbook/assets/content4.png)
+![](.gitbook/assets/content4.png)
 
-(.gitbook/assets/content5.png)
+![](.gitbook/assets/content5.png)
 
 Step 3:
 
@@ -76,10 +76,10 @@ With content type headers restrictions imposed by the server, lets check if we c
 ```text
 <svg onload=alert(1)>
 ```
-(.gitbook/assets/content6.png)
+![](.gitbook/assets/content6.png)
 
 We notice the content type in this situation is appropriately set to application/json and prevents the XSS attack.
 
-(.gitbook/assets/content7.png)
+![](.gitbook/assets/content7.png)
 
-(.gitbook/assets/content8.png)
+![](.gitbook/assets/content8.png)
