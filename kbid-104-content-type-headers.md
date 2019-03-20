@@ -40,6 +40,7 @@ xss
 
 ![](.gitbook/assets/reco1.png)
 
+
 Step2:
 
 Lets check the response, for what looks like a JSON data however also notice the content-type to be set as text/html which looks suspicipus and can help us perform a Cross Site Scripting(XSS) attack. 
@@ -47,6 +48,7 @@ Lets check the response, for what looks like a JSON data however also notice the
 ![](.gitbook/assets/reco2.png)
 
 ![](.gitbook/assets/reco3.png)
+
 
 ## Exploitation
 
@@ -57,6 +59,7 @@ With no content type headers restrictions imposed by the server, lets check if w
 ```text
 <svg onload=alert(1)>
 ```
+
 ![](.gitbook/assets/content1.png)
 
 ![](.gitbook/assets/content2.png)
@@ -76,6 +79,7 @@ With content type headers restrictions imposed by the server, lets check if we c
 ```text
 <svg onload=alert(1)>
 ```
+
 ![](.gitbook/assets/content6.png)
 
 We notice the content type in this situation is appropriately set to application/json and prevents the XSS attack.
@@ -83,3 +87,4 @@ We notice the content type in this situation is appropriately set to application
 ![](.gitbook/assets/content7.png)
 
 ![](.gitbook/assets/content8.png)
+

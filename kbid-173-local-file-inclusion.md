@@ -6,18 +6,19 @@
 Becoming a super hero is a fairly straight forward process:
 
 ```text
-$ sudo docker pull blabla1337/owasp-skf-lab:filename-injection
+
+$ sudo docker pull blabla1337/owasp-skf-lab:local-file-inclusion
 ```
 
 ```text
-$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:filename-injection
+$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:local-file-inclusion
 ```
 
 {% hint style="success" %}
 
 Now that the app is running let's go hacking! 
 
-![Docker image and write-ip thanks to ING!](https://github.com/blabla1337/skf-labs/tree/3dc6dc14b5c176c8889318d4ea3fb3bc1cff49a5/.gitbook/assets/ING_Primary_Logo.png)
+![Docker image and write-ip thanks to ING!](.gitbook/assets/ING_Primary_Logo.png)
 
 ## Reconnaissance
 
