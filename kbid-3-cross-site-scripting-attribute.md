@@ -28,17 +28,7 @@ If we want to make it red, we can just write `red` in the input box and click th
 
 ![](.gitbook/assets/xss-attribute-2.png)
 
-Let's see how it works. We can run Burp and see where our text is used in the application, and how we can abuse it.
-
-### Step 2
-
-Let's search for the keyword `red` in the HTML
-
-![](.gitbook/assets/xss-attribute-5.png)
-
-If we look at the template we can see that our input is reflected in the inline style of the `<span>` tag
-
-```markup
+```html
 <center> <p style="font-size:2em;"> {% autoescape false %}<span style='color:{{xss}};' > Let me be a new color!</span>{% endautoescape %}</p></center>
 ```
 
@@ -46,29 +36,33 @@ and it is not escaped so it should be possible to perform a Cross Site Scripting
 
 ## Exploitation
 
+
 ### Step 1
 
 Now we have seen where the user input is being reflected in the style, we will have to look what dangerous HTML characters are not properly escaped so we can build our XSS payload. So for our first check we use the following string as an input:
 
-```markup
+```text
 foobar"></
 ```
 
 As you can see the application does not react at out malicious payload, so nothing happens. Why? Maybe the quotes that are used in the template are not the right ones. Let's try our new payload changing the quotes:
 
-```markup
+
+```text
 red;'><img src=x onerror=alert(1)>
 ```
 
 ![](.gitbook/assets/xss-attribute-3.png)
 
-and clicking the button, we achieve what we were looking for.
+and clicking the button, we achieve what we were looking for. 
 
 ![](.gitbook/assets/xss-attribute-4.png)
+
 
 ## Additional sources
 
 Please refer to the OWASP testing guide for a full complete description about path traversal with all the edge cases over different platforms!
 
-{% embed url="https://www.owasp.org/index.php/Testing\_for\_Reflected\_Cross\_site\_scripting\_\(OTG-INPVAL-001\)" caption="" %}
+{% embed url="https://www.owasp.org/index.php/Testing\_for\_Reflected\_Cross\_site\_scripting\_\(OTG-INPVAL-001\)" %}
+
 
