@@ -14,7 +14,7 @@ $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:cross-site
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker image and write-up thanks to ING!](https://github.com/blabla1337/skf-labs/tree/33e30a8a2b1f7bbe312758e1e2a79cd320b6b05f/.gitbook/assets/ING_Primary_Logo.png)
+![Docker image and write-up thanks to ING!](.gitbook/assets/ING_Primary_Logo.png)
 
 ## Reconnaissance
 
