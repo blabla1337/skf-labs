@@ -37,10 +37,11 @@ Let's do more investigation, upon viewing the source code, there is a base64 mes
 We are going to decrypt the base64 encoded string using terminal as shown in the below image.
 
 ![Alt text](https://i.postimg.cc/qMxX8rqT/base64decoding.jpg "Base64 Decode")
-
+```
 abhi@sh3ll:~$ echo 'RGV2ZWxvcGVyIHVzZXJuYW1lOiBkZXZ0ZWFtCkNsaWVudDogUm9ja3lvdQ==' | base64 --decode
 abhi@sh3ll:~$ Developer username: devteam
 abhi@sh3ll:~$ Client: Rockyou
+```
 
 From this, it seems that the developer has an account with username devteam, so we probably need to bruteforce into that =)
 Client, rockyou? Are we referring to the rockyou wordlist? 
