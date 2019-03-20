@@ -25,11 +25,11 @@ Setting the right content headers is important for hardening your applications s
 
 
 An example of a content type header would be:
-
+```text
 Content-Type: text/html; charset=UTF-8
 or:
 Content-Type: application/json;
-
+```
 Step 1:
 
 To check if the user input is reflected lets see if the application accepts user input and reflects as part of the HTML. Lets input the following string, additionally you can also check how the application treats the dangerous HTML characters:
@@ -78,7 +78,7 @@ With content type headers restrictions imposed by the server, lets check if we c
 ```
 (.gitbook/assets/content6.png)
 
-We notice the content type in this situation is appropriately set to application/json and prevents the XSS attack. Additionally there should also be charset set accordingly.
+We notice the content type in this situation is appropriately set to application/json and prevents the XSS attack.
 
 (.gitbook/assets/content7.png)
 
