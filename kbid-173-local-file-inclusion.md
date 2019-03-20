@@ -45,12 +45,11 @@ Denial of Service (DoS)
 Sensitive Information Disclosure
 
 Lets spin up the server:
- ```text
- cd /LFI
+ ```text 
+ $ cd /LFI
+ $ pip install -r requirements.txt
+ $ python3 LFI.py
  
- python3 LFI.py
- 
- URL: http://0.0.0.0:5000/
 ```
 
 Let us see how can we exploit the file inclusion vulnerability in a real world scenario, the application here allows us to view details on Intro, Chapter1, Chapter2 and so on.
