@@ -43,8 +43,11 @@ Denial of Service (DoS)
 Sensitive Information Disclosure
 
 Lets spin up the server:
+ 
  cd /LFI
+ 
  python3 LFI.py
+ 
  URL: http://0.0.0.0:5000/
 
 
