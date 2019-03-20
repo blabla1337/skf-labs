@@ -109,6 +109,8 @@ Now hit the *Admin* button and check if the tampered token was accepted.
 
 Yes! The server accepted the tampered access-token. Can we check if there are more users available which can be impersonated?
 
+## Additional Resources
+
 Please refer to the JWT.io information for more information regarding JWT.
 
 {% embed url="https://jwt.io/introduction/" %}

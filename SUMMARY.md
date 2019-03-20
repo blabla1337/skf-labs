@@ -28,4 +28,5 @@
 * [KBID 270 - SMTP IMAP injection](kbid-270-smtp-imap-injection.md)
 * [KBID 271 - Deserialisation Yaml](kbid-xxx-deserialisation-yaml.md)
 * [KBID 7006 - JWT Null](kbid-7006-JWT-null.md)
+* [KBID 7006 - JWT Null](kbid-7006-JWT-secret.md)
 * [template](template.md)
