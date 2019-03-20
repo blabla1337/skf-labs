@@ -43,9 +43,12 @@ Rockyou Wordlist - https://github.com/danielmiessler/SecLists/blob/master/Passwo
 
 So we'll have to bruteforce the login form which is post based using some tool, I prefer hydra & burp suite's intruder to do this, in this writeup, i'll demonstrate this using hydra.
 
-```
 
 ## Bruteforcing using Hydra
+
+
+```
+
 
 hydra -l devteam -P Desktop/pentest/rockyou.txt 0.0.0.0 -s 1332 http-post-form "/:username=^USER^&password=^PASS^:F=Invalid"
 
