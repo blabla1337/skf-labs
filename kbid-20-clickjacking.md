@@ -1,6 +1,5 @@
 # KBID 20 - Clickjacking
 
-KBID 20 - Clickjacking
 
 ## Running the app
 
@@ -14,7 +13,10 @@ $ sudo docker pull blabla1337/owasp-skf-lab:clickjacking
 $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:clickjacking
 ```
 
-Now that the app is running let's go hacking! ![Docker image and write-ip thanks to ING!](https://github.com/blabla1337/skf-labs/tree/3dc6dc14b5c176c8889318d4ea3fb3bc1cff49a5/.gitbook/assets/ING_Primary_Logo.png)
+Now that the app is running let's go hacking!
+
+![Docker image and write-ip thanks to ING!](.gitbook/assets/ING_Primary_Logo.png)
+
 
 ## Reconnaissance
 
@@ -22,19 +24,21 @@ Clickjacking, also known as a "UI redress attack", is when an attacker uses mult
 
 Using a similar technique, keystrokes can also be hijacked. With a carefully crafted combination of stylesheets, iframes, and text boxes, a user can be led to believe they are typing in the password to their email or bank account, but are instead typing into an invisible frame controlled by the attacker.
 
+Examples:
+Imagine an attacker who builds a web site that has a button on it that says "click here for a free iPod". However, on top of that web page, the attacker has loaded an iframe with your mail account, and lined up exactly the "delete all messages" button directly on top of the "free iPod" button. The victim tries to click on the "free iPod" button but instead actually clicked on the invisible "delete all messages" button. In essence, the attacker has "hijacked" the user's click, hence the name "Clickjacking".
+
 ## Exploitation
 
-In order to exploit this vulnerability, we need to place an iframe with the malicious link behind a valid actionable button and make it transparent to capture the clicks.
+In order to exploit this vulnerability, the attacker would place an iframe with the malicious link behind a valid actionable button and make it transparent to capture the clicks.
 
-![Docker image and write-ip thanks to ING!](.gitbook/assets/screenshot-2019-03-19-at-13.09.57.png)
+![](.gitbook/assets/Click1.png)
 
-Once you click on show evil, we can notice in this scenario we actual capture facebook likes behind "Click me for free stuff!" button.
+In our situation if we click on show evil, we notice the attacker in reality wants to capture facebook likes behind "Click me for free stuff!" button.
 
-![Docker image and write-ip thanks to ING!](https://github.com/blabla1337/skf-labs/tree/3dc6dc14b5c176c8889318d4ea3fb3bc1cff49a5/.gitbook/assets/Screenshot%202019-03-19%20at%2013.23.58.png)
+![](.gitbook/assets/Click2.png)
 
-Paragrapgh
+## Additional sources : 
 
-## Additional sources : [https://www.owasp.org/index.php/Clickjacking](https://www.owasp.org/index.php/Clickjacking)
-
-par
+Please refer the link below:
+https://www.owasp.org/index.php/Clickjacking
 
