@@ -166,7 +166,7 @@ Why not dumping the whole database?
 
 Don't forget to play with Limit numbers to fetch more records.
 
-
+## Additional sources
 
 Please refer to the OWASP testing guide for a full complete description about SQL injection with all the edge cases over different platforms!
 
