@@ -9,11 +9,14 @@ gcc \
 gdb \
 apache2
 
+RUN /etc/init.d/apache2 start
 RUN pip install --upgrade pip setuptools
 RUN pip install butterfly
 RUN git clone https://github.com/blabla1337/skf-labs.git
 WORKDIR /skf-labs/32_bufferOverflow
-COPY ./ /var/www/html
+COPY . /var/www/html
 RUN /etc/init.d/apache2 restart
-CMD [ "bash", "butterfly.server.py --host='0.0.0.0' --unsecure" ]
+CMD [ 'butterfly.server.py --host=0.0.0.0 --unsecure' ]
 
+#docker build . -t test
+#docker run  -ti -p 127.0.0.1:80:80 -p 127.0.0.1:57575:57575 test
