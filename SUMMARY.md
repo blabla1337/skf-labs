@@ -11,6 +11,7 @@
 * [KBID 13 - File upload](kbid-13-file-upload.md)
 * [KBID 20 - Clickjacking](kbid-20-clickjacking.md)
 * [KBID 28 - Verbose error messaging](kbid-28-verbose-error-messaging.md)
+* [KBID 29 - Brute force login](kbid-29-Ratelimiting.md)
 * [KBID 39 - HttpOnly flags](kbid-39-httponly-flags.md)
 * [KBID 40 - External session hijacking](kbid-40-external-session-hijacking.md)
 * [KBID 45 - Exposed docker daemon](kbid-45-exposed-docker.md)
