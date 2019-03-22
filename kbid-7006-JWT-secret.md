@@ -84,7 +84,6 @@ jwt = JWT(app, authenticate, identity)
 
 #### Step 2
 
-
 Using the weak secret key, let's change the *identity* value.
 
 ![gitbook\assets\jwt-2](.gitbook\assets\jwt-2.png)

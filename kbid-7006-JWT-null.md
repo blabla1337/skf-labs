@@ -76,7 +76,6 @@ The NONE algorithm means signature is not required, so the token can be tampered
 
 #### Step 2
 
-
 ```
 {
   "typ": "NONE",
