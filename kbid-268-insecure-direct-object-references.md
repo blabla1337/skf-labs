@@ -5,11 +5,11 @@
 Becoming a super hero is a fairly straight forward process:
 
 ```
-$ sudo docker pull blabla1337/owasp-skf-lab:XXXXXX
+$ sudo docker pull blabla1337/owasp-skf-lab:insecure-object
 ```
 
 ```text
-$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:XXXXX
+$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:insecure-object
 ```
 
 {% hint style="success" %}
