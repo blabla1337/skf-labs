@@ -25,6 +25,7 @@
 * [KBID 112 - CORS exploitation](kbid-112-cors-exploitation.md)
 * [KBID 140 - Client side caching](kbid-140-client-side-caching.md)
 * [KBID 156 - SQLI \(Like\)](kbid-156-sqli-like.md)
+* [KBID 156 - SQLI \(Blind\)](kbid-156-sqli-blind.md)
 * [KBID 160 - Reflective file download](kbid-160-reflective-file-download.md)
 * [KBID 178 - Content-Security-Policy](kbid-178-content-security-policy.md)
 * [KBID 190 - Client side storage](kbid-190-client-side-storage.md)

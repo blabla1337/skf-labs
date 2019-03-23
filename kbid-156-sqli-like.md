@@ -14,13 +14,13 @@ $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:sql-inject
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker image and write-up thanks to defev!](.gitbook/assets/ING_Primary_Logo.png)
+![Docker image and write-up thanks to ING!](.gitbook/assets/ING_Primary_Logo.png)
 
 ## Reconnaissance
 
 ### Step1
 
-The first step is to identify parameters which could be potentially used in an SQL query to communicate with the underlying database. In this example we find that the "/home" method grabs data by pageID and displays the content.
+The first step is to identify parameters which could be potentially used in an SQL query to communicate with the underlying database. In this example we find that the "/home" method grabs data by page name and displays the content.
 
 ![](.gitbook/assets/sqli-like-1.png)
 
@@ -112,21 +112,17 @@ http://localhost:5000/home/Admin%' union select tbl_name,sql from sqlite_master 
 
 Now we have all the information required to extract data from *users* table. Play with SQL Limit to get credentials from more users.
 
-![gitbook/assets/sqli-like-9](.gitbook/assets/sqli-like-9.png)
+![](.gitbook/assets/sqli-like-9.png)
 
 ```text
 http://localhost:5000/home/Admin%' union select UserName,Password from users limit 0,1--
 ```
-
-
 
 ## Additional sources
 
 Please refer to the OWASP testing guide for a full complete description about SQL injection with all the edge cases over different platforms!
 
 [https://www.owasp.org/index.php/Testing\_for\_SQL\_Injection\_\(OTG-INPVAL-005\)](https://www.owasp.org/index.php/Testing_for_SQL_Injection_%28OTG-INPVAL-005%29)
-
-
 
 SQLite Reference
 

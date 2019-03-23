@@ -74,7 +74,11 @@ How about checking if the server is blindly accepting the digital signature algo
 
 The NONE algorithm means signature is not required, so the token can be tampered and will be accepted by the server. 
 
+<<<<<<< HEAD
+#### Step 2
+=======
 ##### Header tampering
+>>>>>>> 50812bf54557ee2169537c4ac691dd846659819a
 
 ```
 {
