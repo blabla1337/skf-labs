@@ -1,17 +1,13 @@
-# KBID X - Session Prediction
+# KBID X - Missing Authentication
 
 ## Running the app
 
-```
-$ sudo docker pull blabla1337/owasp-skf-lab:session-prediction
+```text
+$ sudo docker pull blabla1337/owasp-skf-lab:auth-missing
 ```
 
 ```text
-$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:session-prediction
-```
-Or simply:
-```text
-$ python SP.py
+$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:auth-missing
 ```
 
 {% hint style="success" %}

@@ -5,7 +5,7 @@ pip3 install -r requirements.txt
 ```
 
 ```
-python3 SP.py
+python3 Auth-missing.py
 ```
 
 Visit the SKF Labs:

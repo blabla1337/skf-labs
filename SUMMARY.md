@@ -14,6 +14,7 @@
 * [KBID 29 - Brute force login](kbid-29-Ratelimiting.md)
 * [KBID 39 - HttpOnly flags](kbid-39-httponly-flags.md)
 * [KBID 40 - External session hijacking](kbid-40-external-session-hijacking.md)
+* [KBID 44 - Authorisation missing](kbid-44-Authorisation-missing.md)
 * [KBID 45 - Exposed docker daemon](kbid-45-exposed-docker.md)
 * [KBID 46 - SQLI \(union select\)](kbid-46-sqli-union-select.md)
 * [KBID 67 Open Redirect  Hard](kbid-67-open-redirect-hard.md)
