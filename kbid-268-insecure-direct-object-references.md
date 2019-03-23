@@ -2,9 +2,7 @@
 
 ## Running the app
 
-Becoming a super hero is a fairly straight forward process:
-
-```text
+```
 $ sudo docker pull blabla1337/owasp-skf-lab:insecure-object
 ```
 
