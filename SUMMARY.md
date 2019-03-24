@@ -24,6 +24,7 @@
 * [KBID 173 - Local File Inclusion](kbid-173-local-file-inclusion.md)
 * [KBID 173 - Remote File Inclusion](kbid-173-remote-file-inclusion.md)
 * [KBID 178 - Content-Security-Policy](kbid-178-content-security-policy.md)
+* [KBID 262 - Server Side Request Forgery](kbid-262-server-side-request-forgery.md)
 * [KBID 266 - Tabnabbing](kbid-266-tabnabbing.md)
 * [KBID 267 - SSTI](kbid-267-server-side-template-injection.md)
 * [KBID 268 - Insecure direct object references](kbid-268-insecure-direct-object-references.md)
