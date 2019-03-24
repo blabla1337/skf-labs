@@ -21,6 +21,8 @@
 * [KBID 140 - Client side caching](kbid-140-client-side-caching.md)
 * [KBID 156 - SQLI \(Like\)](kbid-156-sqli-like.md)
 * [KBID 156 - SQLI \(Blind\)](kbid-156-sqli-blind.md)
+* [KBID 173 - Local File Inclusion](kbid-173-local-file-inclusion.md)
+* [KBID 173 - Remote File Inclusion](kbid-173-remote-file-inclusion.md)
 * [KBID 178 - Content-Security-Policy](kbid-178-content-security-policy.md)
 * [KBID 266 - Tabnabbing](kbid-266-tabnabbing.md)
 * [KBID 267 - SSTI](kbid-267-server-side-template-injection.md)
