@@ -3,10 +3,8 @@
 
 ## Running the app
 
-Becoming a super hero is a fairly straight forward process:
 
 ```text
-
 $ sudo docker pull blabla1337/owasp-skf-lab:local-file-inclusion
 ```
 
@@ -41,17 +39,16 @@ The File Inclusion vulnerability allows an attacker to include a file, usually e
 This can lead to something as outputting the contents of the file, but depending on the severity, it can also lead to:
 
 Code execution on the web server
-Code execution on the client-side such as JavaScript which can lead to other attacks such as cross-site scripting (XSS)
-Denial of Service (DoS)
-Sensitive Information Disclosure
 
-Lets spin up the server:
- ```text 
- $ cd /LFI
- $ pip install -r requirements.txt
- $ python3 LFI.py
- 
-```
+Code execution on the client-side such as JavaScript 
+
+which can lead to other attacks such as:
+
+Cross-site scripting (XSS)
+
+Denial of Service (DoS)
+
+Sensitive Information Disclosure
 
 Let us see how can we exploit the file inclusion vulnerability in a real world scenario, the application here allows us to view details on Intro, Chapter1, Chapter2 and so on.
 
