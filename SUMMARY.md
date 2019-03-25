@@ -28,8 +28,9 @@
 * [KBID 266 - Tabnabbing](kbid-266-tabnabbing.md)
 * [KBID 267 - SSTI](kbid-267-server-side-template-injection.md)
 * [KBID 268 - Insecure direct object references](kbid-268-insecure-direct-object-references.md)
-* [KBID 271 - Deserialisation Yaml](kbid-xxx-deserialisation-yaml.md)
 * [KBID 7006 - JWT Null](kbid-7006-jwt-null.md)
 * [KBID 7006 - JWT Secret](kbid-7006-jwt-secret.md)
+* [KBID XXX - Deserialisation Yaml](kbid-xxx-deserialisation-yaml.md)
+* [KBID XXX - Race Condition](kbid-xxx-race-condition.md)
 * [template](template.md)
 
