@@ -32,5 +32,6 @@
 * [KBID 7006 - JWT Secret](kbid-7006-jwt-secret.md)
 * [KBID XXX - Deserialisation Yaml](kbid-xxx-deserialisation-yaml.md)
 * [KBID XXX - Race Condition](kbid-xxx-race-condition.md)
+* [KBID XXX - DoS Regex](kbid-xxx-dos-regex.md)
 * [template](template.md)
 
