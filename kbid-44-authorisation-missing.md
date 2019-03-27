@@ -14,7 +14,7 @@ $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:auth-missi
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker Image and write-up thanks to TelecoLabs!](https://github.com/blabla1337/skf-labs/tree/ba21e93eb74c40e2c5c1413cb693742e8a5a32d7/telecolabs.png)
+![Docker Image and write-up thanks to TelecoLabs!](.gitbook/assets/telecolabs.png)
 
 Alberto Rafael Rodríguez Iglesias - www.telecolabs.com
 
