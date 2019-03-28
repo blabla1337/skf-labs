@@ -1,7 +1,5 @@
 # KBID 67 Open Redirect  Hard
 
-
-
 ## Running the app
 
 ```
