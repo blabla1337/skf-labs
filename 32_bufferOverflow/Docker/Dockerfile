@@ -13,17 +13,16 @@ RUN dpkg --add-architecture i386
 RUN pip install --upgrade pip setuptools
 RUN pip install butterfly
 
+#start Apache
+RUN /etc/init.d/apache2 restart
+
+RUN useradd -ms /bin/bash stack
+USER stack
+WORKDIR /home/stack
 RUN git clone https://github.com/blabla1337/skf-labs.git
-WORKDIR /skf-labs/32_bufferOverflow
 
-run cp -r /skf-labs/32_bufferOverflow ~/32_bufferOverflow
-run pwd
-run ls -la ~/32_bufferOverflow
-
-#COPY entrypoint.sh /
-#COPY start.sh /
-#RUN ["chmod", "+x", "/entrypoint.sh"]
-#RUN ["chmod", "+x", "/start.sh"]
+COPY entrypoint.sh /
+COPY start.sh /
 ENTRYPOINT [ "/entrypoint.sh" ]
 
 #docker build . -t test
