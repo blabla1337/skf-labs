@@ -7,6 +7,9 @@ python-pip \
 build-essential \
 gcc \
 gdb \
+vi \
+vim \
+wget \
 apache2
 
 RUN dpkg --add-architecture i386
@@ -30,6 +33,7 @@ USER stack
 RUN cp -r /home/stack/skf-labs/32_bufferOverflow/Stack-0 /home/stack
 RUN rm -r /home/stack/skf-labs
 USER root
+COPY motd /usr/local/lib/python2.7/site-packages/butterfly/templates/motd
 COPY entrypoint.sh /
 COPY start.sh /
 
