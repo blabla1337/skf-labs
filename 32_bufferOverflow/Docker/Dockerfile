@@ -7,7 +7,6 @@ python-pip \
 build-essential \
 gcc \
 gdb \
-vi \
 vim \
 wget \
 apache2
