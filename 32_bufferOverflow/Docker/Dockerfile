@@ -32,7 +32,8 @@ USER stack
 RUN cp -r /home/stack/skf-labs/32_bufferOverflow/Stack-0 /home/stack
 RUN rm -r /home/stack/skf-labs
 USER root
-COPY motd /usr/local/lib/python2.7/site-packages/butterfly/templates/motd
+RUN chmod u+s /home/stack/Stack-0/stack0
+COPY motd /usr/local/lib/python2.7/dist-packages/butterfly/templates/motd
 COPY entrypoint.sh /
 COPY start.sh /
 
