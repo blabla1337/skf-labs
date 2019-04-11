@@ -85,7 +85,7 @@ jwt = JWT(app, authenticate, identity)
 
 Using the weak secret key, let's change the _identity_ value.
 
-![gitbook\assets\jwt-2](https://github.com/blabla1337/skf-labs/tree/6992113896951da1bb9fc1197b9df018e9c39aca/.gitbook/assets/jwt-2.png)
+![](.gitbook/assets/jwt-null-3.png)
 
 ### Step 3
 
