@@ -14,8 +14,8 @@ $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:remote-fil
 ```
 
 {% hint style="success" %}
-
-Now that the app is running let's go hacking! 
+ Now that the app is running let's go hacking!
+{% endhint %}
 
 ![Docker Image and write-up thanks to ContraHack!](.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
 
@@ -97,7 +97,9 @@ os.popen('whoami').read()
 
 ![](.gitbook/assets/RFI5.png)
 
-{% hint style="success" %} Success! As we observed, we can include our own files through RFI.
+{% hint style="success" %} 
+ Success! As we observed, we can include our own files through RFI. 
+{% endhint %}
 
 ## Additional sources
 

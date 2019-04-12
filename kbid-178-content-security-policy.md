@@ -13,8 +13,8 @@ $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:content-se
 ```
 
 {% hint style="success" %}
-
-Now that the app is running let's go hacking!
+ Now that the app is running let's go hacking!
+{% endhint %}
 
 ![Docker image and write-up thanks to ING!](.gitbook/assets/ing_primary_logo.png)
 

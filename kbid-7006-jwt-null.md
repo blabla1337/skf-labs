@@ -10,7 +10,9 @@ $ sudo docker pull blabla1337/owasp-skf-lab:jwt-null
 $ sudo docker run -ti -p localhost:5000:5000 blabla1337/owasp-skf-lab:jwt-null
 ```
 
-Now that the app is running let's go hacking!
+{% hint style="success" %}
+ Now that the app is running let's go hacking!
+{% endhint %}
 
 ![Docker Image and write-up thanks to ING!](.gitbook/assets/ing_primary_logo.png)
 
@@ -77,7 +79,7 @@ The NONE algorithm means signature is not required, so the token can be tampered
 
 #### Header tampering
 
-> > > > > > > 50812bf54557ee2169537c4ac691dd846659819a
+> 50812bf54557ee2169537c4ac691dd846659819a
 
 ```text
 {

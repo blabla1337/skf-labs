@@ -16,7 +16,7 @@ $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:local-file
 
 Now that the app is running let's go hacking! 
 
-![Docker image and write-ip thanks to ING!](.gitbook/assets/ING_Primary_Logo.png)
+![Docker image and write-up thanks to ING!](.gitbook/assets/ing_primary_logo.png)
 
 ## Reconnaissance
 
@@ -52,15 +52,15 @@ Sensitive Information Disclosure
 
 Let us see how can we exploit the file inclusion vulnerability in a real world scenario, the application here allows us to view details on Intro, Chapter1, Chapter2 and so on.
 
-![](.gitbook/assets/LFI1.png)
+![](.gitbook/assets/lfi1.png)
 
-![](.gitbook/assets/LFI2.png)
+![](.gitbook/assets/lfi2.png)
 
 To exploit let us try to modify the "Intro item" and attempt to access the world-readable /etc/passwd file by directory traversal.
 
-![](.gitbook/assets/LFI3.png)
+![](.gitbook/assets/lfi3.png)
 
-![](.gitbook/assets/LFI4.png)
+![](.gitbook/assets/lfi4.png)
 
 {% hint style="success" %} Success! As we observed, we can access the /etc/passwd file through LFI.
 

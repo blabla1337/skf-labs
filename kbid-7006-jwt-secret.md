@@ -10,7 +10,9 @@ $ sudo docker pull blabla1337/owasp-skf-lab:jwt-secret
 $ sudo docker run -ti -p localhost:5000:5000 blabla1337/owasp-skf-lab:jwt-secret
 ```
 
-Now that the app is running let's go hacking!
+{% hint style="success" %}
+ Now that the app is running let's go hacking!
+{% endhint %}
 
 ![Docker Image and write-up thanks to ING!](.gitbook/assets/ing_primary_logo.png)
 

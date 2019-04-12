@@ -11,8 +11,10 @@ $ docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:url-redirection
 ```
 
 {% hint style="success" %}
-Now that the app is running let's go hacking!
+ Now that the app is running let's go hacking!
 {% endhint %}
+
+![Docker Image and write-up thanks to ContraHack!](.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
 
 ## Reconnaissance
 
