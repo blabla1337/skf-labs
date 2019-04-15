@@ -10,6 +10,7 @@
 * [KBID 13 - File upload](kbid-13-file-upload.md)
 * [KBID 20 - Clickjacking](kbid-20-clickjacking.md)
 * [KBID 29 - Brute force login](kbid-29-ratelimiting.md)
+* [KBID 39 - HttpOnly session hijacking XSS](KBID-39-HttpOnly-Session-hijacking-xss.md)
 * [KBID 44 - Authorisation missing](kbid-44-authorisation-missing.md)
 * [KBID 45 - Exposed docker daemon](kbid-45-exposed-docker.md)
 * [KBID 46 - SQLI \(Union\)](kbid-46-sqli-union-select.md)
