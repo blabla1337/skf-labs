@@ -3,11 +3,11 @@
 ## Running the app
 
 ```
-$ sudo docker pull blabla1337/owasp-skf-lab:ssrf
+$ sudo docker pull blabla1337/owasp-skf-lab:server-side-request-forgery 
 ```
 
 ```text
-$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:ssrf
+$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:server-side-request-forgery 
 ```
 
 {% hint style="success" %}
