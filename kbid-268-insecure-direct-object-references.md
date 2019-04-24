@@ -3,11 +3,11 @@
 ## Running the app
 
 ```
-$ sudo docker pull blabla1337/owasp-skf-lab:insecure-object
+$ sudo docker pull blabla1337/owasp-skf-lab:indirect-object
 ```
 
 ```text
-$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:insecure-object
+$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:indirect-object
 ```
 
 {% hint style="success" %}
@@ -48,7 +48,7 @@ HTTP Request for Document Creation:
 
 Lets try to retrieve with ID=123
 
-!\[\]\(.gitbook/assets/idor3\(1\).png\)
+![](.gitbook/assets/idor3(1).png)
 
 Step 2:
 
@@ -64,7 +64,7 @@ Step 3: To further exploit and attempt to access other indexed documents, we wou
 
 ![](.gitbook/assets/idor5.png)
 
-!\[\]\(.gitbook/assets/idor5\(1\).png\)
+![](.gitbook/assets/idor5(1).png)
 
 So from the fuzzing results, if we observe closesly the index ID="51" seems interesting as the other ID's seem to have the same response length. Let's check what do we achieve with ID=51.
 
