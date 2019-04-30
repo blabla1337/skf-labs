@@ -3,11 +3,11 @@
 ## Running the app
 
 ```
-$ sudo docker pull blabla1337/owasp-skf-lab:insecure-object
+$ sudo docker pull blabla1337/owasp-skf-lab:indirect-object
 ```
 
 ```text
-$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:insecure-object
+$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:indirect-object
 ```
 
 {% hint style="success" %}
@@ -46,10 +46,6 @@ HTTP Request for Document Creation:
 
 ![](.gitbook/assets/idor3.png)
 
-Lets try to retrieve with ID=123
-
-!\[\]\(.gitbook/assets/idor3\(1\).png\)
-
 Step 2:
 
 Let's try to brute force if we can access other documents by fuzzing the index, consider the index ID=2000 for example:
@@ -58,13 +54,16 @@ Let's try to brute force if we can access other documents by fuzzing the index, 
 
 Ok, that's a good start so now we atleast know the index value falls between 1-1500.
 
-Step 3: To further exploit and attempt to access other indexed documents, we would use a tool called burp which would help us automate the fuzzing task.
+Step 3: To further exploit and attempt to access other indexed documents, we would use a tool called burpsuite which would help us automate the fuzzing task.
 
-![](.gitbook/assets/idor4.png)
+```text
+Please refer to the following link to configure burp suite for automating fuzzing task: 
+https://www.hackingarticles.in/beginners-guide-burpsuite-payloads-part-1/
+```
 
 ![](.gitbook/assets/idor5.png)
 
-!\[\]\(.gitbook/assets/idor5\(1\).png\)
+![](.gitbook/assets/idor5(1).png)
 
 So from the fuzzing results, if we observe closesly the index ID="51" seems interesting as the other ID's seem to have the same response length. Let's check what do we achieve with ID=51.
 
