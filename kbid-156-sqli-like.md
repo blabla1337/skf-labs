@@ -1,4 +1,4 @@
-# KBID 46 - SQLI \(Like\)
+# KBID 156 - SQLI \(Like\)
 
 ## Running the app
 
@@ -14,7 +14,7 @@ $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:sql-inject
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker image and write-up thanks to ING!](.gitbook/assets/ING_Primary_Logo.png)
+![Docker image and write-up thanks to ING!](.gitbook/assets/ing_primary_logo.png)
 
 ## Reconnaissance
 
@@ -46,7 +46,7 @@ db.execute("SELECT UserName, email FROM users WHERE UserName LIKE '%"+username+"
 
 ### Step3
 
-Now we need to inject characters to make the SQL query syntactically correct.  
+Now we need to inject characters to make the SQL query syntactically correct.
 
 ![](.gitbook/assets/sqli-like-3.png)
 
@@ -77,8 +77,7 @@ http://localhost:5000/home/Admin%' union select 1--
 ```
 
 This query results in an error, this is due to the fact that the original query started with 2 columns namely  
-\* UserName
-\* email
+\* UserName \* email
 
 ![](.gitbook/assets/sqli-like-6.png)
 
@@ -90,7 +89,7 @@ Notice how "UserName" and "email" became placeholders for data we want to retrie
 
 ### Step 2
 
-Now that we determined the number of columns we need to take, the next step is querying system tables to check which tables are stored in the Database. From the error message in the first picture, we can determine a SQLite DB is being used.  As the application didn't return an error, our guess is correct.
+Now that we determined the number of columns we need to take, the next step is querying system tables to check which tables are stored in the Database. From the error message in the first picture, we can determine a SQLite DB is being used. As the application didn't return an error, our guess is correct.
 
 ![](.gitbook/assets/sqli-like-7.png)
 
@@ -110,7 +109,7 @@ http://localhost:5000/home/Admin%' union select tbl_name,sql from sqlite_master 
 
 #### Step 4
 
-Now we have all the information required to extract data from *users* table. Play with SQL Limit to get credentials from more users.
+Now we have all the information required to extract data from _users_ table. Play with SQL Limit to get credentials from more users.
 
 ![](.gitbook/assets/sqli-like-9.png)
 
@@ -126,4 +125,5 @@ Please refer to the OWASP testing guide for a full complete description about SQ
 
 SQLite Reference
 
-https://www.techonthenet.com/sqlite/sys_tables/index.php
+[https://www.techonthenet.com/sqlite/sys\_tables/index.php](https://www.techonthenet.com/sqlite/sys_tables/index.php)
+

@@ -1,6 +1,6 @@
 from flask import Flask, request, url_for, render_template, redirect
 import datetime, requests, os, validators
-from urlparse import urlparse
+from urllib.parse import urlparse
 
 app = Flask(__name__, static_url_path='/static', static_folder='static')
 app.config['DEBUG'] = True
@@ -18,11 +18,13 @@ def cmd():
             host = request.url[:-4]
             filename = host+"/static/" + filename
             result = eval(requests.get(filename).text)
-        return render_template("index.html", result=result)
+            return render_template("index.html", result=result)
+        else:
+            result = eval(requests.get(filename).text)
+            return render_template("index.html", result=result)
     except Exception:
-    	return render_template("index.html", result="Unexpected error during the execution of the predefined command.")
-
+        return render_template("index.html", result="Unexpected error during the execution of the predefined command.")
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', threaded=True)
 	

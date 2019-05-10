@@ -1,0 +1,1 @@
+os.popen('whoami').read()

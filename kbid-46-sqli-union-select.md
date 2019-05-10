@@ -114,4 +114,3 @@ http://127.0.0.1:5000/home/1 union select 1,2,3 from users
 Please refer to the OWASP testing guide for a full complete description about SQL injection with all the edge cases over different platforms!
 
 [https://www.owasp.org/index.php/Testing\_for\_SQL\_Injection\_\(OTG-INPVAL-005\)](https://www.owasp.org/index.php/Testing_for_SQL_Injection_%28OTG-INPVAL-005%29)
-
