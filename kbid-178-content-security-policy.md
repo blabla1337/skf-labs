@@ -13,10 +13,10 @@ $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:content-se
 ```
 
 {% hint style="success" %}
+ Now that the app is running let's go hacking!
+{% endhint %}
 
-Now that the app is running let's go hacking! 
-
-![Docker image and write-up thanks to ING!](.gitbook/assets/ING_Primary_Logo.png)
+![Docker image and write-up thanks to ING!](.gitbook/assets/ing_primary_logo.png)
 
 ## Reconnaissance
 
@@ -26,15 +26,15 @@ The main use of the content security policy header is to, detect, report, and re
 
 In the first scenario we explore the execution of an XSS attack without CSP in place.
 
-![](.gitbook/assets/XSS-without-CSP.png)
+![](.gitbook/assets/xss-without-csp.png)
 
-![](.gitbook/assets/XSS-without-CSP1.png)
+![](.gitbook/assets/xss-without-csp1.png)
 
 With CSP in place, when we try to perform a XSS attack we notice that CSP header block the scripts since the inclusion of inline scripts is not permitted.
 
-![](.gitbook/assets/XSS-with-CSP.png)
+![](.gitbook/assets/xss-with-csp.png)
 
-![](.gitbook/assets/XSS-with-CSP1.png)
+![](.gitbook/assets/xss-with-csp1.png)
 
 ## Additional sources
 

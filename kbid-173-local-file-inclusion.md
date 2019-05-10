@@ -3,10 +3,8 @@
 
 ## Running the app
 
-Becoming a super hero is a fairly straight forward process:
 
 ```text
-
 $ sudo docker pull blabla1337/owasp-skf-lab:local-file-inclusion
 ```
 
@@ -18,7 +16,7 @@ $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:local-file
 
 Now that the app is running let's go hacking! 
 
-![Docker image and write-ip thanks to ING!](.gitbook/assets/ING_Primary_Logo.png)
+![Docker image and write-up thanks to ING!](.gitbook/assets/ing_primary_logo.png)
 
 ## Reconnaissance
 
@@ -41,29 +39,28 @@ The File Inclusion vulnerability allows an attacker to include a file, usually e
 This can lead to something as outputting the contents of the file, but depending on the severity, it can also lead to:
 
 Code execution on the web server
-Code execution on the client-side such as JavaScript which can lead to other attacks such as cross-site scripting (XSS)
-Denial of Service (DoS)
-Sensitive Information Disclosure
 
-Lets spin up the server:
- ```text 
- $ cd /LFI
- $ pip install -r requirements.txt
- $ python3 LFI.py
- 
-```
+Code execution on the client-side such as JavaScript 
+
+which can lead to other attacks such as:
+
+Cross-site scripting (XSS)
+
+Denial of Service (DoS)
+
+Sensitive Information Disclosure
 
 Let us see how can we exploit the file inclusion vulnerability in a real world scenario, the application here allows us to view details on Intro, Chapter1, Chapter2 and so on.
 
-![](.gitbook/assets/LFI1.png)
+![](.gitbook/assets/lfi1.png)
 
-![](.gitbook/assets/LFI2.png)
+![](.gitbook/assets/lfi2.png)
 
 To exploit let us try to modify the "Intro item" and attempt to access the world-readable /etc/passwd file by directory traversal.
 
-![](.gitbook/assets/LFI3.png)
+![](.gitbook/assets/lfi3.png)
 
-![](.gitbook/assets/LFI4.png)
+![](.gitbook/assets/lfi4.png)
 
 {% hint style="success" %} Success! As we observed, we can access the /etc/passwd file through LFI.
 
