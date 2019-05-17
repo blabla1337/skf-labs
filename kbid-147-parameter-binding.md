@@ -112,9 +112,11 @@ end
 Now, let's examine the target application and determine the objective.
 
 First we find a table with some details about active users on the target application
+
 ![](.gitbook/assets/parameter-binding-1.png)
 
 When we click a user to update his settings we find that the application does not intend us to update "privileged" the property
+
 ![](.gitbook/assets/parameter-binding-2.png)
 
 So, let's recap this important part of the introduction
