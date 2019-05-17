@@ -157,7 +157,6 @@ The exploitation phase is rather simpel with all the information we gathered abo
 can be rather tricky and would ask for a lot of fuzzing and educated guessing in the target application.
 
 Now, let's set up our intercepting proxy and intercept a update request.
-
 The first screenshot shows the request as is without any tampering.
 
 ![](.gitbook/assets/parameter-binding-3.png)
