@@ -159,13 +159,17 @@ can be rather tricky and would ask for a lot of fuzzing and educated guessing in
 Now, let's set up our intercepting proxy and intercept a update request.
 
 The first screenshot shows the request as is without any tampering.
+
 ![](.gitbook/assets/parameter-binding-3.png)
+
 
 By simply adding the is_authorized property to the request it is passed to the
 model and processed on the server-side. 
+
 ![](.gitbook/assets/parameter-binding-4.png)
 
 Thus updating the "Guest" user his authorized status.
+
 ![](.gitbook/assets/parameter-binding-5.png)
 
 
