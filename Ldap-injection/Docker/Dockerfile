@@ -5,10 +5,7 @@ python2-dev \
 py2-pip \ 
 gcc \
 linux-headers \
-libc-dev \
-libldap2-dev \
-libsasl2-dev \
-libssl-dev \
+openldap-dev \
 git 
 
 RUN git clone https://github.com/blabla1337/skf-labs.git
