@@ -5,6 +5,7 @@ python2-dev \
 py2-pip \ 
 gcc \
 linux-headers \
+libc-dev \
 openldap-dev \
 git 
 
