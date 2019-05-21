@@ -4,6 +4,7 @@ RUN apk update --no-cache && apk add python2-dev \
 python2-dev \
 py2-pip \ 
 gcc \
+linux-headers \
 git 
 
 RUN git clone https://github.com/blabla1337/skf-labs.git
