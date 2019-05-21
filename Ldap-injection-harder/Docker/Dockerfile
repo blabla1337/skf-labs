@@ -5,6 +5,7 @@ python2-dev \
 py2-pip \ 
 gcc \
 linux-headers \
+libc-dev \
 git 
 
 RUN git clone https://github.com/blabla1337/skf-labs.git
