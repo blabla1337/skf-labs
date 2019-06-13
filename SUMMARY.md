@@ -31,5 +31,6 @@
 * [KBID XXX - Deserialisation Yaml](kbid-xxx-deserialisation-yaml.md)
 * [KBID XXX - Race Condition](kbid-xxx-race-condition.md)
 * [KBID XXX - DoS Regex](kbid-xxx-dos-regex.md)
+* [Blind command injection](kbid-XXX-blind-cmd-injection-1.md)
 * [template](template.md)
 
