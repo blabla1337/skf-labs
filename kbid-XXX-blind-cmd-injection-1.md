@@ -28,9 +28,11 @@ In the first step, the attacker needs to inspect the functioning of the web app 
 When we start the application we can see that there is text box to write who we are. We are going to write our name and press the button:
 
 ![](.gitbook/assets/cmdblind20.png)
+
 ![](.gitbook/assets/cmdblind22.png)
 
 If we inspect the request with an intercepting proxy \(we are using Burp\) we can see that the application is performing a POST request to /. In the request we send the text we have just written as our name. However in the response, we just get a "WELCOME!" string independently to what we have written.
+
 ![](.gitbook/assets/cmdblind21.png)
 
 If that was black box, as an input field we should try here different ways of attacking the web app until we realize that we can perform a command injection (blind).
