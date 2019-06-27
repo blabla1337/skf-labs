@@ -5,7 +5,7 @@ pip3 install -r requirements.txt
 ```
 
 ```
-python3 CMD-Blind.py
+python3 CMD4.py
 ```
 
 Visit the SKF Labs:
