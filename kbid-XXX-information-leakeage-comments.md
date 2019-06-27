@@ -19,7 +19,7 @@ in the source code.
 ![](.gitbook/assets/info-leakeage-com-02.png)
 
 We found something promising!
-Now, we try this credentials in the login form:
+Now, we try these words as the credentials in the login form:
 ![](.gitbook/assets/info-leakeage-com-03.png)
 
 And goal achieved!
