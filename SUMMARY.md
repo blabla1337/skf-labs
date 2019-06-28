@@ -31,6 +31,10 @@
 * [KBID XXX - Deserialisation Yaml](kbid-xxx-deserialisation-yaml.md)
 * [KBID XXX - Race Condition](kbid-xxx-race-condition.md)
 * [KBID XXX - DoS Regex](kbid-xxx-dos-regex.md)
+* [KBID XXX - Command Injection 1](kbid-XXX-cmd-injection-1.md)
+* [KBID XXX - Command Injection 2](kbid-XXX-cmd-injection-2.md)
+* [KBID XXX - Information Leakeage in Comments](kbid-XXX-information-leakeage-comments.md)
+* [KBID XXX - Information Leakeage in Metadata](kbid-XXX-information-leakeage-metadata.md)
 * [Blind command injection](kbid-XXX-blind-cmd-injection-1.md)
 * [template](template.md)
 
