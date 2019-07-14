@@ -16,7 +16,8 @@
 <script>
 	function login(){
 		var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
-		xmlhttp.open("POST", "http://localhost:5000/auth");
+		var host = window.location.hostname;
+		xmlhttp.open("POST", "http://"+host+":5000/auth");
 		xmlhttp.setRequestHeader("Content-Type", "application/json");
 
 		usr = document.getElementById("username").value;
@@ -33,7 +34,8 @@
 
 	function getAdmin(){
 		var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
-		xmlhttp.open("GET", "http://localhost:5000/protected");
+		var host = window.location.hostname;
+		xmlhttp.open("GET", "http://"+host+":5000/protected");
 		xmlhttp.setRequestHeader("Content-Type", "application/json");
 		xmlhttp.setRequestHeader("Authorization", "JWT "+ localStorage.getItem('access_token'));
 		foo = xmlhttp.send(null);
@@ -112,10 +114,6 @@
 
 	<script src="/static/js/jquery-1.11.1.min.js"></script>
 	<script src="/static/js/bootstrap.min.js"></script>
-	<script src="/static/js/chart.min.js"></script>
-	<script src="/static/js/chart-data.js"></script>
-	<script src="/static/js/easypiechart.js"></script>
-	<script src="/static/js/easypiechart-data.js"></script>
 	<script src="/static/js/bootstrap-datepicker.js"></script>
 	<script>
 		!function ($) {
