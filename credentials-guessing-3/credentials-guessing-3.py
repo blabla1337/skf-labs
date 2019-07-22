@@ -37,7 +37,7 @@ def login():
                 error_text = "The password introduced is incorrect"
                 return render_template("index.html", error_text = error_text)
         else:
-            error_text = "The username introduced is incorrect"
+            error_text = "The username introduced is incorrect..."
             return render_template("index.html", error_text = error_text)
     else:
         pref = sqli.getApi(session['userId'])
