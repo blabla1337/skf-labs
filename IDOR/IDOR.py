@@ -15,13 +15,13 @@ def generate_pdf(id, message):
     pdf.output(str(id) + '.pdf', 'F')
 
 def create_pdf_pool():
-    # generate a bunch of dummy pdf files    
+    # generate a bunch of dummy pdf files
     for id in pdf_ids[:]:
         generate_pdf(id, 'Try again!')
 
     # generate the secret pdf
     generate_pdf(pdf_ids[random.randint(0, 60)], 'You have found the secret pdf, congratulations!')
- 
+
 @app.route("/")
 def start():
     create_pdf_pool()

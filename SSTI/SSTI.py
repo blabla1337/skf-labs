@@ -44,28 +44,28 @@ def page_not_found(e):
 			</div>
 		</div><!-- /.container-fluid -->
 	</nav>
-		
+
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
-	<br/><br/>	
+	<br/><br/>
 	<center>
 		<img src="/static/img/logo.svg" width="60%" height="60%"/>
 		<br/>
 		<p style="color:#515594; font-size:1.0em;"><a href="https://github.com/blabla1337/skf-flask" style="color:#515594; font-size:1.7em;">OWASP S.K.F.</a></p>  	 			<p><a href="https://gitter.im/Security-Knowledge-Framework/Lobby" rel="nofollow"> 				<img src="/static/img/badge.svg" alt="Join the chat at https://gitter.im/Security-Knowledge-Framework/Lobby" data-canonical-src="/static/img/badge.svg" style="max-width:100%;"></a> 			</p> 
 	</center>
 	</div><!--/.sidebar-->
-		
-	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
+
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
 
 		</div><!--/.row-->
-		
+
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">Live demonstration!</h1>
 			</div>
 		</div><!--/.row-->
-				
-		
+
+
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
@@ -79,9 +79,9 @@ def page_not_found(e):
 				</div>
 			</div><!-- /.col-->
 		</div><!-- /.row -->
-	
+
      <center> <p style="font-size:2em;">   </p></center>
-	
+
 	</div><!--/.main-->
 
 	<script src="/static/js/jquery-1.11.1.min.js"></script>
@@ -92,16 +92,14 @@ def page_not_found(e):
 	<script src="/static/js/easypiechart-data.js"></script>
 	<script src="/static/js/bootstrap-datepicker.js"></script>
 
-	</script>	
+	</script>
 </body>
 
 </html>
 
 """.format(request.url)
     return render_template_string(template), 404
-	
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
-	
-	

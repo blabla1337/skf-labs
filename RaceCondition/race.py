@@ -38,7 +38,7 @@ def boot_validate(person):
 	os.system("echo 'hello.sh updated -- " + str(datetime.datetime.now()) + "' > log.txt")
 	valid = os.popen("sed -n '/^echo \"[A-Za-z0-9 ]*\" > hello.txt$/p' hello.sh").read()
 	os.system("echo 'hello.sh cleaned -- " + str(datetime.datetime.now()) + "' >> log.txt")
-	
+
 	return valid
 
 def boot_clean():

@@ -36,10 +36,10 @@ def login():
             csrf_token = str(session['csrf_token'], 'utf-8')
             pref = sqli.getColor(values[0][0])
             color = pref[0][0]
-            return render_template("loggedin.html", color = color, csrf_token = csrf_token )       
+            return render_template("loggedin.html", color = color, csrf_token = csrf_token )
     return render_template("index.html")
-    
-    
+
+
 @app.route("/update", methods=['POST', 'GET'])
 def update():
     if not session.get('loggedin'):
@@ -59,8 +59,6 @@ def update():
 def page_not_found(e):
     return render_template("404.html")
 
-    
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
-	
-

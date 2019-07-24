@@ -11,7 +11,7 @@ class User(object):
         self.username = username
         self.password = password
         self.role = role
-    
+
     def __str__(self):
         return f"Welcome {self.username}:{self.role}"
 
@@ -45,7 +45,7 @@ def protected():
     decoded_jwt_header = base64.b64decode(jwt_header).decode("utf-8", "ignore")
     headers = json.loads(decoded_jwt_header)
     alg = headers['alg']
-    if alg=='NONE': 
+    if alg=='NONE':
         claims = jwt.decode(token[4:],verify=False)
     else:
         claims = jwt.decode(token[4:],app.config['SECRET_KEY'],algorithms=[alg])

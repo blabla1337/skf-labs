@@ -22,7 +22,7 @@ def inject(username):
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
-	
 
 
-#UNION SELECT 1,username,password FROM users 
+
+#UNION SELECT 1,username,password FROM users

@@ -29,10 +29,10 @@ def login():
             session['loggedin'] = True
             pref = sqli.getMessage(values[0][0])
             color = pref[0][0]
-            return render_template("loggedin.html", color = color)       
+            return render_template("loggedin.html", color = color)
     return render_template("index.html")
-    
-    
+
+
 @app.route("/message", methods=['POST', 'GET'])
 def update():
     if not session.get('loggedin'):
@@ -40,13 +40,11 @@ def update():
     sqli  = Classes()
     if request.method == "POST":
         sqli.updateMessage(request.form['message'], session.get('userId'))
-    
+
     pref = sqli.getMessage(session.get('userId'))
     message = pref[0][0]
     return render_template("loggedin.html", message = message)
-        
-    
+
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
-	
-
