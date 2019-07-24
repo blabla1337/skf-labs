@@ -28,6 +28,12 @@ def inject(pageId):
     else:
         return render_template("404.html")
 
+@app.route('/asdfg', defaults={'path': ''})
+@app.route('/<path:path>')
+def default(path):
+    return render_template("404.html")
+
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
 	

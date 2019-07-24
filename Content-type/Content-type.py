@@ -25,6 +25,11 @@ def protected():
     r = make_response(render_template('index.html', xss = xss))
     r.headers.set('Content-type', "application/json")
     return r
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html")
+
     
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
