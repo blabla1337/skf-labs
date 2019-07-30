@@ -31,7 +31,7 @@ def login():
             session["log"] = True
             return log_the_user_in(request.form['username'])
         else:
-            error = 'invalid username/password'
+            error = 'Invalid username/password'
         return render_template("index.html", error=error)
     else:
         error = None
@@ -58,11 +58,11 @@ def forgot():
     if request.method == 'POST':
         if valid_login_forgot(request.form['username']):
             session["log"] = True
-            error = 'if your username is valid you will recivee an email with password'
+            error = 'If your username is registered with us,  you will receive an email with the new password'
             #return log_the_user_in(request.form['username'])
             return render_template("forgot.html", error=error)
         else:
-            error = 'invalid username'
+            error = 'If your username is registered with us,  you will receive an email with the new password'
             return render_template("forgot.html", error=error)
     else:
         error = None
@@ -90,4 +90,5 @@ def logout():
 
 if __name__ == '__main__':
     app.secret_key = "123456abcd"
-    app.run(debug=True)
+app.run(debug=True,host='0.0.0.0')
+    #app.run(debug=True)

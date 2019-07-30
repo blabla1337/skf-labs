@@ -40,23 +40,23 @@
             </div><!--/.row-->
         <div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">login page</h1>
+				<h1 class="page-header">Live Demonstration!</h1>
 			</div>
 		</div><!--/.row-->
         <div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">Login page!</div>
+					<div class="panel-heading">Session Puzzling!</div>
 					<div class="panel-body">
 						<div class="col-md-6">
 							<form method="post" action="/login" onsubmit="return validateForm()">
                                  {% if error %}
                                     <p>{{ error }}</p>
                                 {% endif %}
-							<input type="text" class="form-control" name="username" placeholder="Enter the Username"/><br/>
-                            <input type="password" class="form-control" name="password" placeholder="Enter the Password"/><br/>
-								<button class="btn btn-primary" type="submit">login</button>
-							<a class="nav-link" href="/forgot">forgot password</a>
+		   				<input type="text" class="form-control" name="username" placeholder="admin"/><br/>
+			                            <input type="password" class="form-control" name="password" placeholder="admin"/><br/>
+								<button class="btn btn-primary" type="submit">Sign in</button>
+							<a class="nav-link" href="/forgot"> Forgot password? </a>
 							</form>
                			</div>
 						</form>
