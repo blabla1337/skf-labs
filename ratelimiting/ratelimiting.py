@@ -20,9 +20,6 @@ def secret():
          return render_template("pwned.html")
      elif session['logged_in'] == False:
          return render_template("login.html")
-         
+
 if __name__== "__main__":
     app.run(host='0.0.0.0')
-
-
-    

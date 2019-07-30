@@ -21,12 +21,10 @@ def start():
 @cross_origin()
 def allowed():
     return "allowed"
-    
+
 @app.route("/protected", methods=['GET'])
 def protected():
     return "protected"
-    
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
-	
-

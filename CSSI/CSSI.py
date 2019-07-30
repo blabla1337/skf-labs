@@ -1,6 +1,6 @@
 from flask import Flask, request, url_for, render_template, redirect
 from subprocess import call
-
+import flask
 
 app = Flask(__name__, static_url_path='/static', static_folder='static')
 app.config['DEBUG'] = True
@@ -15,9 +15,12 @@ def start():
 @app.route("/home", methods=['POST'])
 def home():
     injection = request.form['inj_text']
-    return render_template("index.html", injection=injection)
+    return render_template("index.html", injection = flask.Markup(injection))
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html")
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
-
-

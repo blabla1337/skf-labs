@@ -38,5 +38,10 @@ def viewer():
 		print_result += "<br/>"
 	return render_template("index.html", mode=mode, print_result=print_result)
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html")
+
+
 if __name__ == '__main__':
     app.run(debug=True,host='0.0.0.0')

@@ -7,7 +7,7 @@ class User(object):
         self.id = id
         self.username = username
         self.password = password
-    
+
     def __str__(self):
         return "User(id='%s')" % self.id
 
@@ -38,6 +38,11 @@ def start():
 @jwt_required()
 def protected():
     return '%s' % current_identity
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html")
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')

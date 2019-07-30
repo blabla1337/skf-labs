@@ -41,10 +41,12 @@ def xhr_get_info_stealing():
         response = make_response(render_template('loggedin.html'))
         response.headers.set("Access-Control-Allow-Credentials", "true")
     return response
-        
-    
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html")
+
+
 if __name__ == "__main__":
     cors = CORS(app, resources={r"/*": {"origins": "*"}})
     app.run(host='0.0.0.0')
-	
-
