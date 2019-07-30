@@ -36,5 +36,6 @@
 * [KBID XXX - Information Leakeage in Comments](kbid-XXX-information-leakeage-comments.md)
 * [KBID XXX - Information Leakeage in Metadata](kbid-XXX-information-leakeage-metadata.md)
 * [Blind command injection](kbid-XXX-blind-cmd-injection-1.md)
+* [KBID 250 - Session Puzzling](kbid-250-session-puzzling.md)
 * [template](template.md)
 
