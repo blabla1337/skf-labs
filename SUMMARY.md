@@ -16,6 +16,7 @@
 * [KBID 46 - SQLI \(Union\)](kbid-46-sqli-union-select.md)
 * [KBID 67 - Open Redirect  Hard](kbid-67-open-redirect-hard.md)
 * [KBID 112 - CORS exploitation](kbid-112-cors-exploitation.md)
+* [KBID 95 - Formula Injection](kbid-95-formula-injection.md)
 * [KBID 147 - parameter binding attack](kbid-147-parameter-binding.md)
 * [KBID 156 - SQLI \(Like\)](kbid-156-sqli-like.md)
 * [KBID 156 - SQLI \(Blind\)](kbid-156-sqli-blind.md)
