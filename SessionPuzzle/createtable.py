@@ -10,7 +10,7 @@ conn.execute('''CREATE TABLE emptbl
           PASSWORD TEXT NOT NULL);''')
 print('Table created successfully')
 conn.execute("INSERT INTO emptbl (ID,USERNAME,PASSWORD) \
-      VALUES (1, 'swapnil49','thosare')");
+      VALUES (1, 'admin','admin')");
 conn.commit()
 print('Records created successfully')
 
