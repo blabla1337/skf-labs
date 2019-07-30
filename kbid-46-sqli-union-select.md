@@ -14,7 +14,7 @@ $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:sql-inject
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker image and write-up thanks to defev!](.gitbook/assets/logo.defdev.1608z.whtonblk.256.png)
+![Docker image and write-up thanks to Zerocopter!](.gitbook/assets/zerocopter-logo.jpeg)
 
 ## Reconnaissance
 

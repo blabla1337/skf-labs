@@ -19,7 +19,8 @@
 	
 var req = new XMLHttpRequest();
 req.onload = reqListener;
-req.open('get','http://localhost:5000/confidential', true);
+var host = window.location.hostname;
+req.open('get','http://'+host+':5000/confidential', true);
 req.withCredentials = true;
 req.send();
 function reqListener(){

@@ -1,0 +1,25 @@
+# KBID XXX - Client Side Restriction Bypass (client-side-restriction-bypass)
+## Running the app
+```text $ sudo python client-side-restriction-bypass.py ``` ```text Visit the site: 
+http://127.0.0.1:5000/ ``` {% hint style="success" %} Now that the app 
+is running let's go hacking! {% endhint %} ![Docker Image and write-up 
+thanks to TelecoLabs!](.gitbook/assets/telecolabs.png) shayu (shayubit) 
+- https://www.telecolabs.com
+
+## Reconnaissance
+![](.gitbook/assets/CSRB-10.png)
+
+![](.gitbook/assets/CSRB-11.png)
+
+![](.gitbook/assets/CSRB-12.png)
+
+![](.gitbook/assets/CSRB-13.png)
+
+
+## Exploitation
+
+![](.gitbook/assets/CSRB-14.png)
+
+And goal achieved! We could bypass the client-side restrictions.
+
+## Additional sources

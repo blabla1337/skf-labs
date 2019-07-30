@@ -16,8 +16,11 @@ def home():
     os.system('convert static/img/bones.png -resize '+sizeImg+'% static/img/bones.png')
     return render_template("index.html")
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html")
+
+
 if __name__ == '__main__':
     app.run(debug=True,host='0.0.0.0')
-	
-
 

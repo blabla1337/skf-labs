@@ -15,13 +15,13 @@ def generate_pdf(id, message):
     pdf.output(str(id) + '.pdf', 'F')
 
 def create_pdf_pool():
-    # generate a bunch of dummy pdf files    
+    # generate a bunch of dummy pdf files
     for id in pdf_ids[:]:
         generate_pdf(id, 'Try again!')
 
     # generate the secret pdf
     generate_pdf(pdf_ids[random.randint(0, 60)], 'You have found the secret pdf, congratulations!')
- 
+
 @app.route("/")
 def start():
     create_pdf_pool()
@@ -48,6 +48,11 @@ def create():
             return render_template("index.html", result = "Pdf created successfully! ID:" + str(new_id))
 
     return render_template("index.html")
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html")
+
 
 if __name__ == "__main__":
   app.run(host = '0.0.0.0')

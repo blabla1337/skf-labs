@@ -32,15 +32,18 @@ def login():
                 api = pref[0][0]
                 resp = make_response(render_template("loggedin.html", api = api))
                 resp.set_cookie('userId', '1')
-                return resp       
+                return resp
         return render_template("index.html")
     else:
         pref = sqli.getApi(request.cookies.get('userId'))
         api = pref[0][0]
-        return render_template("loggedin.html", api = api) 
-        
-    
+        return render_template("loggedin.html", api = api)
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html")
+
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
-	
 

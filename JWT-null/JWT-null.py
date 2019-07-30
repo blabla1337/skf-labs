@@ -11,7 +11,7 @@ class User(object):
         self.username = username
         self.password = password
         self.role = role
-    
+
     def __str__(self):
         return f"Welcome {self.username}:{self.role}"
 
@@ -45,7 +45,7 @@ def protected():
     decoded_jwt_header = base64.b64decode(jwt_header).decode("utf-8", "ignore")
     headers = json.loads(decoded_jwt_header)
     alg = headers['alg']
-    if alg=='NONE': 
+    if alg=='NONE':
         claims = jwt.decode(token[4:],verify=False)
     else:
         claims = jwt.decode(token[4:],app.config['SECRET_KEY'],algorithms=[alg])
@@ -54,11 +54,15 @@ def protected():
     for usr in users:
         if usr.id==userId:
             ret = f"Welcome {usr.username}: {usr.role}"
-    
     return ret
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html")
+
+
 if __name__ == '__main__':
-    app.run(host = 'localhost')
+    app.run(host = '0.0.0.0')
 
 #curl --header "Content-Type: application/json" --request POST --data '{"username":"admin","password":"admin"}' http://localhost:5000/auth
 #curl -i -H "Accept: application/json" -H "Authorization: JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NDgwOTgxNjEsImlhdCI6MTU0ODA5Nzg2MSwibmJmIjoxNTQ4MDk3ODYxLCJpZGVudGl0eSI6Mn0.vUnhorZy454Iw01WFDsgigu0YpCMzhxx-hPGTuFpwCk" http://localhost:5000/protected

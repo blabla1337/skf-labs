@@ -38,7 +38,7 @@ def boot_validate(person):
 	os.system("echo 'hello.sh updated -- " + str(datetime.datetime.now()) + "' > log.txt")
 	valid = os.popen("sed -n '/^echo \"[A-Za-z0-9 ]*\" > hello.txt$/p' hello.sh").read()
 	os.system("echo 'hello.sh cleaned -- " + str(datetime.datetime.now()) + "' >> log.txt")
-	
+
 	return valid
 
 def boot_clean():
@@ -51,6 +51,11 @@ def boot_reset():
 	bootfile = open("hello.sh","w")
 	bootfile.write("echo \"Default User\" > hello.txt")
 	bootfile.close()
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html")@app.errorhandler(404)
+
 
 if __name__ == '__main__':
     app.run(debug=True,host='0.0.0.0')

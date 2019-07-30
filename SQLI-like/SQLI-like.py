@@ -19,10 +19,14 @@ def inject(username):
     email = values[0][1]
     return render_template("index.html", username = username, email = email)
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html")
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
-	
 
 
-#UNION SELECT 1,username,password FROM users 
+
+#UNION SELECT 1,username,password FROM users
