@@ -10,7 +10,6 @@ app.config['DEBUG'] = True
 def home():
     return render_template("index.html")
 
-
 @app.route("/home/<username>", methods=['GET'])
 def inject(username):
     sqli  = User()
@@ -22,11 +21,11 @@ def inject(username):
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template("404.html")
+<<<<<<< HEAD
 
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
-
 
 
 #UNION SELECT 1,username,password FROM users
