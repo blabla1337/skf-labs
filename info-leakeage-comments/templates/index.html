@@ -9,7 +9,7 @@
 <link href="/static/css/bootstrap.min.css" rel="stylesheet">
 <link href="/static/css/datepicker3.css" rel="stylesheet">
 <link href="/static/css/styles.css" rel="stylesheet">
-
+<script src="/static/js/hints.js"></script>
 <!--Icons-->
 <script src="/static/js/lumino.glyphs.js"></script>
 
@@ -73,8 +73,23 @@
 				</div>
 			</div><!-- /.col-->
 		</div><!-- /.row -->
+
 		<!--admin:admin-->	
 {% autoescape false %} {{xss}} {% endautoescape %}
+
+
+        <h2>Hint <span id="hint-num">0</span>/1 (<a
+                href="#" onclick="showHint(); return false">show</a>)
+        </h2>
+
+        <div id="hints">
+                <ol>
+                        <li style="display: none" data-hidden="true"><b>1.</b>
+                                Check carefully the source code of the website.
+                </ol>
+        </div>
+
+
 	
 	</div><!--/.main-->
 

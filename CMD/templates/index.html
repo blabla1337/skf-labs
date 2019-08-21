@@ -13,6 +13,7 @@
 
 <!--Icons-->
 <script src="/static/js/lumino.glyphs.js"></script>
+<script src="/static/js/hints.js"></script>
 
 </head>
 
@@ -80,6 +81,22 @@
 					</center>
 				</div>
 			</div><!-- /.col-->
+		
+	<h2>Hint <span id="hint-num">0</span>/3 (<a
+		href="#" onclick="showHint(); return false">show</a>)
+	</h2>
+
+	<div id="hints">
+		<ol>
+			<li style="display: none" data-hidden="true"><b>1.</b>
+				Text for the first hint.
+		 	<li style="display: none" data-hidden="true"><b>2.</b>
+				Text for the second hint.
+			<li style="display: none" data-hidden="true"><b>3.</b>
+				Text for the third hint.
+		</ol>
+	</div>
+
 		</div><!-- /.row -->
 	
 	</div><!--/.main-->
