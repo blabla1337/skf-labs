@@ -58,7 +58,7 @@
 				
 		
 		<div class="row">
-			<div class="col-lg-12">
+			<div class="col-lg-6">
 				<div class="panel panel-default">
 					<div class="panel-heading">Information Leakeage - Comments</div>
 					<div class="panel-body">
@@ -72,25 +72,26 @@
 					</div>
 				</div>
 			</div><!-- /.col-->
+
+			<div class="col-lg-6">
+				<h2>Hint <span id="hint-num">0</span>/1 (<button
+	                		class="btn btn-primary btn-lg" type="button" onclick="showHint(); return false">show</button>)
+	        		</h2>
+	
+	        		<div id="hints">
+				<ol>
+	                       		<li style="display: none" data-hidden="true"><b>1.</b>
+	                                	Check carefully the source code of the website.
+					</ol>
+				</div>
+			</div>
+
+
 		</div><!-- /.row -->
 
 		<!--admin:admin-->	
 {% autoescape false %} {{xss}} {% endautoescape %}
 
-
-        <h2>Hint <span id="hint-num">0</span>/1 (<a
-                href="#" onclick="showHint(); return false">show</a>)
-        </h2>
-
-        <div id="hints">
-                <ol>
-                        <li style="display: none" data-hidden="true"><b>1.</b>
-                                Check carefully the source code of the website.
-                </ol>
-        </div>
-
-
-	
 	</div><!--/.main-->
 
 	<script src="/static/js/jquery-1.11.1.min.js"></script>
