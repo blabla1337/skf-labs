@@ -13,6 +13,7 @@
 
 <!--Icons-->
 <script src="/static/js/lumino.glyphs.js"></script>
+<script src="/static/js/hints.js"></script>
 
 </head>
 
@@ -101,6 +102,26 @@
 					</div>
 				</div>
 			</div><!-- /.col-->
+	<h4>First do your best to hack the website. If you get stuck, visualize a new hint.</h4>
+
+        <h2>Hint <span id="hint-num">0</span>/3 (<a
+                href="#" onclick="showHint(); return false">show</a>)
+        </h2>
+
+        <div id="hints">
+                <ol>
+                        <li style="display: none" data-hidden="true"><b>1.</b>
+                                Explore all the functionalities from the website, the HTTP request associated, the values introduced and how
+				are they introduced in the requests and the answers.
+                        <li style="display: none" data-hidden="true"><b>2.</b>
+                                Try changing the name of the log selected directly in the request and check how does this affect the answer of the website.
+                        <li style="display: none" data-hidden="true"><b>3.</b>
+                                Take advantage of the answer of the website, to show you the result of a OS command.
+                </ol>
+        </div>
+
+
+
 		</div><!-- /.row -->
 	
 	</div><!--/.main-->

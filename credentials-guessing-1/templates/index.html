@@ -11,7 +11,7 @@
 <link href="/static/css/bootstrap.min.css" rel="stylesheet">
 <link href="/static/css/datepicker3.css" rel="stylesheet">
 <link href="/static/css/styles.css" rel="stylesheet">
-
+<script src="/static/js/hints.js"></script>
 <!--Icons-->
 <script src="/static/js/lumino.glyphs.js"></script>
 
@@ -76,6 +76,20 @@
 			</div><!-- /.col-->
 		</div><!-- /.row -->
 {% autoescape false %} {{xss}} {% endautoescape %}
+
+        <h2>Hint <span id="hint-num">0</span>/2 (<a
+                href="#" onclick="showHint(); return false">show</a>)
+        </h2>
+
+        <div id="hints">
+                <ol>
+                        <li style="display: none" data-hidden="true"><b>1.</b>
+                                The username is: 12345
+                        <li style="display: none" data-hidden="true"><b>2.</b>
+                                Brute force with a dictionary of easy passwords.
+                </ol>
+        </div>
+
 	
 	</div><!--/.main-->
 
