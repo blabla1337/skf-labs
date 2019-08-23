@@ -45,6 +45,24 @@
 			<br/> 		
 			<p style="color:#515594; font-size:1.0em;"><a href="https://github.com/blabla1337/skf-flask" style="color:#515594; font-size:1.7em;">OWASP S.K.F.</a></p>  	 			<p><a href="https://gitter.im/Security-Knowledge-Framework/Lobby" rel="nofollow"> 				<img src="/static/img/badge.svg" alt="Join the chat at https://gitter.im/Security-Knowledge-Framework/Lobby" data-canonical-src="/static/img/badge.svg" style="max-width:100%;"></a> 			</p>  	
 		</center>
+
+
+                        <br>
+                        <div>
+                                <h2 align="center">Hint <span id="hint-num">0</span>/2 (<button
+                                        class="btn btn-primary btn-lg" type="button" onclick="showHint(); return false">show</button>)
+                                </h2>
+
+                                <div id="hints">
+                                        <ol>
+			                        <li style="display: none" data-hidden="true"><b>1.</b>
+                        			        The username is: 12345
+                        			<li style="display: none" data-hidden="true"><b>2.</b>
+                        			        Brute force with a dictionary of easy passwords.
+                                        </ol>
+                                </div>
+                        </div>
+
 	</div><!--/.sidebar-->
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
@@ -77,20 +95,6 @@
 		</div><!-- /.row -->
 {% autoescape false %} {{xss}} {% endautoescape %}
 
-        <h2>Hint <span id="hint-num">0</span>/2 (<a
-                href="#" onclick="showHint(); return false">show</a>)
-        </h2>
-
-        <div id="hints">
-                <ol>
-                        <li style="display: none" data-hidden="true"><b>1.</b>
-                                The username is: 12345
-                        <li style="display: none" data-hidden="true"><b>2.</b>
-                                Brute force with a dictionary of easy passwords.
-                </ol>
-        </div>
-
-	
 	</div><!--/.main-->
 
 	<script src="/static/js/jquery-1.11.1.min.js"></script>
