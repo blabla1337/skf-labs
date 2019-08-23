@@ -13,11 +13,11 @@ https://github.com/blabla1337/skf-labs
 3. Labs available and attacks covered
 
 
-## Introduction
+## 1. Introduction
 The following manual has been designed in order to serve as a high-level guide for anyone interested in getting hands-on the OWASP S.K.F Labs. These labs are designed to help security professionals and beginners to learn the basics of web app hacking through real examples and explanatory guides.
 
-## Proxy configuration
-### ZAP
+## 2. Proxy configuration
+### 2.1 ZAP
 
 Let's suppose you have ZAP already installed.
 You can go to your command line terminal and type:
@@ -55,4 +55,19 @@ Let's change a little bit the request (in this case we will try to take advantag
 If you press now the 'Play' or continue button (represented by a light blue triangle next to the red ball of interception), the request will go on with it's predefined flow.
 As we can see now, we have changed the expected behaviour of the website due to a change of the intercepted HTTP request.
 ![](./images/zap/11.png)
+
+
+
+### 2.2 Burp Suite
+[](./images/burp/01.png)
+[](./images/burp/02.png)
+[](./images/burp/03.png)
+[](./images/burp/04.png)
+[](./images/burp/05.png)
+[](./images/burp/06.png)
+[](./images/burp/07.png)
+[](./images/burp/08.png)
+[](./images/burp/09.png)
+[](./images/burp/10.png)
+[](./images/burp/11.png)
 
