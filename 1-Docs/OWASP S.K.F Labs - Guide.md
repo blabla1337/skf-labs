@@ -59,15 +59,15 @@ As we can see now, we have changed the expected behaviour of the website due to 
 
 
 ### 2.2 Burp Suite
-[](./images/burp/01.png)
-[](./images/burp/02.png)
-[](./images/burp/03.png)
-[](./images/burp/04.png)
-[](./images/burp/05.png)
-[](./images/burp/06.png)
-[](./images/burp/07.png)
-[](./images/burp/08.png)
-[](./images/burp/09.png)
-[](./images/burp/10.png)
-[](./images/burp/11.png)
+![](./images/burp/01.png)
+![](./images/burp/02.png)
+![](./images/burp/03.png)
+![](./images/burp/04.png)
+![](./images/burp/05.png)
+![](./images/burp/06.png)
+![](./images/burp/07.png)
+![](./images/burp/08.png)
+![](./images/burp/09.png)
+![](./images/burp/10.png)
+![](./images/burp/11.png)
 
