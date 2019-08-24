@@ -136,3 +136,8 @@ If we press this button, it will change to 'intercept is on'. In this moment, an
 
 ![](./images/burp/11.png)
 
+
+
+## 3. Labs available and attacks covered
+
+
