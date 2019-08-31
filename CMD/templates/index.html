@@ -81,21 +81,24 @@
 					</center>
 				</div>
 			</div><!-- /.col-->
-		
-	<h2>Hint <span id="hint-num">0</span>/3 (<a
-		href="#" onclick="showHint(); return false">show</a>)
-	</h2>
 
-	<div id="hints">
-		<ol>
-			<li style="display: none" data-hidden="true"><b>1.</b>
-				Text for the first hint.
-		 	<li style="display: none" data-hidden="true"><b>2.</b>
-				Text for the second hint.
-			<li style="display: none" data-hidden="true"><b>3.</b>
-				Text for the third hint.
-		</ol>
-	</div>
+
+                        <div>
+                                <h2 align="center">Hint <span id="hint-num">0</span>/2 (<button
+                                        class="btn btn-primary btn-lg" type="button" onclick="showHint(); return false">show</button>)
+                                </h2>
+
+                                <div id="hints">
+                                        <ol>
+                                                <li style="display: none" data-hidden="true"><b>1.</b>
+                                                        Find all the fields that could be object of injection.
+                                                <li style="display: none" data-hidden="true"><b>2.</b>
+                                                        Take into account that sometimes the server is executing the input although it doesn't show an output.
+							Find some output (dependent on the input) or a method to view output.
+                                        </ol>
+                                </div>
+                        </div>		
+
 
 		</div><!-- /.row -->
 	
