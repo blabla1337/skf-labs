@@ -54,6 +54,24 @@ function submit(){
 				<img src="/static/img/badge.svg" alt="Join the chat at https://gitter.im/Security-Knowledge-Framework/Lobby" data-canonical-src="/static/img/badge.svg" style="max-width:100%;"></a>
 			</p>  	
 		</center>
+
+                        <br>
+                        <div>
+                                <h2 align="center">Hint <span id="hint-num">0</span>/3 (<button
+                                        class="btn btn-primary btn-lg" type="button" onclick="showHint(); return false">show</button>)
+                                </h2>
+
+                                <div id="hints">
+                                        <ol>
+                                                <li style="display: none" data-hidden="true"><b>1.</b>
+                                                        Find, identify and explore every possible input field that could be object of injection.
+                                                <li style="display: none" data-hidden="true"><b>2.</b>
+                                                        Try to inject and execute javascript code in the field.
+                                        </ol>
+                                </div>
+                        </div>
+
+
 	</div><!--/.sidebar-->
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
