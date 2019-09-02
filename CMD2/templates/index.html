@@ -44,6 +44,24 @@
 			<img src="/static/img/logo.svg" width="60%" height="60%"/> 		<br/> 		
 			<p style="color:#515594; font-size:1.0em;"><a href="https://github.com/blabla1337/skf-flask" style="color:#515594; font-size:1.7em;">OWASP S.K.F.</a></p>  	 			<p><a href="https://gitter.im/Security-Knowledge-Framework/Lobby" rel="nofollow"> 				<img src="/static/img/badge.svg" alt="Join the chat at https://gitter.im/Security-Knowledge-Framework/Lobby" data-canonical-src="/static/img/badge.svg" style="max-width:100%;"></a> 			</p>  	
 		</center>
+
+                        <div>
+                                <h2 align="center">Hint <span id="hint-num">0</span>/2 (<button
+                                        class="btn btn-primary btn-lg" type="button" onclick="showHint(); return false">show</button>)
+                                </h2>
+
+                                <div id="hints">
+                                        <ol>
+                                                <li style="display: none" data-hidden="true"><b>1.</b>
+                                                        Find all the fields that could be object of injection.
+                                                <li style="display: none" data-hidden="true"><b>2.</b>
+                                                        Take into account that sometimes the server is executing the input although it doesn't show an outpu$
+                                                        Find some output (dependent on the input) or a method to view output.
+                                        </ol>
+                                </div>
+                        </div>
+
+
 	</div><!--/.sidebar-->
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
