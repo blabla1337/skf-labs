@@ -44,17 +44,22 @@
 			<img src="/static/img/logo.svg" width="60%" height="60%"/> 		
 			<br/> 		
 			<p style="color:#515594; font-size:1.0em;"><a href="https://github.com/blabla1337/skf-flask" style="color:#515594; font-size:1.7em;">OWASP S.K.F.</a></p>  	 			<p><a href="https://gitter.im/Security-Knowledge-Framework/Lobby" rel="nofollow"> 				<img src="/static/img/badge.svg" alt="Join the chat at https://gitter.im/Security-Knowledge-Framework/Lobby" data-canonical-src="/static/img/badge.svg" style="max-width:100%;"></a> 			</p>  	
-			<h3>Hint <span id="hint-num">0</span>/1 (<a
-                href="#" onclick="showHint(); return false">show</a>)
-        </h3>
+		</center>
 
-        <div id="hints">
-                <ol>
-                        <li style="display: none" data-hidden="true"><b>1.</b>
-				Check the source code carefully focusing on the metadata information.
-                </ol>
-		</div>
-	</center>
+                        <br>
+                        <div>
+                                <h2 align="center">Hint <span id="hint-num">0</span>/1 (<button
+                                        class="btn btn-primary btn-lg" type="button" onclick="showHint(); return false">show</button>)
+                                </h2>
+
+                                <div id="hints">
+                                        <ol>
+                                                <li style="display: none" data-hidden="true"><b>1.</b>
+                                                Check the source code carefully focusing on the metadata information.
+                                        </ol>
+                                </div>
+                        </div>
+
 	</div><!--/.sidebar-->
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
@@ -70,7 +75,7 @@
 				
 		
 		<div class="row">
-			<div class="col-lg-12">
+			<div class="col-lg-6">
 				<div class="panel panel-default">
 					<div class="panel-heading">Information Leakeage - Metadata</div>
 					<div class="panel-body">
@@ -83,16 +88,12 @@
 						</form>
 					</div>
 				</div>
-			</div><!-- /.col-->
+			</div> <!-- /.col-->
+
 		</div><!-- /.row -->
 	
 {% autoescape false %} {{xss}} {% endautoescape %}
 
-
- 
-
-
-	
 	</div><!--/.main-->
 
 	<script src="/static/js/jquery-1.11.1.min.js"></script>

@@ -57,6 +57,23 @@
                 </ol>
         </div>	
 		</center>
+
+                        <br>
+                        <div>
+                                <h2 align="center">Hint <span id="hint-num">0</span>/2 (<button
+                                        class="btn btn-primary btn-lg" type="button" onclick="showHint(); return false">show</button>)
+                                </h2>
+
+                                <div id="hints">
+                                        <ol>
+			                        <li style="display: none" data-hidden="true"><b>1.</b>
+			                                Brute force the credentials in order to find the right one.
+                			        <li style="display: none" data-hidden="true"><b>2.</b>
+                        			        Something will be different in the HTTP answers between the incorrect and correct credentials.
+                                        </ol>
+                                </div>
+                        </div>
+
 	</div><!--/.sidebar-->
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
@@ -89,7 +106,6 @@
 		</div><!-- /.row -->
 {% autoescape false %} {{error_text}} {% endautoescape %}
 
-	
 	</div><!--/.main-->
 
 	<script src="/static/js/jquery-1.11.1.min.js"></script>

@@ -7,18 +7,19 @@ thanks to TelecoLabs!](.gitbook/assets/telecolabs.png) shayu (shayubit)
 - https://www.telecolabs.com
 
 ## Reconnaissance
-![](.gitbook/assets/CSRB-10.png)
 
-![](.gitbook/assets/CSRB-11.png)
+![](.gitbook/assets/csrb10.png)
 
-![](.gitbook/assets/CSRB-12.png)
+![](.gitbook/assets/csrb11.png)
 
-![](.gitbook/assets/CSRB-13.png)
+![](.gitbook/assets/csrb12.png)
+
+![](.gitbook/assets/csrb13.png)
 
 
 ## Exploitation
 
-![](.gitbook/assets/CSRB-14.png)
+![](.gitbook/assets/csrb14.png)
 
 And goal achieved! We could bypass the client-side restrictions.
 
