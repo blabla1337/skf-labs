@@ -21,7 +21,7 @@ shayu (shayubit) - https://www.telecolabs.com
 
 ## Reconnaissance
 
-The command injecion is an attack in which the goal is execution of arbitrary commands on the host operating system via a vulnerable application. Command injection attacks are possible when an application passes unsafe user supplied data (forms, cookies, HTTP headers etc.) to a system shell.
+The command injection is an attack in which the goal is execution of arbitrary commands on the host operating system via a vulnerable application. Command injection attacks are possible when an application passes unsafe user supplied data (forms, cookies, HTTP headers etc.) to a system shell.
 
 In the first step, the attacker needs to inspect the functioning of the web app in order to find possible injection points.
 
