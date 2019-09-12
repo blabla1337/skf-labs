@@ -28,7 +28,7 @@ Lets start the application and register a new user
 
 ![](.gitbook/assets/DES-Register2.png)
 
-Please note that (for convninience) your password will be reset if the user already exists.
+Please note that (for convenience) your password will be reset if the user already exists.
 Also note that the username and password are case sensitive.
 
 Now that we have valid credentials, we can login:
