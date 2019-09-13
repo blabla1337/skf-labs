@@ -13,6 +13,7 @@
 
 <!--Icons-->
 <script src="/static/js/lumino.glyphs.js"></script>
+<script src="/static/js/hints.js"></script>
 
 </head>
 
@@ -42,6 +43,20 @@
 		<center> 		
 			<img src="/static/img/logo.svg" width="60%" height="60%"/> 		<br/> 		
 			<p style="color:#515594; font-size:1.0em;"><a href="https://github.com/blabla1337/skf-flask" style="color:#515594; font-size:1.7em;">OWASP S.K.F.</a></p>  	 			<p><a href="https://gitter.im/Security-Knowledge-Framework/Lobby" rel="nofollow"> 				<img src="/static/img/badge.svg" alt="Join the chat at https://gitter.im/Security-Knowledge-Framework/Lobby" data-canonical-src="/static/img/badge.svg" style="max-width:100%;"></a> 			</p>  	
+			<h3>Hint <span id="hint-num">0</span>/3 (<a
+				href="#" onclick="showHint(); return false">show</a>)
+			</h3>
+		
+			<div id="hints">
+				<ol>
+					<li style="display: none" data-hidden="true"><b>1.</b>
+						Text for the first hint.
+					 <li style="display: none" data-hidden="true"><b>2.</b>
+						Text for the second hint.
+					<li style="display: none" data-hidden="true"><b>3.</b>
+						Text for the third hint.
+				</ol>
+			</div>
 		</center>
 	</div><!--/.sidebar-->
 		
@@ -80,6 +95,7 @@
 					</center>
 				</div>
 			</div><!-- /.col-->
+
 		</div><!-- /.row -->
 	
 	</div><!--/.main-->

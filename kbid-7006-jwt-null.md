@@ -75,19 +75,10 @@ How about checking if the server is blindly accepting the digital signature algo
 
 The NONE algorithm means signature is not required, so the token can be tampered and will be accepted by the server.
 
-<<<<<<< HEAD:kbid-7006-JWT-null.md
-<<<<<<< HEAD
-#### Step 2
-=======
-##### Header tampering
->>>>>>> 50812bf54557ee2169537c4ac691dd846659819a
 =======
 ### Step 2
->>>>>>> d903d8e90da5d4d97cdc04a2e5440d4f6b520c1e:kbid-7006-jwt-null.md
 
 #### Header tampering
-
-> 50812bf54557ee2169537c4ac691dd846659819a
 
 ```text
 {
