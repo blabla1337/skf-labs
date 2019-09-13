@@ -14,7 +14,9 @@ passes unsafe user supplied data (forms, cookies, HTTP headers etc.) to
 a system shell. In the first step, the attacker needs to inspect the 
 functioning of the web app in order to find possible injection points. 
 When we start the application we can see that there is an image and the option to resize the image.
+
 ![](.gitbook/assets/cmd01.png)
+
 Now, we are going to select a value and press the button.
 
 ![](.gitbook/assets/cmd02.png)
@@ -28,6 +30,7 @@ In the response, we can check that the image has been resized.
 For this lab we are going to try to write in the source code the output of a command executed in the system.
 
 First, we check the source code:
+
 ![](.gitbook/assets/cmd05.0.png)
 
 Now, we send a new HTTP request trying to write the output of the command 

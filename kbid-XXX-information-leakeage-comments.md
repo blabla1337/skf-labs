@@ -11,18 +11,22 @@ However, comments and metadata included into the HTML code might reveal internal
 to potential attackers. Comments and metadata review should be done in order to determine if any information is being leaked.
 
 When we start the application we can see that there is a login form.
+
 ![](.gitbook/assets/info-leakeage-com-01.png)
 
 ## Exploitation
 What we are going to do is explore and check the source code of the website in order to find some useful information that the programmer may have forgotten
 in the source code.
+
 ![](.gitbook/assets/info-leakeage-com-02.png)
 
 We found something promising!
 Now, we try these words as the credentials in the login form:
+
 ![](.gitbook/assets/info-leakeage-com-03.png)
 
 And goal achieved!
+
 ![](.gitbook/assets/info-leakeage-com-04.png)
 
 ## Additional sources
