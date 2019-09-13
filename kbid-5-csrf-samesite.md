@@ -101,33 +101,33 @@ This will now create a POST request to the application and changing the value of
 
 ![](.gitbook/assets/screen-shot-2019-03-04-at-21.24.14.png)
 
-Also when we refresh the original page of the application we can see that the new vaulue has been replaced with the content of our evil app.
+Also when we refresh the original page of the application we can see that the new value has been replaced with the content of our evil app.
 
 ![](.gitbook/assets/csrf-samesite2.png)
 
 ## SameSite Attribute
 
-The modern browsers have introduced a defense in depth mechanism against CSRF type of attacks, the *SameSite* cookie attrbute. 
+The modern browsers have introduced a defense in depth mechanism against CSRF type of attacks, the *SameSite* cookie attribute. 
 
 ```text
 Set-Cookie: session=eyJsb2dnZWRpbiI6dHJ1ZSwidXNlcklkIjoxfQ.EF0EsA.9BZ_v9-AKp7lPsL1NV9xOECWMog; 
 HttpOnly; Path=/; SameSite=Strict
 ```
 
-This atrribute allows the user-agents to identify whether a cookie should be set along with cross-site-requests or not.
+This attribute allows the user-agents to identify whether a cookie should be sent along with cross-site-requests or not.
 
 
-This cookie attribute can be set with the following values:
+It can be set with the following values:
 
 Value | Result
 ------------ | -------------
 Strict|Cookie will be only sent with same-site requests.
-Lax|Cookie will be sent with same-site requests and, also, with cross-site-requests generated after top-level navigation (by clikcking on a link) that are not CSRF-prone (POST).  
+Lax|Cookie will be sent with same-site requests and, also, with cross-site-requests generated after top-level navigation (by clicking on a link) that are not CSRF-prone.  
 None|Cookies will always be sent with cross-site-requests.
 
-To make this concept more clear let's exercise it within this SKF Lab.
+To make this concept more clear, let's exercise it within this SKF Lab.
 
-In the home page, let's use the Secure Login form for authentication. 
+In the home page, use the Secure Login form for authentication. 
 
 ![](.gitbook/assets/csrf-samesite3.png)
 
@@ -149,17 +149,17 @@ Now, in a different browser tab, try to run again the CSRF attack.
 
 ![](.gitbook/assets/csrf-samesite4.png)
 
-Coming back to the first tab and check if the color was changed by the CSRF attack or not by clicking on *refresh the page*.
+Go back to the first tab and check if the color was changed by the CSRF attack or not by clicking on *refresh the page*.
 
 ![](.gitbook/assets/csrf-samesite5.png)
 
 Nothing has changed!
 
-Looking at request logged in Burp we can understand the reason.
+Looking at request logged in Burp, we can understand the reason.
 
 ![](.gitbook/assets/csrf-samesite6.png)
 
-As the cookie was set in Strict mode, the browser was instructed to not send it with any cross-site-request. Thus, as Color Change requires an authenticated session, this request is treated as anonymous and therefore,rejected by the application. 
+As the cookie was set in *Strict* mode, the browser was instructed to not send it with any cross-site-request. Thus, as Color Change requires an authenticated session, this request is treated as anonymous one and, therefore,rejected by the application. 
 
 Let's see how *Lax* mode works, by using the *Login Still Insecure* authentication form.
 
@@ -180,7 +180,7 @@ Date: Fri, 13 Sep 2019 11:46:47 GMT
 
 Set your preferred color and once again run the CSRF attack in a different tab.
 
-Coming back to the first tab and check if the color was changed by the CSRF attack or not by clicking on *refresh the page*.
+Go back to the first tab and check if the color has changed by the CSRF attack or not, by clicking on *refresh the page*.
 
 ![](.gitbook/assets/csrf-samesite5.png)
 
@@ -203,7 +203,7 @@ The request will be executed containing the required cookies, therefore, the CSR
 
 ![](.gitbook/assets/csrf-samesite9.png)
 
-*Lax* mode allowed the browser to send the cookie through the cross-site-request after top-level navigation using a non-CSFR method (GET). In other words, if the application accepts GET query string parameters to change data in persistence(or allows POST requests being converted into GET), CSRF attack will also succeed in this mode.
+*Lax* mode allowed the browser to send the cookie through the cross-site-request after top-level navigation using a non-CSFR method (GET). In other words, if the application accepts GET query string parameters to change data in persistence(or allows POST requests being converted into GET), CSRF attack will also succeed.
 
 ## Additional sources
 
