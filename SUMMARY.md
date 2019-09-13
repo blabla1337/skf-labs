@@ -6,6 +6,7 @@
 * [KBID 3 - Cross site scripting \(attribute\)](kbid-3-cross-site-scripting-attribute.md)
 * [KBID 3 - Cross site scripting \(href\)](kbid-3-cross-site-scripting-href.md)
 * [KBID 5 - CSRF](kbid-5-csrf.md)
+* [KBID 5 - CSRF - Samesite](kbid-5-csrf-samesite.md)
 * [KBID 6 - XXE](kbid-6-xxe.md)
 * [KBID 13 - File upload](kbid-13-file-upload.md)
 * [KBID 20 - Clickjacking](kbid-20-clickjacking.md)
