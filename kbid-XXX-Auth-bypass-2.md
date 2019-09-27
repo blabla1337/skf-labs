@@ -98,11 +98,6 @@ After refreshing the screen we're logged in as admin !
 
 
 
-
-
-
-
-
 ## Additional sources
 
 {% embed url="https://cheatsheetseries.owasp.org/cheatsheets/Deserialization_Cheat_Sheet.html" caption="" %}
