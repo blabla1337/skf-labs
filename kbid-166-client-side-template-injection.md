@@ -4,11 +4,11 @@
 ## Running the app
 
 ```text
-$ sudo docker pull blabla1337/owasp-skf-lab:client-side-template-injection 
+$ sudo docker pull blabla1337/owasp-skf-lab:csti 
 ```
 
 ```text
-$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:client-side-template-injection  
+$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:csti  
 ```
 
 {% hint style="success" %}

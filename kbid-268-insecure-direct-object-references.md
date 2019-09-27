@@ -3,11 +3,11 @@
 ## Running the app
 
 ```
-$ sudo docker pull blabla1337/owasp-skf-lab:indirect-object
+$ sudo docker pull blabla1337/owasp-skf-lab:idor
 ```
 
 ```text
-$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:indirect-object
+$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:idor
 ```
 
 {% hint style="success" %}

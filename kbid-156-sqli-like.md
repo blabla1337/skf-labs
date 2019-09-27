@@ -3,11 +3,11 @@
 ## Running the app
 
 ```text
-$ sudo docker pull blabla1337/owasp-skf-lab:sql-injection-like
+$ sudo docker pull blabla1337/owasp-skf-lab:sqli-like
 ```
 
 ```text
-$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:sql-injection-like
+$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:sqli-like
 ```
 
 {% hint style="success" %}

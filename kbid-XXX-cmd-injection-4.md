@@ -1,10 +1,21 @@
 # KBID XXX - Command Injection 4 (CMD)
+
 ## Running the app
-```text $ sudo python CMD4.py ``` ```text Visit the site: 
-http://127.0.0.1:5000/ ``` {% hint style="success" %} Now that the app 
-is running let's go hacking! {% endhint %} ![Docker Image and write-up 
-thanks to TelecoLabs!](.gitbook/assets/telecolabs.png) shayu (shayubit) 
-- https://www.telecolabs.com
+
+```text
+$ sudo docker pull blabla1337/owasp-skf-lab:cmd4
+```
+
+```text
+$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:cmd4
+```
+
+{% hint style="success" %}
+Now that the app is running let's go hacking!
+{% endhint %}
+
+![Docker image and write-up thanks to ING!](.gitbook/assets/ing_primary_logo.png)
+
 
 ## Reconnaissance
 The command injecion is an attack in which the goal is execution of 

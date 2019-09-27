@@ -5,11 +5,11 @@
 Becoming a super hero is a fairly straight forward process:
 
 ```text
-$ sudo docker pull blabla1337/owasp-skf-lab:clickjacking
+$ sudo docker pull blabla1337/owasp-skf-lab:x-allow-origin
 ```
 
 ```text
-$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:clickjacking
+$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:x-allow-origin
 ```
 
 Now that the app is running let's go hacking!

@@ -5,11 +5,11 @@
 Becoming a super hero is a fairly straight forward process:
 
 ```text
-$ sudo docker pull blabla1337/owasp-skf-lab:content-security-policy
+$ sudo docker pull blabla1337/owasp-skf-lab:csp
 ```
 
 ```text
-$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:content-security-policy
+$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:csp
 ```
 
 {% hint style="success" %}

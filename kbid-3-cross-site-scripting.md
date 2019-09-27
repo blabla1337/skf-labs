@@ -3,11 +3,11 @@
 ## Running the app
 
 ```text
-$ sudo docker pull blabla1337/owasp-skf-lab:cross-site-scripting
+$ sudo docker pull blabla1337/owasp-skf-lab:xss
 ```
 
 ```text
-$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:cross-site-scripting
+$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:xss
 ```
 
 {% hint style="success" %}

@@ -3,11 +3,11 @@
 ## Running the app
 
 ```text
-$ sudo docker pull blabla1337/owasp-skf-lab:cross-site-request-forgery-samesite
+$ sudo docker pull blabla1337/owasp-skf-lab:csrf-samesite
 ```
 
 ```text
-$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:cross-site-request-forgery-samesite
+$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:csrf-samesite
 ```
 
 {% hint style="success" %}

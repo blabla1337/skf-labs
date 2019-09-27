@@ -6,11 +6,11 @@
 
 
 ```text
-$ sudo docker pull blabla1337/owasp-skf-lab:remote-file-inclusion
+$ sudo docker pull blabla1337/owasp-skf-lab:rfi
 ```
 
 ```text
-$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:remote-file-inclusion
+$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:rfi
 ```
 
 {% hint style="success" %}

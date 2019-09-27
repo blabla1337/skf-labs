@@ -1,23 +1,20 @@
-# KBID XXX - Blind Command Injection
 
 ## Running the app
 
 ```text
-$ sudo python CMD-Blind.py
+$ sudo docker pull blabla1337/owasp-skf-lab:cmd3
 ```
 
 ```text
-Visit the site:
-http://127.0.0.1:5000/
+$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:cmd3
 ```
 
 {% hint style="success" %}
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker Image and write-up thanks to TelecoLabs!](.gitbook/assets/telecolabs.png)
+![Docker image and write-up thanks to ING!](.gitbook/assets/ing_primary_logo.png)
 
-shayu (shayubit) - https://www.telecolabs.com
 
 ## Reconnaissance
 

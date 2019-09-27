@@ -1,10 +1,21 @@
 # KBID XXX - Client Side Restriction Bypass (client-side-restriction-bypass)
+
 ## Running the app
-```text $ sudo python client-side-restriction-bypass.py ``` ```text Visit the site: 
-http://127.0.0.1:5000/ ``` {% hint style="success" %} Now that the app 
-is running let's go hacking! {% endhint %} ![Docker Image and write-up 
-thanks to TelecoLabs!](.gitbook/assets/telecolabs.png) shayu (shayubit) 
-- https://www.telecolabs.com
+
+```text
+$ sudo docker pull blabla1337/owasp-skf-lab:client-side-restriction-bypass
+```
+
+```text
+$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:client-side-restriction-bypass
+```
+
+{% hint style="success" %}
+Now that the app is running let's go hacking!
+{% endhint %}
+
+![Docker image and write-up thanks to ING!](.gitbook/assets/ing_primary_logo.png)
+
 
 ## Reconnaissance
 

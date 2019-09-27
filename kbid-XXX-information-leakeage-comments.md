@@ -1,10 +1,21 @@
 # KBID XXX - Information Leakeage in Comments (info-leakeage-comments)
+
 ## Running the app
-```text $ sudo python info-leakeage-comments.py ``` ```text Visit the site: 
-http://127.0.0.1:5000/ ``` {% hint style="success" %} Now that the app 
-is running let's go hacking! {% endhint %} ![Docker Image and write-up 
-thanks to TelecoLabs!](.gitbook/assets/telecolabs.png) shayu (shayubit) 
-- https://www.telecolabs.com
+
+```text
+$ sudo docker pull blabla1337/owasp-skf-lab:info-leakeage-comments
+```
+
+```text
+$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:info-leakeage-comments
+```
+
+{% hint style="success" %}
+Now that the app is running let's go hacking!
+{% endhint %}
+
+![Docker image and write-up thanks to ING!](.gitbook/assets/ing_primary_logo.png)
+
 ## Reconnaissance
 It is very common, and even recommended, for programmers to include detailed comments and metadata on their source code. 
 However, comments and metadata included into the HTML code might reveal internal information that should not be available 

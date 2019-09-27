@@ -5,11 +5,11 @@
 
 
 ```text
-$ sudo docker pull blabla1337/owasp-skf-lab:local-file-inclusion
+$ sudo docker pull blabla1337/owasp-skf-lab:lfi
 ```
 
 ```text
-$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:local-file-inclusion
+$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:lfi
 ```
 
 {% hint style="success" %}

@@ -3,11 +3,11 @@
 ## Running the app
 
 ```text
-$ sudo docker pull blabla1337/owasp-skf-lab:Auth-bypass-2
+$ sudo docker pull blabla1337/owasp-skf-lab:auth-bypass-2
 ```
 
 ```text
-$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:Auth-bypass-2
+$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:auth-bypass-2
 ```
 
 {% hint style="success" %}
