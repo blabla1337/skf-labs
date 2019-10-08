@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GraphQL - First Mutation</title>
+
+<link href="/static/css/bootstrap.min.css" rel="stylesheet">
+<link href="/static/css/datepicker3.css" rel="stylesheet">
+<link href="/static/css/styles.css" rel="stylesheet">
+
+<!--Icons-->
+<script src="/static/js/lumino.glyphs.js"></script>
+
+</head>
+
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<ul class="user-menu">
+					<li class="dropdown pull-right">
+
+						<ul class="dropdown-menu" role="menu">
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div><!-- /.container-fluid -->
+	</nav>
+		
+	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+	<br/><br/>
+    	<center> 		
+			<img src="/static/img/logo.svg" width="60%" height="60%"/> 		
+			<br/> 		
+			<p style="color:#515594; font-size:1.0em;"><a href="https://github.com/defdeveu/" style="color:#515594; font-size:0.5em;">defdev.eu Graph QL Blog</a></p>  	 			
+		</center>
+	</div><!--/.sidebar-->
+		
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
+		<div class="row">
+
+		</div><!--/.row-->
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header"></h1>
+			</div>
+		</div><!--/.row-->
+				
+
+<button type="button" id="create-new-post" class="btn btn-primary btn-sm" onclick="createNewPost()">Create New Post</button>
+
+<br>
+<br>
+
+
+
+<div id = "posts">
+
+
+</div><!-- /.posts -->
+	
+	</div><!--/.main-->
+
+	<script src="/static/js/jquery-1.11.1.min.js"></script>
+	<script src="/static/js/bootstrap.min.js"></script>
+	<script src="/static/js/chart.min.js"></script>
+	<script src="/static/js/chart-data.js"></script>
+	<script src="/static/js/easypiechart.js"></script>
+	<script src="/static/js/easypiechart-data.js"></script>
+	<script src="/static/js/bootstrap-datepicker.js"></script>
+	<script>
+		!function ($) {
+			$(document).on("click","ul.nav li.parent > a > span.icon", function(){		  
+				$(this).find('em:first').toggleClass("glyphicon-minus");	  
+			}); 
+			$(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+		}(window.jQuery);
+
+		$(window).on('resize', function () {
+		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
+		})
+		$(window).on('resize', function () {
+		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
+		})
+	</script>	
+
+	<script>
+	{% raw %}
+
+		var app = document.querySelector('#posts');
+		fetch('/graphql', {
+  			method: 'POST',
+  			headers: { 'Content-Type': 'application/json' },
+  			body: JSON.stringify({query : "{allPosts {edges {node {title body author { username }}}}}"}) 
+
+		})
+  		.then(res => res.json())
+  		.then(json => {
+	  		console.log(json);
+	  		let els = json.data.allPosts.edges.map(x => {
+	  		
+	  		return `
+	   		<div class="row">
+				<div class="col-lg-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">${x.node.title}</div>
+						<div class="panel-body">
+							<div class="col-md-12">
+										<img src="/static/img/avatar.png" width="20px" height="20px"/> ${x.node.author.username}	<strong></strong>
+							</div>
+
+							<div class="col-md-12" style="top:10px">
+								${x.node.body}
+							</div>
+						</div>
+					</div>
+				</div>
+	 	</div> 
+	 	`
+	  })
+
+	  app.innerHTML=els.join("\n");
+	  
+	})
+  .catch(console.error);
+  {% endraw %}
+
+</script>
+
+<script type="text/javascript">
+{% raw %}
+
+	function createNewPost(){
+		fetch('/graphql', {
+  			method: 'POST',
+  			headers: { 'Content-Type': 'application/json' },
+  			body: JSON.stringify({query : `mutation{ createPost(input: {body: "This is a new post" , title: "This is a new title", authorId: 2}) {post {body authorId title}}}`}) 
+
+		})
+  		.then(res => res.json())
+  		.then(json => {
+	  		console.log(json);
+	  		location.reload();
+
+	  	})
+  		.catch(console.error);
+  }
+  {% endraw %}
+
+
+</script>
+</body>
+
+</html>

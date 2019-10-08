@@ -44,5 +44,9 @@
 * [KBID XXX - Auth-bypass-2](kbid-XXX-Auth-bypass-2.md)
 * [KBID XXX - Blind command injection](kbid-XXX-blind-cmd-injection-1.md)
 * [KBID 250 - Session Puzzling](kbid-250-session-puzzling.md)
+* [KBID XXX - GraphQL IDOR](kbid-XXX-Graphql-idor.md)
+* [KBID XXX - GraphQL Injections](kbid-XXX-Graphql-injections.md)
+* [KBID XXX - GraphQL Introspection](kbid-XXX-Graphql-introspection.md)
+* [KBID XXX - GraphQL Mutations](kbid-XXX-Graphql-mutations.md)
 * [template](template.md)
 
