@@ -1,20 +1,36 @@
-# GraphQL Introspection
+# KBID 285 - GraphQL introspections
 
-The application uses GraphQL to retrieve Users and Posts for the defdev.eu new blog. 
+## Running the app
 
-> Run the application 
-
-```sh
-docker build . -t graphql/intro && docker run -ti -p 5000:5000 graphql/intro
+```
+$ sudo docker pull blabla1337/owasp-skf-lab:graphql-introspections
 ```
 
-Great now the app is running. Browse to `http://0.0.0.0:5000/` 
+```text
+$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:graphql-introspections
+```
 
-## Discovery 
+Or alternatively build yourself! 
+
+```sh
+docker build . -t graphql/introspections && docker run -ti -p 5000:5000 graphql/introspections
+```
+
+The docker should be up in no time and we should now be able to browse the application on `http://0.0.0.0:5000/`
+
+
+{% hint style="success" %}
+ Now that the app is running let's go hacking!
+{% endhint %}
+
+![Docker Image and write-up thanks to defev!](.gitbook/assets/logo.defdev.1608z.whtonblk.256.png)
+
+
+## Reconnaissance 
 
 As soon as we browse on `http://0.0.0.0:5000` we see the few posts published by 2 users
 
-<SCREENSHOT>
+![](.gitbook/assets/graphql-introspection1.png)
 
 
 ## Exploitation 
@@ -60,7 +76,7 @@ In this case, for each field we we want to know what are the subfields and of wh
 
 The application will answer with:
 
-```
+```json
 {
   "data": {
     "__type": {
@@ -153,8 +169,9 @@ That will give us the `allUsers` query. Now we need to understand what are the f
 
 ```
 
-## Fix
+## Solution
 
 Implement authorization on graphql endpoint. Although authenticated users could query the information, you should not map sensitive information into the type defined into the schema.
 
 
+## Additional resources

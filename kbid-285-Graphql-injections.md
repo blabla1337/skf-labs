@@ -1,15 +1,16 @@
-# Injections 
+# KBID 285 - GraphQL injections
 
-This lab shows that GraphQL is not a silver bullet to any of the injection vulnerabilities.
+## Running the app
 
-We will look at two of the most common ones:
+```
+$ sudo docker pull blabla1337/owasp-skf-lab:graphql-injections
+```
 
-* OS Command Injection
-* Sql Injection
+```text
+$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:graphql-injections
+```
 
-## Let's start
-> First lets run the application:
-
+Or alternatively build yourself! 
 
 ```sh
 docker build . -t graphql/inject && docker run -ti -p 5000:5000 graphql/inject
@@ -17,7 +18,22 @@ docker build . -t graphql/inject && docker run -ti -p 5000:5000 graphql/inject
 
 The docker should be up in no time and we should now be able to browse the application on `http://0.0.0.0:5000/`
 
-## Discovery
+
+{% hint style="success" %}
+ Now that the app is running let's go hacking!
+{% endhint %}
+
+![Docker Image and write-up thanks to defev!](.gitbook/assets/logo.defdev.1608z.whtonblk.256.png)
+
+
+## Reconnaissance
+
+This lab shows that GraphQL is not a silver bullet to any of the injection vulnerabilities.
+
+We will look at two of the most common ones:
+
+* OS Command Injection
+* Sql Injection
 
 We still see the blog that we should be familiar by now. 
 
@@ -125,7 +141,7 @@ w00t w00t!
 What else can you!?
 
 
-## Fix
+## Solution
 
 ### OS Command Injection
 By know you fully understand that GraphQL does not handle input validation or santization for you. It actually has nothing to do with it. So, fixing the code in this lab does not differ to any of your previous practices on fixing code for OS Command Line injection.
@@ -139,4 +155,4 @@ The solution?
  * Use parameterized queries
  * Use SQLAlchemy as described in documentation
 
-
+## Additional resources

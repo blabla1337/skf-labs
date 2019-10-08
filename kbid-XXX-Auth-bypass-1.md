@@ -27,9 +27,11 @@ Obviously, an attacker can tamper with the URL, the form or the session cookie i
 The goal of this lab is to get logged in as an administrator without knowing his/her credentials
 
 Lets start the application and register a new user
+
 ![](.gitbook/assets/auth-1-register1.png)
 
 ![](.gitbook/assets/auth-1-register2.png)
+
 Please note that (for convenience) your password will be reset if the user already exists.
 Also note that the password is case sensitive.
 
@@ -37,44 +39,46 @@ Also note that the password is case sensitive.
 
 
 Now that we have valid credentials, we can login:
+
 ![](.gitbook/assets/auth-1-login.png)
 
 After providing the correct credentials we're logged in:
+
 ![](.gitbook/assets/auth-1-loggedin.png)
 
 
 ## Exploitation
 We can capture the login in the burpsuite proxy and send it to the repeater. We notice that with every login, the session cookie stays the same. It is high likely that this sessionid is related to our user name:
+
 ![](.gitbook/assets/auth-1-repeater.png)
 
 If we quickly google for this sessionid, we find that the sessionID seems to be corresponding to 'rudy':
+
 ![](.gitbook/assets/auth-1-google.png)
 
 We can check whether it is a hash at https://www.tunnelsup.com/hash-analyzer/:
+
 ![](.gitbook/assets/auth-1-sha1.png)
+
 it seems to be a sha1...
 
 Ok, let's lookup the hash of 'admin' at https://passwordsgenerator.net/sha1-hash-generator/
+
 ![](.gitbook/assets/auth-1-sha1-admin.png)
+
 -> D033E22AE348AEB5660FC2140AEC35850C4DA997
 
 Now we can set our sessionID to the sha1 hash of admin:
+
 ![](.gitbook/assets/auth-1-setcookie.png)
+
 -> if you don't have a browser cookie manager plugin, you can go to the next step and intercept the request in burp and replace the sessionID there.
 
 Click 'proceed' to go to the authenticated section of the application:
+
 ![](.gitbook/assets/auth-1-proceed.png)
 
 ![](.gitbook/assets/auth-1-loggedinasadmin.png)
-
-
-
-
-
-
-
-
-
 
 ## Additional sources
 

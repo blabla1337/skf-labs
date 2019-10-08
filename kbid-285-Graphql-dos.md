@@ -1,9 +1,21 @@
-# GraphQL Resource Exhaustion
+# KBID 285 - GraphQL Resource Exhaustion
+
+## Running the app
+
+```
+$ sudo docker pull blabla1337/owasp-skf-lab:graphql-dos-resource-exhaustion
+```
+
+```text
+$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:graphql-dos-resource-exhaustion
+```
+
+{% hint style="success" %}
+ Now that the app is running let's go hacking!
+{% endhint %}
 
 
-The application uses GraphQL to retrieve Users and Posts for the defdev.eu new blog. 
-
-> Run the application 
+> Or build the image yourself! 
 
 ```sh
 docker build . -t graphql/dos && docker run -ti -p 5000:5000 graphql/dos
@@ -11,12 +23,16 @@ docker build . -t graphql/dos && docker run -ti -p 5000:5000 graphql/dos
 
 Great! Now the app is running. Browse to `http://0.0.0.0:5000/` 
 
-## Discovery 
 
+![Docker Image and write-up thanks to defev!](.gitbook/assets/logo.defdev.1608z.whtonblk.256.png)
 
-The application implements a small blog where only admin profiles can create posts. Non authenticated users can only read the latest posts. 
+## Reconnaissance
 
-When we navigate to `http://0.0.0.0:5000/` the frontend asks the application for the latest posts using the GraphQL query
+The application implements a small blog where only admin profiles can create posts. 
+Non authenticated users can only read the latest posts. 
+
+When we navigate to `http://0.0.0.0:5000/` the frontend asks the application for the latest 
+posts using the GraphQL query
 
 ```
 query: "{
@@ -78,7 +94,7 @@ The response will contain all the latest posts:
 If we look at the two classes `Users` and `Post`:
 
 
-```
+```python
 class User(db.Model):
     __tablename__ = 'users'
     uuid = db.Column(db.Integer, primary_key=True)
@@ -87,6 +103,7 @@ class User(db.Model):
     
     def __repr__(self):
         return '<User %r>' % self.username
+        
 class Post(db.Model):
     __tablename__ = 'posts'
     uuid = db.Column(db.Integer, primary_key=True)
@@ -353,7 +370,7 @@ If we craft a malicious payload like:
 
 we can make the application explode, while trying to resolve all the possible queries. Each new query will add exponential complexity to our query.
 
-## Fix 
+## Solution
 
 To avoid DoS issues while still having nested queries, there are different possibilities: 
 
@@ -369,6 +386,6 @@ Few tools available online are:
 * [https://github.com/slicknode/graphql-query-complexity](https://github.com/slicknode/graphql-query-complexity)
 
 
-
+## Additional resources
 
 

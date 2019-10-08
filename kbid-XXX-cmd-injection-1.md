@@ -46,9 +46,13 @@ First, we check the source code:
 
 Now, we send a new HTTP request trying to write the output of the command 
 whoami (supposing that it will be executed in the target system) at the end of the index.html (main website view) code. 
+
 ![](.gitbook/assets/cmd04.png) 
+
 Now we access the source code of the website
+
 ![](.gitbook/assets/cmd05.png)
+
 to check that the output of the whoami command ("root") was written at the end of the source code.
 As we can see, the output of the command whoami, is showing us the priviledge 
 of the target user in the target system and that the web app is actually 

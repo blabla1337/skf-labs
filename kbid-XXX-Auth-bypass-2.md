@@ -27,9 +27,11 @@ Obviously, an attacker can tamper with the URL, the form or the session cookie i
 The goal of this lab is to get logged in as an administrator without knowing his/her credentials
 
 Lets start the application and register a new user
+
 ![](.gitbook/assets/auth-2-register1.png)
 
 ![](.gitbook/assets/auth-2-register2.png)
+
 Please note that (for convenience) your password will be reset if the user already exists.
 Also note that the username and password are case sensitive.
 
@@ -37,21 +39,27 @@ Also note that the username and password are case sensitive.
 
 
 Now that we have valid credentials, we can login:
+
 ![](.gitbook/assets/auth-2-login.png)
 
 After providing the correct credentials we're logged in:
+
 ![](.gitbook/assets/auth-2-loggedin.png)
 
 
 ## Exploitation
 We can capture the login in the burpsuite proxy and send it to the repeater. We notice that with every login, the session cookie stays the same. It is high likely that this sessionid is related to our user name:
+
 ![](.gitbook/assets/auth-2-repeater.png)
 
 If we quickly google for this sessionid, we find nothing:
+
 ![](.gitbook/assets/auth-2-google.png)
 
 We can check whether it is a hash:
+
 ![](.gitbook/assets/auth-2-sha1.png)
+
 it seems to be a sha1...
 
 It is possible that the developer added a salt to the username and hashed the concatenated string
@@ -68,34 +76,41 @@ cewl -m 4 -w wordlist.txt -d 0 -v http://127.0.0.1:5000/about</br>
 -v: verbose (show what you are doing)</br></I>
 
 Using a terminal window:
+
 ![](.gitbook/assets/auth-2-cewl.png)
 
 ![](.gitbook/assets/auth-2-wordlist.png)
 
 Let’s use burp intruder to calculate a sha-1 for every admin+word combination:
+
 ![](.gitbook/assets/auth-2-intruder1.png)
+
 Payload position:
+
 ![](.gitbook/assets/auth-2-intruder2.png)
 
 Paste the content of the word list in the payload options and add the payload processing rules as indicated in the following screenshot.
+
 ![](.gitbook/assets/auth-2-intruder3.png)
 
 This will prefix the word 'admin' to each word from the list and calculate a sha1 of the concatenated string.
 for example sha1(adminBank)
 
 Start the attack
+
 ![](.gitbook/assets/auth-2-intruder4.png)
 
 The result:
+
 ![](.gitbook/assets/auth-2-intruder5.png)
 
 Now we can replace our cookie/sessionID with the value we found.
+
 ![](.gitbook/assets/auth-2-cookie1.png)
 
 After refreshing the screen we're logged in as admin !
+
 ![](.gitbook/assets/auth-2-admin.png)
-
-
 
 
 ## Additional sources

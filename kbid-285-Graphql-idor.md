@@ -1,6 +1,16 @@
-# GraphQL IDOR 
+# KBID 285 - GraphQL IRDOR
 
-The application uses GraphQL to retrieve Users and Posts for the defdev.eu new blog. 
+## Running the app
+
+```
+$ sudo docker pull blabla1337/owasp-skf-lab:graphql-IDOR
+```
+
+```text
+$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:graphql-IDOR
+```
+
+Or alternatively build yourself! 
 
 > Run the application 
 
@@ -10,11 +20,18 @@ docker build . -t graphql/idor && docker run -ti -p 5000:5000 graphql/idor
 
 Great now the app is running. Browse to `http://0.0.0.0:5000/` 
 
-## Discovery 
+
+{% hint style="success" %}
+ Now that the app is running let's go hacking!
+{% endhint %}
+
+![Docker Image and write-up thanks to defev!](.gitbook/assets/logo.defdev.1608z.whtonblk.256.png)
+
+## Reconnaissance
 
 As soon as we browse on `http://0.0.0.0:5000` we see that now our app implements a login screen to support multiple users 
 
-<SCREENSHOT>
+![](.gitbook/assets/graphql-idor1.png)
 
 We already registered a user , the famous Jhon Doe and we can authneticate with the credentials 
 
@@ -46,22 +63,22 @@ of course only if authenticated. But how does this page retrieve the information
 
 ```
 {
- 					singleUser (user: 1) {
-    				apiKey
-    				name
-    				surname
-    				dateOfBirth
-  				}
-			}
+  singleUser (user: 1) 
+    {
+	  apiKey
+	  name
+	  surname
+	  dateOfBirth
+	}
+}
 
 ```
 
 > Knowing that, use the IDOR vulnerability to authenticate as another user
 
-
-
-## Fix
+## Solution
 
 Implement authorization on graphql endpoint. Although authenticated users could query the information, you should validate that the requestor of the information is actually the legit one, and use UUID instead of ID as Int.
 
+## Additional resources
 

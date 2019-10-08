@@ -1,24 +1,35 @@
-# Mutation 
+# KBID 285 - GraphQL mutations
 
+## Running the app
 
-The application uses GraphQL to create content on our blog, using mutations 
+```
+$ sudo docker pull blabla1337/owasp-skf-lab:graphql-mutations
 
-> Run the application 
-
-```sh
-docker build . -t graphql/mutation && docker run -ti -p 5000:5000 graphql/mutation
+```text
+$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:graphql-mutations
 ```
 
-Great now the app is running. Browse to `http://0.0.0.0:5000/` 
+Or alternatively build yourself! 
+
+```sh
+docker build . -t graphql/mutations && docker run -ti -p 5000:5000 graphql/mutations
+```
+
+The docker should be up in no time and we should now be able to browse the application on `http://0.0.0.0:5000/`
 
 
+{% hint style="success" %}
+ Now that the app is running let's go hacking!
+{% endhint %}
 
-## Discovery
+![Docker Image and write-up thanks to defev!](.gitbook/assets/logo.defdev.1608z.whtonblk.256.png)
+
+
+## Reconnaissance
 
 The application implements a very basic mutation to create a new post on the blog. The mutation used is the following
 
 ```
-
 mutation {
   createPost(input: {body: "' -- ", title: "test_title", authorId: 2}) {
     post {
@@ -33,7 +44,7 @@ mutation {
 
 If we look at the code we have a class `CreatePost` that will implement our logic to create a post.
 
-```
+```python
 class CreatePost(graphene.Mutation):
     """Mutation to create a post."""
     post = graphene.Field(lambda: PostObject, description="Post created by this mutation.")
