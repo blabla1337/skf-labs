@@ -12,7 +12,7 @@ $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:formula-in
 
 Now that the app is running let's go hacking!
 
-![Docker image and write-up thanks to ING!](.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
+![Docker image and write-up thanks to Contrahack.io !](.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
 
 ## Reconnaissance
 
