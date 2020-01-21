@@ -1,5 +1,5 @@
 Flask==0.10.1
 flask-cors==3.0.7
 requests==2.19.1
-validators==0.12.4
+validators==0.12.6
 Werkzeug==0.14.1
