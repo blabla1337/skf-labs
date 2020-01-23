@@ -1,4 +1,6 @@
 from app import db, User, Post, UserInfo
+db.drop_all()
+
 db.create_all()
 john = User(username='johndoe', password="password1")
 user1 = User(username='user1', password="password10")
