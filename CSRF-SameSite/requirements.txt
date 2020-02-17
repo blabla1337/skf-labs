@@ -1,4 +1,4 @@
 Flask==1.0.0
 flask-cors==3.0.7
-requests==2.19.1
+requests==2.20.0
 Werkzeug==0.14.1
