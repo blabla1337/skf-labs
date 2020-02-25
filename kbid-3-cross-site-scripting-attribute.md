@@ -38,16 +38,13 @@ and it is not escaped so it should be possible to perform a Cross Site Scripting
 
 ### Step 1
 
-Now we have seen where the user input is being reflected in the style, we will have to look what dangerous HTML characters are not properly escaped so we can build our XSS payload. So for our first check we use the following string as an input:
+Now we have seen where the user input is being reflected in the style, we will have to look what dangerous HTML characters are not properly escaped, when the developer used the right encoding the metacharacters like " >< will be properly encoded. So we need to form a payload that does not utilize these characters in order to make the attack successful like the following payload:
+
+*note: we disabled auto-escape for the challenge but in order to do it well you need to avoid using the " > < to leverage the attack*
+
 
 ```text
-foobar"></
-```
-
-As you can see the application does not react at out malicious payload, so nothing happens. Why? Maybe the quotes that are used in the template are not the right ones. Let's try our new payload changing the quotes:
-
-```text
-red;'><img src=x onerror=alert(1)>
+red ' onmouseover='alert(1337)'
 ```
 
 ![](.gitbook/assets/xss-attribute-3.png)
