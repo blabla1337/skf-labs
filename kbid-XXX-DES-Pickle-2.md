@@ -22,6 +22,12 @@ Serialisation is used by application to easely store an object and transfer it a
 
 Obviously, an attacker can tamper with a string that will be deserialised and potentially trigger unexpected behaviour in the application. Depending on the language and library used, this unexpected behaviour can go from arbitrary object creation to remote code execution. 
 
+Some use cases for python pickle:
+1) saving a program's state data to disk so that it can carry on where it left off when restarted (persistence)
+2) sending python data over a TCP connection in a multi-core or distributed system (marshalling)
+3) storing python objects in a database
+4) converting an arbitrary python object to a string so that it can be used as a dictionary key (e.g. for caching & memorization).
+
 Lets start the application and register a new user
 
 ![](.gitbook/assets/DES-Register.png)
