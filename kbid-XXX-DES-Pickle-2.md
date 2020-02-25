@@ -63,6 +63,9 @@ As you might have guessed, the remember me cookie is a serialized object, (proba
 
 If we know or guess the used technology (in this case:pickle serialisation in python), we can try to deserialise the object
 
+From wikipedia:
+The pickle module implements binary protocols for serializing and de-serializing a Python object structure. “Pickling” is the process whereby a Python object hierarchy is converted into a byte stream, and “unpickling” is the inverse operation, whereby a byte stream (from a binary file or bytes-like object) is converted back into an object hierarchy
+
 ```python
 import pickle, base64
 b64 = 'gANjX19tYWluX18KdXNyCnEAKYFxAX1xAihYCAAAAHVzZXJuYW1lcQNYBAAAAFJ1ZHlxBFgIAAAAcGFzc3dvcmRxBVgZAAAAZGl0aXNtaWpuaGVlbGxhbmdwYXNzd29yZHEGdWIu'
