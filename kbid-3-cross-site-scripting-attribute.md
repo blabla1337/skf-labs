@@ -47,9 +47,7 @@ Now we have seen where the user input is being reflected in the style, we will h
 red ' onmouseover='alert(1337)'
 ```
 
-![](.gitbook/assets/xss-attribute-3.png)
-
-and clicking the button, we achieve what we were looking for.
+Now, hovering over the paragraph will trigger our javascript event handler!
 
 ![](.gitbook/assets/xss-attribute-4.png)
 
