@@ -71,7 +71,6 @@ We ofcourse also need to set the right path where to serve the file from:
 The content of the JS file that we use to deliver the malicious XSS from looks no more basic than
 this:
 
-```
 
 ![](.gitbook/assets/untrusted-sources-js-3.png)
 
