@@ -11,6 +11,7 @@
 	<link href="/static/css/datepicker3.css" rel="stylesheet">
 	<link href="/static/css/styles.css" rel="stylesheet">
 	<script src="/static/js/hints.js"></script>
+	<script src="http://localhost:8081/script-provider/javascript.js"></script>
 	<!--Icons-->
 	<script src="/static/js/lumino.glyphs.js"></script>
 
@@ -48,21 +49,7 @@
 						data-canonical-src="/static/img/badge.svg" style="max-width:100%;"></a> </p>
 		</center>
 
-		<br>
-		<div>
-			<h2 align="center">Hint <span id="hint-num">0</span>/3 (<button class="btn btn-primary btn-lg" type="button"
-					onclick="showHint(); return false">show</button>)
-			</h2>
 
-			<div id="hints">
-				<ol>
-					<li style="display: none" data-hidden="true"><b>1.</b>
-						Find, identify and explore every possible input field that could be object of injection.
-					<li style="display: none" data-hidden="true"><b>2.</b>
-						Try to inject and execute javascript code in the field.
-				</ol>
-			</div>
-		</div>
 
 
 	</div>
@@ -85,14 +72,11 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">XSS!</div>
+					<div class="panel-heading">Untrusted source file inclusion!</div>
 					<div class="panel-body">
 						<div class="col-md-6">
-							<form method="post" action="/home">
-								<input type="text" class="form-control" name="string" placeholder="fill me in plz" /><br />
-								<button class="btn btn-primary" type="submit">Submit Button</button>
+							<p>Can you try to leverage an XSS on me?</p>
 						</div>
-						</form>
 					</div>
 				</div>
 			</div><!-- /.col-->
@@ -107,25 +91,7 @@
 
 	<script src="/static/js/jquery-1.11.1.min.js"></script>
 	<script src="/static/js/bootstrap.min.js"></script>
-	<script>
-		!function ($)
-		{
-			$(document).on("click", "ul.nav li.parent > a > span.icon", function ()
-			{
-				$(this).find('em:first').toggleClass("glyphicon-minus");
-			});
-			$(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
-		}(window.jQuery);
 
-		$(window).on('resize', function ()
-		{
-			if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
-		})
-		$(window).on('resize', function ()
-		{
-			if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
-		})
-	</script>
 </body>
 
 </html>

@@ -49,5 +49,6 @@
 * [KBID XXX - Auth-bypass-1](kbid-XXX-Auth-bypass-1.md)
 * [KBID XXX - Auth-bypass-2](kbid-XXX-Auth-bypass-2.md)
 * [KBID XXX - Blind command injection](kbid-XXX-blind-cmd-injection-1.md)
+* [KBID XXX - XSSI (include files from untrusted sources)](kbid-XXX-include-files-from-untrusted-sources-js.md)
 * [template](template.md)
 
