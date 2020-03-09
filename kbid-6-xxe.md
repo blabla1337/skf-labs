@@ -14,6 +14,24 @@ $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:xxe
  Now that the app is running let's go hacking!
 {% endhint %}
 
+## Running the app Python3
+
+First, make sure python3 and pip are installed on your host machine.
+After installation, we go to the folder of the lab we want to practise 
+"i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
+
+```
+$ pip3 install -r requirements.txt
+``
+
+```
+$ python3 <labname>
+```
+
+{% hint style="success" %}
+ Now that the app is running let's go hacking!
+{% endhint %}
+
 ![Docker image and write-ip thanks to DefDev!](.gitbook/assets/logo.defdev.1608z.whtonblk.256.png)
 
 ## Reconnaissance

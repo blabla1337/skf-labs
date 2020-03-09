@@ -23,6 +23,25 @@ The docker should be up in no time and we should now be able to browse the appli
  Now that the app is running let's go hacking!
 {% endhint %}
 
+## Running the app Python3
+
+First, make sure python3 and pip are installed on your host machine.
+After installation, we go to the folder of the lab we want to practise 
+"i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
+
+```
+$ pip3 install -r requirements.txt
+``
+
+```
+$ python3 <labname>
+```
+
+{% hint style="success" %}
+ Now that the app is running let's go hacking!
+{% endhint %}
+
+
 ![Docker Image and write-up thanks to defev!](.gitbook/assets/logo.defdev.1608z.whtonblk.256.png)
 
 
