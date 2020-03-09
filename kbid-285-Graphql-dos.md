@@ -32,7 +32,7 @@ After installation, we go to the folder of the lab we want to practise
 
 ```
 $ pip3 install -r requirements.txt
-``
+```
 
 ```
 $ python3 <labname>
