@@ -26,7 +26,7 @@ This might lead to many different consequences depending on the included functio
 
 First, let's check the application to see if there are any sources being loaded in the app that return a 404.
 
-![](.gitbook/assets/untrusted-sources-1.png)
+![](.gitbook/assets/untrusted-sources-js-1.png)
 
 When inspecting the network tab we see that the application fails to load a JS file to the URL 
 
