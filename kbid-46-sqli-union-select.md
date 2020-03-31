@@ -80,7 +80,7 @@ After that we inject a logical operator which is true \(and 1=1\). This should r
 ![](.gitbook/assets/screen-shot-2019-01-10-at-12.05.59.png)
 
 ```text
-http://127.0.0.1:5000/home/1 and 1=2
+http://127.0.0.1:5000/home/1 and 1=1
 ```
 
 ## Exploitation
