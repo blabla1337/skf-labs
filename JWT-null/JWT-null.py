@@ -41,19 +41,21 @@ def start():
 @app.route('/protected')
 def protected():
     token = request.headers['AUTHORIZATION']
-    jwt_header,jwt_claims,jwt_signature = token[4:].split(".")
-    decoded_jwt_header = base64.b64decode(jwt_header).decode("utf-8", "ignore")
-    headers = json.loads(decoded_jwt_header)
-    alg = headers['alg']
-    if alg=='NONE':
-        claims = jwt.decode(token[4:],verify=False)
-    else:
-        claims = jwt.decode(token[4:],app.config['SECRET_KEY'],algorithms=[alg])
-    userId = claims['identity']
-    ret = 'User does not exist'
-    for usr in users:
-        if usr.id==userId:
-            ret = f"Welcome {usr.username}: {usr.role}"
+    try:
+        jwt_header,jwt_claims,jwt_signature = token[4:].split(".")
+        decoded_jwt_header = base64.b64decode(jwt_header).decode("utf-8", "ignore")
+        headers = json.loads(decoded_jwt_header)
+        alg = headers['alg']
+        if alg=='NONE':
+            claims = jwt.decode(token[4:],verify=False)
+        else:
+            claims = jwt.decode(token[4:],app.config['SECRET_KEY'],algorithms=[alg])
+        userId = claims['identity']
+        for usr in users:
+            if usr.id==userId:
+                ret = f"Welcome {usr.username}: {usr.role}"
+    except ValueError:
+        ret = 'User does not exist'
     return ret
 
 @app.errorhandler(404)
