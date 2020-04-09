@@ -16,7 +16,6 @@
 <script>
 	function login(){
 		var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
-		var host = window.location.hostname;
 		xmlhttp.open("POST", "/auth");
 		xmlhttp.setRequestHeader("Content-Type", "application/json");
 		foo = xmlhttp.send(JSON.stringify({username:"admin", password:"admin"}));
@@ -31,7 +30,6 @@
 
 	function getUserID(){
 		var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
-		var host = window.location.hostname;
 		xmlhttp.open("GET", "/protected");
 		xmlhttp.setRequestHeader("Content-Type", "application/json");
 		xmlhttp.setRequestHeader("Authorization", "JWT "+ localStorage.getItem('access_token'));
