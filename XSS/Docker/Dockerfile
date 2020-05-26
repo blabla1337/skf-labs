@@ -9,4 +9,5 @@ bash
 RUN git clone https://github.com/blabla1337/skf-labs.git
 WORKDIR /skf-labs/XSS
 RUN pip3 install -r requirements.txt
+RUN chmod +x XSS.py
 CMD [ "python3", "./XSS.py" ]
