@@ -8,4 +8,5 @@ git
 RUN git clone https://github.com/blabla1337/skf-labs.git
 WORKDIR /skf-labs/IDOR
 RUN pip3 install -r requirements.txt
+RUN chmod +x IDOR.py
 ENTRYPOINT [ "python3", "./IDOR.py" ]
