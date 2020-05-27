@@ -10,7 +10,8 @@ app = Flask(__name__, static_url_path='/static', static_folder='static')
 def add_headers(response):
     response.headers.add('Access-Control-Allow-Origin', '*')
     response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
-
+    return response
+    
 app.config['DEBUG'] = True
 
 @app.route("/")
