@@ -6,9 +6,6 @@ import graphene
 from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
 from flask_graphql import GraphQLView
 
-
-
-
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 
