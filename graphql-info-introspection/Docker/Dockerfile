@@ -10,5 +10,5 @@ RUN git clone https://github.com/blabla1337/skf-labs.git
 WORKDIR /skf-labs/graphql-info-introspection
 
 RUN pip3 install -r requirements.txt 
-RUN python3 populate-database.py
+#RUN python3 populate-database.py
 CMD [ "python3", "app.py"]
