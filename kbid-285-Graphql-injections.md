@@ -10,15 +10,6 @@ $ sudo docker pull blabla1337/owasp-skf-lab:graphql-injections
 $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:graphql-injections
 ```
 
-Or alternatively build yourself! 
-
-```sh
-docker build . -t graphql/inject && docker run -ti -p 5000:5000 graphql/inject
-```
-
-The docker should be up in no time and we should now be able to browse the application on `http://0.0.0.0:5000/`
-
-
 {% hint style="success" %}
  Now that the app is running let's go hacking!
 {% endhint %}
