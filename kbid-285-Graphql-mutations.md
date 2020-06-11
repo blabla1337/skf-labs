@@ -3,20 +3,11 @@
 ## Running the app
 
 ```
-$ sudo docker pull blabla1337/owasp-skf-lab:graphql-mutations
+$ sudo docker pull blabla1337/owasp-skf-lab:graphql-mutation
 
 ```text
-$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:graphql-mutations
+$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:graphql-mutation
 ```
-
-Or alternatively build yourself! 
-
-```sh
-docker build . -t graphql/mutations && docker run -ti -p 5000:5000 graphql/mutations
-```
-
-The docker should be up in no time and we should now be able to browse the application on `http://0.0.0.0:5000/`
-
 
 {% hint style="success" %}
  Now that the app is running let's go hacking!
