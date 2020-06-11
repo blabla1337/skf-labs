@@ -9,18 +9,6 @@ $ sudo docker pull blabla1337/owasp-skf-lab:graphql-idor
 ```text
 $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:graphql-idor
 ```
-
-Or alternatively build yourself! 
-
-> Run the application 
-
-```sh
-docker build . -t graphql/idor && docker run -ti -p 5000:5000 graphql/idor
-```
-
-Great now the app is running. Browse to `http://0.0.0.0:5000/` 
-
-
 {% hint style="success" %}
  Now that the app is running let's go hacking!
 {% endhint %}
