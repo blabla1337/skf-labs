@@ -14,16 +14,6 @@ $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:graphql-do
  Now that the app is running let's go hacking!
 {% endhint %}
 
-
-> Or build the image yourself! 
-
-```sh
-docker build . -t graphql/dos && docker run -ti -p 5000:5000 graphql/dos
-```
-
-Great! Now the app is running. Browse to `http://0.0.0.0:5000/` 
-
-
 ## Running the app Python3
 
 First, make sure python3 and pip are installed on your host machine.
