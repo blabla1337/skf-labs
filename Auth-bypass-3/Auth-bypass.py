@@ -6,7 +6,6 @@ app.config['DEBUG'] = True
 
 @app.route("/")
 def start():
-
     return render_template("index.html")
 
 
@@ -19,8 +18,6 @@ def home():
 @app.route("/signup", methods=['POST'])
 def signup():
     username = request.form['username']
-    password = request.form['password']
-
     return render_template("user_created_right.html", username=username)
 
 

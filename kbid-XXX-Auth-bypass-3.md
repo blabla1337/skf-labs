@@ -1,13 +1,13 @@
-# KBID 44 - Authorisation missing
+# KBID XXX - Authorisation Bypass
 
 ## Running the app
 
 ```text
-$ sudo docker pull blabla1337/owasp-skf-lab:auth-missing
+$ sudo docker pull blabla1337/owasp-skf-lab:auth-bypass-3
 ```
 
 ```text
-$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:auth-missing
+$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:auth-bypass-3
 ```
 
 {% hint style="success" %}

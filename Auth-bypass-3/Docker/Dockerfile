@@ -7,6 +7,6 @@ git \
 bash
 
 RUN git clone https://github.com/blabla1337/skf-labs.git
-WORKDIR /skf-labs/AUTH-missing
+WORKDIR /skf-labs/Auth-bypass-3
 RUN pip3 install -r requirements.txt
-CMD [ "python3", "./Auth-missing.py" ]
+CMD [ "python3", "./Auth-bypass.py" ]
