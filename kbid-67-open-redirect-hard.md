@@ -3,11 +3,11 @@
 ## Running the app
 
 ```
-$ docker pull blabla1337/owasp-skf-lab:url-redirection-hard
+$ docker pull blabla1337/owasp-skf-lab:url-redirection-harder
 ```
 
 ```text
-$ docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:url-redirection-hard
+$ docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:url-redirection-harder
 ```
 
 {% hint style="success" %}
