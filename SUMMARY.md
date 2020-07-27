@@ -51,5 +51,6 @@
 * [KBID XXX - Blind command injection](kbid-XXX-blind-cmd-injection-1.md)
 * [KBID XXX - XSSI (include files from untrusted sources)](kbid-xxx-include-files-from-untrusted-sources-js.md)
 * [KBID 111 - Client Side Template Injection](kbid-111-client-side-template-injection.md)
+* [KBID 251 - Command Injection 3]((kbid-251-command-injection3.md)
 * [template](template.md)
 
