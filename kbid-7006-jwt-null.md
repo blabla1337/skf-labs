@@ -101,8 +101,8 @@ The NONE algorithm means signature is not required, so the token can be tampered
 
 ```text
 {
-  "typ": "NONE",
-  "alg": "HS256"
+  "typ": "JWT",
+  "alg": "NONE"
 }
 #base64 eyJ0eXAiOiJKV1QiLCAiYWxnIjoiTk9ORSJ9
 ```
