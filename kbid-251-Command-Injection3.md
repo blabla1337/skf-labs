@@ -46,7 +46,7 @@ functioning of the web app in order to find possible injection points.
 We will start by exploring the application, we see there are file upload possibilities and also the home page displays the command prompt output of `'ls -lart *'`.
 
 
-![](.gitbook/assets/cmd31.png)
+![](.gitbook/assets/CMD31.png)
 
 On attempting to upload file through the file upload functionality, we can notice the uploaded file can be found in the /uploads directory in a normal flow. And what about the command prompt output?, if you closely analyse the index.html file under /templates folder it includes a system call function. That's interesting right? Is it possible that the application consumes system_call function?
 
@@ -87,15 +87,15 @@ Let's think more about this, so we have a file upload possibility as well the ap
                                                         
 
 Upload the modified file and changed the upload path as follows:
-![](.gitbook/assets/cmd32.png)
+![](.gitbook/assets/CMD32.png)
 
 Incase, you havent already modified the system_call locally you may also do it within the intercepted request in burpsuite as follows:
 
-![](.gitbook/assets/cmd33.png)
+![](.gitbook/assets/CMD33.png)
 
 Forward the modified request and what do you see :-)? We successfully managed to overwrite the index.html and ran OS command of our choice.
 
-![](.gitbook/assets/cmd34.png)
+![](.gitbook/assets/CMD34.png)
 
 Can you explore other possibilities using the same attack vector? Why not try to replace some icons or deface the application :-P?
 
