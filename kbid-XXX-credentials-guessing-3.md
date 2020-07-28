@@ -1,10 +1,39 @@
 # KBID XXX - Credentials Guessing 3 (credentials-guessing-3)
+
 ## Running the app
-```text $ sudo python credentials-guessing-3.py ``` ```text Visit the site: 
-http://127.0.0.1:5000/ ``` {% hint style="success" %} Now that the app 
-is running let's go hacking! {% endhint %} ![Docker Image and write-up 
-thanks to TelecoLabs!](.gitbook/assets/telecolabs.png) shayu (shayubit) 
-- https://www.telecolabs.com
+
+```text
+$ sudo docker pull blabla1337/owasp-skf-lab:credentials-guessing-3
+```
+
+```text
+$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:credentials-guessing-3
+```
+
+{% hint style="success" %}
+Now that the app is running let's go hacking!
+{% endhint %}
+
+## Running the app Python3
+
+First, make sure python3 and pip are installed on your host machine.
+After installation, we go to the folder of the lab we want to practise 
+"i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
+
+```
+$ pip3 install -r requirements.txt
+```
+
+```
+$ python3 <labname>
+```
+
+{% hint style="success" %}
+ Now that the app is running let's go hacking!
+{% endhint %}
+
+
+![Docker image and write-up thanks to Contrahack.io !](.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
 
 ## Reconnaissance
 

@@ -3,22 +3,40 @@
 ## Running the app
 
 ```text
-$ sudo docker pull blabla1337/owasp-skf-lab:cross-site-request-forgery
+$ sudo docker pull blabla1337/owasp-skf-lab:csrf
 ```
 
 ```text
-$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:cross-site-request-forgery
+$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:csrf
 ```
 
 {% hint style="success" %}
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker image and write-up thanks to ING!](.gitbook/assets/ing_primary_logo.png)
+## Running the app Python3
+
+First, make sure python3 and pip are installed on your host machine.
+After installation, we go to the folder of the lab we want to practise 
+"i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
+
+```
+$ pip3 install -r requirements.txt
+```
+
+```
+$ python3 <labname>
+```
+
+{% hint style="success" %}
+ Now that the app is running let's go hacking!
+{% endhint %}
+
+![Docker image and write-up thanks to Contrahack.io !](.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
 
 ## Reconnaissance
 
-CSRF is an attack that tricks the victim into submitting a malicious request. It inherits the identity and privileges of the victim to perform an undesired function on the victim's behalf. For most sites, browser requests automatically include any credentials associated with the site, such as the user's session cookie, IP address, Windows domain credentials, and so forth. Therefore, if the user is currently authenticated to the site, the site will have no way to distinguish between the forged request sent by the victim and a legitimate request sent by the victim.
+CSRF is an attack that tricks the victim into submitting a malicious request. It inherits the identity and privileges of the victim to perform an undesired function on the victim's behalf. For most sites, browser requests automatically include any credentials associated with the site, such as the user's session cookie, IP address, Windows domain credentials, and so forth. Therefore, if the user is currently authenticated to the site, the site will have no way to distinguish between the forged request sent by the attacker and a legitimate request sent by the victim.
 
 CSRF attacks target functionality that causes a state change / data mutation on the server, such as changing the victim's email address or password, or purchasing something. Forcing the victim to retrieve data doesn't benefit an attacker because the attacker doesn't receive the response, the victim does. As such, CSRF attacks target state-changing requests.
 

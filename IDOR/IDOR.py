@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from flask import Flask, request, url_for, render_template, send_from_directory
 import random
 from fpdf import FPDF

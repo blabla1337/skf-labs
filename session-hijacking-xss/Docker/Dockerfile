@@ -7,6 +7,6 @@ git \
 bash
 
 RUN git clone https://github.com/blabla1337/skf-labs.git
-WORKDIR /skf-labs/CSRF
+WORKDIR /skf-labs/session-hijacking-xss
 RUN pip3 install -r requirements.txt
-CMD [ "python3", "./CSRF.py" ]
+CMD [ "python3", "./Session-hijacking.py" ]

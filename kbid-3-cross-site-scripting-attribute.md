@@ -1,20 +1,39 @@
 # KBID 3 - Cross site scripting \(attribute\)
 
-## Running the app
+## Running the app Docker
 
 ```text
-$ sudo docker pull blabla1337/owasp-skf-lab:cross-site-scripting-attribute
+$ sudo docker pull blabla1337/owasp-skf-lab:xss-attribute
 ```
 
 ```text
-$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:cross-site-scripting-attribute
+$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:xss-attribute
 ```
 
 {% hint style="success" %}
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker image and write-up thanks to ING!](.gitbook/assets/ing_primary_logo.png)
+## Running the app Python3
+
+First, make sure python3 and pip are installed on your host machine.
+After installation, we go to the folder of the lab we want to practise 
+"i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
+
+```
+$ pip3 install -r requirements.txt
+```
+
+```
+$ python3 <labname>
+```
+
+{% hint style="success" %}
+ Now that the app is running let's go hacking!
+{% endhint %}
+
+
+![Docker image and write-up thanks to Contrahack.io !](.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
 
 ## Reconnaissance
 
@@ -38,21 +57,16 @@ and it is not escaped so it should be possible to perform a Cross Site Scripting
 
 ### Step 1
 
-Now we have seen where the user input is being reflected in the style, we will have to look what dangerous HTML characters are not properly escaped so we can build our XSS payload. So for our first check we use the following string as an input:
+Now we have seen where the user input is being reflected in the style, we will have to look what dangerous HTML characters are not properly escaped, when the developer used the right encoding the metacharacters like " >< will be properly encoded. So we need to form a payload that does not utilize these characters in order to make the attack successful like the following payload:
+
+*note: we disabled auto-escape for the challenge but in order to do it well you need to avoid using the " > < to leverage the attack*
+
 
 ```text
-foobar"></
+red ' onmouseover='alert(1337)'
 ```
 
-As you can see the application does not react at out malicious payload, so nothing happens. Why? Maybe the quotes that are used in the template are not the right ones. Let's try our new payload changing the quotes:
-
-```text
-red;'><img src=x onerror=alert(1)>
-```
-
-![](.gitbook/assets/xss-attribute-3.png)
-
-and clicking the button, we achieve what we were looking for.
+Now, hovering over the paragraph will trigger our javascript event handler!
 
 ![](.gitbook/assets/xss-attribute-4.png)
 

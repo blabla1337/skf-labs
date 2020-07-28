@@ -4,6 +4,7 @@
 for i in $(ls -d */); 
     do 
     dir=${i%%/};
-    echo "cd" $dir/Docker"; docker build . -t blabla1337/owasp-skf-lab:"$dir "--no-cache; docker push blabla1337/owasp-skf-lab:"$dir"; cd ../.." | tr "[:upper:]" "[:lower:]" 
+    #echo "cd" $dir/Docker"; docker buildx build --platform linux/amd64,linux/arm/v7 --no-cache -t blabla1337/owasp-skf-lab:"$dir " --push .; cd ../.." | tr "[:upper:]" "[:lower:]" 
+    echo "docker login; cd" $dir/Docker"; docker buildx build --platform linux/amd64,linux/arm/v7 -t blabla1337/owasp-skf-lab:"$dir " --push .; cd ../.." | tr "[:upper:]" "[:lower:]" 
 done
 
