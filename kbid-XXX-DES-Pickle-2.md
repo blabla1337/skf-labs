@@ -152,6 +152,7 @@ a = skf()
 ser = pickle.dumps(a)
 print (base64.b64encode(ser))
 ```
+*Note: If Netcat (nc) program is not available, change the argument passed at os.system call to sleep(5).*
 
 This will yield the following output:
 ```Text
