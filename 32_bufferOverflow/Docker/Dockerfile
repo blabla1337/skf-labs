@@ -5,6 +5,7 @@ RUN apt-get update && apt-get install -y git \
 bash \
 python-pip \
 build-essential \
+libssl-dev \
 gcc \
 gdb \
 vim \
