@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y \
   nodejs
 
 # Exposing port 3000 for connecting to the application -p 3000:3000
-EXPOSE 3000
+EXPOSE 5000
 
 # Cloning SKF's parameter-binding's application
 RUN git clone https://github.com/blabla1337/skf-labs.git
@@ -37,4 +37,4 @@ RUN rails new testApplicationForBinDirectoryOnly --skip-namespace --skip-yarn --
 	rm -rfv testApplicationForBinDirectoryOnly/
 
 # Running rails server with 0.0.0.0 as host in docker and default port (i.e. 3000)
-CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
+CMD ["bundle", "exec", "rails", "server", "-p", "5000", "-b", "0.0.0.0"]
