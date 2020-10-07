@@ -36,11 +36,11 @@ $ python ./TLS-downgrade.py
 
 ## Reconnaissance
 
-When visiting [https://localhost:5000](https://localhost:5000) we will be greeted by the following web app. It has no functionality to play with, it's just a friendly page of text. 
+When visiting [https://localhost:5000](https://localhost:5000) our browser warns us about a bad, self-signed certificate. In a real situation that would be a bad thing to encounter, but in our test lab it's to be expected. At least we have a safe HTTPS connection, right?
+
+After confirming the exception, we will be greeted by the following web app. It has no functionality to play with, it's just a friendly page of text. 
 
 ![](.gitbook/assets/tls-downgrade-1.png)
-
-Our browser warned us about a bad, self-signed certificate. In a real situation that would be a bad thing to encounter, but in our test lab it's to be expected. But least we have a safe HTTPS connection, right?
 
 Let's take a look under the hood!
 
