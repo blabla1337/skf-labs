@@ -1,5 +1,5 @@
 FROM alpine:3.3
-MAINTAINER Tess Sluijter-Stek <tsluyter@kilala.nl>
+MAINTAINER Glenn ten Cate <glenn.ten.cate@owasp.org>
 
 RUN apk update --no-cache && apk add python \
 python-dev py-pip py-cryptography \ 
@@ -16,7 +16,11 @@ RUN openssl genrsa 1024 > /ssl.key
 RUN openssl req -new -x509 -nodes -sha1 -days 365 -key /ssl.key -subj "/C=NL/ST=SKF/L=Amsterdam/O=OWASP/CN=localhost" > /ssl.cert
 
 RUN pip install -r requirements.txt
+
 RUN find . -name "*.py" -exec dos2unix {} \;
+RUN find . -name "*.css" -exec dos2unix {} \;
+RUN find . -name "*.js" -exec dos2unix {} \;
+
 RUN find . -name "*.py" -exec chmod +x {} \;
 
 CMD [ "python", "./TLS-downgrade.py" ]
