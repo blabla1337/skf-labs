@@ -136,7 +136,7 @@ $ sslyze 10.0.0.50:5000
 
      The group of cipher suites supported by the server has the following properties:
        Forward Secrecy                    OK - Supported
-       Legacy RC4 Algorithm               OK - Not Supported
+       Legacy RC4 Algorithm               INSECURE - Supported
 
      The server has no preferred cipher suite.
 
@@ -161,7 +161,7 @@ $ sslyze 10.0.0.50:5000
                                           OK - Compression disabled
 ```
 
-SSLyze tells us that, while SSLv2 is not offered, SSLv3 is in fact available. Unfortunately it tells us that legacy RC4 algorithms are not supported, meaning that we'd need more effort in cracking the encyrption. Aside from that the system is looking pretty good: it's not susceptible to a number of known attacks. 
+SSLyze tells us that, while SSLv2 is not offered, SSLv3 is in fact available. Legacy RC4 algorithms also appear to be supported, meaning we could get lucky in cracking the encyrption.  
 
 Let's see if TestSSL.sh tells us anything else. 
 
@@ -222,9 +222,7 @@ It looks like someone has deliberately enable every cipher available to OpenSSL 
 
 However, we can't go on like this! We have to fix things. 
 
-First of all, all the ciphers need to go! We will have to trust the OpenSSL defaults to be stronger than what's configured now. Python's documentation also tells us that: "Changed in version 2.7.16: The context is created with secure default values. ... The initial cipher suite list contains only HIGH ciphers, no NULL ciphers and no MD5 ciphers". That would suggest an upgrade might be needed. 
-
-https://docs.python.org/2/library/ssl.html#ssl-contexts
+First of all, all the ciphers need to go! We will have to trust the OpenSSL defaults to be stronger than what's configured now. [Python's documentation also tells us](https://docs.python.org/2/library/ssl.html#ssl-contexts) that: _"Changed in version 2.7.16: The context is created with secure default values. [...] The initial cipher suite list contains only HIGH ciphers, no NULL ciphers and no MD5 ciphers"_. That would suggest an upgrade might be needed. 
 
 Next up, we really should not allow SSLv3 anymore, so we'll take out the manual override. And finally, if we would like to also disable the deprecated TLSv1.0 and v1.1, we could tell Python's SSL Context to only accept v1.2. 
 
