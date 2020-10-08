@@ -17,7 +17,6 @@ nfQueueID         = 0
 maxPacketsToStore = 100
 
 def packetReceived(pkt):
-  #print("Accepted a new packet...")
   print("...")
   ip = IP(pkt.get_payload())
 
@@ -41,14 +40,14 @@ def packetReceived(pkt):
         print("Byte 61 is now: ", msgBytes2[61], ". Needs to change to 0x03.")         
         print("Byte 62 is now: ", msgBytes2[62], ". Needs to change to 0x01.")         
                                                                                        
-        msgBytes2[61] = '\x03'                                                         
-        msgBytes2[62] = '\x01'                                                         
+#       msgBytes2[61] = '\x03'                                                         
+#       msgBytes2[62] = '\x03'                                                         
                                                                                        
         print("Byte 61 is now: ", msgBytes2[61], ".")                                  
         print("Byte 62 is now: ", msgBytes2[62], ".")                                  
                                                                                        
-#        pkt.set_payload(bytes(msgBytes2))                                             
-        pkt.set_payload(msgBytes)                                                      
+        msg=b''.join(msgBytes2)
+        pkt.set_payload(msg)                                                      
                                                                                        
       pkt.accept()                                                                     
     else:                                                                              
