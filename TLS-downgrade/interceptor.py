@@ -39,11 +39,7 @@ def downgradeTLS(packet):
     if tcpPayload[0] == '\x16' and tcpPayload[1] == '\x03' and tcpPayload[5] == '\x01':
       print("TLS handshake found, client HELLO.")
       print("-----")
-<<<<<<< HEAD
       print(pkt.command()) 
-=======
-      print(pkt.getlayer(IP)) 
->>>>>>> 66708a2f1e997baef45079ca08f11b224f2b1886
       print("-----")
       
       # By testing with these two and adding .len or .cksum we confirm: the layers don't have those.
