@@ -10,6 +10,9 @@
 from netfilterqueue import NetfilterQueue
 from scapy import *
 
+scapy_builtins = __import__('scapy.all', globals(), locals(),'.').__dict__
+__builtins__.__dict__.update(scapy_builtins)
+
 nfQueueID         = 0
 maxPacketsToStore = 100
 
