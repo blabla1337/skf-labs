@@ -4,5 +4,5 @@ The Docker build process is also a bit different, because this system isn't in G
 
 Build instructions:
 docker build -t skf-labs/tls-downgrade .
-docker run -ti -p 5000:5000 skf-labs/tls-downgrade
+docker run -ti -p 5000:5000 --cap-add=NET_ADMIN skf-labs/tls-downgrade
 
