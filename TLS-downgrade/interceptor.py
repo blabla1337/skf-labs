@@ -41,6 +41,8 @@ def downgradeTLS(packet):
       print("-----")
       print(pkt.command()) 
       print("-----")
+      print(pkt.show()) 
+      print("-----")
       
       # By testing with these two and adding .len or .cksum we confirm: the layers don't have those.
       # Very very odd! Why would there not be a cksum or len??
