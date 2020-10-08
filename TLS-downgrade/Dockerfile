@@ -14,11 +14,12 @@ openssl
 RUN apk add iptables tcpdump gcc g++ libnfnetlink libnfnetlink-dev linux-headers libnetfilter_queue-dev
 RUN pip install setuptools
 RUN pip install NetfilterQueue
-RUN pip install scapy-python3
+RUN pip install scapy
 
 
 # Cleaning up packages that were only for the build:
-RUN apk del gcc g++ libnfnetlink-dev linux-headers libnetfilter_queue-dev
+#RUN apk del gcc g++ libnfnetlink-dev linux-headers libnetfilter_queue-dev
+RUN apk del gcc g++ linux-headers
 
 
 # Needed to fix line endings:
