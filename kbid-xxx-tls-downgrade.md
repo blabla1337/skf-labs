@@ -239,8 +239,8 @@ If you'd really like to bring this application into the 21st century, then upgra
 
 ## Additional sources
 
-{% embed url="https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Protection_Cheat_Sheet.html" caption="" %}
+{% embed url="https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Protection_Cheat_Sheet.html" caption="OWASP TLS cheat sheet" %}
 
-{% embed url="https://www.acunetix.com/blog/articles/tls-vulnerabilities-attacks-final-part/" caption="" %}
+{% embed url="https://www.acunetix.com/blog/articles/tls-vulnerabilities-attacks-final-part/" caption="Acunetix explains TLS vulnerabilities" %}
 
-{% embed url="https://python-security.readthedocs.io/ssl.html" caption="" %}
+{% embed url="https://tls.ulfheim.net" caption="The illustrated TLS connection" %}

