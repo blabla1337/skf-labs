@@ -2,3 +2,7 @@ Flask
 flask-cors
 requests
 Werkzeug
+setuptools
+NetfilterQueue
+scapy 
+scapy-ssl_tls

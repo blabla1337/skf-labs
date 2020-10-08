@@ -12,15 +12,6 @@ openssl
 # Needed for the interceptor:
 #RUN apk add iptables python3 python3-pip tcpdump
 RUN apk add iptables tcpdump gcc g++ libnfnetlink libnfnetlink-dev linux-headers libnetfilter_queue-dev
-RUN pip install setuptools
-RUN pip install NetfilterQueue
-RUN pip install scapy
-
-
-# Cleaning up packages that were only for the build:
-#RUN apk del gcc g++ libnfnetlink-dev linux-headers libnetfilter_queue-dev
-RUN apk del gcc g++ linux-headers
-
 
 # Needed to fix line endings:
 RUN apk add dos2unix --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/community/ --allow-untrusted
@@ -34,6 +25,11 @@ RUN apk add dos2unix --update-cache --repository http://dl-3.alpinelinux.org/alp
 COPY ./ /skf-labs/TLS-downgrade
 WORKDIR /skf-labs/TLS-downgrade
 RUN pip install -r requirements.txt
+
+
+# Cleaning up packages that were only for the build:
+#RUN apk del gcc g++ libnfnetlink-dev linux-headers libnetfilter_queue-dev
+RUN apk del gcc g++ linux-headers
 
 
 # Generating a self-signed cert with private key:
