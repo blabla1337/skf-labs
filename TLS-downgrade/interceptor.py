@@ -59,6 +59,7 @@ def downgradeTLS(packet):
 
         print("Byte 61 is now: ", msgBytes2[61], ".")
         print("Byte 62 is now: ", msgBytes2[62], ".")
+        print(msgBytes2[0:65])
 
         msg=b''.join(msgBytes2)
         packet.set_payload(msg)
@@ -71,9 +72,9 @@ def downgradeTLS(packet):
         # Comparing to the original packet
         scapy_packetchk = IP(packet.get_payload())
         print("-----")
-        print(scapy_packet.command()) 
+        print(scapy_packetchk.command()) 
         print("-----")
-        print(scapy_packet.show()) 
+        print(scapy_packetchk.show()) 
         print("-----")
 
 
