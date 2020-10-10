@@ -55,7 +55,7 @@ def downgradeTLS(packet):
         print("Byte 62 is now: ", msgBytes2[62], ". Needs to change to 0x01.")
 
         msgBytes2[61] = '\x03'
-        msgBytes2[62] = '\x03'
+        msgBytes2[62] = '\x01'
 
         print("Byte 61 is now: ", msgBytes2[61], ".")
         print("Byte 62 is now: ", msgBytes2[62], ".")
