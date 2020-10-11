@@ -200,7 +200,7 @@ tess@kalivm:~/Tools/testssl.sh$ ./testssl.sh 10.0.0.50:5000
 [...]
 ```
 
-In the end, it looks like this web application was made a long time ago and was meant to serve end-users with old browsers. Think "Internet Explorer 6 old". Maybe it's from some corporate network; you never what you'll find in those! The site appears to be potentially vulnerable to the POODLE and [SWEET32 attacks](https://sweet32.info) and attempts on cracking RC4. 
+In the end, it looks like this web application was made a long time ago and was meant to serve end-users with old browsers. Think "*Internet Explorer 6 old*". Maybe it's from some corporate network; you never what you'll find in those! The site appears to be potentially vulnerable to the POODLE and [SWEET32 attacks](https://sweet32.info) and attempts on cracking RC4. 
 
 Performing an actual attack would require that we set up a man-in-the-middle (MitM), to intercept and adjust the traffic. Luckily we have prepared just the thing for you!
 
@@ -231,7 +231,7 @@ The shell script `start-interceptor.sh` is used to add a local firewall rule and
 
 ![Starting the interceptor from the command line](.gitbook/assets/tls-downgrade-5.png)
 
-The firewall rule that we create will make sure every incoming TCP/IP packet is parsed by the Python script `interceptor.py`. This script passes every packet onwards to the Docker container, **except** for TLSv1.2 "*Client Hello*" packets. This packet is the firs step in setting up a working TLS connection, all of which is explained in grand details in [*The Illustrated TLS connection*](https://tls.ulfheim.net). 
+The firewall rule that we create will make sure every incoming TCP/IP packet is parsed by the Python script `interceptor.py`. This script passes every packet onwards to the Docker container, **except** for TLSv1.2 "*Client Hello*" packets. This packet is the first step in setting up a working TLS connection, all of which is explained in grand details in [*The Illustrated TLS connection*](https://tls.ulfheim.net). 
 
 If you start the interceptor without any modifications, it will pass on the TLS *Client Hello* unaltered. Doing so will show debugging output in your Bash session. TLSv1.0 and v1.1 connections don't trigger the MitM, while TLSv1.2 does.
 
@@ -279,6 +279,7 @@ Then, perform the `openssl s_client` command again through `docker exec`.
 
 The interception logs should show that the "\x03\x03" was changed into "\x03\x01":
 
+![Packet contents changed](.gitbook/assets/tls-downgrade-7.png)
 
 And the `openssl s_client` command should show that the TLS standard was downgraded by the MiTM, to TLSv1.0.
 
@@ -308,10 +309,16 @@ Let's delve into the code to see what's happening here. Like before, you can ent
 The file `TLS-downgrade.py` forms the entry point for this web application. Like most of the SKF Labs applications, it runs Flask with Python. The TLS listener is configured as follows:
 
 ```python
-ctx = ssl.SSLContext(ssl.PROTOCOL_SSLv23)                                                                               
-ctx.options &= ~ssl.OP_NO_SSLv3                                                                                         
+# Adding all the ciphers, we may need them.
 ciphers = 'ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:SRP-DSS-AES-256-CBC-SHA:SRP-RSA-AES-256-CBC-SHA:SRP-AES-256-CBC-SHA:DH-DSS-AES256-GCM-SHA384:DHE-DSS-AES256-GCM-SHA384:DH-RSA-AES256-GCM-SHA384:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA256:DH-RSA-AES256-SHA256:DH-DSS-AES256-SHA256:DHE-RSA-AES256-SHA:DHE-DSS-AES256-SHA:DH-RSA-AES256-SHA:DH-DSS-AES256-SHA:DHE-RSA-CAMELLIA256-SHA:DHE-DSS-CAMELLIA256-SHA:DH-RSA-CAMELLIA256-SHA:DH-DSS-CAMELLIA256-SHA:ECDH-RSA-AES256-GCM-SHA384:ECDH-ECDSA-AES256-GCM-SHA384:ECDH-RSA-AES256-SHA384:ECDH-ECDSA-AES256-SHA384:ECDH-RSA-AES256-SHA:ECDH-ECDSA-AES256-SHA:AES256-GCM-SHA384:AES256-SHA256:AES256-SHA:CAMELLIA256-SHA:PSK-AES256-CBC-SHA:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:SRP-DSS-AES-128-CBC-SHA:SRP-RSA-AES-128-CBC-SHA:SRP-AES-128-CBC-SHA:DH-DSS-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:DH-RSA-AES128-GCM-SHA256:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES128-SHA256:DHE-DSS-AES128-SHA256:DH-RSA-AES128-SHA256:DH-DSS-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA:DH-RSA-AES128-SHA:DH-DSS-AES128-SHA:DHE-RSA-SEED-SHA:DHE-DSS-SEED-SHA:DH-RSA-SEED-SHA:DH-DSS-SEED-SHA:DHE-RSA-CAMELLIA128-SHA:DHE-DSS-CAMELLIA128-SHA:DH-RSA-CAMELLIA128-SHA:DH-DSS-CAMELLIA128-SHA:ECDH-RSA-AES128-GCM-SHA256:ECDH-ECDSA-AES128-GCM-SHA256:ECDH-RSA-AES128-SHA256:ECDH-ECDSA-AES128-SHA256:ECDH-RSA-AES128-SHA:ECDH-ECDSA-AES128-SHA:AES128-GCM-SHA256:AES128-SHA256:AES128-SHA:SEED-SHA:CAMELLIA128-SHA:IDEA-CBC-SHA:PSK-AES128-CBC-SHA:ECDHE-RSA-RC4-SHA:ECDHE-ECDSA-RC4-SHA:ECDH-RSA-RC4-SHA:ECDH-ECDSA-RC4-SHA:RC4-SHA:RC4-MD5:PSK-RC4-SHA:ECDHE-RSA-DES-CBC3-SHA:ECDHE-ECDSA-DES-CBC3-SHA:SRP-DSS-3DES-EDE-CBC-SHA:SRP-RSA-3DES-EDE-CBC-SHA:SRP-3DES-EDE-CBC-SHA:EDH-RSA-DES-CBC3-SHA:EDH-DSS-DES-CBC3-SHA:DH-RSA-DES-CBC3-SHA:DH-DSS-DES-CBC3-SHA:ECDH-RSA-DES-CBC3-SHA:ECDH-ECDSA-DES-CBC3-SHA:DES-CBC3-SHA:PSK-3DES-EDE-CBC-SHA'
-ctx.set_ciphers(ciphers) 
+
+# Standard and protocol setup
+ctx = ssl.SSLContext(ssl.PROTOCOL_SSLv23)
+ctx.options &= ~ssl.OP_NO_SSLv3
+ctx.set_ciphers(ciphers)
+
+# Loading the certificate
+ctx.load_cert_chain('/ssl.cert', '/ssl.key')
 ```
 
 It looks like someone has deliberately enable every cipher available to OpenSSL and has also re-enabled SSLv3. This doesn't have to be a malicious action, it could be down to inexperience or even a design decision based on the need to support legacy applications like IE6, IE8 or Java 6. 
@@ -325,7 +332,12 @@ Next up, we really should not allow SSLv3 anymore, so we'll take out the manual 
 The new, resulting code would be:
 
 ```python
+# Standard and protocol setup
 ctx = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
+
+# Loading the certificate
+ctx.load_cert_chain('/ssl.cert', '/ssl.key')
+
 ```
 
 Well now! That looks a lot simpler! And it even protects us against the MitM TLS-downgrade attack!
