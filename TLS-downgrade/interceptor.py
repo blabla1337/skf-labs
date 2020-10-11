@@ -98,6 +98,12 @@ def craftTLS(scapy_packet):
   #TLS_payload = TLSClientHello(version=???)
   
   RAW_load = scapy_packet["Raw"].load
+  
+  RAW_bytes = [b for b in RAW_load]                                                              
+  RAW_bytes[9] = '\x03'                                                                          
+  RAW_bytes[10] = '\x03'           # Flip this to \x01 for a downgrade
+  RAW_load = b''.join(RAW_bytes) 
+  
   packet = ip/tcp/RAW_load
   
   # Sending out the DIY packet
