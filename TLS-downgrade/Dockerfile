@@ -10,16 +10,11 @@ openssl
 
 
 # Needed for the interceptor:
-#RUN apk add iptables python3 python3-pip tcpdump
 RUN apk add iptables tcpdump gcc g++ libnfnetlink libnfnetlink-dev linux-headers libnetfilter_queue-dev
 
 # Needed to fix line endings:
 RUN apk add dos2unix --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/community/ --allow-untrusted
 
-
-# Setting up the NetfilterQueue needed for interceptor.py
-# This cannot be done in the build step, as it needs --cap-add=NET_ADMIN and --cap-add=NET_RAW
-#RUN iptables -A INPUT -j NFQUEUE --queue-num 0
 
 # Setting up the application and installing more dependencies:
 COPY ./ /skf-labs/TLS-downgrade
@@ -28,7 +23,6 @@ RUN pip install -r requirements.txt
 
 
 # Cleaning up packages that were only for the build:
-#RUN apk del gcc g++ libnfnetlink-dev linux-headers libnetfilter_queue-dev
 RUN apk del gcc g++ linux-headers
 
 
