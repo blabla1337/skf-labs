@@ -12,7 +12,7 @@ WORKDIR /skf-labs/CSRF-weak
 
 # Installing needed binaries and deps. Then removing unneeded deps:
 RUN apk update --no-cache && apk add python3 python3-dev py3-pip bash \
-&& pip3 install -r requirements.txt && apk del py3-pip python3-dev
+&& pip3 install -r requirements.txt && apk del python3-dev
 
 # Needed to fix line endings:
 RUN apk add dos2unix --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/community/ --allow-untrusted
