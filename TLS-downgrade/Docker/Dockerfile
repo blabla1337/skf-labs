@@ -31,6 +31,7 @@ RUN openssl req -new -x509 -nodes -sha1 -days 365 -key /ssl.key -subj "/C=NL/ST=
 
 
 # Fixing Windows line endings for our students:
+RUN find . -name "*.sh" -exec dos2unix {} \;
 RUN find . -name "*.py" -exec dos2unix {} \;
 RUN find . -name "*.css" -exec dos2unix {} \;
 RUN find . -name "*.js" -exec dos2unix {} \;
