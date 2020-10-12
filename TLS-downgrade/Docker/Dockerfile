@@ -14,7 +14,7 @@ WORKDIR /skf-labs/TLS-downgrade
 # Needed for the Python web app:
 RUN apk update --no-cache && apk add git python python-dev py-pip py-cryptography bash openssl \
 iptables tcpdump gcc g++ libnfnetlink libnfnetlink-dev linux-headers libnetfilter_queue-dev \
-&& pip install -r requirements.txt && apk del gcc g++ linux-headers
+&& pip install -r requirements.txt && apk del gcc g++ linux-headers py-pip
 
 
 # Needed to fix line endings:
