@@ -2,19 +2,23 @@ FROM alpine:3.3
 MAINTAINER Glenn ten Cate <glenn.ten.cate@owasp.org>
 
 
-# Setting up the application and installing more dependencies:
-COPY ./ /skf-labs/TLS-downgrade
-WORKDIR /skf-labs/TLS-downgrade
+# Needed for pip install:
+COPY ./requirements.txt /
 
 
 # Needed for the Python web app:
 RUN apk update --no-cache && apk add python python-dev py-pip py-cryptography bash openssl \
-iptables tcpdump gcc g++ libnfnetlink libnfnetlink-dev linux-headers libnetfilter_queue-dev \
+iptables gcc g++ libnfnetlink libnfnetlink-dev linux-headers libnetfilter_queue-dev \
 && pip install -r requirements.txt && apk del gcc g++ linux-headers py-pip
 
 
 # Needed to fix line endings:
 RUN apk add dos2unix --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/community/ --allow-untrusted
+
+
+# Setting up the application and installing more dependencies:
+COPY ./ /skf-labs/TLS-downgrade
+WORKDIR /skf-labs/TLS-downgrade
 
 
 # Generating a self-signed cert with private key:
