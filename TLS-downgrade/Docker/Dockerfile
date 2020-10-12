@@ -1,13 +1,14 @@
-FROM alpine:3.3 AS tls-downgrade-first
+FROM alpine:3.3 AS tls-downgrade-build
 MAINTAINER Glenn ten Cate <glenn.ten.cate@owasp.org>
 
+# Saving space by cloning from Git, then copying only what we need:
+RUN apk update --no-cache && apk add git; cd /tmp && mkdir /skf-labs \
+&& git clone https://github.com/blabla1337/skf-labs.git \
+&& mv /tmp/skf-labs/TLS-downgrade /skf-labs/ \
+&& rm -r /tmp/skf-labs && apk del git
 
-# Most basic
-RUN apk update --no-cache && apk add git 
 
-
-# Setting up the application and installing more dependencies:
-RUN git clone https://github.com/blabla1337/skf-labs.git
+# Switching to the new app location:
 WORKDIR /skf-labs/TLS-downgrade
 
 
@@ -35,3 +36,9 @@ RUN find . -name "*.sh" -o -name "*.py" | xargs chmod +x
 
 # Starting the web app:
 CMD [ "python", "./TLS-downgrade.py" ]
+
+
+
+# Reducing all the layers down to one:
+FROM tls-downgrade-build
+MAINTAINER Glenn ten Cate <glenn.ten.cate@owasp.org>
