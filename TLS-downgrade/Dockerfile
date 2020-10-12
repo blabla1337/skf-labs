@@ -22,11 +22,11 @@ RUN openssl genrsa 1024 > /ssl.key && openssl req -new -x509 -nodes -sha1 -days 
 
 
 # Fixing Windows line endings for our students:
-RUN find . -name "*.sh" -o -name "*.py" -o -name "*.css" -o -name "*.js" -exec dos2unix {} \;
+RUN find . -name "*.sh" -o -name "*.py" -o -name "*.css" -o -name "*.js" | xargs dos2unix
 
 
 # Setting chmod +x on the scripts:
-RUN find . -name "*.sh" -o -name "*.py" -exec chmod +x {} \;
+RUN find . -name "*.sh" -o -name "*.py" | xargs chmod +x 
 
 
 # Starting the web app:
