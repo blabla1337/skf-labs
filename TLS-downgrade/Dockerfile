@@ -9,7 +9,7 @@ COPY ./requirements.txt /
 # Needed for the Python web app:
 RUN apk update --no-cache && apk add python python-dev py-pip py-cryptography bash openssl \
 iptables gcc g++ libnfnetlink libnfnetlink-dev linux-headers libnetfilter_queue-dev \
-&& pip install -r requirements.txt && apk del gcc g++ linux-headers py-pip
+&& pip install --no-cache-dir -r requirements.txt && apk del gcc g++ linux-headers py-pip
 
 
 # Needed to fix line endings:
