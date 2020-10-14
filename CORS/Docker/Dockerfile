@@ -7,7 +7,7 @@ MAINTAINER Glenn ten Cate <glenn.ten.cate@owasp.org>
 RUN apk update --no-cache && apk add python3 python3-dev py3-pip bash git 
 
 # Needed to fix line endings:
-RUN apk add dos2unix --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/community/ --allow-untrusted
+RUN apk add dos2unix --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/community/ --allow-untrusted
 
 
 
