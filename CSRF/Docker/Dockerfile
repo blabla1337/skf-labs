@@ -17,11 +17,9 @@ RUN apk update --no-cache && apk add python3 python3-dev py3-pip bash \
 # Needed to fix line endings:
 RUN apk add dos2unix --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/community/ --allow-untrusted
 
-# Fixing Windows line endings for our students:
-RUN find . -name "*.sh" -o -name "*.py" -o -name "*.css" -o -name "*.js" | xargs dos2unix
-
-# Setting chmod +x on the scripts:
-RUN find . -name "*.sh" -o -name "*.py" | xargs chmod +x
+# Fixing Windows line endings and execution bits for our students:
+RUN find . -name "*.sh" -o -name "*.py" -o -name "*.css" -o -name "*.js" | xargs dos2unix \
+&& find . -name "*.sh" -o -name "*.py" | xargs chmod +x
 
 # Starting the actual application:
 CMD [ "python3", "./CSRF.py" ]

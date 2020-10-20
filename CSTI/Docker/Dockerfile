@@ -27,11 +27,9 @@ RUN cd /tmp && mkdir /skf-labs \
 # Switching to the new app location:
 WORKDIR /skf-labs/CSTI
 
-# Fixing Windows line endings for our students:
-RUN find . -name "*.sh" -o -name "*.py" -o -name "*.css" -o -name "*.js" | xargs dos2unix
-
-# Setting chmod +x on the scripts:
-RUN find . -name "*.sh" -o -name "*.py" | xargs chmod +x
+# Fixing Windows line endings and execution bits for our students:
+RUN find . -name "*.sh" -o -name "*.py" -o -name "*.css" -o -name "*.js" | xargs dos2unix \
+&& find . -name "*.sh" -o -name "*.py" | xargs chmod +x
 
 # Starting the actual application:
 CMD [ "python3", "./CSTI.py" ]
