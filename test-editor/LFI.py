@@ -14,7 +14,7 @@ def start():
 def home():
     filename = request.form['filename']
     if filename == "":
-        filename = "text/default.txt"
+        filename = "default.txt"
     f = open(filename,'r')
     read = f.read()
     return render_template("index.html",read = read)
