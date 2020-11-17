@@ -4,7 +4,7 @@ FROM alpine:3.7 AS skf-alpine37
 MAINTAINER Glenn ten Cate <glenn.ten.cate@owasp.org>
 
 # Installing needed binaries and deps. Then removing unneeded deps:
-RUN apk update --no-cache && apk add python3 python3-dev py3-pip bash git dos2unix
+RUN apk update --no-cache && apk add python3 python3-dev py3-pip bash git dos2unix imagemagick
 
 ### Dynamic layers
 FROM skf-alpine37
@@ -14,12 +14,12 @@ RUN addgroup -g 1000 app
 RUN adduser -u 1000 -G app -D -h /home/app app
 RUN rm -rf /var/cache/apk/APKINDEX*
 
-COPY ./ /home/app/LFI
+COPY ./ /home/app/CMD
 
 # Switching to the new app location:
-WORKDIR /home/app/LFI
+WORKDIR /home/app/CMD
 
-RUN chown -R app:app /home/app/LFI
+RUN chown -R app:app /home/app/CMD
 
 # Switching to the limited user
 USER app
@@ -36,4 +36,5 @@ RUN find . -name "*.sh" -o -name "*.py" -o -name "*.css" -o -name "*.js" | xargs
 RUN find . -name "*.sh" -o -name "*.py" | xargs chmod +x
 
 # Starting the actual application:
-CMD [ "python3", "./LFI.py" ]
+CMD [ "python3", "./CMD.py" ]
+
