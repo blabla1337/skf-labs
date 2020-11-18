@@ -7,7 +7,7 @@ $ sudo docker pull blabla1337/owasp-skf-lab:tls-downgrade
 ```
 
 ```text
-$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:tls-downgrade
+$ sudo docker run -ti -p 127.0.0.1:5000:5000 --cap-add=NET_ADMIN blabla1337/owasp-skf-lab:tls-downgrade
 ```
 
 {% hint style="success" %}
