@@ -27,8 +27,6 @@ USER app
 # Installing needed binaries and deps
 RUN pip3 install --no-cache-dir  --user -r requirements.txt 
 
-RUN ls -lart
-
 # Fixing Windows line endings for our students:
 RUN find . -name "*.sh" -o -name "*.py" -o -name "*.css" -o -name "*.js" | xargs dos2unix
 
@@ -36,4 +34,4 @@ RUN find . -name "*.sh" -o -name "*.py" -o -name "*.css" -o -name "*.js" | xargs
 RUN find . -name "*.sh" -o -name "*.py" | xargs chmod +x
 
 # Starting the actual application:
-CMD [ "python3", "./LFI.py" ]
+ENTRYPOINT [ "python3", "./LFI.py" ]

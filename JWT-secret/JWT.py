@@ -49,3 +49,4 @@ if __name__ == '__main__':
 
 #curl --header "Content-Type: application/json" --request POST --data '{"username":"admin","password":"admin"}' http://localhost:5000/auth
 #curl -i -H "Accept: application/json" -H "Authorization: JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NDgwOTgxNjEsImlhdCI6MTU0ODA5Nzg2MSwibmJmIjoxNTQ4MDk3ODYxLCJpZGVudGl0eSI6Mn0.vUnhorZy454Iw01WFDsgigu0YpCMzhxx-hPGTuFpwCk" http://localhost:5000/protected
+

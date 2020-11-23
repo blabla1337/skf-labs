@@ -91,9 +91,9 @@ app.add_url_rule(
 def index():
 
     #Implement logic to retrieve posts
-
     return render_template("index.html",username = "jhon", body="KADJ SDKLASJDKASJ SKDJ S",title="Wow I did not see this" )
 
 
 if __name__ == '__main__':
      app.run('0.0.0.0')
+

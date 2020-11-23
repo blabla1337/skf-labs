@@ -193,10 +193,5 @@ def settings():
 		return render_template("login.html")
 
 
-
-
-    
-
-
 if __name__ == '__main__':
      app.run('0.0.0.0')
