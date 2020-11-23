@@ -33,7 +33,7 @@ RUN chown -R app:app /home/app/XXE
 USER app
 
 # Installing needed binaries and deps
-RUN pip3 install --no-cache-dir  --user -r requirements.txt 
+RUN pip install --no-cache-dir  --user -r requirements.txt 
 
 # Fixing Windows line endings for our students:
 RUN find . -name "*.sh" -o -name "*.py" -o -name "*.css" -o -name "*.js" | xargs dos2unix
