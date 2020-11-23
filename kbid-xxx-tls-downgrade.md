@@ -7,7 +7,7 @@ $ sudo docker pull blabla1337/owasp-skf-lab:tls-downgrade
 ```
 
 ```text
-$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:tls-downgrade
+$ sudo docker run -ti -p 127.0.0.1:5000:5000 --cap-add=NET_ADMIN blabla1337/owasp-skf-lab:tls-downgrade
 ```
 
 {% hint style="success" %}
@@ -17,15 +17,8 @@ Now that the app is running let's go hacking!
 
 ## Running the app with Python2
 
-First, make sure python (2, not 3) and pip are installed on your host machine. After installation, we go to the folder of the lab we want to practice, i.e "/skf-labs/TLS-downgrade/", "/skf-labs/XSS/ " and run the following commands:
+Because this lab hinges on the (ab)use of IPtables and NFqueues, you will need to run it from the Docker container. There's no option to run this with just Python.
 
-```
-$ pip install -r requirements.txt
-```
-
-```
-$ python ./TLS-downgrade.py
-```
 
 {% hint style="success" %}
  Now that the app is running let's go hacking!
