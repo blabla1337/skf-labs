@@ -1,4 +1,4 @@
-FROM alpine:3.3 AS tls-downgrade-build
+FROM alpine:3.6
 MAINTAINER Glenn ten Cate <glenn.ten.cate@owasp.org>
 
 # Saving space by cloning from Git, then copying only what we need:
@@ -37,8 +37,3 @@ RUN find . -name "*.sh" -o -name "*.py" | xargs chmod +x
 # Starting the web app:
 CMD [ "python", "./TLS-downgrade.py" ]
 
-
-
-# Reducing all the layers down to one:
-FROM tls-downgrade-build
-MAINTAINER Glenn ten Cate <glenn.ten.cate@owasp.org>
