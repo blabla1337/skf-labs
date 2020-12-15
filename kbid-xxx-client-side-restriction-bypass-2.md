@@ -65,9 +65,9 @@ Burp shows us that a POST request was made to http://localhost:5000/updatecolor.
 
 ## Exploitation
 
-Looking into the HTTP requests in Burp, there appear to be no hidden form values that would allow us to change admin's favorite food. 
+Looking into the HTTP requests in Burp, there appear to be no hidden form values that would allow us to change admin's favorite food. But let's try something! Maybe the web app is trying to hide some things in plain sight by simply not including them in the user interface. We can make a few guesses about what to try, no?
 
-But let's try something! Maybe the web app is trying to hide some things in plain sight by simply not including them in the user interface. We can make a few guesses about what to try, no?
+We *could* just edit HTTP requests in Burp, making educated guesses.
 
 If you right-click the POST request in Burp's proxy history, you can select "*Send to Repeater*". This will light up the **Repeater** tab in orange, showing that something new appeared. Over there, we can edit the request before submitting it.
 
@@ -79,6 +79,48 @@ We did! And if you use the "*Refresh the page*" link (or the *Refresh* button of
 
 ![](.gitbook/assets/csrb2-6.png)
 
+Alternatively, let's take a closer look at that front-end code! By right-clicking the form in our Chrome browser and choosing "*Inspect*" we can investigate the HTML in question. 
+
+![](.gitbook/assets/csrb2-7.png)
+
+What's this?! 
+
+The developer left us the clues right there in the HTML? And we manually did the hard work? No fair! Well, might as well use the form then!
+
+If you right-click the commented text and choose "*Edit as HTML*" we can just remove the `<!--` and `-->` comment markers. And presto, there's our other form which will let us change the favorite food as well.
+
+![](.gitbook/assets/csrb2-8.png)
+
+![](.gitbook/assets/csrb2-9.png)
+
+
+## Further investigation
+
+If we hop into the Docker container we can inspect the source code of the application. You will need to open a shell in the running Docker container. This requires that you figure out its ID, using `docker ps`. Just adding the first few characters of the ID with `docker exec` is enough.
+
+```text
+$ docker ps
+CONTAINER ID        IMAGE                    COMMAND                  CREATED             STATUS              PORTS                    NAMES
+4d7355d622cb        skf-labs/client-side-restriction-bypass-2   "python ./client-sid…"   3 hours ago         Up 3 hours          0.0.0.0:5000->5000/tcp   naughty_cori
+
+
+$ docker exec -ti 4d73 /bin/sh
+# 
+``` 
+
+The application's starting point is `client-side-restriction-bypass-2.py`, which defines three routes: `/`, `/updatecolor` and `/updatefood`. Upon first browsing to the webapp you are sent to the `/` endpoint which presents the login page, by rendering the template for `templates/index.html`. 
+
+After logging in you are sent to the rendering of `templates/loggedin.html` which has the form and which uses data pulled from the SQLite backend. The form will only call the defined `/updatecolor` endpoint. And yes, the template for `loggedin.html` does have the commented-out, unused code to update the food value as well.
+
+Looking at both of the "update" endpoints, we see that both **do check** for a logged in session. So that's good! It means that you shouldn't be able to call either of the endpoints without first logging in. 
+
+If the developer wanted to prevent us from updating the food, they should have either A) disabled the endpoint temporarily, or B) added an additional security check. 
+
+In its current state, it's just "*security through obscurity*. "Hiding" functionality by not turning it on, by not using it and so on does nothing to secure your applications. 
+
 
 ## Additional sources
 
+Security research company Mitre maintains a list of common vulnerability types, with CWE registrations: Common Weakness Enumeration. 
+
+[CWE-602 Client-side enforcement of server-side security](https://cwe.mitre.org/data/definitions/602.html) applies in this case. 
