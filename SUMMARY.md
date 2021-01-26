@@ -56,4 +56,6 @@
 * [KBID XXX - Auth-bypass-3](kbid-XXX-Auth-bypass-3.md)
 * [KBID XXX - XSSI (include files from untrusted sources)](kbid-xxx-include-files-from-untrusted-sources-js.md)
 * [KBID XXX - TLS downgrade](kbid-xxx-tls-downgrade.md)
+* [KBID XXX - Client side restriction bypass](kbid-xxx-client-side-restriction-bypass.md)
+* [KBID XXX - Client side restriction bypass harder](kbid-xxx-client-side-restriction-bypass-2.md)
 * [template](template.md)
