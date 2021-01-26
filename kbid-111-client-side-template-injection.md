@@ -1,6 +1,5 @@
 # KBID 111 - Client Side Template Injection 
 
-
 ## Running the app
 
 ```text
