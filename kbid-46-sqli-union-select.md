@@ -133,10 +133,8 @@ SQL Injection can be prevented by following the methods described below:
 
 Primary Defenses:
 
-Option 1: Use of Prepared Statements (with Parameterized Queries)\
-Option 2: Use of Stored Procedures\
-Option 3: Allow-list Input Validation\
-Option 4: Escaping All User Supplied Input
+First step: White-list Input Validation\
+Second step: Use of Prepared Statements (Parameterized Queries)\
 
 Additional Defenses:
 
