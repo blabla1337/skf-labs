@@ -102,6 +102,7 @@ In this case the primary defense is to avoid calling OS commands directly. Built
 Here, Lab functionality is to resize the image so we have python library which is PIL(Python Imaging Library).
 
 The following code is vulnerable to OS Command injection:
+
 PATH:/CMD/CMD.py
 ```
 sizeImg = request.form['size']
@@ -109,7 +110,9 @@ os.system('convert static/img/bones.png -resize '+sizeImg+'% static/img/bones.pn
 ```
 
 This is prevented by PIL library
+
 PATH:/CMD/CMD.py
+
 Import Library:
 ```
 from PIL import Image
