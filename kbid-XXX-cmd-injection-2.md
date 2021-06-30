@@ -85,5 +85,40 @@ The output of the command whoami, showing us the priviledge
 of the target user in the target system and that the web app is actually 
 vulnerable to OS command injection. 
 
+## Mitigation
+OS Command Injection can be prevented by following the methods described below:
+
+Primary Defenses:
+
+Option 1: Avoid calling OS Commands directly.\
+Option 2: Escaping values added to OS commands.\
+Option 3: Parameterization in conjunction with Input Validation
+
+Additional Defenses:
+
+Applications should run using the lowest privileges that are required to accomplish the necessary tasks.\
+If possible, create isolated accounts with limited privileges that are only used for a single task.
+
+##### Escaping values added to OS commands.
+In this scenario we are Escaping values added to OS Command. For Escaping in python there is SHLEX(Simple lexical analysis) Library. \
+The SHLEX is used for parsing simple shell like syntaxes.\
+shlex.quote(): Function return a shell escaped version of the string.
+
+The following code is vulnerable to OS Command injection because the user input is concatenated into query:\
+PATH:/CMD2/CMD2.py
+```
+os_result = os.popen("zip log.zip " + log_type + "_log.txt && echo ' --> \
+  Log file successfully compressed to log.zip'").read()
+```
+This is prevented by shlex.quote()
+```
+log_type1=shlex.quote(log_type)
+os_result = os.popen("zip log.zip " + log_type1 + "_log.txt && echo ' --> \
+  Log file successfully compressed to log.zip'").read()
+```
+This will ensure that the input is neutralized and the OS will not consider anything within the input as commands that needs to be executed.
+
+
+
 ## Additional sources
 [https://www.owasp.org/index.php/Command\_Injection](https://www.owasp.org/index.php/Command_Injection)
