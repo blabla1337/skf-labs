@@ -14,12 +14,12 @@ $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:lfi
 
 {% hint style="success" %}
 
-Now that the app is running let's go hacking! 
+Now that the app is running let's go hacking!
 
 ## Running the app Python3
 
 First, make sure python3 and pip are installed on your host machine.
-After installation, we go to the folder of the lab we want to practise 
+After installation, we go to the folder of the lab we want to practise
 "i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
 
 ```
@@ -59,7 +59,7 @@ This can lead to something as outputting the contents of the file, but depending
 
 Code execution on the web server
 
-Code execution on the client-side such as JavaScript 
+Code execution on the client-side such as JavaScript
 
 which can lead to other attacks such as:
 
@@ -83,6 +83,30 @@ To exploit let us try to modify the "Intro item" and attempt to access the world
 
 {% hint style="success" %} Success! As we observed, we can access the /etc/passwd file through LFI.
 
+## Mitigation
+
+For mitigating the most effective approach would be to avoid user controlled inputs additionally we can use:
+1) Indexing
+2) Whitelisting
+
+In this case, we are presented a fix by the using Indexing approach.
+
+In the following vulnerable code, as there isnt any form of validation an attacker can manipulate the inputs to fetch any files present on the server:
+
+![](.gitbook/assets/LFI1old.png)
+
+For the fix, we also would update the Front-End code to assign indexes instead of direct filename:
+
+![](.gitbook/assets/LFIhtml.png)
+
+For indexing we created a lookup table using the if-else statement or we could also use dictionary:
+
+![](.gitbook/assets/LFI1new.png)
+
+In the kbid-173-LFI-2, we have implemented Whitelisting if you wish to check.
+
+Can you think of other cool solutions to fix the local file inclusion vulnerability?
+
 ## Additional sources
 
-https://www.owasp.org/index.php/Testing_for_Local_File_Inclusion 
+https://www.owasp.org/index.php/Testing_for_Local_File_Inclusion

@@ -1,9 +1,9 @@
-# KBID 111 - Client Side Template Injection 
+# KBID 111 - Client Side Template Injection
 
 ## Running the app
 
 ```text
-$ sudo docker pull blabla1337/owasp-skf-lab:csti 
+$ sudo docker pull blabla1337/owasp-skf-lab:csti
 ```
 
 ```text
@@ -17,7 +17,7 @@ $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:csti
 ## Running the app Python3
 
 First, make sure python3 and pip are installed on your host machine.
-After installation, we go to the folder of the lab we want to practise 
+After installation, we go to the folder of the lab we want to practise
 "i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
 
 ```
@@ -41,7 +41,7 @@ $ python3 <labname>
 
 This application has a very cool interface, powered by a very cool framework that, every time the page is rendered, will scan the page for template expressions and evaluate them.
 
-![](.gitbook/assets/csti-1.png) 
+![](.gitbook/assets/csti-1.png)
 
 Before we deep dive in the exploitation phase, let's introduce how a template engins renders elements inside the page and how we can detect a Client Side Template Injection. If we look at the `index.html` page in the source code, we can see that a variable `{{CSTI}}` is used in the page
 
@@ -51,7 +51,7 @@ Before we deep dive in the exploitation phase, let's introduce how a template en
 
 #### Step 2
 
-This can look like a XSS, but if we try to inject HTML tags we get a nice print-out from the application. Let's try! 
+This can look like a XSS, but if we try to inject HTML tags we get a nice print-out from the application. Let's try!
 
 {% hint style="info" %}We are going to use the same payload of the XSS lab{% endhint %}
 
@@ -64,29 +64,29 @@ Unfortunately the alert does not trigger :(
 
 This is becuase AngularJS sanitize by default the input that will be reflected in the page.
 
-#### Step3 
+#### Step3
 
 {% hint style="warning" %}How do we get XSS?{% endhint %}
 
-AngularJS parses and renders every expression between curly brackets. So if we pass an arithmentic expression, such as `{{7*7}}`, we should expect `49` as a result. 
+AngularJS parses and renders every expression between curly brackets. So if we pass an arithmentic expression, such as `{{7*7}}`, we should expect `49` as a result.
 
 ![](.gitbook/assets/csti-3.png)
 
 {% hint style="success" %}Bingo!!{% endhint %}
 
-## Exploitation 
+## Exploitation
 
-Now that we know that the frontend is vulnerable to a client side template injection, we want to do more than just printing out nice numbers. 
+Now that we know that the frontend is vulnerable to a client side template injection, we want to do more than just printing out nice numbers.
 
-Because Angular uses parsers to evaluate every expression in curly brackets, sanitize HTML values (through ng-bind-html attributes, if explicitly) and uses a sandbox to avoid JavaScript code to call functions outside of the Angular scope object, we need to go though the following steps to have a successful exploit: 
+Because Angular uses parsers to evaluate every expression in curly brackets, sanitize HTML values (through ng-bind-html attributes, if explicitly) and uses a sandbox to avoid JavaScript code to call functions outside of the Angular scope object, we need to go though the following steps to have a successful exploit:
 
 * break the sanitizer
-* escape the sandbox 
-* forge a working payload 
+* escape the sandbox
+* forge a working payload
 
-In this case, we do not need to find new way to do this, but we can just see if we can re-use a payload available for our version of Angular. 
+In this case, we do not need to find new way to do this, but we can just see if we can re-use a payload available for our version of Angular.
 
-#### Step 1 
+#### Step 1
 
 We want to identify wich version is used in the frontend. If we look at the source code we can see that in the `<head>` tag Angular v1.5.0 is loaded.
 
@@ -95,7 +95,7 @@ We want to identify wich version is used in the frontend. If we look at the sour
 ```
 We need a payload that will allow us to inject JavaScript commands in the DOM and escape the sandbox, and, of course, pop up an alert box (just as a PoC)
 
-#### Step 2 
+#### Step 2
 
 Looking at possible payloads we found a working one for Angular <= 1.5.0
 
@@ -112,9 +112,32 @@ Now we are able to execute JavaScript code in our DOM.
 
 This would work if we would have used the latest version of Angular and escaped malicious characters.
 
+## Mitigation
+
+Client side template injection can be prevented by using
+
+1) ngNonbindable directive.
+
+2) Content security policy.
+
+3) Upgrade Angularjs.
+
+In this case, we are implementing ngNonbindable directive. The ngNonBindable directive tells AngularJS not to compile or bind the contents of the current DOM element, including directives on the element itself that have a lower priority than ngNonBindable. This is useful if the element contains what appears to be AngularJS directives and bindings but which should be ignored by AngularJS.
+
+Here simple interpolation binding {{}} is present
+
+path: CSTI/templates/index.html
+```
+<center> <p style="font-size:2em;"> {{CSTI}} </p></center>
+```
+For mitigating we have used ngNonBindable directive, it ignores the angular element.
+
+```
+<center> <p style="font-size:2em;" ng-non-bindable>{{CSTI}}</p></center><center> <p style="font-size:2em;" ng-non-bindable>{{CSTI}}</p></center>
+```
+
+
 ## Additional sources
 
 {% embed url="https://portswigger.net/blog/dom-based-angularjs-sandbox-escapes"%}
 {% embed url="https://docs.angularjs.org/guide/security"%}
-
-

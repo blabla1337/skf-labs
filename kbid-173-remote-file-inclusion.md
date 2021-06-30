@@ -20,7 +20,7 @@ $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:rfi
 ## Running the app Python3
 
 First, make sure python3 and pip are installed on your host machine.
-After installation, we go to the folder of the lab we want to practise 
+After installation, we go to the folder of the lab we want to practise
 "i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
 
 ```
@@ -60,7 +60,7 @@ This can lead to something as outputting the contents of the file, but depending
 
 Code execution on the web server
 
-Code execution on the client-side such as JavaScript 
+Code execution on the client-side such as JavaScript
 
 which can lead to other attacks such as:
 
@@ -111,7 +111,7 @@ def start():
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=1337)
-	
+
 ```
 Then we create our folder template where we will put our evil.py file with the below content.
 
@@ -123,7 +123,7 @@ Now we are ready to start our evil_server.py and try to make the application loa
 
 ![](.gitbook/assets/RFI4.png)
 
-Our remote file inclusion worked and the application seems to load python files and eval() the content of them. This means we can also inject a system command in our evil.py file. 
+Our remote file inclusion worked and the application seems to load python files and eval() the content of them. This means we can also inject a system command in our evil.py file.
 
 ```python
 os.popen('whoami').read()
@@ -131,10 +131,23 @@ os.popen('whoami').read()
 
 ![](.gitbook/assets/RFI5.png)
 
-{% hint style="success" %} 
- Success! As we observed, we can include our own files through RFI. 
+{% hint style="success" %}
+ Success! As we observed, we can include our own files through RFI.
 {% endhint %}
+
+## Mitigation
+
+The most effective solution to eliminate file inclusion vulnerabilities is to avoid passing user-submitted input to any filesystem/framework API. If this isn't possible preventing local file inclusion can be achieved by maintaing a list of allowed files (Whitelisting) and by indexing those files to include them into the application.
+
+Looking at the following vulnerable code, the user submitted input is not properly sanitized so we have choosen to create a whitelist of the filenames.
+![](.gitbook/assets/RFIold.png)
+
+
+Here we have created a whitelist of allowed filenames and we check for each request whether the supplied filename is present in the list or not.
+![](.gitbook/assets/RFInew.png)
+
+still, it has a malicious eval function so can u think of another way of prevention like the date library in python.
 
 ## Additional sources
 
-https://www.owasp.org/index.php/Testing_for_Remote_File_Inclusion 
+https://www.owasp.org/index.php/Testing_for_Remote_File_Inclusion

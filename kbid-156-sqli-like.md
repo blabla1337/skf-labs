@@ -17,7 +17,7 @@ Now that the app is running let's go hacking!
 ## Running the app Python3
 
 First, make sure python3 and pip are installed on your host machine.
-After installation, we go to the folder of the lab we want to practise 
+After installation, we go to the folder of the lab we want to practise
 "i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
 
 ```
@@ -136,6 +136,40 @@ Now we have all the information required to extract data from _users_ table. Pla
 http://localhost:5000/home/Admin%' union select UserName,Password from users limit 0,1--
 ```
 
+## Mitigation
+
+## Mitigation
+SQL Injection can be prevented by following the methods described below:
+
+Primary Defenses:
+
+First step: White-list Input Validation
+
+Second step: Use of Prepared Statements (Parameterized Queries)
+
+Additional Defenses:
+
+Also: Enforcing Least Privilege
+Also: Performing Allow-list Input Validation as a Secondary Defense
+
+In this case, we have presented a SQLi code fix by using parameterized queries (also known as prepared statements) instead of string concatenation within the query.
+
+The following code is vulnerable to SQL injection as the user input is directly concatenated into query without any form of validation:
+PATH:/SQLI-like/SQLI-like.py
+
+```
+cur = db.execute("SELECT UserName, email FROM users WHERE UserName LIKE '%"+username+"%' ORDER BY UserId")
+```
+
+This code can be easily rewritten in a way that prevent the user input from interfering with the query structure:
+
+```
+cur = db.execute("SELECT UserName, email FROM users WHERE UserName LIKE ? ORDER BY UserId",('%'+username+'%',))
+```
+
+Can you try to implement input validation or escaping?
+
+
 ## Additional sources
 
 Please refer to the OWASP testing guide for a full complete description about SQL injection with all the edge cases over different platforms!
@@ -145,4 +179,3 @@ Please refer to the OWASP testing guide for a full complete description about SQ
 SQLite Reference
 
 [https://www.techonthenet.com/sqlite/sys\_tables/index.php](https://www.techonthenet.com/sqlite/sys_tables/index.php)
-
