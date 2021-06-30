@@ -130,10 +130,9 @@ path: CSTI/templates/index.html
 ```
 <center> <p style="font-size:2em;"> {{CSTI}} </p></center>
 ```
-For mitigating we have used ngNonBindable directive, it ignores the angular element.
-
+For mitigating we have used ngNonBindable directive.
 ```
-<center> <p style="font-size:2em;" ng-non-bindable>{{CSTI}}</p></center><center> <p style="font-size:2em;" ng-non-bindable>{{CSTI}}</p></center>
+<center> <p style="font-size:2em;" ng-non-bindable>{{CSTI}}</p></center>
 ```
 
 
