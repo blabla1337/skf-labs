@@ -140,11 +140,42 @@ os.popen('whoami').read()
 The most effective solution to eliminate file inclusion vulnerabilities is to avoid passing user-submitted input to any filesystem/framework API. If this isn't possible preventing local file inclusion can be achieved by maintaing a list of allowed files (Whitelisting) and by indexing those files to include them into the application.
 
 Looking at the following vulnerable code, the user submitted input is not properly sanitized so we have choosen to create a whitelist of the filenames.
-![](.gitbook/assets/RFIold.png)
+```
+@app.route("/cmd", methods=['POST'])
+def cmd():
+    filename = request.form['filename']
+    try:
+        if "http" not in str(urlparse(filename).scheme):
+            host = request.url[:-4]
+            filename = host+"/static/" + filename
+            result = eval(requests.get(filename).text)
+            return render_template("index.html", result=result)
+        else:
+            result = eval(requests.get(filename).text)
+            return render_template("index.html", result=result)
+    except Exception:
+        return render_template("index.html", result="Unexpected error during the execution of the predefined command.")
+```
 
 
 Here we have created a whitelist of allowed filenames and we check for each request whether the supplied filename is present in the list or not.
-![](.gitbook/assets/RFInew.png)
+```
+@app.route("/cmd", methods=['POST'])
+def cmd():
+    wlfn=['text/command1.txt','text/command2.txt']
+    filename = request.form['filename']
+    if filename in wlfn:
+        if "http" not in str(urlparse(filename).scheme):
+            host = request.url[:-4]
+            filename = host+"/static/" + filename
+            result = eval(requests.get(filename).text)
+            return render_template("index.html", result=result)
+        else:
+            result = eval(requests.get(filename).text)
+            return render_template("index.html", result=result)
+    else:
+        return render_template("index.html", result="Unexpected error during the execution of the predefined command.")
+```
 
 still, it has a malicious eval function so can u think of another way of prevention like the date library in python.
 
