@@ -20,7 +20,7 @@ def login():
             msg="Find the way to login as an admin !"
             username=values[0][0]
             if values[0][1] == request.form['password']:
-                res = make_response(render_template("loggedin.html",username=username),msg=msg)
+                res = make_response(render_template("loggedin.html",username=username,msg=msg))
                 res.set_cookie("sessionid", hashlib.sha1(username.encode('utf-8')+'SKFowaspLabs'.encode('utf-8')).hexdigest())
                 return res
             else:
