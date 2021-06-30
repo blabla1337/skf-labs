@@ -94,8 +94,11 @@ In Firefox we can see the XSS alert pop-up and we have successfully performed th
 
 
 ## Mitigation
+
 XSS Prevention Rules:
+
 The following rules are intended to prevent all XSS in your application. While these rules do not allow absolute freedom in putting untrusted data into an HTML document, they should cover the vast majority of common use cases.
+
 RULE #0 - Never Insert Untrusted Data Except in Allowed Locations
 
 RULE #1 - HTML Encode Before Inserting Untrusted Data into HTML Element Content
@@ -117,22 +120,33 @@ RULE #8 - Prevent DOM-based XSS
 In this case, the input is directly rendered into the application without without following above rules so that the attacker can inject a malicious script.\
 This input can be handled by jinja2 where they provide escape() function which escaping HTML and javascript entities.
 
-Example :\
+Example :
 ```
 from jinja2 import escape
 
 data="<script>alert('Hello')</script>"
 print(escape(data))
 ```
+
 Output:
 ```
 &lt;script&gt;alert(&#34;Hello&#34;)&lt;/script&gt;
 ```
 Here the vulnerable code is:
-![](.gitbook/assets/XSSpyold.png)
+```
+@app.route("/home", methods=['POST'])
+def home():
+    xss = request.form['string']
+    return render_template("index.html",xss = xss)
+```
 
 XSS prevented using escape() function:
-![](.gitbook/assets/XSSpynew.png)
+```
+@app.route("/home", methods=['POST'])
+def home():
+    xss = request.form['string']
+    return render_template("index.html",xss = escape(xss))
+```
 
 Additional Rules:
 
