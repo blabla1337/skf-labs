@@ -91,7 +91,7 @@ For mitigating the most effective approach would be to avoid user controlled inp
 
 In this case, we are presented a fix by the using Indexing approach.
 
-In the following vulnerable code, as there isnt any form of validation an attacker can manipulate the inputs to fetch any files present on the server:
+In the following vulnerable code, as there isn't any form of validation an attacker can manipulate the inputs to fetch any files present on the server:
 
 ![](.gitbook/assets/LFI1old.png)
 
