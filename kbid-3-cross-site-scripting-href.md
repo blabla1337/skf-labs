@@ -78,25 +78,52 @@ and clicking the button, we achieve what we were looking for.
 
 ## Mitigation
 XSS Prevention Rules:
+
 The following rules are intended to prevent all XSS in your application. While these rules do not allow absolute freedom in putting untrusted data into an HTML document, they should cover the vast majority of common use cases.
+
 RULE #0 - Never Insert Untrusted Data Except in Allowed Locations
+
 RULE #1 - HTML Encode Before Inserting Untrusted Data into HTML Element Content
+
 RULE #2 - Attribute Encode Before Inserting Untrusted Data into HTML Common Attributes
+
 RULE #3 - JavaScript Encode Before Inserting Untrusted Data into JavaScript Data Values
+
 RULE #4 - CSS Encode And Strictly Validate Before Inserting Untrusted Data into HTML Style Property Values
+
 RULE #5 - URL Encode Before Inserting Untrusted Data into HTML URL Parameter Values
+
 RULE #6 - Sanitize HTML Markup with a Library Designed for the Job
+
 RULE #7 - Avoid JavaScript URLs
+
 RULE #8 - Prevent DOM-based XSS
 
-In this case, the input is directly rendered into the application without without following above rules so that the attacker can inject a malicious script.\
+In this case, the input is directly rendered into the application without without following above rules so that the attacker can inject a malicious script.
+
 In the following vulnerable code, as there isn't any form of validation an attacker can manipulate the inputs.
 
 Here the vulnerable code is:
-![](.gitbook/assets/xssurlold.png)
+```
+@app.route("/home", methods=['POST'])
+def home():
+    xss = request.form['string']
+    return render_template("index.html",xss = xss)
+```
 
 For the fix, we have implemented URL validation by using validators package
-![](.gitbook/assets/xssurlnew.png)
+
+Package: `import validators`
+
+```
+@app.route("/home", methods=['POST'])
+def home():
+    xss = request.form['string']
+    if validators.url(xss):
+        return render_template("index.html",xss = escape(xss))
+    else:
+        return render_template("404.html")
+```
 
 Can you think of other cool solutions to fix this lab like checking input startwith() function or using regex?
 
