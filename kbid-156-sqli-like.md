@@ -150,6 +150,7 @@ Second step: Use of Prepared Statements (Parameterized Queries)
 Additional Defenses:
 
 Also: Enforcing Least Privilege
+
 Also: Performing Allow-list Input Validation as a Secondary Defense
 
 In this case, we have presented a SQLi code fix by using parameterized queries (also known as prepared statements) instead of string concatenation within the query.
