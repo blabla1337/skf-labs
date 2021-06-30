@@ -138,7 +138,6 @@ http://localhost:5000/home/Admin%' union select UserName,Password from users lim
 
 ## Mitigation
 
-## Mitigation
 SQL Injection can be prevented by following the methods described below:
 
 Primary Defenses:
