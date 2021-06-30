@@ -95,12 +95,34 @@ So lets try a payload like this: /..././..././..././..././..././..././..././etc/
 The most effective solution to eliminate file inclusion vulnerabilities is to avoid passing user-submitted input to any filesystem/framework API. If this isn't possible preventing local file inclusion can be achieved by maintaing a list of allowed files (Whitelisting) and by indexing those files to include them into the application.
 
 Looking at the following vulnerable code, the user submitted input is not properly sanitized so we have choosen to create a whitelist of the filenames.
-![](.gitbook/assets/LFI2py.png)
+```
+@app.route("/home", methods=['POST'])
+def home():
+    filename = request.form['filename']
+    filename=filename.replace('../','')
+    if os.path.isfile(current_app.root_path + '/'+ filename):
+        with current_app.open_resource(filename) as f:
+            read = f.read()
+    else:
+        read='try harder'
+    return render_template("index.html",read = read)
+```
 
 
 Here we have created a whitelist of allowed filenames and we check for each request whether the supplied filename is present in the list or not.
-![](.gitbook/assets/LFI2pynew.png)
-
+```
+@app.route("/home", methods=['POST'])
+def home():
+    wlfn=['text/chapter1.txt','text/chapter2.txt','text/intro.txt']
+    filename = request.form['filename']
+    if filename in wlfn:
+        if os.path.isfile(current_app.root_path + '/'+ filename):
+            with current_app.open_resource(filename) as f:
+                read = f.read()
+    else:
+        read='try harder'
+    return render_template("index.html",read = read)
+```
 
 Apart from these implemented fix, can you try to implement other known fixes like indexing.[ref kbid-173-local-file-inclusion article]?
 
