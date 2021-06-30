@@ -71,29 +71,69 @@ Now, hovering over the paragraph will trigger our javascript event handler!
 ![](.gitbook/assets/xss-attribute-4.png)
 
 ## Mitigation
+
 XSS Prevention Rules:
+
 The following rules are intended to prevent all XSS in your application. While these rules do not allow absolute freedom in putting untrusted data into an HTML document, they should cover the vast majority of common use cases.
+
 RULE #0 - Never Insert Untrusted Data Except in Allowed Locations
+
 RULE #1 - HTML Encode Before Inserting Untrusted Data into HTML Element Content
+
 RULE #2 - Attribute Encode Before Inserting Untrusted Data into HTML Common Attributes
+
 RULE #3 - JavaScript Encode Before Inserting Untrusted Data into JavaScript Data Values
+
 RULE #4 - CSS Encode And Strictly Validate Before Inserting Untrusted Data into HTML Style Property Values
+
 RULE #5 - URL Encode Before Inserting Untrusted Data into HTML URL Parameter Values
+
 RULE #6 - Sanitize HTML Markup with a Library Designed for the Job
+
 RULE #7 - Avoid JavaScript URLs
+
 RULE #8 - Prevent DOM-based XSS
 
 In this case, the input is directly rendered into the application without without following above rules so that the attacker can inject a malicious script.\
-In the following vulnerable code, as there isn't any form of validation an attacker can manipulate the inputs.
+This input can be handled by jinja2 where they provide escape() function which escaping HTML and javascript entities.
 
+Example :
+```
+from jinja2 import escape
+
+data="<script>alert('Hello')</script>"
+print(escape(data))
+```
+
+Output:
+```
+&lt;script&gt;alert(&#34;Hello&#34;)&lt;/script&gt;
+```
 Here the vulnerable code is:
-![](.gitbook/assets/xssurlold.png)
+```
+@app.route("/home", methods=['POST'])
+def home():
+    xss = request.form['string']
+    return render_template("index.html",xss = xss)
+```
 
-For the fix, we have implemented URL validation by using validators package
-![](.gitbook/assets/xssurlnew.png)
+XSS prevented using escape() function:
+```
+@app.route("/home", methods=['POST'])
+def home():
+    xss = request.form['string']
+    return render_template("index.html",xss = escape(xss))
+```
 
+Additional Rules:
 
+Bonus Rule #1: Use HTTPOnly cookie flag
 
+Bonus Rule #2: Implement Content Security Policy
+
+Bonus Rule #3: Use an Auto-Escaping Template System
+
+Bonus Rule #4: Properly use modern JS frameworks
 
 ## Additional sources
 
