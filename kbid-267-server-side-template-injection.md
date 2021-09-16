@@ -7,7 +7,7 @@ $ sudo docker pull blabla1337/owasp-skf-lab:ssti
 ```
 
 ```text
-$ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:ssti
+$ sudo docker run -ti -p 127.0.19.1:9000:9000 blabla1337/owasp-skf-lab:ssti
 ```
 
 {% hint style="success" %}
