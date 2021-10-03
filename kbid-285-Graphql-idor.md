@@ -1,4 +1,4 @@
-# KBID 285 - GraphQL IRDOR
+# KBID 285 - GraphQL IDOR
 
 ## Running the app
 
