@@ -42,12 +42,14 @@ def download():
 def create():
     message = request.form['message']
 
-    while len(pdf_ids) < 1500:
+    if len(pdf_ids) < 1500:
         new_id = random.randint(0, 1500)
-        if new_id not in pdf_ids:
-            pdf_ids.append(new_id)
-            generate_pdf(new_id, message)
-            return render_template("index.html", result = "Pdf created successfully! ID:" + str(new_id))
+        while new_id in pdf_ids:
+            new_id = random.randint(0, 1500)
+
+        pdf_ids.append(new_id)
+        generate_pdf(new_id, message)
+        return render_template("index.html", result = "Pdf created successfully! ID:" + str(new_id))
 
     return render_template("index.html")
 
