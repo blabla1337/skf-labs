@@ -1,1 +1,1 @@
-nc -lvp 5432 & nc -lvp 3306 &
+killall nc & nc -lvp 5432 & nc -lvp 3306 &

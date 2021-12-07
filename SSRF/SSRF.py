@@ -6,14 +6,13 @@ from urllib.parse import urlparse
 app = Flask(__name__, static_url_path = '/static', static_folder = 'static')
 app.config['DEBUG'] = True
 
-Popen("bash run_services.sh", shell=True)
-
 @app.route("/")
 def start():
     return render_template("index.html")
 
 @app.route("/check_existence", methods = ['POST'])
 def ssrf():
+    Popen("bash run_services.sh", shell=True)
     url = request.form['url']
 
     if not validators.url(url) or "http" not in str(urlparse(url).scheme):
