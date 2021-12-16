@@ -14,14 +14,16 @@ def start():
 
 @app.route("/information/<input>", methods=['GET'])
 def deserialization(input):
+    if not input:
+        return render_template("information/index.html")
+    yaml_file = base64.b64decode(input)
     try:
-            if not input:
-                return render_template("information/index.html")
-            yaml_file = base64.b64decode(input)
-            content = yaml.load(yaml_file)
-    except:
-            content = "The application was unable to  to deserialize the object!"
-    return render_template("index.html", content = content['yaml'])
+        loaded = yaml.load(yaml_file)
+        content = loaded['yaml']
+    except Exception as e:
+        print(e)
+        content = "The application was unable to deserialize the object!"
+    return render_template("index.html", content = content)
 
 @app.errorhandler(404)
 def page_not_found(e):

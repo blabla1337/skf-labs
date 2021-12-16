@@ -28,6 +28,12 @@ $ pip3 install -r requirements.txt
 $ python3 <labname>
 ```
 
+If you also want the image resize functionality to work, make sure to install
+imagemagick as well (Linux):
+```
+sudo apt install graphicsmagick-imagemagick-compat
+```
+
 {% hint style="success" %}
  Now that the app is running let's go hacking!
 {% endhint %}
