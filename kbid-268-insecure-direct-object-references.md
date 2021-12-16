@@ -71,7 +71,7 @@ Let's try to brute force if we can access other documents by fuzzing the index, 
 
 ![](.gitbook/assets/idor4.png)
 
-Ok, that's a good start so now we atleast know the index value falls between 1-1500.
+Ok, that's a good start so now we atleast know the index value falls between 1-500.
 
 Step 3: To further exploit and attempt to access other indexed documents, we would use a tool called burpsuite which would help us automate the fuzzing task.
 

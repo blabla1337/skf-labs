@@ -36,16 +36,16 @@ def download():
         pdfname = str(pdf_id) + ".pdf"
         return send_from_directory(directory=".", filename= pdfname, mimetype='application/pdf')
     else:
-        return render_template("index.html", result = "Pdf not found. Try with another id between 1 and 1500.")
+        return render_template("index.html", result = "Pdf not found. Try with another id between 1 and 500.")
 
 @app.route("/create", methods = ['POST'])
 def create():
     message = request.form['message']
 
-    if len(pdf_ids) < 1500:
-        new_id = random.randint(0, 1500)
+    if len(pdf_ids) < 500:
+        new_id = random.randint(0, 500)
         while new_id in pdf_ids:
-            new_id = random.randint(0, 1500)
+            new_id = random.randint(0, 500)
 
         pdf_ids.append(new_id)
         generate_pdf(new_id, message)
