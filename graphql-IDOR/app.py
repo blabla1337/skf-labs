@@ -36,7 +36,7 @@ db = SQLAlchemy(app)
 
 #     1 User -> N Post 
 #
-#	  1 Post -> 1 User
+#      1 Post -> 1 User
 #
 
 
@@ -108,11 +108,11 @@ class Query(graphene.ObjectType):
 
     @staticmethod
     def resolve_single_user(args,info,user):
-    	query = UserInfoObject.get_query(info=info)
-    	if user:
-    		query = query.filter(UserInfo.user == user)
-    	user_info = query.first()
-    	return user_info
+        query = UserInfoObject.get_query(info=info)
+        if user:
+            query = query.filter(UserInfo.user == user)
+        user_info = query.first()
+        return user_info
 
 schema = graphene.Schema(query=Query)
 
@@ -130,67 +130,66 @@ app.add_url_rule(
 
 
 def verify_apikey():
-	
-	query=db.session.query(UserInfo).filter_by(api_key=request.cookies.get("X-Api-Key"))
-	user_info = query.first()
-	if user_info:
-		
-		return user_info
-	else:
-		return None
+    
+    query=db.session.query(UserInfo).filter_by(api_key=request.cookies.get("X-Api-Key"))
+    user_info = query.first()
+    if user_info:
+        
+        return user_info
+    else:
+        return None
 
 
 @app.route('/')
 def index():
 
-	user_info = verify_apikey()
-	if  user_info != None:
-		user =  user_info.name + " " + user_info.surname 
-		return render_template("index.html",username=user)
-	else:
-		return render_template("login.html")
+    user_info = verify_apikey()
+    if  user_info != None:
+        user =  user_info.name + " " + user_info.surname 
+        return render_template("index.html",username=user)
+    else:
+        return render_template("login.html")
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
 
     if request.method == 'POST':
-    	
-    	username = request.form.get('username')
-    	password = request.form.get('password')
-    	query = db.session.query(User).filter_by(username=username,password=password)
-    	user = query.first()
-    	if user:
-    		#print(user.uuid)
-    		query_api_key = db.session.query(UserInfo).filter_by(user=user.uuid)
-    		user_info = query_api_key.first()
-    		#print(user_info.api_key)
-    		#session["X-Api-Key"] = user_info.api_key
-    		response = make_response(redirect('/'))
-    		response.set_cookie('X-Api-Key', user_info.api_key)
-    		response.set_cookie('uuid', str(user_info.user))
+        username = request.form.get('username')
+        password = request.form.get('password')
+        query = db.session.query(User).filter_by(username=username,password=password)
+        user = query.first()
+        if user:
+            #print(user.uuid)
+            query_api_key = db.session.query(UserInfo).filter_by(user=user.uuid)
+            user_info = query_api_key.first()
+            #print(user_info.api_key)
+            #session["X-Api-Key"] = user_info.api_key
+            response = make_response(redirect('/'))
+            response.set_cookie('X-Api-Key', user_info.api_key)
+            response.set_cookie('uuid', str(user_info.user))
 
-    		
-    		return response
-    	else:
-    		return render_template("login.html",error="username or password are not correct") 
-			
-		
-	
-	#    if(password == "admin" or username != "admin"):
+            
+            return response
+        else:
+            return render_template("login.html",error="username or password are not correct") 
+            
+        
+    
+    #    if(password == "admin" or username != "admin"):
     #        return render_template("login.html", error = "invalid username")
     #    if(password != "admin" or username == "admin"):
     #        return render_template("login.html", error = "invalid password for username")
     if request.method == 'GET':
-    	return render_template("login.html", error = "")
+        return render_template("login.html", error = "")
    
 @app.route('/settings')
 def settings():
 
-	user_info = verify_apikey()
-	if  user_info != None:
-		return render_template("settings.html",username=user_info.name)
-	else:
-		return render_template("login.html")
+    user_info = verify_apikey()
+    if  user_info != None:
+        return render_template("settings.html",username=user_info.name)
+    else:
+        return render_template("login.html")
 
 
 if __name__ == '__main__':

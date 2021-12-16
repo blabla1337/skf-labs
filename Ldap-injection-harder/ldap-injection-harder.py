@@ -24,12 +24,14 @@ def ssrf():
     secret = request.form['secret_answer']
 
     if(len(secret) < 2):
-	return render_template("index.html", result = "The secret answer is at least 2 character long.")
+        return render_template("index.html", result = "The secret answer is at least 2 character long.")
+
     search_filter = "(&(cn="+username+")(sn="+secret+"))"
     try:
         result_content = ""
         result_content = ldap_connection.search_s("dc=com", ldap.SCOPE_SUBTREE, search_filter)
-	print(result_content)
+        print(result_content)
+        
         if(len(result_content) > 0):
             return render_template("index.html", result = "You are now admin user!")
         else:

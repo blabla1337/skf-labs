@@ -13,10 +13,10 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 # app initialization
 try:
-	app = Flask(__name__, static_url_path='/static', static_folder='static')
-	app.debug = True
+    app = Flask(__name__, static_url_path='/static', static_folder='static')
+    app.debug = True
 except GraphQLError as gqle:
-	raise gqle
+    raise gqle
 
 
 # Configs
@@ -37,7 +37,7 @@ db = SQLAlchemy(app)
 
 #     1 User -> N Post 
 #
-#	  1 Post -> 1 User
+#      1 Post -> 1 User
 #
 
 
@@ -74,9 +74,9 @@ class UserObject(SQLAlchemyObjectType):
 
 
 class PostAttribute:
-	title = graphene.String(description="Title of the post")
-	body = graphene.String(description="Description")
-	author_id = graphene.Int()
+    title = graphene.String(description="Title of the post")
+    body = graphene.String(description="Description")
+    author_id = graphene.Int()
 
 
 class CreatePostInput(graphene.InputObjectType, PostAttribute):
@@ -89,7 +89,7 @@ class CreatePost(graphene.Mutation):
     post = graphene.Field(lambda: PostObject, description="Post created by this mutation.")
 
     class Arguments:
-    	
+        
         input = CreatePostInput(required=True)
 
     def mutate(self, info, input):

@@ -5,11 +5,11 @@ app.config['DEBUG'] = True
 
 
 def blacklist(url):
-	blacklist = ["."]
-	for b in blacklist:
-		if url.find(b) != -1:
-			return True
-	return False
+    blacklist = ["."]
+    for b in blacklist:
+        if url.find(b) != -1:
+            return True
+    return False
 
 
 @app.route("/")
@@ -21,7 +21,7 @@ def start():
 def redirector():
     landing_page = request.args.get('newurl')
     if blacklist(landing_page):
-    	return render_template("index.html", content = "Sorry, you cannot use \".\" in the redirect")
+        return render_template("index.html", content = "Sorry, you cannot use \".\" in the redirect")
     return redirect(landing_page, 302)
 
 
