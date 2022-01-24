@@ -2,23 +2,21 @@
 
 ## Running the app
 
-```text
+```
 $ sudo docker pull blabla1337/owasp-skf-lab:jwt-secret
 ```
 
-```text
+```
 $ sudo docker run -ti -p localhost:5000:5000 blabla1337/owasp-skf-lab:jwt-secret
 ```
 
 {% hint style="success" %}
- Now that the app is running let's go hacking!
+Now that the app is running let's go hacking!
 {% endhint %}
 
 ## Running the app Python3
 
-First, make sure python3 and pip are installed on your host machine.
-After installation, we go to the folder of the lab we want to practise 
-"i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
+First, make sure python3 and pip are installed on your host machine. After installation, we go to the folder of the lab we want to practise "i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
 
 ```
 $ pip3 install -r requirements.txt
@@ -29,9 +27,8 @@ $ python3 <labname>
 ```
 
 {% hint style="success" %}
- Now that the app is running let's go hacking!
+Now that the app is running let's go hacking!
 {% endhint %}
-
 
 ![Docker image and write-up thanks to Contrahack.io !](.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
 
@@ -51,7 +48,7 @@ The first thing to notice is after sucessful logon, the response contains an acc
 
 ![](.gitbook/assets/jwt-null-2.png)
 
-The image above shows the access-token contains three base64 encoded splitted with two dots \(.\) separators, which indicates it's a JSON Web Token \(JWT\):
+The image above shows the access-token contains three base64 encoded splitted with two dots (.) separators, which indicates it's a JSON Web Token (JWT):
 
 #### Header
 
@@ -124,9 +121,8 @@ Yes! The server accepted the tampered access-token. Can we check if there are mo
 
 Please refer to the JWT.io information for more information regarding JWT.
 
-{% embed url="https://jwt.io/introduction/" caption="" %}
+{% embed url="https://jwt.io/introduction/" %}
 
 Also consider OWASP JWT Cheat Sheet as reference.
 
-{% embed url="https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/JSON\_Web\_Token\_Cheat\_Sheet\_for\_Java.md" caption="" %}
-
+{% embed url="https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/JSON_Web_Token_Cheat_Sheet_for_Java.md" %}

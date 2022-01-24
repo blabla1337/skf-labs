@@ -6,7 +6,7 @@
 $ sudo docker pull blabla1337/owasp-skf-lab:idor
 ```
 
-```text
+```
 $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:idor
 ```
 
@@ -16,9 +16,7 @@ Now that the app is running let's go hacking!
 
 ## Running the app Python3
 
-First, make sure python3 and pip are installed on your host machine.
-After installation, we go to the folder of the lab we want to practise 
-"i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
+First, make sure python3 and pip are installed on your host machine. After installation, we go to the folder of the lab we want to practise "i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
 
 ```
 $ pip3 install -r requirements.txt
@@ -29,9 +27,8 @@ $ python3 <labname>
 ```
 
 {% hint style="success" %}
- Now that the app is running let's go hacking!
+Now that the app is running let's go hacking!
 {% endhint %}
-
 
 ![](.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
 
@@ -43,7 +40,7 @@ Insecure Direct Object References allow attackers to bypass authorization and ac
 
 Lets look at an example:
 
-```text
+```
 http://foo.bar/somepage?invoice=12345
 ```
 
@@ -69,20 +66,20 @@ Step 2:
 
 Let's try to brute force if we can access other documents by fuzzing the index, consider the index ID=2000 for example:
 
-![](.gitbook/assets/idor4.png)
+![](<.gitbook/assets/idor4 (1).png>)
 
 Ok, that's a good start so now we atleast know the index value falls between 1-1500.
 
 Step 3: To further exploit and attempt to access other indexed documents, we would use a tool called burpsuite which would help us automate the fuzzing task.
 
-```text
+```
 Please refer to the following link to configure burp suite for automating fuzzing task: 
 https://www.hackingarticles.in/beginners-guide-burpsuite-payloads-part-1/
 ```
 
 ![](.gitbook/assets/idor5.png)
 
-![](.gitbook/assets/idor5(1).png)
+!\[]\(.gitbook/assets/idor5(1).png)
 
 So from the fuzzing results, if we observe closesly the index ID="51" seems interesting as the other ID's seem to have the same response length. Let's check what do we achieve with ID=51.
 
@@ -92,11 +89,10 @@ So from the fuzzing results, if we observe closesly the index ID="51" seems inte
 
 ![](.gitbook/assets/idor8.png)
 
-And we captured the right flag :-\), so we could access the document belonging to some other user bypassing access controls of the application.
+And we captured the right flag :-), so we could access the document belonging to some other user bypassing access controls of the application.
 
 ## Additional Sources
 
 Please refer to the link below for more details around IDOR:
 
-{% embed url="https://www.owasp.org/index.php/Top\_10\_2013-A4-Insecure\_Direct\_Object\_References" caption="" %}
-
+{% embed url="https://www.owasp.org/index.php/Top_10_2013-A4-Insecure_Direct_Object_References" %}

@@ -1,26 +1,24 @@
 # KBID 173 - Local File Inclusion
 
-
 ## Running the app
 
-
-```text
+```
 $ sudo docker pull blabla1337/owasp-skf-lab:lfi
 ```
 
-```text
+```
 $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:lfi
 ```
 
 {% hint style="success" %}
 
-Now that the app is running let's go hacking! 
+{% endhint %}
+
+Now that the app is running let's go hacking!
 
 ## Running the app Python3
 
-First, make sure python3 and pip are installed on your host machine.
-After installation, we go to the folder of the lab we want to practise 
-"i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
+First, make sure python3 and pip are installed on your host machine. After installation, we go to the folder of the lab we want to practise "i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
 
 ```
 $ pip3 install -r requirements.txt
@@ -31,9 +29,8 @@ $ python3 <labname>
 ```
 
 {% hint style="success" %}
- Now that the app is running let's go hacking!
+Now that the app is running let's go hacking!
 {% endhint %}
-
 
 ![Docker image and write-up thanks to Contrahack.io !](.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
 
@@ -45,7 +42,7 @@ Warning: To successfully test for this flaw, the tester needs to have knowledge 
 
 Some Examples:
 
-```text
+```
 http://example.com/getUserProfile.jsp?item=../../../../etc/passwd
 
 Cookie: USER=1826cc8f:PSTYLE=../../../../etc/passwd
@@ -59,7 +56,7 @@ This can lead to something as outputting the contents of the file, but depending
 
 Code execution on the web server
 
-Code execution on the client-side such as JavaScript 
+Code execution on the client-side such as JavaScript
 
 which can lead to other attacks such as:
 
@@ -79,10 +76,14 @@ To exploit let us try to modify the "Intro item" and attempt to access the world
 
 ![](.gitbook/assets/lfi3.png)
 
-![](.gitbook/assets/lfi4.png)
+![](<.gitbook/assets/lfi4 (1).png>)
 
-{% hint style="success" %} Success! As we observed, we can access the /etc/passwd file through LFI.
+{% hint style="success" %}
+
+{% endhint %}
+
+Success! As we observed, we can access the /etc/passwd file through LFI.
 
 ## Additional sources
 
-https://www.owasp.org/index.php/Testing_for_Local_File_Inclusion 
+[https://www.owasp.org/index.php/Testing\_for\_Local\_File\_Inclusion](https://www.owasp.org/index.php/Testing\_for\_Local\_File\_Inclusion)

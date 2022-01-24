@@ -6,19 +6,17 @@
 $ sudo docker pull blabla1337/owasp-skf-lab:file-upload
 ```
 
-```text
+```
 $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:file-upload
 ```
 
 {% hint style="success" %}
- Now that the app is running let's go hacking!
+Now that the app is running let's go hacking!
 {% endhint %}
 
 ## Running the app Python3
 
-First, make sure python3 and pip are installed on your host machine.
-After installation, we go to the folder of the lab we want to practise 
-"i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
+First, make sure python3 and pip are installed on your host machine. After installation, we go to the folder of the lab we want to practise "i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
 
 ```
 $ pip3 install -r requirements.txt
@@ -29,9 +27,8 @@ $ python3 <labname>
 ```
 
 {% hint style="success" %}
- Now that the app is running let's go hacking!
+Now that the app is running let's go hacking!
 {% endhint %}
-
 
 ![Docker Image and write-up thanks to ContraHack!](.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
 
@@ -43,7 +40,7 @@ The consequences of unrestricted file upload can vary, including complete system
 
 There are really three classes of problems here. The first is with the file metadata, like the path and file name. These are generally provided by the transport, such as HTTP multi-part encoding. This data may trick the application into overwriting a critical file or storing the file in a bad location. You must validate the metadata extremely carefully before using it.
 
-The second one is the problem with the file size or content where the attacker can upload a huge 5gig file and creating a DoS. Also an attacker can easily craft a valid image file with PHP code inside that can be ecxecuted when the file is uploaded inside the website root folder. 
+The second one is the problem with the file size or content where the attacker can upload a huge 5gig file and creating a DoS. Also an attacker can easily craft a valid image file with PHP code inside that can be ecxecuted when the file is uploaded inside the website root folder.
 
 ![](.gitbook/assets/screen-shot-2019-03-05-at-16.17.22.png)
 
@@ -52,10 +49,6 @@ When start the application we can see that we have upload functionality and this
 ![](.gitbook/assets/screen-shot-2019-03-05-at-16.18.19.png)
 
 If we inspect the request with an intercepting proxy we can see that the application is performing a POST request that results in a data mutation, storing our file on the server.
-
-
-
-
 
 ## Exploitation
 
@@ -81,19 +74,16 @@ The application uses different directories to store the stylesheets and images t
 
 We have tried the path traversal directory injection and we got the message back from the application that the file was successfully uploaded. Now lets see if we can access our file.
 
-```text
+```
 http://localhost:5000/static/img/Test.png
 ```
 
 And there it is our file was being uploaded successfully in the static/img folder of the application and because this is accessible by the application we can access our file.
 
-![](.gitbook/assets/screen-shot-2019-03-05-at-16.24.51.png)
+![](<.gitbook/assets/screen-shot-2019-03-05-at-16.24.51 (1).png>)
 
 Now try also to upload other files like \*.exe or \*.html and do a Cross Site Scripting attack. Maybe also try to upload a very big file and see if the application is also protected agains that type of attack.
 
 ## Additional sources
 
-{% embed url="https://www.owasp.org/index.php/Unrestricted\_File\_Upload" %}
-
-
-
+{% embed url="https://www.owasp.org/index.php/Unrestricted_File_Upload" %}

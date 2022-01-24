@@ -1,4 +1,4 @@
-# KBID 285 - GraphQL introspections
+# KBID 285 - GraphQL Introspection
 
 ## Running the app
 
@@ -6,19 +6,17 @@
 $ sudo docker pull blabla1337/owasp-skf-lab:graphql-info-introspection
 ```
 
-```text
+```
 $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:graphql-info-introspection
 ```
 
 {% hint style="success" %}
- Now that the app is running let's go hacking!
+Now that the app is running let's go hacking!
 {% endhint %}
 
 ## Running the app Python3
 
-First, make sure python3 and pip are installed on your host machine.
-After installation, we go to the folder of the lab we want to practise 
-"i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
+First, make sure python3 and pip are installed on your host machine. After installation, we go to the folder of the lab we want to practise "i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
 
 ```
 $ pip3 install -r requirements.txt
@@ -29,26 +27,22 @@ $ python3 <labname>
 ```
 
 {% hint style="success" %}
- Now that the app is running let's go hacking!
+Now that the app is running let's go hacking!
 {% endhint %}
-
 
 ![Docker Image and write-up thanks to defev!](.gitbook/assets/logo.defdev.1608z.whtonblk.256.png)
 
-
-## Reconnaissance 
+## Reconnaissance
 
 As soon as we browse on `http://0.0.0.0:5000` we see the few posts published by 2 users
 
 ![](.gitbook/assets/graphql-introspection1.png)
 
+## Exploitation
 
-## Exploitation 
+We want to use the introspection feature (enabled) in this case, to understand more about what queries are supported.
 
-We want to use the introspection feature (enabled) in this case, to understand more about what queries are supported. 
-
-
-Let' use the `GraphiQL` UI to send queries to the backend and discover what is available. 
+Let' use the `GraphiQL` UI to send queries to the backend and discover what is available.
 
 Go to `http://0.0.0.0:5000/graphql`. We can query the generic `__schema` using:
 
@@ -82,11 +76,12 @@ The application gives us interesting `Types`. Let's explore the `UserObject` one
   }
 }
 ```
+
 In this case, for each field we we want to know what are the subfields and of which type.
 
 The application will answer with:
 
-```json
+```javascript
 {
   "data": {
     "__type": {
@@ -143,10 +138,10 @@ The application will answer with:
   }
 }
 ```
+
 > BINGO! We have some good information here
 
-We can see that there is an interesting field `isAdmin`, that we can use to find out who is the admin of the application. 
- 
+We can see that there is an interesting field `isAdmin`, that we can use to find out who is the admin of the application.
 
 Now we just need to query all the Users. To do that, let's see if there is a query available. We can use the following syntax:
 
@@ -176,12 +171,10 @@ That will give us the `allUsers` query. Now we need to understand what are the f
     }
   }
 }
-
 ```
 
 ## Solution
 
 Implement authorization on graphql endpoint. Although authenticated users could query the information, you should not map sensitive information into the type defined into the schema.
-
 
 ## Additional resources

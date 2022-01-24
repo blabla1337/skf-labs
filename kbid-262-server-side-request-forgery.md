@@ -1,4 +1,4 @@
-# KBID 111 - Server Side Request Forgery
+# KBID 262 - Server Side Request Forgery
 
 ## Running the app
 
@@ -6,19 +6,17 @@
 $ sudo docker pull blabla1337/owasp-skf-lab:ssrf
 ```
 
-```text
+```
 $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:ssrf
 ```
 
 {% hint style="success" %}
- Now that the app is running let's go hacking!
+Now that the app is running let's go hacking!
 {% endhint %}
 
 ## Running the app Python3
 
-First, make sure python3 and pip are installed on your host machine.
-After installation, we go to the folder of the lab we want to practise 
-"i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
+First, make sure python3 and pip are installed on your host machine. After installation, we go to the folder of the lab we want to practise "i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
 
 ```
 $ pip3 install -r requirements.txt
@@ -29,9 +27,8 @@ $ python3 <labname>
 ```
 
 {% hint style="success" %}
- Now that the app is running let's go hacking!
+Now that the app is running let's go hacking!
 {% endhint %}
-
 
 ![Docker image and write-up thanks to ContraHack!](.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
 
@@ -43,11 +40,11 @@ SSRF attack can be used to make requests to other internal resources for accessi
 
 First lets see what type of services are open on the server that we try to attack.
 
-```text
-nmap -vvvv -sT -sV -p -P0 ip_of_lab_here 
+```
+nmap -vvvv -sT -sV -p -P0 ip_of_lab_here
 ```
 
-```text
+```
 Gibson:skf-labs gibson$ nmap -vvvv -sT -sV -P0 127.0.0.1
 Warning: The -P0 option is deprecated. Please use -Pn
 Starting Nmap 7.70 ( https://nmap.org ) at 2019-03-24 10:03 CET
@@ -85,20 +82,22 @@ Here we have a keep alive functionality where we can verify different website's 
 
 ![](.gitbook/assets/SSRF2.png)
 
-
 ## Exploitation
 
 The keep alive functionality was intended to be used for external websites but we can abuse it to also check for internal IP addresses and enumerate services. Lets try a known port like for example 3306 a Mysql service, maybe this is running on the server?
 
 ![](.gitbook/assets/SSRF4.png)
 
-{% hint style="success" %} Success! As we observed, we have found an Mysql service running locally.
+{% hint style="success" %}
+
+{% endhint %}
+
+Success! As we observed, we have found an Mysql service running locally.
 
 Yes it was having a Mysql service running on the local listner 127.0.0.1 and that is why our Nmap scan didn't found it but with the SSRF vulnerability in the application we can find it.
 
 Also there is another service running, find a way to automatically enumerate all the possible services and find the last one.
 
-
 ## Additional sources
 
-https://www.owasp.org/index.php/Server_Side_Request_Forgery
+[https://www.owasp.org/index.php/Server\_Side\_Request\_Forgery](https://www.owasp.org/index.php/Server\_Side\_Request\_Forgery)

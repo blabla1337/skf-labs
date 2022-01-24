@@ -1,12 +1,12 @@
-# KBID xxx - Auth-bypass-2
+# KBID XXX - Auth-bypass-2
 
 ## Running the app
 
-```text
+```
 $ sudo docker pull blabla1337/owasp-skf-lab:auth-bypass-2
 ```
 
-```text
+```
 $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:auth-bypass-2
 ```
 
@@ -16,9 +16,7 @@ Now that the app is running let's go hacking!
 
 ## Running the app Python3
 
-First, make sure python3 and pip are installed on your host machine.
-After installation, we go to the folder of the lab we want to practise 
-"i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
+First, make sure python3 and pip are installed on your host machine. After installation, we go to the folder of the lab we want to practise "i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
 
 ```
 $ pip3 install -r requirements.txt
@@ -29,9 +27,8 @@ $ python3 <labname>
 ```
 
 {% hint style="success" %}
- Now that the app is running let's go hacking!
+Now that the app is running let's go hacking!
 {% endhint %}
-
 
 ![Docker image and write-up thanks to Contrahack.io !](.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
 
@@ -51,11 +48,9 @@ Lets start the application and register a new user
 
 ![](.gitbook/assets/auth-2-register2.png)
 
-Please note that (for convenience) your password will be reset if the user already exists.
-Also note that the username and password are case sensitive.
+Please note that (for convenience) your password will be reset if the user already exists. Also note that the username and password are case sensitive.
 
 ![](.gitbook/assets/auth-2-register3.png)
-
 
 Now that we have valid credentials, we can login:
 
@@ -65,8 +60,8 @@ After providing the correct credentials we're logged in:
 
 ![](.gitbook/assets/auth-2-loggedin.png)
 
-
 ## Exploitation
+
 We can capture the login in the burpsuite proxy and send it to the repeater. We notice that with every login, the session cookie stays the same. It is high likely that this sessionid is related to our user name:
 
 ![](.gitbook/assets/auth-2-repeater.png)
@@ -81,18 +76,17 @@ We can check whether it is a hash:
 
 it seems to be a sha1...
 
-It is possible that the developer added a salt to the username and hashed the concatenated string
-admin+some_salt 
--> maybe this is also the reason why we can't find with Google what the hash represents.
+It is possible that the developer added a salt to the username and hashed the concatenated string admin+some\_salt -> maybe this is also the reason why we can't find with Google what the hash represents.
 
 The about page seem to contain a lot of text, maybe the salt is a typical word for this company that is also mentioned on that page…
 
-Using cewel we can grab all the words from a page like this:
-cewl -m 4 -w wordlist.txt -d 0 -v http://127.0.0.1:5000/about</br>
-<I>-m 4: minimum word length is 4 characters</br>
--w wordlist: write output to file ‘wordlist’</br>
--d 0: follow links x times deep (0=stay on the same page)</br>
--v: verbose (show what you are doing)</br></I>
+Using cewel we can grab all the words from a page like this: cewl -m 4 -w wordlist.txt -d 0 -v [http://127.0.0.1:5000/about](http://127.0.0.1:5000/about)\</br>
+
+\-m 4: minimum word length is 4 characters\
+&#x20;\-w wordlist: write output to file ‘wordlist’\
+&#x20;\-d 0: follow links x times deep (0=stay on the same page)\
+&#x20;\-v: verbose (show what you are doing)\
+
 
 Using a terminal window:
 
@@ -112,8 +106,7 @@ Paste the content of the word list in the payload options and add the payload pr
 
 ![](.gitbook/assets/auth-2-intruder3.png)
 
-This will prefix the word 'admin' to each word from the list and calculate a sha1 of the concatenated string.
-for example sha1(adminBank)
+This will prefix the word 'admin' to each word from the list and calculate a sha1 of the concatenated string. for example sha1(adminBank)
 
 Start the attack
 
@@ -131,8 +124,6 @@ After refreshing the screen we're logged in as admin !
 
 ![](.gitbook/assets/auth-2-admin.png)
 
-
 ## Additional sources
 
-{% embed url="https://cheatsheetseries.owasp.org/cheatsheets/Deserialization_Cheat_Sheet.html" caption="" %}
-
+{% embed url="https://cheatsheetseries.owasp.org/cheatsheets/Deserialization_Cheat_Sheet.html" %}

@@ -2,23 +2,21 @@
 
 ## Running the app
 
-```text
+```
 $ sudo docker pull blabla1337/owasp-skf-lab:jwt-null
 ```
 
-```text
+```
 $ sudo docker run -ti -p localhost:5000:5000 blabla1337/owasp-skf-lab:jwt-null
 ```
 
 {% hint style="success" %}
- Now that the app is running let's go hacking!
+Now that the app is running let's go hacking!
 {% endhint %}
 
 ## Running the app Python3
 
-First, make sure python3 and pip are installed on your host machine.
-After installation, we go to the folder of the lab we want to practise 
-"i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
+First, make sure python3 and pip are installed on your host machine. After installation, we go to the folder of the lab we want to practise "i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
 
 ```
 $ pip3 install -r requirements.txt
@@ -29,9 +27,8 @@ $ python3 <labname>
 ```
 
 {% hint style="success" %}
- Now that the app is running let's go hacking!
+Now that the app is running let's go hacking!
 {% endhint %}
-
 
 ![Docker image and write-up thanks to Contrahack.io !](.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
 
@@ -45,13 +42,13 @@ The application shows a dropdown menu from which we can choose an intro or chapt
 
 First thing we need to do know is to do more investigation on the requests that are being made. We do this by setting up our intercepting proxy so we can gain more understanding of the application under test.
 
-After we set up our favourite intercepting proxy we are going to look at the traffic between the server and the front-end. Enter the credentials: _username: user_ \| _password:user_
+After we set up our favourite intercepting proxy we are going to look at the traffic between the server and the front-end. Enter the credentials: _username: user_ | _password:user_
 
 The first thing to notice is after sucessful logon, the response contains an access token.
 
 ![](.gitbook/assets/jwt-null-2.png)
 
-The image above shows the access-token contains three base64 encoded splitted with two dots \(.\) separators, which indicates it's a JSON Web Token \(JWT\):
+The image above shows the access-token contains three base64 encoded splitted with two dots (.) separators, which indicates it's a JSON Web Token (JWT):
 
 #### Header
 
@@ -94,12 +91,13 @@ How about checking if the server is blindly accepting the digital signature algo
 
 The NONE algorithm means signature is not required, so the token can be tampered and will be accepted by the server.
 
-=======
+\=======
+
 ### Step 2
 
 #### Header tampering
 
-```text
+```
 {
   "typ": "JWT",
   "alg": "NONE"
@@ -109,7 +107,7 @@ The NONE algorithm means signature is not required, so the token can be tampered
 
 Now, let's play with the identity:
 
-```text
+```
 {
   "exp": 1553003718,
   "iat": 1553003418,
@@ -138,9 +136,8 @@ Yes! The server accepted the tampered access-token. Can we check if there are mo
 
 Please refer to the JWT.io information for more information regarding JWT.
 
-{% embed url="https://jwt.io/introduction/" caption="" %}
+{% embed url="https://jwt.io/introduction/" %}
 
 Also consider OWASP JWT Cheat Sheet as reference.
 
-{% embed url="https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/JSON\_Web\_Token\_Cheat\_Sheet\_for\_Java.md" caption="" %}
-
+{% embed url="https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/JSON_Web_Token_Cheat_Sheet_for_Java.md" %}

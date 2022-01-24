@@ -1,12 +1,12 @@
-# KBID 46 - SQLI \(union select\)
+# KBID 46 - SQLI (Union)
 
 ## Running the app
 
-```text
+```
 $ sudo docker pull blabla1337/owasp-skf-lab:sqli
 ```
 
-```text
+```
 $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:sqli
 ```
 
@@ -16,9 +16,7 @@ Now that the app is running let's go hacking!
 
 ## Running the app Python3
 
-First, make sure python3 and pip are installed on your host machine.
-After installation, we go to the folder of the lab we want to practise 
-"i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
+First, make sure python3 and pip are installed on your host machine. After installation, we go to the folder of the lab we want to practise "i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
 
 ```
 $ pip3 install -r requirements.txt
@@ -29,9 +27,8 @@ $ python3 <labname>
 ```
 
 {% hint style="success" %}
- Now that the app is running let's go hacking!
+Now that the app is running let's go hacking!
 {% endhint %}
-
 
 ![Docker image and write-up thanks to Zerocopter!](.gitbook/assets/zerocopter-logo.jpeg)
 
@@ -43,7 +40,7 @@ The first step is to identify parameters which could be potentially used in an S
 
 ![](.gitbook/assets/screen-shot-2019-01-10-at-11.54.46.png)
 
-```text
+```
 http://127.0.0.1:5000/home/1
 ```
 
@@ -53,7 +50,7 @@ Now let's see if we can create an error by injecting a single quote
 
 ![](.gitbook/assets/sqli2.png)
 
-```text
+```
 http://127.0.0.1:5000/home/1'
 ```
 
@@ -67,19 +64,19 @@ db.execute('SELECT pageId, title, content FROM pages WHERE pageId='+pageId)
 
 Now we can also use logical operators to determine whether we can actually manipulate the SQL statements.
 
-We start with a logical operator which is false \(and 1=2\). The expected behaviour for injecting a false logical operator would be an error.
+We start with a logical operator which is false (and 1=2). The expected behaviour for injecting a false logical operator would be an error.
 
 ![](.gitbook/assets/sqli3.png)
 
-```text
+```
 http://127.0.0.1:5000/home/1 and 1=2
 ```
 
-After that we inject a logical operator which is true \(and 1=1\). This should result in the application run as intended without errors.
+After that we inject a logical operator which is true (and 1=1). This should result in the application run as intended without errors.
 
 ![](.gitbook/assets/screen-shot-2019-01-10-at-12.05.59.png)
 
-```text
+```
 http://127.0.0.1:5000/home/1 and 1=1
 ```
 
@@ -93,20 +90,20 @@ The UNION operator is used in SQL injections to join a query, purposely forged t
 
 ![](.gitbook/assets/sqli5.png)
 
-```text
+```
 http://127.0.0.1:5000/home/1 union select 1
 ```
 
-This query results in an error, this is due to the fact that the original query started with 3 columns namely  
-\* pageId  
-\* title  
+This query results in an error, this is due to the fact that the original query started with 3 columns namely\
+\* pageId\
+\* title\
 \* content
 
 ![](.gitbook/assets/sqli-table.png)
 
 ![](.gitbook/assets/screen-shot-2019-01-10-at-12.06.27.png)
 
-```text
+```
 http://127.0.0.1:5000/home/1 union select 1,2,3
 ```
 
@@ -118,33 +115,31 @@ Now that we determined the number of columns we need to take an educated guess f
 
 ![](.gitbook/assets/sqli7.png)
 
-```text
+```
 http://127.0.0.1:5000/home/1 union select 1,2,3 from user
 ```
 
 ![](.gitbook/assets/screen-shot-2019-01-10-at-12.07.42.png)
 
-```text
+```
 http://127.0.0.1:5000/home/1 union select 1,2,3 from users
 ```
 
 ## Mitigation
+
 SQL Injection can be prevented by following the methods described below:
 
 Primary Defenses:
 
-First step: White-list Input Validation\
-Second step: Use of Prepared Statements (Parameterized Queries)\
+First step: White-list Input Validation Second step: Use of Prepared Statements (Parameterized Queries)\\
 
 Additional Defenses:
 
-Also: Enforcing Least Privilege\
-Also: Performing Allow-list Input Validation as a Secondary Defense
+Also: Enforcing Least Privilege Also: Performing Allow-list Input Validation as a Secondary Defense
 
 In this case, we have presented a SQLi code fix by using parameterized queries (also known as prepared statements) instead of string concatenation within the query.
 
-The following code is vulnerable to SQL injection as the user input is directly concatenated into query without any form of validation:
-PATH:/SQLI/models/sqlimodel.py
+The following code is vulnerable to SQL injection as the user input is directly concatenated into query without any form of validation: PATH:/SQLI/models/sqlimodel.py
 
 ```
 cur = db.execute('SELECT pageId, title, content FROM pages WHERE pageId='+pageId)
@@ -158,10 +153,8 @@ cur = db.execute('SELECT pageId, title, content FROM pages WHERE pageId=?', (pag
 
 Can you try to implement input validation or escaping?
 
-
-
 ## Additional sources
 
 Please refer to the OWASP testing guide for a full complete description about SQL injection with all the edge cases over different platforms!
 
-[https://www.owasp.org/index.php/Testing\_for\_SQL\_Injection\_\(OTG-INPVAL-005\)](https://www.owasp.org/index.php/Testing_for_SQL_Injection_%28OTG-INPVAL-005%29)
+[https://www.owasp.org/index.php/Testing\_for\_SQL\_Injection\_(OTG-INPVAL-005)](https://www.owasp.org/index.php/Testing\_for\_SQL\_Injection\_\(OTG-INPVAL-005\))

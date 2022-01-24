@@ -1,12 +1,12 @@
-# KBID xxx - Auth-bypass-1
+# KBID XXX - Auth-bypass-1
 
 ## Running the app
 
-```text
+```
 $ sudo docker pull blabla1337/owasp-skf-lab:auth-bypass-1
 ```
 
-```text
+```
 $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:auth-bypass-1
 ```
 
@@ -16,9 +16,7 @@ Now that the app is running let's go hacking!
 
 ## Running the app Python3
 
-First, make sure python3 and pip are installed on your host machine.
-After installation, we go to the folder of the lab we want to practise 
-"i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
+First, make sure python3 and pip are installed on your host machine. After installation, we go to the folder of the lab we want to practise "i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
 
 ```
 $ pip3 install -r requirements.txt
@@ -29,9 +27,8 @@ $ python3 <labname>
 ```
 
 {% hint style="success" %}
- Now that the app is running let's go hacking!
+Now that the app is running let's go hacking!
 {% endhint %}
-
 
 ![Docker image and write-up thanks to Contrahack.io !](.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
 
@@ -51,11 +48,9 @@ Lets start the application and register a new user
 
 ![](.gitbook/assets/auth-1-register2.png)
 
-Please note that (for convenience) your password will be reset if the user already exists.
-Also note that the password is case sensitive.
+Please note that (for convenience) your password will be reset if the user already exists. Also note that the password is case sensitive.
 
 ![](.gitbook/assets/auth-1-register3.png)
-
 
 Now that we have valid credentials, we can login:
 
@@ -65,8 +60,8 @@ After providing the correct credentials we're logged in:
 
 ![](.gitbook/assets/auth-1-loggedin.png)
 
-
 ## Exploitation
+
 We can capture the login in the burpsuite proxy and send it to the repeater. We notice that with every login, the session cookie stays the same. It is high likely that this sessionid is related to our user name:
 
 ![](.gitbook/assets/auth-1-repeater.png)
@@ -75,23 +70,23 @@ If we quickly google for this sessionid, we find that the sessionID seems to be 
 
 ![](.gitbook/assets/auth-1-google.png)
 
-We can check whether it is a hash at https://www.tunnelsup.com/hash-analyzer/:
+We can check whether it is a hash at [https://www.tunnelsup.com/hash-analyzer/](https://www.tunnelsup.com/hash-analyzer/):
 
 ![](.gitbook/assets/auth-1-sha1.png)
 
 it seems to be a sha1...
 
-Ok, let's lookup the hash of 'admin' at https://passwordsgenerator.net/sha1-hash-generator/
+Ok, let's lookup the hash of 'admin' at [https://passwordsgenerator.net/sha1-hash-generator/](https://passwordsgenerator.net/sha1-hash-generator/)
 
 ![](.gitbook/assets/auth-1-sha1-admin.png)
 
--> D033E22AE348AEB5660FC2140AEC35850C4DA997
+\-> D033E22AE348AEB5660FC2140AEC35850C4DA997
 
 Now we can set our sessionID to the sha1 hash of admin:
 
 ![](.gitbook/assets/auth-1-setcookie.png)
 
--> if you don't have a browser cookie manager plugin, you can go to the next step and intercept the request in burp and replace the sessionID there.
+\-> if you don't have a browser cookie manager plugin, you can go to the next step and intercept the request in burp and replace the sessionID there.
 
 Click 'proceed' to go to the authenticated section of the application:
 
@@ -101,5 +96,4 @@ Click 'proceed' to go to the authenticated section of the application:
 
 ## Additional sources
 
-{% embed url="https://cheatsheetseries.owasp.org/cheatsheets/Deserialization_Cheat_Sheet.html" caption="" %}
-
+{% embed url="https://cheatsheetseries.owasp.org/cheatsheets/Deserialization_Cheat_Sheet.html" %}

@@ -1,26 +1,24 @@
 # KBID 250 - Session Puzzling
 
-
 ## Running the app
 
-
-```text
+```
 $ sudo docker pull blabla1337/owasp-skf-lab:sessionpuzzle
 ```
 
-```text
+```
 $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:sessionpuzzle
 ```
 
 {% hint style="success" %}
 
-Now that the app is running let's go hacking! 
+{% endhint %}
+
+Now that the app is running let's go hacking!
 
 ## Running the app Python3
 
-First, make sure python3 and pip are installed on your host machine.
-After installation, we go to the folder of the lab we want to practise 
-"i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
+First, make sure python3 and pip are installed on your host machine. After installation, we go to the folder of the lab we want to practise "i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
 
 ```
 $ pip3 install -r requirements.txt
@@ -31,9 +29,8 @@ $ python3 <labname>
 ```
 
 {% hint style="success" %}
- Now that the app is running let's go hacking!
+Now that the app is running let's go hacking!
 {% endhint %}
-
 
 ![Docker image and write-up thanks to Contrahack.io !](.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
 
@@ -45,13 +42,11 @@ The attacker tries to access application entry points. The session objects creat
 
 Session puzzle enables the attackers to bypass authentication, Impersonate legitimate users, elevate privileges, bypass flow restrictions, and even execute additional attacks.
 
-
 ## Exploitation
 
 Session puzzles can be detected and exploited by enumerating all of the session variables used by the application and in which context they are valid. And even though it’s much easier to detect instances in source code reviews. While there are multiple attack vectors we would be focussing on the authentication bypass scenario for this demo.
 
 Let us see how can we exploit the session puzzles in a real world scenario, the application here allows us to the user to sign in and also provides "forgot password" functionality. By making an educated guess and as highlighted by the placeholders we log in using the well known credentials set(admin/admin). On successful authentication we are gifted with some confidential C level information. So, all good uptil now.
-
 
 ![](.gitbook/assets/sp1.png)
 
@@ -71,7 +66,6 @@ As we know the session puzzling attack is possible since the app uses session va
 
 ![](.gitbook/assets/sp4.png)
 
-
 ## Additional sources
 
-https://dzone.com/articles/using-session-puzzling-to-bypass-two-factor-authen
+[https://dzone.com/articles/using-session-puzzling-to-bypass-two-factor-authen](https://dzone.com/articles/using-session-puzzling-to-bypass-two-factor-authen)

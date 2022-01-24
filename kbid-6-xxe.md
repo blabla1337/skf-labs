@@ -6,19 +6,17 @@
 $ sudo docker pull blabla1337/owasp-skf-lab:xxe
 ```
 
-```text
+```
 $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:xxe
 ```
 
 {% hint style="success" %}
- Now that the app is running let's go hacking!
+Now that the app is running let's go hacking!
 {% endhint %}
 
 ## Running the app Python3
 
-First, make sure python3 and pip are installed on your host machine.
-After installation, we go to the folder of the lab we want to practise 
-"i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
+First, make sure python3 and pip are installed on your host machine. After installation, we go to the folder of the lab we want to practise "i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
 
 ```
 $ pip3 install -r requirements.txt
@@ -29,7 +27,7 @@ $ python3 <labname>
 ```
 
 {% hint style="success" %}
- Now that the app is running let's go hacking!
+Now that the app is running let's go hacking!
 {% endhint %}
 
 ![Docker image and write-ip thanks to DefDev!](.gitbook/assets/logo.defdev.1608z.whtonblk.256.png)
@@ -66,7 +64,4 @@ We now used the **file://** to read local files from the server but there are ma
 
 ## Additional sources
 
-{% embed url="https://www.owasp.org/index.php/XML\_External\_Entity\_\(XXE\)\_Processing" %}
-
-
-
+{% embed url="https://www.owasp.org/index.php/XML_External_Entity_(XXE)_Processing" %}

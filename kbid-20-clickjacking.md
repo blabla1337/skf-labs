@@ -4,11 +4,11 @@
 
 Becoming a super hero is a fairly straight forward process:
 
-```text
+```
 $ sudo docker pull blabla1337/owasp-skf-lab:clickjacking
 ```
 
-```text
+```
 $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:clickjacking
 ```
 
@@ -16,9 +16,7 @@ Now that the app is running let's go hacking!
 
 ## Running the app Python3
 
-First, make sure python3 and pip are installed on your host machine.
-After installation, we go to the folder of the lab we want to practise 
-"i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
+First, make sure python3 and pip are installed on your host machine. After installation, we go to the folder of the lab we want to practise "i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
 
 ```
 $ pip3 install -r requirements.txt
@@ -29,9 +27,8 @@ $ python3 <labname>
 ```
 
 {% hint style="success" %}
- Now that the app is running let's go hacking!
+Now that the app is running let's go hacking!
 {% endhint %}
-
 
 ![Docker image and write-ip thanks to ING!](.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
 
@@ -47,7 +44,7 @@ Examples: Imagine an attacker who builds a web site that has a button on it that
 
 In order to exploit this vulnerability, the attacker would place an iframe with the malicious link behind a valid actionable button and make it transparent to capture the clicks.
 
-![](.gitbook/assets/click1.png)
+![](<.gitbook/assets/screenshot-2019-03-19-at-13.09.57 (1).png>)
 
 In our situation if we click on show evil, we notice the attacker in reality wants to capture facebook likes behind "Click me for free stuff!" button.
 
@@ -56,4 +53,3 @@ In our situation if we click on show evil, we notice the attacker in reality wan
 ## Additional sources :
 
 Please refer the link below: [https://www.owasp.org/index.php/Clickjacking](https://www.owasp.org/index.php/Clickjacking)
-

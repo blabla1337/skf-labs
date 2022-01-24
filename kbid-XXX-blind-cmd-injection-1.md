@@ -1,11 +1,12 @@
+# KBID 251 - Blind command injection
 
 ## Running the app
 
-```text
+```
 $ sudo docker pull blabla1337/owasp-skf-lab:cmd3
 ```
 
-```text
+```
 $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:cmd3
 ```
 
@@ -15,9 +16,7 @@ Now that the app is running let's go hacking!
 
 ## Running the app Python3
 
-First, make sure python3 and pip are installed on your host machine.
-After installation, we go to the folder of the lab we want to practise 
-"i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
+First, make sure python3 and pip are installed on your host machine. After installation, we go to the folder of the lab we want to practise "i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
 
 ```
 $ pip3 install -r requirements.txt
@@ -28,12 +27,10 @@ $ python3 <labname>
 ```
 
 {% hint style="success" %}
- Now that the app is running let's go hacking!
+Now that the app is running let's go hacking!
 {% endhint %}
 
-
 ![Docker image and write-up thanks to Contrahack.io !](.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
-
 
 ## Reconnaissance
 
@@ -47,12 +44,11 @@ When we start the application we can see that there is text box to write who we 
 
 ![](.gitbook/assets/cmdblind22.png)
 
-If we inspect the request with an intercepting proxy \(we are using Burp\) we can see that the application is performing a POST request to /. In the request we send the text we have just written as our name. However in the response, we just get a "WELCOME!" string independently to what we have written.
+If we inspect the request with an intercepting proxy (we are using Burp) we can see that the application is performing a POST request to /. In the request we send the text we have just written as our name. However in the response, we just get a "WELCOME!" string independently to what we have written.
 
 ![](.gitbook/assets/cmdblind21.png)
 
-If that was black box, as an input field we should try here different ways of attacking the web app until we realize that we can perform a command injection (blind).
-As it is a blind command injection (also called blind OS command injection) we need to find out a way to inject commands to the system and see the output of these results.
+If that was black box, as an input field we should try here different ways of attacking the web app until we realize that we can perform a command injection (blind). As it is a blind command injection (also called blind OS command injection) we need to find out a way to inject commands to the system and see the output of these results.
 
 In this case we are going to use a local "hall-of-fame" file in the lab were the name is written after we type and press the button in the website.
 
@@ -70,5 +66,4 @@ As a blind command injection, we could try other methods to detect that it is vu
 
 ## Additional sources
 
-[https://www.owasp.org/index.php/Command\_Injection](https://www.owasp.org/index.php/Command_Injection)
-
+[https://www.owasp.org/index.php/Command\_Injection](https://www.owasp.org/index.php/Command\_Injection)

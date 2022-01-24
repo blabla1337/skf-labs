@@ -1,26 +1,24 @@
-# KBID xxx - LFI-2
-
+# KBID 173 - Local File Inclusion-2
 
 ## Running the app
 
-
-```text
+```
 $ sudo docker pull blabla1337/owasp-skf-lab:lfi-2
 ```
 
-```text
+```
 $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:lfi-2
 ```
 
 {% hint style="success" %}
 
-Now that the app is running let's go hacking! 
+{% endhint %}
+
+Now that the app is running let's go hacking!
 
 ## Running the app Python3
 
-First, make sure python3 and pip are installed on your host machine.
-After installation, we go to the folder of the lab we want to practise 
-"i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
+First, make sure python3 and pip are installed on your host machine. After installation, we go to the folder of the lab we want to practise "i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
 
 ```
 $ pip3 install -r requirements.txt
@@ -31,9 +29,8 @@ $ python3 <labname>
 ```
 
 {% hint style="success" %}
- Now that the app is running let's go hacking!
+Now that the app is running let's go hacking!
 {% endhint %}
-
 
 ![Docker image and write-up thanks to Contrahack.io !](.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
 
@@ -45,7 +42,7 @@ Warning: To successfully test for this flaw, the tester needs to have knowledge 
 
 Some Examples:
 
-```text
+```
 http://example.com/getUserProfile.jsp?item=../../../../etc/passwd
 
 Cookie: USER=1826cc8f:PSTYLE=../../../../etc/passwd
@@ -59,7 +56,7 @@ This can lead to something as outputting the contents of the file, but depending
 
 Code execution on the web server
 
-Code execution on the client-side such as JavaScript 
+Code execution on the client-side such as JavaScript
 
 which can lead to other attacks such as:
 
@@ -71,25 +68,28 @@ Sensitive Information Disclosure
 
 Let us see how can we exploit the file inclusion vulnerability in a real world scenario, the application here allows us to view details on Intro, Chapter1, Chapter2 and so on.
 
-![](.gitbook/assets/LFI-2_loadfile1.png)
+![](.gitbook/assets/LFI-2\_loadfile1.png)
 
-![](.gitbook/assets/LFI-2_loadfile2.png)
+![](.gitbook/assets/LFI-2\_loadfile2.png)
 
 We could try to modify the "intro" item and attempt to access the world-readable /etc/passwd file by directory traversal. This will not work since the developer implemented a protection by filtering out the '../' sequence.
 
 If we however would create the folowing payload:
 
-<span style="color:blue;font-size:200%;">.</span><span style="color:red;font-size:200%;">../</span><span style="color:blue;font-size:200%;">./</span>
+..././
 
-the result will be a ../ sequence after the webserver filtered out the  ../ patern in the middle of our string.
+the result will be a ../ sequence after the webserver filtered out the ../ patern in the middle of our string.
 
 So lets try a payload like this: /..././..././..././..././..././..././..././etc/passwd
 
-![](.gitbook/assets/LFI-2_devtools.png)
-![](.gitbook/assets/LFI-2_result.png)
+![](.gitbook/assets/LFI-2\_devtools.png) ![](.gitbook/assets/LFI-2\_result.png)
 
-{% hint style="success" %} Success! As we observed, we can access the /etc/passwd file through LFI.
+{% hint style="success" %}
+
+{% endhint %}
+
+Success! As we observed, we can access the /etc/passwd file through LFI.
 
 ## Additional sources
 
-https://www.owasp.org/index.php/Testing_for_Local_File_Inclusion 
+[https://www.owasp.org/index.php/Testing\_for\_Local\_File\_Inclusion](https://www.owasp.org/index.php/Testing\_for\_Local\_File\_Inclusion)

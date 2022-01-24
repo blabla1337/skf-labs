@@ -1,12 +1,12 @@
-# KBID 5 - CSRF
+# KBID 5 - CSRF - Samesite
 
 ## Running the app Docker
 
-```text
+```
 $ sudo docker pull blabla1337/owasp-skf-lab:csrf-samesite
 ```
 
-```text
+```
 $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:csrf-samesite
 ```
 
@@ -16,9 +16,7 @@ Now that the app is running let's go hacking!
 
 ## Running the app Python3
 
-First, make sure python3 and pip are installed on your host machine.
-After installation, we go to the folder of the lab we want to practise 
-"i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
+First, make sure python3 and pip are installed on your host machine. After installation, we go to the folder of the lab we want to practise "i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
 
 ```
 $ pip3 install -r requirements.txt
@@ -29,7 +27,7 @@ $ python3 <labname>
 ```
 
 {% hint style="success" %}
- Now that the app is running let's go hacking!
+Now that the app is running let's go hacking!
 {% endhint %}
 
 ![Docker image and write-up thanks to Contrahack.io !](.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
@@ -45,7 +43,7 @@ It's sometimes possible to store the CSRF attack on the vulnerable site itself. 
 Lets start the application and login with the default credentials.
 
 {% hint style="info" %}
-username : admin  
+username : admin\
 password: admin
 {% endhint %}
 
@@ -82,9 +80,9 @@ if __name__ == "__main__":
     app.run(host='0.0.0.0', port=1337)
 ```
 
-Save the snippet above to &gt; app.py and run the commands below to install some dependencies.
+Save the snippet above to > app.py and run the commands below to install some dependencies.
 
-```text
+```
 $ pip install flask
 $ pip install requests
 $ python app.py
@@ -103,15 +101,15 @@ Now that the service is running we want to serve the malicious piece of javascri
 <script>document.getElementById("csrf-form").submit()</script>
 ```
 
-Save the snippet above to &gt; templates/evil.html and run the command below to start our evil application.
+Save the snippet above to > templates/evil.html and run the command below to start our evil application.
 
-```text
+```
 $ python app.py
 ```
 
 Now when we have in the browser tab our active session of the application we can open a new tab where we will load our evil page we just created.
 
-```text
+```
 http://localhost:1337/
 ```
 
@@ -125,33 +123,32 @@ Also when we refresh the original page of the application we can see that the ne
 
 ## SameSite Attribute
 
-The modern browsers have introduced a defense in depth mechanism against CSRF type of attacks, the *SameSite* cookie attribute. 
+The modern browsers have introduced a defense in depth mechanism against CSRF type of attacks, the _SameSite_ cookie attribute.
 
-```text
+```
 Set-Cookie: session=eyJsb2dnZWRpbiI6dHJ1ZSwidXNlcklkIjoxfQ.EF0EsA.9BZ_v9-AKp7lPsL1NV9xOECWMog; 
 HttpOnly; Path=/; SameSite=Strict
 ```
 
 This attribute allows the user-agents to identify whether a cookie should be sent along with cross-site-requests or not.
 
-
 It can be set with the following values:
 
-Value | Result
------------- | -------------
-Strict|Cookie will be only sent with same-site requests.
-Lax|Cookie will be sent with same-site requests and, also, with cross-site-requests generated after top-level navigation (by clicking on a link) that are not CSRF-prone.  
-None|Cookies will always be sent with cross-site-requests.
+| Value  | Result                                                                                                                                                                |
+| ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Strict | Cookie will be only sent with same-site requests.                                                                                                                     |
+| Lax    | Cookie will be sent with same-site requests and, also, with cross-site-requests generated after top-level navigation (by clicking on a link) that are not CSRF-prone. |
+| None   | Cookies will always be sent with cross-site-requests.                                                                                                                 |
 
 To make this concept more clear, let's exercise it within this SKF Lab.
 
-In the home page, use the Secure Login form for authentication. 
+In the home page, use the Secure Login form for authentication.
 
 ![](.gitbook/assets/csrf-samesite3.png)
 
-You can note in Burp's response tab the cookie was set with *SameSite=Strict*.
+You can note in Burp's response tab the cookie was set with _SameSite=Strict_.
 
-```text
+```
 HTTP/1.0 200 OK
 Content-Type: text/html; charset=utf-8
 Content-Length: 3638
@@ -161,13 +158,14 @@ HttpOnly; Path=/; SameSite=Strict
 Server: Werkzeug/0.14.1 Python/3.7.4+
 Date: Fri, 13 Sep 2019 11:23:13 GMT
 ```
+
 Set your preferred color.
 
 Now, in a different browser tab, try to run again the CSRF attack.
 
 ![](.gitbook/assets/csrf-samesite4.png)
 
-Go back to the first tab and check if the color was changed by the CSRF attack or not by clicking on *refresh the page*.
+Go back to the first tab and check if the color was changed by the CSRF attack or not by clicking on _refresh the page_.
 
 ![](.gitbook/assets/csrf-samesite5.png)
 
@@ -177,15 +175,15 @@ Looking at request logged in Burp, we can understand the reason.
 
 ![](.gitbook/assets/csrf-samesite6.png)
 
-As the cookie was set in *Strict* mode, the browser was instructed to not send it with any cross-site-request. Thus, as Color Change requires an authenticated session, this request is treated as anonymous one and, therefore,rejected by the application. 
+As the cookie was set in _Strict_ mode, the browser was instructed to not send it with any cross-site-request. Thus, as Color Change requires an authenticated session, this request is treated as anonymous one and, therefore,rejected by the application.
 
-Let's see how *Lax* mode works, by using the *Login Still Insecure* authentication form.
+Let's see how _Lax_ mode works, by using the _Login Still Insecure_ authentication form.
 
 ![](.gitbook/assets/csrf-samesite7.png)
 
-You can note in Burp's response tab the cookie was set with *SameSite=Lax*.
+You can note in Burp's response tab the cookie was set with _SameSite=Lax_.
 
-```text
+```
 HTTP/1.0 200 OK
 Content-Type: text/html; charset=utf-8
 Content-Length: 3633
@@ -198,11 +196,11 @@ Date: Fri, 13 Sep 2019 11:46:47 GMT
 
 Set your preferred color and once again run the CSRF attack in a different tab.
 
-Go back to the first tab and check if the color has changed by the CSRF attack or not, by clicking on *refresh the page*.
+Go back to the first tab and check if the color has changed by the CSRF attack or not, by clicking on _refresh the page_.
 
 ![](.gitbook/assets/csrf-samesite5.png)
 
-Nothing has changed again! *Lax* mode also blocked the cookie to be sent over POST cross-site-request. 
+Nothing has changed again! _Lax_ mode also blocked the cookie to be sent over POST cross-site-request.
 
 ![](.gitbook/assets/csrf-samesite6.png)
 
@@ -210,9 +208,10 @@ This lab was specially designed to also accept GET query string parameters for c
 
 Now adapt the CSRF Evil Server page to send a GET request as link and click on it.
 
-```html
+```markup
 <a href="http://localhost:5000/update?color=Hackzord%21">Try with GET method</a>
 ```
+
 ![](.gitbook/assets/csrf-samesite8.png)
 
 The request will be executed containing the required cookies, therefore, the CSRF attack is successful.
@@ -221,17 +220,22 @@ The request will be executed containing the required cookies, therefore, the CSR
 
 ![](.gitbook/assets/csrf-samesite9.png)
 
-*Lax* mode allowed the browser to send the cookie through the cross-site-request after top-level navigation using a non-CSFR method (GET). In other words, if the application accepts GET query string parameters to change data in persistence(or allows POST requests being converted into GET), CSRF attack will also succeed.
+_Lax_ mode allowed the browser to send the cookie through the cross-site-request after top-level navigation using a non-CSFR method (GET). In other words, if the application accepts GET query string parameters to change data in persistence(or allows POST requests being converted into GET), CSRF attack will also succeed.
 
 ## Additional sources
 
-{% embed url="https://www.owasp.org/index.php/Cross-Site\_Request\_Forgery\_\(CSRF\)" caption="" %}
+{% embed url="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)" %}
 
-{% embed url="https://www.owasp.org/index.php/SameSite" caption="" %}
+{% embed url="https://www.owasp.org/index.php/SameSite" %}
 
-{% embed url="https://tools.ietf.org/html/draft-west-first-party-cookies-07" caption="Browser support" %}
+{% embed url="https://tools.ietf.org/html/draft-west-first-party-cookies-07" %}
+Browser support
+{% endembed %}
 
+{% embed url="https://web.dev/samesite-cookies-explained" %}
+Browser support
+{% endembed %}
 
-{% embed url="https://web.dev/samesite-cookies-explained" caption="Browser support" %}
-
-{% embed url="https://caniuse.com/#search=samesite" caption="Browser support" %}
+{% embed url="https://caniuse.com/#search=samesite" %}
+Browser support
+{% endembed %}

