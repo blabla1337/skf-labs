@@ -2,8 +2,8 @@
 
 * [Introduction](README.md)
 * Path traversal (LFI)
-  * [Python Lab LFI](kbid-1-filename-injection/page-2.md)
-  * [NodeJS Lab LFI](kbid-1-filename-injection/page-2.md)
+  * [Python Lab LFI](kbid-173-local-file-inclusion.md)
+  * [NodeJS Lab LFI](kbid-173-local-file-inclusion.md)
 * [KBID 3 - Cross Site Scripting](kbid-3-cross-site-scripting.md)
 * [KBID 3 - Cross site scripting (attribute)](kbid-3-cross-site-scripting-attribute.md)
 * [KBID 3 - Cross site scripting (href)](kbid-3-cross-site-scripting-href.md)
