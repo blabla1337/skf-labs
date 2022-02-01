@@ -1,0 +1,41 @@
+{
+	"name": "dash-ast",
+	"description": "walk an AST, quickly",
+	"version": "2.0.1",
+	"author": "Renée Kooi <renee@kooi.me>",
+	"bugs": {
+		"url": "https://github.com/goto-bus-stop/dash-ast/issues"
+	},
+	"devDependencies": {
+		"acorn": "7.1.0",
+		"astw": "^2.2.0",
+		"estree-walk": "^2.2.0",
+		"estree-walker": "^2.0.0",
+		"nanobench": "^2.1.1",
+		"semver": "^6.3.0",
+		"standard": "^14.3.1",
+		"tape": "^4.11.0"
+	},
+	"homepage": "https://github.com/goto-bus-stop/dash-ast",
+	"keywords": [
+		"ast",
+		"estree",
+		"javascript",
+		"parse",
+		"transform",
+		"tree",
+		"visitor",
+		"walk",
+		"walker"
+	],
+	"license": "Apache-2.0",
+	"main": "index.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/goto-bus-stop/dash-ast.git"
+	},
+	"scripts": {
+		"test": "standard && node test && node bench",
+		"test:ci": "node test && node bench"
+	}
+}

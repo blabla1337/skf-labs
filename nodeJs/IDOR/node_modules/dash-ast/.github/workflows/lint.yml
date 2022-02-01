@@ -1,0 +1,16 @@
+name: Lint
+
+on: [push, pull_request]
+
+jobs:
+  standard:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Standard
+      uses: goto-bus-stop/standard-action@v1
+      with:
+        annotate: true
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

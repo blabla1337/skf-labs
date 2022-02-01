@@ -1,0 +1,33 @@
+{
+  "name": "browserify-optional",
+  "version": "1.0.1",
+  "description": "A browserify transform that allows optional dependencies in try..catch blocks",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/devongovett/browserify-optional.git"
+  },
+  "keywords": [
+    "browserify",
+    "transform",
+    "optional"
+  ],
+  "author": "Devon Govett <devongovett@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/devongovett/browserify-optional/issues"
+  },
+  "homepage": "https://github.com/devongovett/browserify-optional",
+  "devDependencies": {
+    "concat-stream": "^1.4.7",
+    "mocha": "^2.2.1"
+  },
+  "dependencies": {
+    "ast-transform": "0.0.0",
+    "ast-types": "^0.7.0",
+    "browser-resolve": "^1.8.1"
+  }
+}
