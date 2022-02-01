@@ -1,0 +1,15 @@
+language: node_js
+
+node_js:
+  - "12"
+  - "node"
+
+sudo: false
+
+install:
+  - "npm install"
+
+os:
+  - "linux"
+  - "osx"
+  - "windows"

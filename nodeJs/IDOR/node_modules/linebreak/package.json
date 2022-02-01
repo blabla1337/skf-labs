@@ -1,0 +1,37 @@
+{
+  "name": "linebreak",
+  "version": "1.0.2",
+  "description": "An implementation of the Unicode Line Breaking Algorithm (UAX #14)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devongovett/linebreaker.git"
+  },
+  "keywords": [
+    "unicode",
+    "text",
+    "wrapping"
+  ],
+  "author": "Devon Govett <devongovett@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/devongovett/linebreaker/issues"
+  },
+  "homepage": "https://github.com/devongovett/linebreaker",
+  "dependencies": {
+    "base64-js": "0.0.8",
+    "brfs": "^2.0.2",
+    "unicode-trie": "^1.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^6.0.2"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "main": "src/linebreaker",
+  "browserify": {
+    "transform": [
+      "brfs"
+    ]
+  }
+}

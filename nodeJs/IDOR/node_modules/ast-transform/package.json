@@ -1,0 +1,27 @@
+{
+  "name": "ast-transform",
+  "description": "Convenience wrapper for performing AST transformations with browserify transform streams",
+  "version": "0.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "through": "~2.3.4",
+    "esprima": "~1.0.4",
+    "escodegen": "~1.2.0"
+  },
+  "author": "Hugh Kennedy <hughskennedy@gmail.com> (http://hughsk.io/)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/hughsk/ast-transform"
+  },
+  "bugs": {
+    "url": "https://github.com/hughsk/ast-transform/issues"
+  },
+  "homepage": "https://github.com/hughsk/ast-transform",
+  "keywords": [
+    "ast",
+    "transform",
+    "browserify",
+    "stream"
+  ]
+}
