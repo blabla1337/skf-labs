@@ -142,6 +142,9 @@
 - Race Condition
   - [Python - Race Condition](./md/Python/kbid-xxx-race-condition.md)
   - [NodeJS - Race Condition](./md/NodeJs/kbid-XXX-RaceCondition.md)
+- Race Condition File-Write
+  - [Python - Race Condition File-Write](./md/Python/kbid-XXX-RaceCondition-File-Write.md)
+  - [NodeJS - Race Condition File-Write](./md/NodeJs/kbid-XXX-RaceCondition-File-Write.md)
 - DoS Regex
   - [Python - DoS Regex](./md/Python/kbid-xxx-dos-regex.md)
   - [NodeJS - DoS Regex](./md/NodeJs/kbid-XXX-DOS-Regex.md)
@@ -194,4 +197,10 @@
 - Right To Left Override (RTLO)
   - [Python - Right To Left Override (RTLO)](./md/Python/kbid-XXX-right-to-left-override.md)
   - [NodeJS - Right To Left Override (RTLO)](./md/NodeJs/kbid-XXX-RTLO.md)
+- Ldap Injection
+  - [Python - Ldap Injection](./md/Python/kbid-XXX-Ldap.md)
+  - [NodeJS - Ldap Injection](./md/NodeJs/kbid-XXX-Ldap.md)
+- Ldap Injection - harder
+  - [Python - Ldap Injection - harder](./md/Python/kbid-XXX-Ldap-harder.md)
+  - [NodeJS - Ldap Injection - harder](./md/NodeJs/kbid-XXX-Ldap-harder.md)
 - [template](template.md)
