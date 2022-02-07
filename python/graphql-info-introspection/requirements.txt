@@ -2,5 +2,6 @@ flask
 flask-graphql 
 flask-migrate 
 flask-sqlalchemy 
-graphene 
+graphene==2.1.8
+graphql-core==2.2.1 
 graphene-sqlalchemy
