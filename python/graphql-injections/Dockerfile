@@ -42,5 +42,8 @@ RUN find . -name "*.sh" -o -name "*.py" -o -name "*.css" -o -name "*.js" | xargs
 # Setting chmod +x on the scripts:
 RUN find . -name "*.sh" -o -name "*.py" | xargs chmod +x
 
+# Populate the database
+RUN python3 populate-database.py
+
 # Starting the actual application:
 ENTRYPOINT [ "python3", "./app.py" ]
