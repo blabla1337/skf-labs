@@ -7,6 +7,7 @@ The last instruction is building the SKF Lab OS image
 ### docker Base OS image
 
 ```
+cd skf-os-labs-images
 docker build -t blabla1337/owasp-skf-os-labs:base-v0.1 .
 docker push blabla1337/owasp-skf-os-labs:base-v0.1
 ```
@@ -14,6 +15,7 @@ docker push blabla1337/owasp-skf-os-labs:base-v0.1
 ### docker SKF OS image
 
 ```
+cd skf-os-labs-images/skf-openbox
 docker build -t blabla1337/owasp-skf-os-labs:python-v0.1 .
 docker push blabla1337/owasp-skf-os-labs:python-v0.1
 ```
