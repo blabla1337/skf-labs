@@ -1,5 +1,0 @@
-#!/usr/bin/with-contenv bash
-
-
-ln -sf /etc/guacamole/guacamole.war \
-    /var/lib/${TOMCAT_VER}/webapps/${WEBAPP_CONTEXT:-ROOT}.war

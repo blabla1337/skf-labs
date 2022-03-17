@@ -17,8 +17,8 @@ RUN \
 	rofi \
 	feh \
 	pcmanfm \
-	libxss1
-
+	libxss1 
+	
 #install Polybar 
 RUN apt-get install -qy cmake \
 	python3-sphinx \
@@ -52,10 +52,12 @@ RUN sed -e s/sudo//g -i polybar/build.sh
 RUN cd polybar; echo "\n" | ./build.sh -i
 RUN mv /usr/local/bin/polybar /usr/bin/polybar
 RUN mv /usr/local/bin/polybar-msg /usr/bin/polybar-msg
-#RUN git clone --depth=1 https://github.com/adi1090x/polybar-themes.git
 
 # install OWASP SKF Labs
 RUN git clone https://github.com/blabla1337/skf-labs.git
+RUN mv skf-labs/python /config
+RUN mv /config/python /config/python-labs
+RUN chown -R abc:abc /config/python-labs
 
 # install OWASP ZAP
 RUN wget https://github.com/zaproxy/zaproxy/releases/download/v2.11.1/ZAP_2_11_1_unix.sh 
@@ -73,6 +75,7 @@ RUN echo "**** clean up ****" && \
  rm -rf \
 	ZAP_2_11_1_unix.sh \ 
 	/tmp/* \
+	/skf-labs \
 	/var/lib/apt/lists/* \
 	/var/tmp/*
 

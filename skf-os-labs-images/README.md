@@ -16,7 +16,7 @@ docker push blabla1337/owasp-skf-os-labs:base-v0.1
 
 ```
 cd skf-os-labs-images/skf-openbox
-docker build -t blabla1337/owasp-skf-os-labs:python-v0.1 .
+docker build -t blabla1337/owasp-skf-os-labs:python-v0.1 -f Dockerfile_python .
 docker push blabla1337/owasp-skf-os-labs:python-v0.1
 ```
 
