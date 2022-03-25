@@ -1,0 +1,33 @@
+<html>
+	<body>
+
+		<div style="height:100%; width:100%;background-image:url('background.jpg');
+				background-size:100%;
+			        background-position:50% 50%;
+			        background-repeat:no-repeat;">
+			<div style="
+				    background-color:white;	
+	                 	    border-color: #000000;
+	                 	    border-width: 5px;
+	                 	    border-style: solid;
+				    width: 300px;
+	    			    height:180px;
+				    position:absolute;
+	  		            top:50%;
+	  			    left:50%;
+	 			    margin-top:-100px; /* this is half the height of your div*/  
+	  			    margin-left:-100px;
+				">
+					<form style="margin: 0 auto;width:250px;" action='login.php' method='POST'>
+						<br><strong>Skytech Login:</strong><br><br>
+						<label for="email" style="display: inline-block; width: 90px;" >E-mail:</label>
+						<input name="email" type="text" size=15 ><br><br>
+						<label for="password" style="display: inline-block; width: 90px;">Password:</label>
+						<input name="password" type="password" size=15><br><br>
+						<input type="submit" value="Login">
+					</form>
+			</div>
+							
+		</div>
+	</body>
+</html>
