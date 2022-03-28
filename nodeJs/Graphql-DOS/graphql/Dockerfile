@@ -2,18 +2,18 @@
 FROM alpine:3.8
 
 # Installing needed binaries and deps. Then removing unneeded deps:
-RUN apk update --no-cache && apk add --update nodejs nodejs-npm bash git dos2unix
+RUN apk update --no-cache && apk add nodejs nodejs-npm bash git dos2unix
 
 ### Dynamic layers
 RUN addgroup -g 1000 app 
 RUN adduser -u 1000 -G app -D -h /home/app app
 
-COPY ./ /home/app/auth-bypass
+COPY ./ /home/app/Graphql-Introspection
 
 # Switching to the new app location:
-WORKDIR /home/app/auth-bypass
+WORKDIR /home/app/Graphql-Introspection
 
-RUN chown -R app:app /home/app/auth-bypass
+RUN chown -R app:app /home/app/Graphql-Introspection
 
 # Switching to the limited user
 USER app

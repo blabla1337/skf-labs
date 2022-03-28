@@ -18,4 +18,4 @@ app.use(function (req, res) {
 
 const port = process.env.PORT || 1337;
 
-app.listen(port, () => console.log(`Listening on port ${port}...!!!`));
+app.listen(port, "0.0.0.0", () => console.log(`Listening on port ${port}...!!!`));

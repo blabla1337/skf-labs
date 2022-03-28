@@ -72,7 +72,7 @@ app.get("/static/js/welcome.js", function (req, res) {
 
 const port = process.env.PORT || 1337;
 
-app.listen(port, () => console.log(`Listening on port ${port}...!!!`));
+app.listen(port, "0.0.0.0", () => console.log(`Listening on port ${port}...!!!`));
 ```
 
 Save the snippet above to &gt; evil_server.js and run the commands below to install some dependencies.
