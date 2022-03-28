@@ -8,7 +8,7 @@ importas -i TOMCAT_VER TOMCAT_VER
 fdmove -c 2 1
 
 # Notify service manager when guacamole is up
-s6-notifyoncheck -w 500 -n 0 -c "redirfd -w 1 /dev/null fdmove -c 2 1 nc -w 1 -z -v 127.0.0.1 8080"
+s6-notifyoncheck -w 500 -n 0 -c "redirfd -w 1 /dev/null fdmove -c 2 1 nc -w 1 -z -v 127.0.0.1 5000"
 
 # Wait until RDP server is running
 if { s6-svwait -t 10000 -U /var/run/s6/services/xrdp/ }

@@ -112,9 +112,12 @@ RUN \
 	/var/lib/apt/lists/* \
 	/var/tmp/*
 
+# Change Tomcat port 8080 to 5000
+RUN find /etc/tomcat8/server.xml -type f -exec sed -i -e "s,8080,5000,g" {} \;
+
 # add local files
 COPY /root /
 
 # ports and volumes
-EXPOSE 8080
+EXPOSE 5000
 VOLUME /config

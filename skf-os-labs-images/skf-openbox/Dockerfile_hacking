@@ -1,4 +1,4 @@
-FROM blabla1337/owasp-skf-os-labs:base-v0.1
+FROM blabla1337/owasp-skf-lab:base-v0.1
 
 LABEL maintainer="Glenn ten Cate"
 ENV APPNAME="labs"
