@@ -1,0 +1,1 @@
+Default Useruid=1000(bruno) gid=1000(bruno) groups=1000(bruno),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),120(lpadmin),131(lxd),132(sambashare)

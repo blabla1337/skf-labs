@@ -40,19 +40,17 @@ Step 1:
 
 The application allows the user to create a PDF file and retrieve the file with the index assigned to it:
 
-![](../../.gitbook/assets/nodejs/XSS/1.png)
+![](../../.gitbook/assets/nodejs/IDOR/1.png)
 
 HTTP Request for Document Creation:
 
-![](../../.gitbook/assets/nodejs/XSS/1.png)
-
-![](../../.gitbook/assets/nodejs/XSS/1.png)
+![](../../.gitbook/assets/nodejs/IDOR/2.png)
 
 Step 2:
 
 Let's try to brute force if we can access other documents by fuzzing the index, consider the index ID=2000 for example:
 
-![](../../.gitbook/assets/nodejs/XSS/1.png)
+![](../../.gitbook/assets/nodejs/IDOR/3.png)
 
 Ok, that's a good start so now we atleast know the index value falls between 1-1500.
 
@@ -63,17 +61,15 @@ Please refer to the following link to configure burp suite for automating fuzzin
 https://www.hackingarticles.in/beginners-guide-burpsuite-payloads-part-1/
 ```
 
-![](../../.gitbook/assets/nodejs/XSS/1.png)
-
-![](../../.gitbook/assets/nodejs/XSS/1.png)
+![](../../.gitbook/assets/nodejs/IDOR/4.png)
 
 So from the fuzzing results, if we observe closesly the index ID="51" seems interesting as the other ID's seem to have the same response length. Let's check what do we achieve with ID=51.
 
-![](../../.gitbook/assets/nodejs/XSS/1.png)
+![](../../.gitbook/assets/nodejs/IDOR/7.png)
 
-![](../../.gitbook/assets/nodejs/XSS/1.png)
+![](../../.gitbook/assets/nodejs/IDOR/5.png)
 
-![](../../.gitbook/assets/nodejs/XSS/1.png)
+![](../../.gitbook/assets/nodejs/IDOR/6.png)
 
 And we captured the right flag :-\), so we could access the document belonging to some other user bypassing access controls of the application.
 

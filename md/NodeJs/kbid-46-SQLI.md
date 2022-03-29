@@ -136,7 +136,6 @@ Also: Performing Allow-list Input Validation as a Secondary Defense
 In this case, we have presented a SQLi code fix by using parameterized queries (also known as prepared statements) instead of string concatenation within the query.
 
 The following code is vulnerable to SQL injection as the user input is directly concatenated into query without any form of validation:
-PATH:/SQLI/models/sqlimodel.py
 
 ```javascript
 db.get(

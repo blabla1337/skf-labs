@@ -53,7 +53,7 @@ We can see that the filter is constructed by concatenating the username and pass
 filter: "(&(cn=" * ")(sn=" * "))";
 ```
 
-![](../../.gitbook/assets/nodejs/Ldap-harder/Ldap-5.png)
+![](../../.gitbook/assets/nodejs/Ldap-harder/Ldap-4.png)
 
 No luck, maybe this application is sanitizing the user input somehow, let's check the code again.
 
@@ -74,7 +74,7 @@ username = admin)(!(&(1=0
 password = q))
 ```
 
-![](../../.gitbook/assets/nodejs/Ldap-harder/Ldap-4.png)
+![](../../.gitbook/assets/nodejs/Ldap-harder/Ldap-5.png)
 
 We successfully logged in as the Admin.
 

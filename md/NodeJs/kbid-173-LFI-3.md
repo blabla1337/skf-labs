@@ -52,9 +52,9 @@ Sensitive Information Disclosure
 
 Let us see how can we exploit the file inclusion vulnerability in a real world scenario, the application here allows us to view details on Intro, Chapter1, Chapter2 and so on.
 
-![](../../.gitbook/assets/nodejs/XSS/1.png)
+![](../../.gitbook/assets/nodejs/LFI-3/1.png)
 
-![](../../.gitbook/assets/nodejs/XSS/1.png)
+![](../../.gitbook/assets/nodejs/LFI-3/2.png)
 
 We could try to modify the "intro" item and attempt to access the world-readable /etc/passwd file by directory traversal.
 This will not work since the webserver does not accept the '../' sequence at all.
@@ -79,8 +79,8 @@ Or like this:
 %25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%65%74%63%25%32%66%70%61%73%73%77%64
 ```
 
-![](../../.gitbook/assets/nodejs/XSS/1.png)
-![](../../.gitbook/assets/nodejs/XSS/1.png)
+![](../../.gitbook/assets/nodejs/LFI-3/3.png)
+![](../../.gitbook/assets/nodejs/LFI-3/4.png)
 
 Success! As we observed, we can access the /etc/passwd file through LFI.
 

@@ -26,23 +26,23 @@ to potential attackers. Comments and metadata review should be done in order to 
 
 When we start the application we can see that there is a login form.
 
-![](../../.gitbook/assets/nodejs/XSS/1.png)
+![](../../.gitbook/assets/nodejs/Info-leakage-metadata/1.png)
 
 ## Exploitation
 
 What we are going to do is explore and check the source code of the website in order to find some useful information that the programmer may have forgotten or hidden
 in the source code and metadata tag and fields.
 
-![](../../.gitbook/assets/nodejs/XSS/1.png)
+![](../../.gitbook/assets/nodejs/Info-leakage-metadata/2.png)
 
 We found something promising inside two of the metadata tags!
 Now, we try these words as the credentials in the login form:
 
-![](../../.gitbook/assets/nodejs/XSS/1.png)
+![](../../.gitbook/assets/nodejs/Info-leakage-metadata/3.png)
 
 And goal achieved!
 
-![](../../.gitbook/assets/nodejs/XSS/1.png)
+![](../../.gitbook/assets/nodejs/Info-leakage-metadata/4.png)
 
 ## Additional sources
 

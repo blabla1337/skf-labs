@@ -1,0 +1,2 @@
+hello.sh updated -- Mon Mar 21 10:59:06 CET 2022
+hello.sh cleaned -- Mon Mar 21 10:59:06 CET 2022
