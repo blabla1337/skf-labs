@@ -1,0 +1,42 @@
+schema {
+    query: Query
+}
+
+type  User{
+    id: ID!
+    username: String!
+    admin: Boolean!
+    post: Post
+    #post: [Post!] @relation
+}
+
+type Post{
+    id: ID!
+    title: String!
+    body: String!
+    user: User!
+}
+
+type UserInfo{
+    id: ID!
+    name: String!
+    surname: String!
+    date_of_birth: String!
+    api_key: String!
+    user: User!
+}
+
+type Query{
+    findAllUsers: [User]
+    singleUser(id: ID): UserInfo
+    findAllUserInfos: [UserInfo]
+    findAllPosts: [Post]
+}
+
+
+type Mutation{
+    createPost(title: String!, body: String, author_id: ID! ): Post
+    updatePost(id: ID! , title: String, body: String! ): Post
+    deletePost(id: ID!): Boolean
+}
+   

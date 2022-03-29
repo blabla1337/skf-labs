@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Live demonstrations</title>
+
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/datepicker3.css" rel="stylesheet">
+<link href="/css/styles.css" rel="stylesheet">
+
+<!--Icons-->
+<script src="/js/lumino.glyphs.js"></script>
+
+</head>
+
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<ul class="user-menu">
+					<li class="dropdown pull-right">
+
+						<ul class="dropdown-menu" role="menu">
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div><!-- /.container-fluid -->
+	</nav>
+		
+	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+	<br/><br/>
+			<center> 		
+				<img src="/img/logo.svg" width="60%" height="60%"/> 		<br/>
+						 <p style="color:#515594; font-size:1.0em;"><a href="https://github.com/blabla1337/skf-flask" style="color:#515594; font-size:1.7em;">OWASP S.K.F.</a></p>  	 			<p><a href="https://gitter.im/Security-Knowledge-Framework/Lobby" rel="nofollow"> 				<img src="/img/badge.svg" alt="Join the chat at https://gitter.im/Security-Knowledge-Framework/Lobby" data-canonical-src="/img/badge.svg" style="max-width:100%;"></a> 			</p>  	
+			</center>
+	</div><!--/.sidebar-->
+	<form method="post" action="/update">
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
+		<div class="row" align="right">
+			<a href='/'>Home</a>&nbsp;&nbsp;<a href='/logout'>Logout</a>&nbsp;&nbsp;&nbsp;
+		</div>
+		<!--/.row-->
+		
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">Live demonstration!</h1>
+				</div>
+		</div><!--/.row-->
+				
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading"> <th:block th:text="${content}"></th:block></div>
+					<div class="panel-body">
+						<div class="col-md-6">
+						you are logged in as <B> <th:block th:text="${username}"></th:block></B>
+               			</div>
+					</div>
+				</div>
+			</div><!-- /.col-->
+		</div><!-- /.row -->
+	</form>
+     <center> <p style="font-size:2em;"></p></center>
+	
+	</div><!--/.main-->
+
+	<script src="/js/jquery-1.11.1.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/chart.min.js"></script>
+	<script src="/js/chart-data.js"></script>
+	<script src="/js/easypiechart.js"></script>
+	<script src="/js/easypiechart-data.js"></script>
+	<script src="/js/bootstrap-datepicker.js"></script>
+	<script>
+		!function ($) {
+			$(document).on("click","ul.nav li.parent > a > span.icon", function(){		  
+				$(this).find('em:first').toggleClass("glyphicon-minus");	  
+			}); 
+			$(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+		}(window.jQuery);
+
+		$(window).on('resize', function () {
+		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
+		})
+		$(window).on('resize', function () {
+		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
+		})
+	</script>	
+</body>
+
+</html>

@@ -1,0 +1,144 @@
+
+  <!DOCTYPE html>
+  <html>
+  <head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Live demonstrations</title>
+  
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/datepicker3.css" rel="stylesheet">
+  <link href="/css/styles.css" rel="stylesheet">
+  
+  <!--Icons-->
+  <script src="/js/lumino.glyphs.js"></script>
+  <script src="/js/hints.js"></script>
+  
+  </head>
+  
+  <body>
+	  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		  <div class="container-fluid">
+			  <div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
+					  <span class="sr-only">Toggle navigation</span>
+					  <span class="icon-bar"></span>
+					  <span class="icon-bar"></span>
+					  <span class="icon-bar"></span>
+				  </button>
+				  <ul class="user-menu">
+					  <li class="dropdown pull-right">
+  
+						  <ul class="dropdown-menu" role="menu">
+						  </ul>
+					  </li>
+				  </ul>
+			  </div>
+		  </div><!-- /.container-fluid -->
+	  </nav>
+		  
+	  <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+	  <br/><br/>
+		  <center> 		
+			  <img src="/img/logo.svg" width="60%" height="60%"/> 		<br/> 		
+			  <p style="color:#515594; font-size:1.0em;"><a href="https://github.com/blabla1337/skf-flask" style="color:#515594; font-size:1.7em;">OWASP S.K.F.</a></p>  	 			<p><a href="https://gitter.im/Security-Knowledge-Framework/Lobby" rel="nofollow"> 				<img src="/img/badge.svg" alt="Join the chat at https://gitter.im/Security-Knowledge-Framework/Lobby" data-canonical-src="/img/badge.svg" style="max-width:100%;"></a> 			</p>  	
+		  </center>
+  
+						  <div>
+								  <h2 align="center">Hint <span id="hint-num">0</span>/2 (<button
+										  class="btn btn-primary btn-lg" type="button" onclick="showHint(); return false">show</button>)
+								  </h2>
+  
+								  <div id="hints">
+										  <ol>
+												  <li style="display: none" data-hidden="true"><b>1.</b>
+														  Find all the fields that could be object of injection.
+												  <li style="display: none" data-hidden="true"><b>2.</b>
+														  Take into account that sometimes the server is executing the input although it doesn't show an outpu$
+														  Find some output (dependent on the input) or a method to view output.
+										  </ol>
+								  </div>
+						  </div>
+  
+	  </div><!--/.sidebar-->
+		  
+	  <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
+		  <div class="row">
+  
+		  </div><!--/.row-->
+		  
+		  <div class="row">
+			  <div class="col-lg-12">
+				  <h1 class="page-header">Live demonstration!</h1>
+			  </div>
+		  </div><!--/.row-->
+				  
+		  
+		  <div class="row">
+			  <div class="col-lg-12">
+				  <div class="panel panel-default">
+					  <div class="panel-heading">Log toolbox</div>
+					  <div class="panel-body">
+					  <div id="logdata-header">
+							  <b>Log Compressing Tool: </b><br/>
+							  <div id="compress-block">
+								  <form name="compress-form" action="/compress" method="GET">
+									  <input type="radio" name="log_type" value="access" checked> Access log<br/>
+									  <input type="radio" name="log_type" value="error"> Error log<br/>
+									  <input type="submit" value="Compress .zip">
+								  </form>
+							  </div>
+							  <br/>
+							  <div id="compress_result">
+								  <p><b><font color="#2D6CA2"><th:block th:text="${os_result}"></th:block></font></b></p>
+							  </div>
+						  <br/>
+							  <b>Log Viewer Tool: </b><br/>
+							  <div id="viewer-block">
+								  <form name="viewer-form" action="/viewer" method="GET">
+									  <input type="radio" name="lines" value="access" checked> Access log<br/>
+									  <input type="radio" name="lines" value="error"> Error log<br/>
+									  <input type="submit" value="Print logs">
+								  </form>
+							  </div>
+							  <br/>
+							  <div id="viewer_result">
+								<th:block th:utext="${print_result}"></th:block>
+					  </div>
+				  </div>
+			  </div><!-- /.col-->
+	  <h4>First do your best to hack the website. If you get stuck, visualize a new hint.</h4>
+  
+		  </div><!-- /.row -->
+	  
+	  </div><!--/.main-->
+  
+	  <script src="/js/jquery-1.11.1.min.js"></script>
+	  <script src="/js/bootstrap.min.js"></script>
+	  <script>
+		  !function ($) {
+			  $(document).on("click","ul.nav li.parent > a > span.icon", function(){		  
+				  $(this).find('em:first').toggleClass("glyphicon-minus");	  
+			  }); 
+			  $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+		  }(window.jQuery);
+  
+		  $(window).on('resize', function () {
+			if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
+		  })
+		  $(window).on('resize', function () {
+			if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
+		  })
+  
+		  function getRndInteger(min, max) {
+			  return Math.floor(Math.random() * (max - min + 1) ) + min;
+		  }
+		  var nr = getRndInteger(99999999,99999999999);
+		  document.getElementById('imageBox').src = "/img/bones.png?" + nr;
+  
+	  </script>	
+  </body>
+  
+  </html>
+  
