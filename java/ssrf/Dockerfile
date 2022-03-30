@@ -1,11 +1,13 @@
 ### STATIC LAYER
 FROM openjdk:8-jdk-alpine as builder
 LABEL MAINTAINER="Glenn ten Cate <glenn.ten.cate@owasp.org>"
+RUN  apk add maven
+
 
 ### DYNAMIC LAYER
 FROM builder
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} /skf/app.jar
+COPY src/ /skf/src/
+COPY pom.xml /skf/
 ARG JAR_FILE=run_services.sh
 COPY ${JAR_FILE} /skf/run_services.sh
 
@@ -15,4 +17,6 @@ RUN addgroup -S spring && adduser -S spring -G spring && chown -R spring:spring 
 ### SWITCHING TO THE LIMITED USER
 USER spring:spring
 WORKDIR /skf
-ENTRYPOINT ["java","-jar","app.jar"]
+RUN mvn package -Dmaven.test.skip=true
+
+ENTRYPOINT ["java","-jar","/skf/target/app.jar"]
