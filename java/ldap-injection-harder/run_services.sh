@@ -1,0 +1,1 @@
+./glauth -c sample-simple.cfg
