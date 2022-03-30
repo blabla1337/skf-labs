@@ -8,4 +8,4 @@ for i in $(ls -d */);
 done
 
 # one print for the Visual Studio Code web version that has the labs included
-echo "buildx build -f Dockerfile  --platform linux/amd64 -t blabla1337/owasp-skf-lab:vs-code --push ."
+#echo "buildx build -f Dockerfile  --platform linux/amd64 -t blabla1337/owasp-skf-lab:vs-code --push ."

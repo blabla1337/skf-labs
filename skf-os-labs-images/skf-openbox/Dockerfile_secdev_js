@@ -56,11 +56,8 @@ RUN mv /usr/local/bin/polybar-msg /usr/bin/polybar-msg
 
 # install OWASP SKF Labs
 RUN git clone https://github.com/blabla1337/skf-labs.git
-RUN mv skf-labs/python /config
 RUN mv skf-labs/nodeJS /config
-RUN mv /config/python /config/python-labs
 RUN mv /config/nodeJS /config/javascript-labs
-RUN chown -R abc:abc /config/python-labs
 RUN chown -R abc:abc /config/javascript-labs
 
 # install OWASP ZAP
@@ -76,7 +73,6 @@ RUN add-apt-repository "deb https://download.sublimetext.com/ apt/stable/"
 RUN apt update && apt install -y sublime-text 
 
 # install nodejs & npm
-
 RUN curl -sL https://deb.nodesource.com/setup_10.x |  bash -
 RUN apt-get install -y nodejs
 
@@ -90,6 +86,7 @@ RUN echo "**** clean up ****" && \
 
 # add local files
 COPY /root /
+COPY /runner-script.sh /config
 COPY /.config /config/.config
 COPY /.local /config/.local 
 COPY /.config/openbox/.themes /usr/share/themes 

@@ -44,4 +44,6 @@ fi
 
 if [ "${strarr[0]}" = "java" ]; then
     cd java-labs/$LAB;
+    mvn package -Dmaven.test.skip=true
+    java -jar target/app.jar
 fi

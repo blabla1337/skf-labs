@@ -1,8 +1,8 @@
 ### STATIC LAYER
 FROM openjdk:8-jdk-alpine as builder
 LABEL MAINTAINER="Glenn ten Cate <glenn.ten.cate@owasp.org>"
-RUN  apk add maven
 
+RUN  apk add maven
 
 ### DYNAMIC LAYER
 FROM builder
