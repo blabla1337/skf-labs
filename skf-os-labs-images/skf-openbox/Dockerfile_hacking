@@ -82,6 +82,7 @@ RUN echo "**** clean up ****" && \
 
 # add local files
 COPY /root /
+COPY /runner-script.sh /config
 COPY /.config /config/.config
 COPY /.local /config/.local 
 COPY /.config/openbox/.themes /usr/share/themes 
