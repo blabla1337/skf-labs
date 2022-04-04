@@ -1,6 +1,6 @@
 # Introduction
 
-![OWASP security knowledge framework](CSRF-weak/static/img/logo.svg)
+![OWASP security knowledge framework](.gitbook/assets/logo.svg)
 
 Here we find all the labs and write-ups for the security knowledge framework!\
 These labs are correlated to knowledge-base id's which are on their place\
