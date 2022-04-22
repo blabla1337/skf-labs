@@ -26,6 +26,8 @@ Burp suite:\
 {% hint style="info" %}
 OWASP ZAP proxy:\
 [https://www.owasp.org/index.php/OWASP\_Zed\_Attack\_Proxy\_Project](https://www.owasp.org/index.php/OWASP\_Zed\_Attack\_Proxy\_Project)
+For the latest features we want to advise to use the Weekly build of OWASP ZAP. This is using the latest and greatest improvements + Libraries
+[https://www.zaproxy.org/download/#weekly](https://www.zaproxy.org/download/#weekly)
 {% endhint %}
 
 ## How to add a Lab & write-up
