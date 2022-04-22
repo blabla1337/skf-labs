@@ -1,0 +1,27 @@
+#!/bin/execlineb -P
+
+# with-contenv
+s6-envdir -fn -- /var/run/s6/container_environment
+importas -i TOMCAT_VER TOMCAT_VER
+
+# Redirect stderr to stdout.
+fdmove -c 2 1
+
+# Notify service manager when guacamole is up
+s6-notifyoncheck -w 500 -n 0 -c "redirfd -w 1 /dev/null fdmove -c 2 1 nc -w 1 -z -v 127.0.0.1 5000"
+
+# Wait until RDP server is running
+if { s6-svwait -t 10000 -U /var/run/s6/services/xrdp/ }
+# Wait until guacd is running
+if { s6-svwait -t 10000 -U /var/run/s6/services/guacd/ }
+
+# Set environment
+s6-setuidgid ${TOMCAT_VER}
+s6-env JAVA_HOME=/usr/lib/jvm/default-java
+ JAVA_JRE=/usr/lib/jvm/default-java
+ CATALINA_BASE=/var/lib/${TOMCAT_VER}
+ CATALINA_HOME=/usr/share/${TOMCAT_VER}
+ HOME=/var/lib/${TOMCAT_VER}
+
+# Run guacamole
+/usr/share/${TOMCAT_VER}/bin/catalina.sh run
