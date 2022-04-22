@@ -1,10 +1,6 @@
 # OWASP S.K.F - Labs
 https://github.com/blabla1337/skf-labs
 
-## Authors:
-- Alberto Rafael Rodríguez Iglesias
-- Riccardo Ten Cate
-
 ## Index:
 1. Introduction
 2. Proxy configuration
