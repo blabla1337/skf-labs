@@ -1,4 +1,4 @@
-# KBID XXX - Command Injection 1 (CMD)
+# Python - Command Injection 4 (CMD-4)
 
 ## Running the app Python3
 
@@ -20,11 +20,11 @@ Now that the app is running let's go hacking!
 
 When we start the application we can see that we can ping an adress.
 
-![](../../.gitbook/assets/nodejs/CMD4/1.png)
+![](../../.gitbook/assets/java/CMD4/1.png)
 
 Let's try to ping 127.0.0.1
 
-![](../../.gitbook/assets/nodejs/CMD4/2.png)
+![](../../.gitbook/assets/java/CMD4/2.png)
 
 We get back the output of the ping command which tell us this might be vulnerable to a command injection.
 
@@ -32,7 +32,7 @@ We get back the output of the ping command which tell us this might be vulnerabl
 
 Let's try chaining commands
 
-```text
+```
 127.0.0.1 ; whoami
 ```
 
@@ -46,14 +46,13 @@ We get nothing back, maybe this application has a blacklist
     os.system('ping -c1 ' + ip_address + ' > ./ping_output')
 ```
 
-We can see in this piece of code the app is removing certain dangerous characters in an attempt to avoid some kind of command injection. Unfortunately there are ways to bypass this blacklist approach.
-Let's try piping the commands:
+We can see in this piece of code the app is removing certain dangerous characters in an attempt to avoid some kind of command injection. Unfortunately there are ways to bypass this blacklist approach. Let's try piping the commands:
 
-```text
+```
 127.0.0.1 | whoami
 ```
 
-![](../../.gitbook/assets/nodejs/CMD4/3.png)
+![](../../.gitbook/assets/java/CMD4/3.png)
 
 And we have a command injection!
 

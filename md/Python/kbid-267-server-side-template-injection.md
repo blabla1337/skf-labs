@@ -1,4 +1,4 @@
-# KBID 267 - SSTI
+# Python - Server Side Template Injection (SSTI)
 
 ## Running the app
 
@@ -30,7 +30,7 @@ $ python3 <labname>
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker image and write-up thanks to ContraHack!](<../../.gitbook/assets/screen-shot-2019-03-04-at-21.33.32 (1).png>)
+![Docker image and write-up thanks to ContraHack!](<../../.gitbook/assets/ing\_primary\_logo (1).png>)
 
 ## Reconnaissance
 
@@ -54,7 +54,7 @@ First we need to do some investigation on how the syntax works, so we dive into 
 [http://jinja.pocoo.org/docs/2.10/templates/](http://jinja.pocoo.org/docs/2.10/templates/)
 {% endhint %}
 
-{% ... %} for Statements {{ ... }} for Expressions to print to the template output {# ... #} for Comments not included in the template output # ... ## for Line Statements \`\`\`
+\{% ... %\} for Statements \{{ ... \}} for Expressions to print to the template output {# ... #} for Comments not included in the template output # ... ## for Line Statements \`\`\`
 
 Now, we want to use expressions to print to the template output to see if our payloads are interpreted and executed on the server-side by the templating engine. The most ideal way to do so is to inject mathematical statements.
 
@@ -74,7 +74,7 @@ A nice website with write-ups about different type of payloads on template engin
 [\
 https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Template%20Injection](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Template%20Injection)
 
-In python `__mro__` or `mro()` allows us to go back up the tree of inherited objects in the current Python environment, and `__subclasses__` lets us come back down. Read the [docs](https://docs.python.org/3/library/stdtypes.html?highlight=subclasses#class.__mro__) for more. Basically, you can crawl up the inheritance tree of the known objects using `mro`, thus accessing _every class loaded_ in the current python environment
+In python `__mro__` or `mro()` allows us to go back up the tree of inherited objects in the current Python environment, and `__subclasses__` lets us come back down. Read the [docs](https://docs.python.org/3/library/stdtypes.html?highlight=subclasses#class.\_\_mro\_\_) for more. Basically, you can crawl up the inheritance tree of the known objects using `mro`, thus accessing _every class loaded_ in the current python environment
 
 Now, lets find some usefull injections for Jinja2.\
 In order to build our exploit this here already looks pretty promising:

@@ -1,4 +1,4 @@
-# KBID 251 - Command Injection 2
+# Python - Command Injection 2 (CMD-2)
 
 ## Running the app
 
@@ -30,7 +30,7 @@ $ python3 <labname>
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker image and write-up thanks to Contrahack.io !](<../../.gitbook/assets/screen-shot-2019-03-04-at-21.33.32 (1).png>)
+![Docker image and write-up thanks to Contrahack.io !](<../../.gitbook/assets/ing\_primary\_logo (1).png>)
 
 ## Reconnaissance
 
@@ -60,11 +60,11 @@ It compresses the file and outputs the information message.
 
 ## Exploitation
 
-We guess that the output is related to what we write in log_type (access), so we change the input to ABCDEF:
+We guess that the output is related to what we write in log\_type (access), so we change the input to ABCDEF:
 
 ![](../../.gitbook/assets/cmd17.png)
 
-Now, we discover that it outputs what we write in log_type as parte of the name of the file. So let's see if that is also being executed in the system by entering a os command:
+Now, we discover that it outputs what we write in log\_type as parte of the name of the file. So let's see if that is also being executed in the system by entering a os command:
 
 ![](../../.gitbook/assets/cmd18.png)
 
@@ -105,4 +105,4 @@ This will ensure that the input is neutralized and the OS will not consider anyt
 
 ## Additional sources
 
-[https://www.owasp.org/index.php/Command_Injection](https://www.owasp.org/index.php/Command_Injection)
+[https://www.owasp.org/index.php/Command\_Injection](https://www.owasp.org/index.php/Command\_Injection)

@@ -1,4 +1,4 @@
-# KBID 173 - Remote File Inclusion
+# Python - Remote File Inclusion (RFI)
 
 ## Running the app
 
@@ -30,7 +30,7 @@ $ python3 <labname>
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker Image and write-up thanks to ContraHack!](../../.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
+![Docker Image and write-up thanks to ContraHack!](<../../.gitbook/assets/ing\_primary\_logo (2).png>)
 
 ## Reconnaissance
 
@@ -86,7 +86,7 @@ os.popen('whoami').read()
 
 ![](../../.gitbook/assets/RFI31.png)
 
-1. Creating your own webserver: In this case you can use Python Flask to create a small webserver that serves your file. We name it evil_server.py
+1. Creating your own webserver: In this case you can use Python Flask to create a small webserver that serves your file. We name it evil\_server.py
 
 ```python
 from flask import Flask, request, url_for, render_template, redirect
@@ -109,7 +109,7 @@ Then we create our folder template where we will put our evil.py file with the b
 5 + 5
 ```
 
-Now we are ready to start our evil_server.py and try to make the application load our evil python file and hopefully it will get executed.
+Now we are ready to start our evil\_server.py and try to make the application load our evil python file and hopefully it will get executed.
 
 ![](../../.gitbook/assets/RFI4.png)
 
@@ -127,4 +127,4 @@ Success! As we observed, we can include our own files through RFI.
 
 ## Additional sources
 
-[https://www.owasp.org/index.php/Testing_for_Remote_File_Inclusion](https://www.owasp.org/index.php/Testing_for_Remote_File_Inclusion)
+[https://www.owasp.org/index.php/Testing\_for\_Remote\_File\_Inclusion](https://www.owasp.org/index.php/Testing\_for\_Remote\_File\_Inclusion)

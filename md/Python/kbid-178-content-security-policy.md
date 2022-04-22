@@ -1,14 +1,14 @@
-# KBID 178 - Content-Security-Policy
+# Python - Content-Security-Policy (CSP)
 
 ## Running the app
 
 Becoming a super hero is a fairly straight forward process:
 
-```text
+```
 $ sudo docker pull blabla1337/owasp-skf-lab:csp
 ```
 
-```text
+```
 $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:csp
 ```
 
@@ -18,9 +18,7 @@ Now that the app is running let's go hacking!
 
 ## Running the app Python3
 
-First, make sure python3 and pip are installed on your host machine.
-After installation, we go to the folder of the lab we want to practise
-"i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
+First, make sure python3 and pip are installed on your host machine. After installation, we go to the folder of the lab we want to practise "i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
 
 ```
 $ pip3 install -r requirements.txt
@@ -34,11 +32,11 @@ $ python3 <labname>
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker image and write-up thanks to Contrahack.io !](../../.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
+![Docker image and write-up thanks to Contrahack.io !](<../../.gitbook/assets/ing\_primary\_logo (2).png>)
 
 ## Reconnaissance
 
-The main use of the content security policy header is to, detect, report, and reject XSS attacks. The core issue in relation to XSS attacks is the browser's inability to distinguish between a script that's intended to be part of your application, and a script that's been maliciously injected by a third-party. With the use of CSP\(Content Security policy\), we can tell the browser which script is safe to execute and which scripts are most likely been injected by an attacker.
+The main use of the content security policy header is to, detect, report, and reject XSS attacks. The core issue in relation to XSS attacks is the browser's inability to distinguish between a script that's intended to be part of your application, and a script that's been maliciously injected by a third-party. With the use of CSP(Content Security policy), we can tell the browser which script is safe to execute and which scripts are most likely been injected by an attacker.
 
 ## Exploitation
 
@@ -56,4 +54,4 @@ With CSP in place, when we try to perform a XSS attack we notice that CSP header
 
 ## Additional sources
 
-[https://www.owasp.org/index.php/Content_Security_Policy](https://www.owasp.org/index.php/Content_Security_Policy)
+[https://www.owasp.org/index.php/Content\_Security\_Policy](https://www.owasp.org/index.php/Content\_Security\_Policy)

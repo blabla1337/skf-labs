@@ -1,10 +1,8 @@
-# KBID 250 - Session Puzzling
+# NodeJS - Session Puzzling
 
 ## Running the app nodeJs
 
-First make sure nodejs and npm are installed on your host machine.
-After installation, we go to the folder of the lab we want to practice.
-"i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following commands:
+First make sure nodejs and npm are installed on your host machine. After installation, we go to the folder of the lab we want to practice. "i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following commands:
 
 ```
 $ npm install
@@ -32,15 +30,15 @@ Session puzzles can be detected and exploited by enumerating all of the session 
 
 Let us see how can we exploit the session puzzles in a real world scenario, the application here allows us to the user to sign in and also provides "forgot password" functionality. By making an educated guess and as highlighted by the placeholders we log in using the well known credentials set(admin/admin). On successful authentication we are gifted with some confidential C level information. So, all good uptil now.
 
-![](../../.gitbook/assets/nodejs/SessionPuzzle/1.png)
+![](../../.gitbook/assets/java/SessionPuzzle/1.png)
 
 On successful authentication we are gifted with some confidential C level information. So, all good uptil now.
 
-![](../../.gitbook/assets/nodejs/SessionPuzzle/2.png)
+![](../../.gitbook/assets/java/SessionPuzzle/2.png)
 
 Now, lets assume the user logs out and forgets his password and attempts to recover his password by providing his username(admin) and if the username is valid the app says he/she should recieve his new password through an email.
 
-![](../../.gitbook/assets/nodejs/SessionPuzzle/3.png)
+![](../../.gitbook/assets/java/SessionPuzzle/3.png)
 
 Also if we observe closely the application sets a new session cookie once the user provides a username as requested by the app.
 
@@ -48,7 +46,7 @@ Also if we observe closely the application sets a new session cookie once the us
 
 As we know the session puzzling attack is possible since the app uses session variables for more than one purpose what if in this scenario we try to access /dashboard page which provides some confidential C level information. Lets try accessing /dashboard and what do we see :-) we can actually access authenticated pages without logging in to the application thus proving that we are able to successfully bypass authentication mechanism.
 
-![](../../.gitbook/assets/nodejs/SessionPuzzle/5.png)
+![](../../.gitbook/assets/java/SessionPuzzle/5.png)
 
 ## Additional sources
 

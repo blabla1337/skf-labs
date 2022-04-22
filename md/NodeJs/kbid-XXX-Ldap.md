@@ -1,10 +1,8 @@
-# KBID xxx - Ldap Injection
+# NodeJS - Ldap Injection
 
 ## Running the app nodeJs
 
-First make sure nodejs and npm are installed on your host machine.
-After installation, we go to the folder of the lab we want to practice.
-"i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following commands:
+First make sure nodejs and npm are installed on your host machine. After installation, we go to the folder of the lab we want to practice. "i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following commands:
 
 ```
 $ npm install
@@ -22,15 +20,15 @@ LDAP Injection is an attack used to exploit web based applications that construc
 
 Let's open the app.
 
-![](../../.gitbook/assets/nodejs/Ldap/Ldap-1.png)
+![](<../../.gitbook/assets/java/Ldap/Ldap-1 (3).png>)
 
 Trying to loggin with a random username and password.
 
-![](../../.gitbook/assets/nodejs/Ldap/Ldap-2.png)
+![](../../.gitbook/assets/java/Ldap/Ldap-2.png)
 
 The application architecture that supports LDAP includes both server-side and client-side components. The LDAP queries submitted to the server are known as LDAP search filters, which are constructed using prefix notation. Below is an example of an LDAP search filter:
 
-```text
+```
 find("(&(cn=" + username +")(userPassword=" + pass +"))")
 ```
 
@@ -53,7 +51,7 @@ We can see that the filter is constructed by concatenating the username and pass
 filter: "(&(cn=" * ")(sn=" * "))";
 ```
 
-![](../../.gitbook/assets/nodejs/Ldap/Ldap-3.png)
+![](../../.gitbook/assets/java/Ldap/Ldap-3.png)
 
 We successfully logged in as the Admin.
 

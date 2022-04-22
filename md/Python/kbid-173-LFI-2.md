@@ -1,4 +1,4 @@
-# KBID 173 - Local File Inclusion-2
+# Python - Local File Inclusion 2 (LFI-2)
 
 ## Running the app
 
@@ -9,10 +9,6 @@ $ sudo docker pull blabla1337/owasp-skf-lab:lfi-2
 ```
 $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:lfi-2
 ```
-
-{% hint style="success" %}
-
-{% endhint %}
 
 Now that the app is running let's go hacking!
 
@@ -32,7 +28,7 @@ $ python3 <labname>
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker image and write-up thanks to Contrahack.io !](../../.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
+![Docker image and write-up thanks to Contrahack.io !](<../../.gitbook/assets/ing\_primary\_logo (2).png>)
 
 ## Reconnaissance
 
@@ -68,9 +64,9 @@ Sensitive Information Disclosure
 
 Let us see how can we exploit the file inclusion vulnerability in a real world scenario, the application here allows us to view details on Intro, Chapter1, Chapter2 and so on.
 
-![](../../.gitbook/assets/LFI-2_loadfile1.png)
+![](<../../.gitbook/assets/LFI-2\_loadfile1 (1).png>)
 
-![](../../.gitbook/assets/LFI-2_loadfile2.png)
+![](<../../.gitbook/assets/LFI-2\_loadfile2 (1).png>)
 
 We could try to modify the "intro" item and attempt to access the world-readable /etc/passwd file by directory traversal. This will not work since the developer implemented a protection by filtering out the '../' sequence.
 
@@ -82,14 +78,10 @@ the result will be a ../ sequence after the webserver filtered out the ../ pater
 
 So lets try a payload like this: /..././..././..././..././..././..././..././etc/passwd
 
-![](../../.gitbook/assets/LFI-2_devtools.png) ![](../../.gitbook/assets/LFI-2_result.png)
-
-{% hint style="success" %}
-
-{% endhint %}
+![](../../.gitbook/assets/LFI-2\_devtools.png) ![](../../.gitbook/assets/LFI-2\_result.png)
 
 Success! As we observed, we can access the /etc/passwd file through LFI.
 
 ## Additional sources
 
-[https://www.owasp.org/index.php/Testing_for_Local_File_Inclusion](https://www.owasp.org/index.php/Testing_for_Local_File_Inclusion)
+[https://www.owasp.org/index.php/Testing\_for\_Local\_File\_Inclusion](https://www.owasp.org/index.php/Testing\_for\_Local\_File\_Inclusion)

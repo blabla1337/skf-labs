@@ -1,4 +1,4 @@
-# KBID 262 - Server Side Request Forgery
+# Python - Server Side Request Forgery (SSRF)
 
 ## Running the app
 
@@ -30,7 +30,7 @@ $ python3 <labname>
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker image and write-up thanks to ContraHack!](../../.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
+![Docker image and write-up thanks to ContraHack!](<../../.gitbook/assets/ing\_primary\_logo (2).png>)
 
 ## Reconnaissance
 
@@ -88,10 +88,6 @@ The keep alive functionality was intended to be used for external websites but w
 
 ![](../../.gitbook/assets/SSRF4.png)
 
-{% hint style="success" %}
-
-{% endhint %}
-
 Success! As we observed, we have found an Mysql service running locally.
 
 Yes it was having a Mysql service running on the local listner 127.0.0.1 and that is why our Nmap scan didn't found it but with the SSRF vulnerability in the application we can find it.
@@ -100,4 +96,4 @@ Also there is another service running, find a way to automatically enumerate all
 
 ## Additional sources
 
-[https://www.owasp.org/index.php/Server_Side_Request_Forgery](https://www.owasp.org/index.php/Server_Side_Request_Forgery)
+[https://www.owasp.org/index.php/Server\_Side\_Request\_Forgery](https://www.owasp.org/index.php/Server\_Side\_Request\_Forgery)

@@ -1,4 +1,4 @@
-# KBID 67 - Open Redirect
+# Python - URL Redirection
 
 ## Running the app
 
@@ -30,7 +30,7 @@ $ python3 <labname>
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker Image and write-up thanks to ContraHack!](../../.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
+![Docker Image and write-up thanks to ContraHack!](<../../.gitbook/assets/ing\_primary\_logo (2).png>)
 
 ## Reconnaissance
 
@@ -78,4 +78,4 @@ Using the payload above we will be able to successfully redirect a user to a mal
 
 ## Additional sources
 
-- [https://www.owasp.org/index.php/Testing_for_Client_Side_URL_Redirect\_(OTG-CLIENT-004)](<https://www.owasp.org/index.php/Testing_for_Client_Side_URL_Redirect_(OTG-CLIENT-004)>)
+* [https://www.owasp.org/index.php/Testing\_for\_Client\_Side\_URL\_Redirect\_(OTG-CLIENT-004)](https://www.owasp.org/index.php/Testing\_for\_Client\_Side\_URL\_Redirect\_\(OTG-CLIENT-004\))

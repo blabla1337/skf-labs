@@ -1,4 +1,4 @@
-# KBID XXX - Auth-bypass-2
+# Python - Auth Bypass - 2
 
 ## Running the app
 
@@ -30,7 +30,7 @@ $ python3 <labname>
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker image and write-up thanks to Contrahack.io !](../../.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
+![Docker image and write-up thanks to Contrahack.io !](<../../.gitbook/assets/ing\_primary\_logo (2).png>)
 
 ## Reconnaissance
 
@@ -76,16 +76,16 @@ We can check whether it is a hash:
 
 it seems to be a sha1...
 
-It is possible that the developer added a salt to the username and hashed the concatenated string admin+some_salt -> maybe this is also the reason why we can't find with Google what the hash represents.
+It is possible that the developer added a salt to the username and hashed the concatenated string admin+some\_salt -> maybe this is also the reason why we can't find with Google what the hash represents.
 
 The about page seem to contain a lot of text, maybe the salt is a typical word for this company that is also mentioned on that page…
 
 Using cewel we can grab all the words from a page like this: cewl -m 4 -w wordlist.txt -d 0 -v [http://127.0.0.1:5000/about](http://127.0.0.1:5000/about)\</br>
 
 \-m 4: minimum word length is 4 characters\
-&#x20;\-w wordlist: write output to file ‘wordlist’\
-&#x20;\-d 0: follow links x times deep (0=stay on the same page)\
-&#x20;\-v: verbose (show what you are doing)\
+\-w wordlist: write output to file ‘wordlist’\
+\-d 0: follow links x times deep (0=stay on the same page)\
+\-v: verbose (show what you are doing)\\
 
 Using a terminal window:
 

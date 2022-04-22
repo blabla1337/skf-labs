@@ -1,10 +1,8 @@
-# KBID XXX - Race Condition File-Write
+# Java - Race Condition File-Write
 
 ## Running the app Java
 
-First make sure java is installed on your host machine.
-After installation, we go to the folder of the lab we want to practice.
-"i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following command:
+First make sure java is installed on your host machine. After installation, we go to the folder of the lab we want to practice. "i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following command:
 
 ```
 $ ./mvnw spring-boot:run
@@ -20,15 +18,15 @@ Now that the app is running let's go hacking!
 
 We can download a file from the server by doing a GET request to the server.
 
-![](../../.gitbook/assets/java/RaceCondition-File-Write/1.png)
+![](../../.gitbook/assets/nodejs/RaceCondition-File-Write/1.png)
 
 Let's try:
 
-![](../../.gitbook/assets/java/RaceCondition-File-Write/2.png)
+![](../../.gitbook/assets/nodejs/RaceCondition-File-Write/2.png)
 
 Once we download the file we can see whatever we add to the URL is being written in a file called shared-file.
 
-![](../../.gitbook/assets/java/RaceCondition-File-Write/3.png)
+![](../../.gitbook/assets/nodejs/RaceCondition-File-Write/3.png)
 
 #### Step 2
 
@@ -92,8 +90,7 @@ In order to do that we must send requests with high frequency.
 
 Doing it manually is practically impossible, so we create a script that does that for us:
 
-```sh
-
+```
 #!/bin/bash
 
 while true; do
@@ -101,17 +98,16 @@ while true; do
 	curl -i -s -k  -X $'GET' -H $'Host: localhost:5000' $'http://localhost:5000/111' | grep "111"
 
 done
-
 ```
 
 and in the meantime we will send a couple requests from Burp:
 
-![](../../.gitbook/assets/java/RaceCondition-File-Write/4.png)
+![](../../.gitbook/assets/nodejs/RaceCondition-File-Write/4.png)
 
 If we look in the logs we will see:
 
-![](../../.gitbook/assets/java/RaceCondition-File-Write/5.png)
+![](../../.gitbook/assets/nodejs/RaceCondition-File-Write/5.png)
 
 ## Additional sources
 
-https://wiki.owasp.org/index.php/Testing_for_Race_Conditions_(OWASP-AT-010)
+https://wiki.owasp.org/index.php/Testing\_for\_Race\_Conditions\_(OWASP-AT-010)

@@ -1,4 +1,4 @@
-# KBID 39 - HttpOnly session hijacking XSS
+# Python - HttpOnly Session Hijacking XSS
 
 ## Running the app
 
@@ -34,7 +34,7 @@ $ python3 <labname>
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker Image and write-up thanks to ContraHack!](../../.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
+![Docker Image and write-up thanks to ContraHack!](<../../.gitbook/assets/ing\_primary\_logo (2).png>)
 
 ## Reconnaissance
 

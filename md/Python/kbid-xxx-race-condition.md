@@ -1,4 +1,4 @@
-# KBID XXX - Race Condition
+# Python - Race Condition
 
 ## Running the app
 
@@ -30,7 +30,7 @@ $ python3 <labname>
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker image and write-up thanks to Contrahack.io !](../../.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
+![Docker image and write-up thanks to Contrahack.io !](<../../.gitbook/assets/ing\_primary\_logo (2).png>)
 
 ## Reconnaissance
 
@@ -66,29 +66,28 @@ If we look at the code we see that there are 4 functions being used:
 
     the function receives the username in input and executes the following:
 
-    - deletes `"` and `\` from the username
-    - opens `hello.sh` file
-    - writes a command in it&#x20;
-    - closes the file
-    - logs some useful info&#x20;
-    - checks if the username is in the format `[A-Za-z0-9 ]*`
-    - returns the username if the regex succedes
-
-2.  `boot_clean()` that removes all the hello files (`hello.sh` and `hello.txt`)
-3.  `boot_run()` executes the `hello.sh` file
-4.  `boot_reset()` resets the system to the default settings
+    * deletes `"` and `\` from the username
+    * opens `hello.sh` file
+    * writes a command in it
+    * closes the file
+    * logs some useful info
+    * checks if the username is in the format `[A-Za-z0-9 ]*`
+    * returns the username if the regex succedes
+2. `boot_clean()` that removes all the hello files (`hello.sh` and `hello.txt`)
+3. `boot_run()` executes the `hello.sh` file
+4. `boot_reset()` resets the system to the default settings
 
 ### Step 3
 
 If we intercept the traffic generate by the app we see that:
 
-- a GET request is issued to validate the username and call `boot_validate(person)`
+* a GET request is issued to validate the username and call `boot_validate(person)`
 
 ```
 GET /?person=test&action=validate
 ```
 
-- clicking boot, will generate the request to execute the `boot_run()` function
+* clicking boot, will generate the request to execute the `boot_run()` function
 
 ```
 GET /?action=run HTTP/1.1
@@ -113,11 +112,9 @@ def boot_validate(person):
 ```
 
 {% hint style="success" %}
-
 ```
  Everything works fine, so where is the problem?
 ```
-
 {% endhint %}
 
 The problem is that in this case, we have a very small window to execute the `boot_run()` function after the input is written in `hello.sh` and just before `return valid` is called. Again, there is a possibility to have a race condition only if the following steps are executed in this order:

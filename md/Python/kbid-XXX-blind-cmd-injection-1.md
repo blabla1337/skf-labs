@@ -1,4 +1,4 @@
-# KBID 251 - Blind command injection
+# Python - Command Injection Blind (CMD-Blind)
 
 ## Running the app
 
@@ -30,7 +30,7 @@ $ python3 <labname>
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker image and write-up thanks to Contrahack.io !](../../.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
+![Docker image and write-up thanks to Contrahack.io !](<../../.gitbook/assets/ing\_primary\_logo (2).png>)
 
 ## Reconnaissance
 
@@ -66,4 +66,4 @@ As a blind command injection, we could try other methods to detect that it is vu
 
 ## Additional sources
 
-[https://www.owasp.org/index.php/Command_Injection](https://www.owasp.org/index.php/Command_Injection)
+[https://www.owasp.org/index.php/Command\_Injection](https://www.owasp.org/index.php/Command\_Injection)

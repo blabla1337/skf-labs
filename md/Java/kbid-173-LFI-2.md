@@ -1,10 +1,8 @@
-# KBID xxx - LFI-2
+# Java - Local File Inclusion 2 (LFI-2)
 
 ## Running the app Java
 
-First make sure java is installed on your host machine.
-After installation, we go to the folder of the lab we want to practice.
-"i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following command:
+First make sure java is installed on your host machine. After installation, we go to the folder of the lab we want to practice. "i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following command:
 
 ```
 $ ./mvnw spring-boot:run
@@ -22,7 +20,7 @@ Warning: To successfully test for this flaw, the tester needs to have knowledge 
 
 Some Examples:
 
-```text
+```
 http://example.com/getUserProfile.jsp?item=../../../../etc/passwd
 
 Cookie: USER=1826cc8f:PSTYLE=../../../../etc/passwd
@@ -48,24 +46,23 @@ Sensitive Information Disclosure
 
 Let us see how can we exploit the file inclusion vulnerability in a real world scenario, the application here allows us to view details on Intro, Chapter1, Chapter2 and so on.
 
-![](../../.gitbook/assets/java/LFI-2/1.png)
+![](../../.gitbook/assets/nodejs/LFI-2/1.png)
 
-![](../../.gitbook/assets/java/LFI-2/2.png)
+![](../../.gitbook/assets/nodejs/LFI-2/2.png)
 
 We could try to modify the "intro" item and attempt to access the world-readable /etc/passwd file by directory traversal. This will not work since the developer implemented a protection by filtering out the '../' sequence.
 
 If we however would create the folowing payload:
 
-<span style="color:blue;font-size:200%;">.</span><span style="color:red;font-size:200%;">../</span><span style="color:blue;font-size:200%;">./</span>
+..././
 
 the result will be a ../ sequence after the webserver filtered out the ../ patern in the middle of our string.
 
 So lets try a payload like this: /..././..././..././..././..././..././..././etc/passwd
 
-![](../../.gitbook/assets/java/LFI-2/3.png)
-![](../../.gitbook/assets/java/LFI-2/4.png)
+![](../../.gitbook/assets/nodejs/LFI-2/3.png) ![](../../.gitbook/assets/nodejs/LFI-2/4.png)
 
-{% hint style="success" %} Success! As we observed, we can access the /etc/passwd file through LFI.
+Success! As we observed, we can access the /etc/passwd file through LFI.
 
 ## Additional sources
 

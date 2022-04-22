@@ -1,4 +1,4 @@
-# KBID 5 - CSRF - Samesite
+# Python - CSRF-SameSite
 
 ## Running the app Docker
 
@@ -30,7 +30,7 @@ $ python3 <labname>
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker image and write-up thanks to Contrahack.io !](../../.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
+![Docker image and write-up thanks to Contrahack.io !](<../../.gitbook/assets/ing\_primary\_logo (2).png>)
 
 ## Reconnaissance
 
@@ -167,13 +167,13 @@ Now, in a different browser tab, try to run again the CSRF attack.
 
 Go back to the first tab and check if the color was changed by the CSRF attack or not by clicking on _refresh the page_.
 
-![](../../.gitbook/assets/csrf-samesite5.png)
+![](<../../.gitbook/assets/csrf-samesite5 (1).png>)
 
 Nothing has changed!
 
 Looking at request logged in Burp, we can understand the reason.
 
-![](../../.gitbook/assets/csrf-samesite6.png)
+![](<../../.gitbook/assets/csrf-samesite6 (1).png>)
 
 As the cookie was set in _Strict_ mode, the browser was instructed to not send it with any cross-site-request. Thus, as Color Change requires an authenticated session, this request is treated as anonymous one and, therefore,rejected by the application.
 
@@ -198,11 +198,11 @@ Set your preferred color and once again run the CSRF attack in a different tab.
 
 Go back to the first tab and check if the color has changed by the CSRF attack or not, by clicking on _refresh the page_.
 
-![](../../.gitbook/assets/csrf-samesite5.png)
+![](<../../.gitbook/assets/csrf-samesite5 (1).png>)
 
 Nothing has changed again! _Lax_ mode also blocked the cookie to be sent over POST cross-site-request.
 
-![](../../.gitbook/assets/csrf-samesite6.png)
+![](<../../.gitbook/assets/csrf-samesite6 (1).png>)
 
 This lab was specially designed to also accept GET query string parameters for color changing.
 

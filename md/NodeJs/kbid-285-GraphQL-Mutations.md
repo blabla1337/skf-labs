@@ -1,10 +1,8 @@
-# KBID 285 - GraphQL mutations
+# NodeJS - GraphQL Mutations
 
 ## Running the app nodeJs
 
-First make sure nodejs and npm are installed on your host machine.
-After installation, we go to the folder of the lab we want to practice.
-"i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following commands:
+First make sure nodejs and npm are installed on your host machine. After installation, we go to the folder of the lab we want to practice. "i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following commands:
 
 ```
 $ npm install
@@ -31,7 +29,6 @@ mutation{
     author_id
   }
 }
-
 
 ```
 

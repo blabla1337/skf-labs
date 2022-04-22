@@ -1,12 +1,12 @@
-# KBID 95 - Formula Injection
+# Python - Formula Injection
 
 ## Running the app
 
-```text
+```
 $ sudo docker pull blabla1337/owasp-skf-lab:formula-injection
 ```
 
-```text
+```
 $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:formula-injection
 ```
 
@@ -14,9 +14,7 @@ Now that the app is running let's go hacking!
 
 ## Running the app Python3
 
-First, make sure python3 and pip are installed on your host machine.
-After installation, we go to the folder of the lab we want to practise
-"i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
+First, make sure python3 and pip are installed on your host machine. After installation, we go to the folder of the lab we want to practise "i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
 
 ```
 $ pip3 install -r requirements.txt
@@ -30,7 +28,7 @@ $ python3 <labname>
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker image and write-up thanks to Contrahack.io !](../../.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
+![Docker image and write-up thanks to Contrahack.io !](<../../.gitbook/assets/ing\_primary\_logo (2).png>)
 
 ## Reconnaissance
 
@@ -40,7 +38,7 @@ The first step is to identify input forms and parameters that can be exported as
 
 ![](../../.gitbook/assets/excel-formula-injection-1.png)
 
-```text
+```
 http://localhost:5000/
 ```
 
@@ -50,7 +48,7 @@ Now let's see if we can inject a simple spreadsheet formula.
 
 ![](../../.gitbook/assets/excel-formula-injection-2.png)
 
-```text
+```
 =1+1
 ```
 
@@ -88,13 +86,13 @@ We need to choose the correct formula to inject, based on the spreadsheet reader
 
 #### MS Excel
 
-```text
+```
 =cmd|' /C notepad'!'A1'
 ```
 
 #### LibreOffice Calc
 
-```text
+```
 ='file:///etc/passwd'#$passwd.A1
 ```
 
@@ -118,9 +116,9 @@ Check the Additional sources section below with more possibilities for Formula I
 
 ## Additional sources
 
-Please refer to the OWASP testing guide for a full complete description about Formula Injection \(CSV Injection\)!
+Please refer to the OWASP testing guide for a full complete description about Formula Injection (CSV Injection)!
 
-[https://www.owasp.org/index.php/CSV_Injection](https://www.owasp.org/index.php/CSV_Injection)
+[https://www.owasp.org/index.php/CSV\_Injection](https://www.owasp.org/index.php/CSV\_Injection)
 
 More references
 

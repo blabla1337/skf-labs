@@ -1,10 +1,8 @@
-# KBID xxx - Auth-bypass-2
+# Java - Auth Bypass - 2
 
 ## Running the app Java
 
-First make sure java is installed on your host machine.
-After installation, we go to the folder of the lab we want to practice.
-"i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following command:
+First make sure java is installed on your host machine. After installation, we go to the folder of the lab we want to practice. "i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following command:
 
 ```
 $ ./mvnw spring-boot:run
@@ -30,8 +28,7 @@ Lets start the application and register a new user
 
 ![](../../.gitbook/assets/java/Auth-Bypass-2/2.png)
 
-Please note that (for convenience) your password will be reset if the user already exists.
-Also note that the username and password are case sensitive.
+Please note that (for convenience) your password will be reset if the user already exists. Also note that the username and password are case sensitive.
 
 Now that we have valid credentials, we can login:
 
@@ -57,24 +54,22 @@ We can check whether it is a hash:
 
 it seems to be a sha1...
 
-It is possible that the developer added a salt to the username and hashed the concatenated string
-admin+some_salt
--> maybe this is also the reason why we can't find with Google what the hash represents.
+It is possible that the developer added a salt to the username and hashed the concatenated string admin+some\_salt -> maybe this is also the reason why we can't find with Google what the hash represents.
 
 The about page seem to contain a lot of text, maybe the salt is a typical word for this company that is also mentioned on that page…
 
-Using cewel we can grab all the words from a page like this:
-cewl -m 4 -w wordlist.txt -d 0 -v http://127.0.0.1:5000/about</br>
-<I>-m 4: minimum word length is 4 characters</br>
--w wordlist: write output to file ‘wordlist’</br>
--d 0: follow links x times deep (0=stay on the same page)</br>
--v: verbose (show what you are doing)</br></I>
+Using cewel we can grab all the words from a page like this: cewl -m 4 -w wordlist.txt -d 0 -v http://127.0.0.1:5000/about\
+_-m 4: minimum word length is 4 characters_\
+_-w wordlist: write output to file ‘wordlist’_\
+_-d 0: follow links x times deep (0=stay on the same page)_\
+_-v: verbose (show what you are doing)_\
+
 
 Using a terminal window:
 
-![](../../.gitbook/assets/java/Auth-Bypass-2/8.png)
+![](../../.gitbook/assets/nodejs/Auth-Bypass-2/8.png)
 
-![](../../.gitbook/assets/java/Auth-Bypass-2/9.png)
+![](../../.gitbook/assets/nodejs/Auth-Bypass-2/9.png)
 
 Let’s use burp intruder to calculate a sha-1 for every admin+word combination.
 
@@ -86,11 +81,9 @@ Paste the content of the word list in the payload options and add the payload pr
 
 ![](../../.gitbook/assets/java/Auth-Bypass-2/11.png)
 
-This will prefix the word 'admin' to each word from the list and calculate a sha1 of the concatenated string.
-for example sha1(adminBank)
+This will prefix the word 'admin' to each word from the list and calculate a sha1 of the concatenated string. for example sha1(adminBank)
 
-Start the attack
-The result:
+Start the attack The result:
 
 ![](../../.gitbook/assets/java/Auth-Bypass-2/12.png)
 

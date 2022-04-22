@@ -1,4 +1,4 @@
-# KBID 67 - Open Redirect Harder
+# Python - URL Redirection - Harder
 
 ## Running the app
 
@@ -30,7 +30,7 @@ $ python3 <labname>
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker Image and write-up thanks to ContraHack!](../../.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
+![Docker Image and write-up thanks to ContraHack!](<../../.gitbook/assets/ing\_primary\_logo (2).png>)
 
 ## Reconnaissance
 
@@ -81,12 +81,12 @@ If we URL encode the dot the application is smart enough to decode it and recogn
 
 Although we cannot explicitly use the dot character, we can find different ways to bypass the blacklist. In example we could use the following techniques:
 
-- double encoding: `https://google%252ecom`&#x20;
-- UTF-8 encoding: `https://google.com%E3%80%82.com`
-- Can you find more?&#x20;
+* double encoding: `https://google%252ecom`
+* UTF-8 encoding: `https://google.com%E3%80%82.com`
+* Can you find more?
 
 Using the payload above we will be able to successfully redirect a user to a malicious website
 
 ## Additional sources
 
-- [https://www.owasp.org/index.php/Testing_for_Client_Side_URL_Redirect\_(OTG-CLIENT-004)](<https://www.owasp.org/index.php/Testing_for_Client_Side_URL_Redirect_(OTG-CLIENT-004)>)
+* [https://www.owasp.org/index.php/Testing\_for\_Client\_Side\_URL\_Redirect\_(OTG-CLIENT-004)](https://www.owasp.org/index.php/Testing\_for\_Client\_Side\_URL\_Redirect\_\(OTG-CLIENT-004\))

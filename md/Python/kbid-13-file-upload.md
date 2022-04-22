@@ -1,4 +1,4 @@
-# KBID 13 - File upload
+# Python - File-Upload
 
 ## Running the app
 
@@ -30,7 +30,7 @@ $ python3 <labname>
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker Image and write-up thanks to ContraHack!](../../.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
+![Docker Image and write-up thanks to ContraHack!](<../../.gitbook/assets/ing\_primary\_logo (2).png>)
 
 ## Reconnaissance
 
@@ -80,7 +80,7 @@ http://localhost:5000/static/img/Test.png
 
 And there it is our file was being uploaded successfully in the static/img folder of the application and because this is accessible by the application we can access our file.
 
-![](<../../.gitbook/assets/screen-shot-2019-03-05-at-16.24.51 (1).png>)
+![](../../.gitbook/assets/screen-shot-2019-03-05-at-16.24.51.png)
 
 Now try also to upload other files like \*.exe or \*.html and do a Cross Site Scripting attack. Maybe also try to upload a very big file and see if the application is also protected agains that type of attack.
 

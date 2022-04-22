@@ -1,4 +1,4 @@
-# KBID 3 - Cross site scripting (href)
+# Python - XSS-href
 
 ## Running the app Docker
 
@@ -30,7 +30,7 @@ $ python3 <labname>
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker image and write-up thanks to Contrahack.io !](../../.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
+![Docker image and write-up thanks to Contrahack.io !](<../../.gitbook/assets/ing\_primary\_logo (2).png>)
 
 ## Reconnaissance
 
@@ -55,7 +55,11 @@ href="javascript:JS PAYLOAD"
 Autoescape is disabled by default so every characters will be reflected in the following snippet in the template.
 
 ```markup
-<center> <p style="font-size:2em;"> {% autoescape false %} <a style="font-size:20px;" href="{{xss}}">visit my website!</a> {% endautoescape %}</p></center>
+<center> <p style="font-size:2em;"> 
+
+<div data-gb-custom-block data-tag="autoescape" data-0='false'> <a style="font-size:20px;" href="{{xss}}">visit my website!</a> </div>
+
+</p></center>
 ```
 
 ## Exploitation

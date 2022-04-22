@@ -1,4 +1,4 @@
-# KBID 268 - Insecure direct object references
+# Python - Insecure Direct Object References (IDOR)
 
 ## Running the app
 
@@ -30,7 +30,7 @@ $ python3 <labname>
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![](../../.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
+![](<../../.gitbook/assets/ing\_primary\_logo (2).png>)
 
 ## Reconnaissance
 
@@ -66,7 +66,7 @@ Step 2:
 
 Let's try to brute force if we can access other documents by fuzzing the index, consider the index ID=2000 for example:
 
-![](<../../.gitbook/assets/idor4 (1).png>)
+![](../../.gitbook/assets/idor4.png)
 
 Ok, that's a good start so now we atleast know the index value falls between 1-1500.
 

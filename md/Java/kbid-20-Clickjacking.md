@@ -1,10 +1,8 @@
-# KBID 20 - Clickjacking
+# Java - Clickjacking
 
 ## Running the app Java
 
-First make sure java is installed on your host machine.
-After installation, we go to the folder of the lab we want to practice.
-"i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following command:
+First make sure java is installed on your host machine. After installation, we go to the folder of the lab we want to practice. "i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following command:
 
 ```
 $ ./mvnw spring-boot:run
@@ -26,11 +24,11 @@ Examples: Imagine an attacker who builds a web site that has a button on it that
 
 In order to exploit this vulnerability, the attacker would place an iframe with the malicious link behind a valid actionable button and make it transparent to capture the clicks.
 
-![](../../.gitbook/assets/java/Clickjacking/1.png)
+![](../../.gitbook/assets/nodejs/Clickjacking/1.png)
 
 In our situation if we click on show evil, we notice the attacker in reality wants to capture facebook likes behind "Click me for free stuff!" button.
 
-![](../../.gitbook/assets/java/Clickjacking/2.png)
+![](../../.gitbook/assets/nodejs/Clickjacking/2.png)
 
 ## Additional sources :
 

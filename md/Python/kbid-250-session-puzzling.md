@@ -1,4 +1,4 @@
-# KBID 250 - Session Puzzling
+# Python - Session Puzzling
 
 ## Running the app
 
@@ -9,10 +9,6 @@ $ sudo docker pull blabla1337/owasp-skf-lab:sessionpuzzle
 ```
 $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:sessionpuzzle
 ```
-
-{% hint style="success" %}
-
-{% endhint %}
 
 Now that the app is running let's go hacking!
 
@@ -32,7 +28,7 @@ $ python3 <labname>
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker image and write-up thanks to Contrahack.io !](../../.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
+![Docker image and write-up thanks to Contrahack.io !](<../../.gitbook/assets/ing\_primary\_logo (2).png>)
 
 ## Reconnaissance
 

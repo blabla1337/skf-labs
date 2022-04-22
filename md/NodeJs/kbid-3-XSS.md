@@ -1,10 +1,8 @@
-# KBID 3 - Cross Site Scripting
+# NodeJS - XSS
 
 ## Running the app nodeJs
 
-First make sure nodejs and npm are installed on your host machine.
-After installation, we go to the folder of the lab we want to practice.
-"i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following commands:
+First make sure nodejs and npm are installed on your host machine. After installation, we go to the folder of the lab we want to practice. "i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following commands:
 
 ```
 $ npm install
@@ -43,9 +41,9 @@ app.post("/home", (req, res) => {
 <center> <p style="font-size:2em;"> <%- xss %> </p> </center>
 ```
 
-The variable is then used in the index.ejs to display the content suplied by the user. But as you can see the tag being used in ejs is <%- which means is not being escaped by the template engine . This indicates that is should be possible to perform a Cross Site Scripting \(XSS\) injection.
+The variable is then used in the index.ejs to display the content suplied by the user. But as you can see the tag being used in ejs is <%- which means is not being escaped by the template engine . This indicates that is should be possible to perform a Cross Site Scripting (XSS) injection.
 
-![](../../.gitbook/assets/nodejs/XSS/3.png)
+![](../../.gitbook/assets/nodejs/XSS-attribute/6.png)
 
 ## Exploitation
 
@@ -53,7 +51,7 @@ The variable is then used in the index.ejs to display the content suplied by the
 
 Now we have seen where the user input is being reflected in the application we will have to look what dangerous HTML characters are not properly escaped so we can build our XSS payload. So for our first check we use the following string as an input:
 
-```text
+```
 foobar"></
 ```
 
@@ -61,7 +59,7 @@ foobar"></
 
 As you can see the application did not encode or blacklisted any of the dangerous HTML characters. Now lets try the XSS payload to see if this also is reflected back withouth any escaping or blacklist filtering.
 
-```text
+```
 foobar<script>alert(123)</script>
 ```
 
@@ -78,4 +76,5 @@ In Firefox we can see the XSS alert pop-up and we have successfully performed th
 Please refer to the OWASP testing guide for a full complete description about cross site scripting!
 
 {% embed url="https://owasp.org/www-community/attacks/xss/" %}
+
 {% embed url="https://ejs.co/#docs" %}

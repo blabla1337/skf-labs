@@ -1,10 +1,8 @@
-# KBID XXX - DoS using Regex
+# Java - DoS Regex
 
 ## Running the app Java
 
-First make sure java is installed on your host machine.
-After installation, we go to the folder of the lab we want to practice.
-"i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following command:
+First make sure java is installed on your host machine. After installation, we go to the folder of the lab we want to practice. "i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following command:
 
 ```
 $ ./mvnw spring-boot:run
@@ -20,15 +18,15 @@ Now that the app is running let's go hacking!
 
 This application is verfying wether the input from the user is a valid email or not, using regex.
 
-![](../../.gitbook/assets/java/dos-regex/1.png)
+![](../../.gitbook/assets/nodejs/DOS-Regex/1.png)
 
 If we insert a valid email and verify it clicking on the button "Verify my email", the application will reply with "Matched".
 
-![](../../.gitbook/assets/java/dos-regex/2.png)
+![](../../.gitbook/assets/nodejs/DOS-Regex/2.png)
 
 If the email is not in the format user@domain.tld, the app will return "Not Matched"
 
-![](../../.gitbook/assets/java/dos-regex/3.png)
+![](../../.gitbook/assets/nodejs/DOS-Regex/3.png)
 
 The application uses regex to identify a valid email. The regex tries to find every possible combinations of a pattern in the text:
 

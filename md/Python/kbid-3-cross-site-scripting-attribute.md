@@ -1,4 +1,4 @@
-# KBID 3 - Cross site scripting (attribute)
+# Python - XSS-Attribute
 
 ## Running the app Docker
 
@@ -30,7 +30,7 @@ $ python3 <labname>
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker image and write-up thanks to Contrahack.io !](../../.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
+![Docker image and write-up thanks to Contrahack.io !](<../../.gitbook/assets/ing\_primary\_logo (2).png>)
 
 ## Reconnaissance
 
@@ -45,7 +45,11 @@ If we want to make it red, we can just write `red` in the input box and click th
 ![](../../.gitbook/assets/xss-attribute-2.png)
 
 ```markup
-<center> <p style="font-size:2em;"> {% autoescape false %}<span style='color:{{xss}};' > Let me be a new color!</span>{% endautoescape %}</p></center>
+<center> <p style="font-size:2em;"> 
+
+<div data-gb-custom-block data-tag="autoescape" data-0='false'><span style='color:{{xss}};' > Let me be a new color!</span></div>
+
+</p></center>
 ```
 
 and it is not escaped so it should be possible to perform a Cross Site Scripting (XSS) injection.

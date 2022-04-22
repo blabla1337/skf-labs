@@ -1,4 +1,4 @@
-# KBID 20 - Clickjacking
+# Python - Clickjacking
 
 ## Running the app
 
@@ -30,7 +30,7 @@ $ python3 <labname>
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker image and write-ip thanks to ING!](../../.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
+![Docker image and write-ip thanks to ING!](<../../.gitbook/assets/ing\_primary\_logo (2).png>)
 
 ## Reconnaissance
 
@@ -44,7 +44,7 @@ Examples: Imagine an attacker who builds a web site that has a button on it that
 
 In order to exploit this vulnerability, the attacker would place an iframe with the malicious link behind a valid actionable button and make it transparent to capture the clicks.
 
-![](<../../.gitbook/assets/screenshot-2019-03-19-at-13.09.57 (1).png>)
+![](<../../.gitbook/assets/click1 (1).png>)
 
 In our situation if we click on show evil, we notice the attacker in reality wants to capture facebook likes behind "Click me for free stuff!" button.
 

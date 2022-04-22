@@ -1,4 +1,4 @@
-# KBID 173 - Local File Inclusion
+# Python - Local File Inclusion 1 (LFI-1)
 
 ## Running the app
 
@@ -9,10 +9,6 @@ $ sudo docker pull blabla1337/owasp-skf-lab:lfi
 ```
 $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:lfi
 ```
-
-{% hint style="success" %}
-
-{% endhint %}
 
 Now that the app is running let's go hacking!
 
@@ -32,7 +28,7 @@ $ python3 <labname>
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker image and write-up thanks to Contrahack.io !](../../.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
+![Docker image and write-up thanks to Contrahack.io !](<../../.gitbook/assets/ing\_primary\_logo (2).png>)
 
 ## Reconnaissance
 
@@ -76,14 +72,10 @@ To exploit let us try to modify the "Intro item" and attempt to access the world
 
 ![](../../.gitbook/assets/lfi3.png)
 
-![](<../../.gitbook/assets/lfi4 (1).png>)
-
-{% hint style="success" %}
-
-{% endhint %}
+![](../../.gitbook/assets/lfi4.png)
 
 Success! As we observed, we can access the /etc/passwd file through LFI.
 
 ## Additional sources
 
-[https://www.owasp.org/index.php/Testing_for_Local_File_Inclusion](https://www.owasp.org/index.php/Testing_for_Local_File_Inclusion)
+[https://www.owasp.org/index.php/Testing\_for\_Local\_File\_Inclusion](https://www.owasp.org/index.php/Testing\_for\_Local\_File\_Inclusion)

@@ -1,10 +1,8 @@
-# KBID XXX - Client Side Restriction Bypass, part 2
+# NodeJS - Client Side Restriction Bypass - Harder
 
 ## Running the app nodeJs
 
-First make sure nodejs and npm are installed on your host machine.
-After installation, we go to the folder of the lab we want to practice.
-"i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following commands:
+First make sure nodejs and npm are installed on your host machine. After installation, we go to the folder of the lab we want to practice. "i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following commands:
 
 ```
 $ npm install
@@ -60,7 +58,7 @@ We did! And if you use the "_Refresh the page_" link (or the _Refresh_ button of
 
 Alternatively, let's take a closer look at that front-end code! By right-clicking the form in our Chrome browser and choosing "_Inspect_" we can investigate the HTML in question.
 
-![](../../.gitbook/assets/nodejs/Client-side-restriction-bypass-2/7.png)
+![](../../.gitbook/assets/java/Client-side-restriction-bypass-2/7.png)
 
 What's this?!
 
@@ -68,9 +66,9 @@ The developer left us the clues right there in the HTML? And we manually did the
 
 If you right-click the commented text and choose "_Edit as HTML_" we can just remove the `<!--` and `-->` comment markers. And presto, there's our other form which will let us change the favorite food as well.
 
-![](../../.gitbook/assets/nodejs/Client-side-restriction-bypass-2/9.png)
+![](../../.gitbook/assets/java/Client-side-restriction-bypass-2/9.png)
 
-![](../../.gitbook/assets/nodejs/Client-side-restriction-bypass-2/8.png)
+![](../../.gitbook/assets/java/Client-side-restriction-bypass-2/8.png)
 
 ## Additional sources
 

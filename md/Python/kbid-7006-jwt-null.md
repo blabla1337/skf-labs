@@ -1,4 +1,4 @@
-# KBID 7006 - JWT Null
+# Python - JWT Null
 
 ## Running the app
 
@@ -30,7 +30,7 @@ $ python3 <labname>
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker image and write-up thanks to Contrahack.io !](../../.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
+![Docker image and write-up thanks to Contrahack.io !](<../../.gitbook/assets/ing\_primary\_logo (2).png>)
 
 ## Reconnaissance
 
@@ -84,8 +84,8 @@ A potential attacker can now decode the token in [http://jwt.io](http://jwt.io) 
 
 As shown in the above picture, there are 2 points which can be tampered.
 
-- alg header: contains the information of which algorithm is being used for digital signature of the token.
-- indentity: this information is used by the application to identify which user ID is currently authenticated.
+* alg header: contains the information of which algorithm is being used for digital signature of the token.
+* indentity: this information is used by the application to identify which user ID is currently authenticated.
 
 How about checking if the server is blindly accepting the digital signature algorithm as stored by token. Of course, changing the signature would also change the token signature, but, what if the server accepts NONE algorithm?
 

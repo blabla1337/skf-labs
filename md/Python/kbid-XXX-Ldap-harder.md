@@ -1,10 +1,8 @@
-# KBID xxx - Ldap Injection - harder
+# Python - Ldap Injection - harder
 
 ## Running the app nodeJs
 
-First make sure nodejs and npm are installed on your host machine.
-After installation, we go to the folder of the lab we want to practice.
-"i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following commands:
+First make sure nodejs and npm are installed on your host machine. After installation, we go to the folder of the lab we want to practice. "i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following commands:
 
 ```
 $ npm install
@@ -22,15 +20,15 @@ LDAP Injection is an attack used to exploit web based applications that construc
 
 Let's open the app.
 
-![](../../.gitbook/assets/nodejs/Ldap/Ldap-1.png)
+![](<../../.gitbook/assets/java/Ldap/Ldap-1 (3).png>)
 
 Trying to loggin with a random username and password.
 
-![](../../.gitbook/assets/nodejs/Ldap/Ldap-2.png)
+![](../../.gitbook/assets/java/Ldap/Ldap-2.png)
 
 The application architecture that supports LDAP includes both server-side and client-side components. The LDAP queries submitted to the server are known as LDAP search filters, which are constructed using prefix notation. Below is an example of an LDAP search filter:
 
-```text
+```
 find("(&(cn=" + username +")(userPassword=" + pass +"))")
 ```
 
@@ -50,7 +48,7 @@ We can see that the filter is constructed by concatenating the username and pass
 search_filter = "(&(cn=" * ")(sn=" * "))";
 ```
 
-![](../../.gitbook/assets/nodejs/Ldap-harder/Ldap-5.png)
+![](../../.gitbook/assets/java/Ldap-harder/Ldap-5.png)
 
 No luck, maybe this application is sanitizing the user input somehow, let's check the code again.
 
@@ -59,15 +57,14 @@ if(len(secret) < 2):
 	return render_template("index.html", result = "The secret answer is at least 2 character long.")
 ```
 
-The approach here to avoid LdaP injection was to check for the length of the user input. If the length is less than 2, the user input is invalid.
-Unfortunately for the developer, this approach is not very secure. Special characters other than "\*" can also be used to create malicious queries.
+The approach here to avoid LdaP injection was to check for the length of the user input. If the length is less than 2, the user input is invalid. Unfortunately for the developer, this approach is not very secure. Special characters other than "\*" can also be used to create malicious queries.
 
-```text
+```
 username = admin)(!(&(1=0
 password = q))
 ```
 
-![](../../.gitbook/assets/nodejs/Ldap-harder/Ldap-4.png)
+![](../../.gitbook/assets/java/Ldap-harder/Ldap-4.png)
 
 We successfully logged in as the Admin.
 

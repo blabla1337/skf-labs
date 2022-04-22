@@ -1,4 +1,4 @@
-# KBID 111 - Client Side Template Injection
+# Python - Client Side Template Injection (CSTI)
 
 ## Running the app
 
@@ -30,7 +30,7 @@ $ python3 <labname>
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker image and write-up thanks to Contrahack.io !](<../../.gitbook/assets/screen-shot-2019-03-04-at-21.33.32 (1).png>)
+![Docker image and write-up thanks to Contrahack.io !](<../../.gitbook/assets/ing\_primary\_logo (1).png>)
 
 ## Reconnaissance
 
@@ -38,7 +38,7 @@ Now that the app is running let's go hacking!
 
 This application has a very cool interface, powered by a very cool framework that, every time the page is rendered, will scan the page for template expressions and evaluate them.
 
-![](https://github.com/blabla1337/skf-labs/tree/8c1992bae3824fa9d454e4263a20543419265204/../../.gitbook/assets/csti-1.png)
+![](https://github.com/blabla1337/skf-labs/.gitbook/assets/csti-1.png)
 
 Before we deep dive in the exploitation phase, let's introduce how a template engins renders elements inside the page and how we can detect a Client Side Template Injection. If we look at the `index.html` page in the source code, we can see that a variable `{{CSTI}}` is used in the page
 
@@ -60,7 +60,7 @@ We are going to use the same payload of the XSS lab
 
 Unfortunately the alert does not trigger :(
 
-![](https://github.com/blabla1337/skf-labs/tree/8c1992bae3824fa9d454e4263a20543419265204/../../.gitbook/assets/csti-2.png)
+![](https://github.com/blabla1337/skf-labs/.gitbook/assets/csti-2.png)
 
 This is becuase AngularJS sanitize by default the input that will be reflected in the page.
 
@@ -72,7 +72,7 @@ How do we get XSS?
 
 AngularJS parses and renders every expression between curly brackets. So if we pass an arithmentic expression, such as `{{7*7}}`, we should expect `49` as a result.
 
-![](https://github.com/blabla1337/skf-labs/tree/8c1992bae3824fa9d454e4263a20543419265204/../../.gitbook/assets/csti-3.png)
+![](https://github.com/blabla1337/skf-labs/.gitbook/assets/csti-3.png)
 
 {% hint style="success" %}
 Bingo!!
@@ -84,9 +84,9 @@ Now that we know that the frontend is vulnerable to a client side template injec
 
 Because Angular uses parsers to evaluate every expression in curly brackets, sanitize HTML values (through ng-bind-html attributes, if explicitly) and uses a sandbox to avoid JavaScript code to call functions outside of the Angular scope object, we need to go though the following steps to have a successful exploit:
 
-- break the sanitizer
-- escape the sandbox&#x20;
-- forge a working payload&#x20;
+* break the sanitizer
+* escape the sandbox
+* forge a working payload
 
 In this case, we do not need to find new way to do this, but we can just see if we can re-use a payload available for our version of Angular.
 
@@ -137,7 +137,7 @@ We are not going in the details on how the exploit works, but you can refer to a
 
 As we can see, our `alert(1)` is present in the payload. If we copy it in our input box we see that the full payload is reflected 'as-it-is', but the JavaScript is executed
 
-![](https://github.com/blabla1337/skf-labs/tree/8c1992bae3824fa9d454e4263a20543419265204/../../.gitbook/assets/csti-4.png)
+![](https://github.com/blabla1337/skf-labs/.gitbook/assets/csti-4.png)
 
 Now we are able to execute JavaScript code in our DOM.
 

@@ -1,4 +1,4 @@
-# KBID XXX - Information Leakeage in Metadata
+# Python - Information Leakeage in Metadata
 
 ## Running the app
 
@@ -30,7 +30,7 @@ $ python3 <labname>
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker image and write-up thanks to Contrahack.io !](../../.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
+![Docker image and write-up thanks to Contrahack.io !](<../../.gitbook/assets/ing\_primary\_logo (2).png>)
 
 ## Reconnaissance
 
@@ -56,4 +56,4 @@ And goal achieved!
 
 ## Additional sources
 
-[https://www.owasp.org/index.php/Review_webpage_comments_and_metadata_for_information_leakage\_(OTG-INFO-005](https://www.owasp.org/index.php/Review_webpage_comments_and_metadata_for_information_leakage_(OTG-INFO-005))
+[https://www.owasp.org/index.php/Review\_webpage\_comments\_and\_metadata\_for\_information\_leakage\_(OTG-INFO-005](https://www.owasp.org/index.php/Review\_webpage\_comments\_and\_metadata\_for\_information\_leakage\_\(OTG-INFO-005\))

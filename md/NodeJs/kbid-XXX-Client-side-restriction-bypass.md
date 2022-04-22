@@ -1,10 +1,8 @@
-# KBID XXX - Client Side Restriction Bypass
+# NodeJS - Client Side Restriction Bypass
 
 ## Running the app nodeJs
 
-First make sure nodejs and npm are installed on your host machine.
-After installation, we go to the folder of the lab we want to practice.
-"i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following commands:
+First make sure nodejs and npm are installed on your host machine. After installation, we go to the folder of the lab we want to practice. "i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following commands:
 
 ```
 $ npm install
@@ -20,13 +18,13 @@ Now that the app is running let's go hacking!
 
 ## Reconnaissance
 
-![](../../.gitbook/assets/nodejs/Client-side-restriction-bypass/1.png)
+![](../../.gitbook/assets/java/Client-side-restriction-bypass/1.png)
 
-![](../../.gitbook/assets/nodejs/Client-side-restriction-bypass/2.png)
+![](../../.gitbook/assets/java/Client-side-restriction-bypass/2.png)
 
-![](../../.gitbook/assets/nodejs/Client-side-restriction-bypass/3.png)
+![](../../.gitbook/assets/java/Client-side-restriction-bypass/3.png)
 
-![](../../.gitbook/assets/nodejs/Client-side-restriction-bypass/4.png)
+![](../../.gitbook/assets/java/Client-side-restriction-bypass/4.png)
 
 ## Exploitation
 

@@ -1,10 +1,8 @@
-# KBID XXX - Include files from untrusted sources (JS)
+# Java - Untrusted Sources (XSSI)
 
 ## Running the app Java
 
-First make sure java is installed on your host machine.
-After installation, we go to the folder of the lab we want to practice.
-"i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following command:
+First make sure java is installed on your host machine. After installation, we go to the folder of the lab we want to practice. "i.e /skf-labs/XSS, /skf-labs/RFI/" and run the following command:
 
 ```
 $ ./mvnw spring-boot:run
@@ -24,7 +22,7 @@ This might lead to many different consequences depending on the included functio
 
 First, let's check the application to see if there are any sources being loaded in the app that return a 404.
 
-![](../../.gitbook/assets/java/Untrusted-sources/1.png)
+![](../../.gitbook/assets/untrusted-sources-js-1.png)
 
 When inspecting the network tab we see that the application fails to load a JS file to the URL
 
@@ -38,8 +36,7 @@ _note: in a penetration test we would now see if the domain that is used to grab
 
 #### Step1
 
-Now, in order to leverage a successfull XSS attack we need to set up our own local server on port 8081
-that serves the our malicious javascript:
+Now, in order to leverage a successfull XSS attack we need to set up our own local server on port 8081 that serves the our malicious javascript:
 
 ```python
 from flask import Flask, request, url_for, render_template, redirect, send_file
@@ -60,28 +57,27 @@ if __name__ == '__main__':
 
 We ofcourse also need to set the right path where to serve the file from:
 
-![](../../.gitbook/assets/java/Untrusted-sources/2.png)
+![](../../.gitbook/assets/untrusted-sources-js-2.png)
 
 #### Step3
 
-The content of the JS file that we use to deliver the malicious XSS from looks no more basic than
-this:
+The content of the JS file that we use to deliver the malicious XSS from looks no more basic than this:
 
-![](../../.gitbook/assets/java/Untrusted-sources/3.png)
+![](../../.gitbook/assets/untrusted-sources-js-3.png)
 
 #### Step4
 
 Now it is time to start our web server.
 
-![](../../.gitbook/assets/java/Untrusted-sources/4.png)
+![](../../.gitbook/assets/untrusted-sources-js-4.png)
 
 #### Step5
 
 We visit the target application where we now find our 'alert' that we coded in our javascript.js file
 
-![](../../.gitbook/assets/java/Untrusted-sources/5.png)
+![](../../.gitbook/assets/untrusted-sources-js-5.png)
 
-![](../../.gitbook/assets/java/Untrusted-sources/6.png)
+![](../../.gitbook/assets/untrusted-sources-js-6.png)
 
 ## Additional sources
 
