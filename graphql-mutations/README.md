@@ -1,2 +1,0 @@
-# GraphQL Mutations
-

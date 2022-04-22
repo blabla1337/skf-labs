@@ -1,2 +1,0 @@
-# HttpOnly Session Hijacking XSS
-

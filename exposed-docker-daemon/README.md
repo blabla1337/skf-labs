@@ -1,2 +1,0 @@
-# Exposed docker daemon
-

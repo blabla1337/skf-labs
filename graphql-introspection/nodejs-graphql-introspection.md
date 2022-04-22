@@ -1,2 +1,0 @@
-# NodeJS - GraphQL Introspection
-

@@ -1,2 +1,0 @@
-# Cross Site Scripting (XSS)
-

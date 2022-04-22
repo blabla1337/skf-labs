@@ -1,2 +1,0 @@
-# Deserialisation Pickle (DES-Pickle)
-
