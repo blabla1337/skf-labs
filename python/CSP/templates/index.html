@@ -62,7 +62,7 @@
 					<div class="panel-heading">Without CSP!</div>
 					<div class="panel-body">
 						<div class="col-md-6">
-							<form method="post" action="/unprotected" enctype="multipart/form-data">
+							<form method="post" action="/unprotected" >
                 			<input type="text" class="form-control" name="no_csp" placeholder="no header"/><br/>
                			    <button class="btn btn-primary" type="submit">Submit Button</button>
                			</div>
@@ -80,7 +80,7 @@
 					<div class="panel-heading">With CSP!</div>
 					<div class="panel-body">
 						<div class="col-md-6">
-							<form method="post" action="/protected" enctype="multipart/form-data">
+							<form method="post" action="/protected" >
                 			<input type="text" class="form-control" name="with_csp" placeholder="with header"/><br/>
                			    <button class="btn btn-primary" type="submit">Submit Button</button>
                			</div>
