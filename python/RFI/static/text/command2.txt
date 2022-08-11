@@ -1,1 +1,0 @@
-os.popen('cal').read()
