@@ -107,6 +107,8 @@
 					<div class="wrap small">
 						<div class="inner pt6 pb6">
 
+							<!-- Start Original Code -->
+
 							<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 								<div class="row">
 
@@ -141,6 +143,9 @@
 										{% autoescape false %} {{xss}} {% endautoescape %}
 
 									</div><!--/.main-->
+
+									<!-- End Original Code -->
+
 								</div>
 							</div>
 						</section>
@@ -209,12 +214,13 @@
 						<script src="/static/js/bootstrap.min.js"></script>
 
 						<script>
-
-const checkbox = document.getElementById('checkbox');
-checkbox.addEventListener('change', ()=>{
-	document.body.classList.toggle('dark');
-});	
-
-</script>
+	
+		const checkbox = document.getElementById('checkbox');
+		checkbox.addEventListener('change', ()=>{
+			document.body.classList.toggle('dark');
+		});	
+		
+	</script>
 	</body>
+
 </html>
