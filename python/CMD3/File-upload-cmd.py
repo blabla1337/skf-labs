@@ -1,6 +1,5 @@
 import os
-from flask import Flask, request, redirect, url_for, render_template
-from werkzeug import secure_filename
+from flask import Flask, request, render_template
 
 app = Flask(__name__, static_url_path='/static', static_folder='static')
 ALLOWED_EXTENSIONS = app.config['ALLOWED_EXTENSIONS'] = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'html'])
