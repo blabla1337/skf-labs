@@ -54,6 +54,8 @@
   - [Java - HttpOnly Session Hijacking XSS](./md/Java/kbid-39-Session-hijacking-XSS.md)
 - Exposed docker daemon
   - [Python - Exposed docker daemon](./md/Python/kbid-45-exposed-docker.md)
+- SQLI Login Bypass
+  - [Python - Login Bypass](./md/Python/kbid-XXX-SQLI-login-bypass.md)
 - SQLI (Union)
   - [Python - SQLI (Union)](./md/Python/kbid-46-sqli-union-select.md)
   - [NodeJS - SQLI (Union)](./md/NodeJs/kbid-46-SQLI.md)
