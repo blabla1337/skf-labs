@@ -1,0 +1,19 @@
+@startuml
+!theme amiga
+left to right direction
+actor "User" as ur
+rectangle "Application" {
+  usecase "Login" as AppLogin
+   usecase "Reset password" as AppResetPassword
+   rectangle "Notes" {
+       usecase "Write" as AppWriteNotes
+       usecase "Read" as AppReadNotes
+   }
+}
+
+ur --> AppLogin
+ur --> AppResetPassword
+AppLogin --> AppReadNotes
+AppLogin --> AppWriteNotes
+
+@enduml

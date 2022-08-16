@@ -1,0 +1,10 @@
+@startuml
+actor User
+participant Service
+database Database
+
+User -> Service: Send username/password combination
+Service -> Database: Verify username/password
+Service -[#red]-> User : Redirect to login page 
+Service -[#green]->User : Redirect to Notes page
+@enduml
