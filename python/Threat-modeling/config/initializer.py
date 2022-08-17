@@ -11,7 +11,7 @@ with con:
     cur = con.cursor()
     
     #Create data for the user table
-    cur.execute("CREATE TABLE users(UserId INT, UserName TEXT, Password TEXT)")
+    cur.execute("CREATE TABLE users(UserId INTEGER PRIMARY KEY AUTOINCREMENT, UserName TEXT, Password TEXT)")
     cur.execute("INSERT INTO users VALUES(1,'admin','admin')")
     cur.execute("INSERT INTO users VALUES(2,'user','user')")
 

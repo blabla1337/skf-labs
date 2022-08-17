@@ -20,6 +20,14 @@ class Classes:
         return uuser.fetchall()
 
 
+    def newUser(self, username, password):
+        db = database_con()
+        nu = db.execute('insert into users (UserName, Password) values '\
+                 '(?,?)',[username, password])
+        db.commit()
+        return nu.fetchall()
+
+
     def getNotes(self, userId):
         db = database_con()
         sql_select_query = """select Title, Body from notes where userId = ?"""

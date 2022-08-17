@@ -123,15 +123,17 @@
 						<div class="row">
 							<div class="col-lg-12">
 								<div class="panel panel-default">
-									<div class="panel-heading">Threat modeling!</div>
+									<div class="panel-heading">Register new user!</div>
 									<div class="panel-body">
 										<div class="col-md-6">
-											<form method="post" action="/login">
+											<form method="post" action="/registerUser">
 												<input type="text" class="form-control" name="username"
-													placeholder="user/admin" /><br />
+													placeholder="username" /><br />
 												<input type="password" class="form-control" name="password"
-													placeholder="user/admin" /><br />
-												<button class="btn btn-primary" type="submit">Submit Button</button>
+													placeholder="password" /><br />
+												<input type="password" class="form-control" name="repassword"
+													placeholder="repassword" /><br />
+												<button class="btn btn-primary" type="submit">Submit</button>
 										</div>
 										</form>
 									</div>
@@ -139,7 +141,7 @@
 							</div><!-- /.col-->
 						</div><!-- /.row -->
 						<div style="float:right">
-							<a href="/register">Register</a> || <a href="/forget">Forgot your password?</a>
+							<a href="/">Back to login</a>
 						</div>
 					</div>
 					<!--/.main-->

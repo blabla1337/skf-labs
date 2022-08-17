@@ -100,6 +100,20 @@ def resetLink(user, resetToken):
     return render_template("reset.html", username=user, resetToken=resetToken)
 
 
+@app.route("/register")
+def register():
+    return render_template("register.html")
+
+
+@app.route("/registerUser", methods=['POST'])
+def registerUser():
+    sqli  = Classes()
+    if request.method == "POST":
+        if request.form['password'] == request.form['repassword']:
+            sqli.newUser(request.form['username'], request.form['password'])
+    return render_template("index.html")
+
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template("404.html")

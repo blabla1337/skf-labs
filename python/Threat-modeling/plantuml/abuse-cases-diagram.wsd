@@ -1,5 +1,5 @@
 @startuml
-!theme amiga
+
 left to right direction
 actor "User" as ur
 rectangle "Application" {

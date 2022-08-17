@@ -1,0 +1,12 @@
+@startuml
+
+actor User
+participant Service
+database Database
+
+User -> Service: Submits valid username/password combination
+Service -[#green]->User : Redirect to Notes page
+User -> Service: Composes and submits a note
+Service -> Database: Store composed note
+Service -[#green]->User : Redirect back to Notes page
+@enduml
