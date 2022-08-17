@@ -58,6 +58,8 @@
   - [Python - SQLI (Union)](./md/Python/kbid-46-sqli-union-select.md)
   - [NodeJS - SQLI (Union)](./md/NodeJs/kbid-46-SQLI.md)
   - [Java - SQLI (Union)](./md/Java/kbid-46-SQLI.md)
+- SQLI Login Bypass
+  - [Python - Login Bypass](./md/Python/kbid-XXX-SQLI-login-bypass.md)
 - SQLI (Like)
   - [Python - SQLI (Like)](./md/Python/kbid-156-sqli-like.md)
   - [NodeJS - SQLI (Like)](./md/NodeJs/kbid-156-SQLI-like.md)
