@@ -1,8 +1,5 @@
-from flask import Flask, request, url_for, render_template, redirect, Markup
+from flask import Flask, request, render_template
 import flask
-import os
-import subprocess
-import time
 
 app = Flask(__name__, static_url_path='/static', static_folder='static')
 app.config['DEBUG'] = True

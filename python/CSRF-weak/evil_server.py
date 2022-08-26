@@ -1,8 +1,7 @@
 import base64
 from models.sqlimodel import *
 from time import gmtime, strftime
-from flask import Flask, request, url_for, render_template, redirect, make_response
-import requests
+from flask import Flask, render_template
 
 
 app = Flask(__name__, static_url_path='/static', static_folder='static')

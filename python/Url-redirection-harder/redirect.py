@@ -1,4 +1,4 @@
-from flask import Flask, request, url_for, render_template, redirect
+from flask import Flask, request, render_template, redirect
 
 app = Flask(__name__, static_url_path='/static', static_folder='static')
 app.config['DEBUG'] = True
@@ -21,7 +21,7 @@ def start():
 def redirector():
     landing_page = request.args.get('newurl')
     if blacklist(landing_page):
-    	return render_template("index.html", content = "Sorry, you cannot use \".\" in the redirect")
+        return render_template("index.html", content = "Sorry, you cannot use \".\" in the redirect")
     return redirect(landing_page, 302)
 
 

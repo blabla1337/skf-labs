@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, url_for, render_template, redirect
+from flask import Flask, request, render_template
 
 
 app = Flask(__name__, static_url_path='/static', static_folder='static')

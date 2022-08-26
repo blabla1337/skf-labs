@@ -1,5 +1,5 @@
 FROM i386/ubuntu:bionic
-MAINTAINER Glenn ten Cate <glenn.ten.cate@owasp.org>
+LABEL Glenn ten Cate <glenn.ten.cate@owasp.org>
 
 RUN apt-get update && apt-get install -y git \
 bash \

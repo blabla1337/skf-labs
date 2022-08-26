@@ -1,5 +1,5 @@
 FROM ubuntu:bionic
-MAINTAINER Glenn ten Cate <glenn.ten.cate@owasp.org>
+LABEL Glenn ten Cate <glenn.ten.cate@owasp.org>
 
 #Install dependencies
 RUN apt-get update && apt-get install --fix-missing -y git \

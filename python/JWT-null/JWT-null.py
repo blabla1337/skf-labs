@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from flask_jwt import JWT, jwt_required, current_identity
+from flask_jwt import JWT
 from werkzeug.security import safe_str_cmp
 import base64
 import json

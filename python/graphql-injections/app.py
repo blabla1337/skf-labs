@@ -1,5 +1,5 @@
 # Imports
-from flask import Flask, request,render_template, render_template_string, make_response, redirect, session
+from flask import Flask, request,render_template, make_response, redirect
 from flask_sqlalchemy import SQLAlchemy
 import os
 import graphene

@@ -1,5 +1,5 @@
 from models.sqlimodel import *
-from flask import Flask, request, url_for, render_template, redirect
+from flask import Flask, request, render_template
 import flask_excel as excel
 
 
