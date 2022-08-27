@@ -10,3 +10,6 @@ class Config(object):
     ATTACK_SERVER_HOST    = os.environ['ATTACK_SERVER_HOST']
     ATTACK_SERVER_PORT    = os.environ['ATTACK_SERVER_PORT']
     ATTACK_SERVER_URL     = os.environ['ATTACK_SERVER_URL']
+    # CACHE_TYPE            = 'SimpleCache'
+    # CACHE_DEFAULT_TIMEOUT = 3
+    # ATTACK_SERVER_URL     = 'localhost'

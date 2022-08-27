@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, make_response
 from flask_caching import Cache
 
 
@@ -7,16 +7,27 @@ app.config.from_object('config.Config')
 
 cache = Cache(app)
 
-
-@app.route("/")
-@cache.cached(timeout=30)
-def start():
-    return render_template("index.html", exploit_server=app.config['ATTACK_SERVER_URL'])
+EXPLOIT_SERVER = app.config['ATTACK_SERVER_URL']
 
 
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_template("404.html")
+@app.route("/", defaults={'url': ""})
+@app.route("/<path:url>")
+def start(url):
+    forwarded_host = request.headers.get('X-Forwarded-Host', '')
+    if forwarded_host:
+        request.host = forwarded_host
+
+    response = cache.get(request.full_path)
+    if response is not None and request.headers.get('Cache-Control', '') != 'no-cache':
+        response.headers.set('X-Cache', 'hit')
+    else:
+        response = make_response(
+            render_template('index.html', 
+            tracker_site=request.host,
+            exploit_server=EXPLOIT_SERVER))
+        response.headers.set('X-Cache', 'miss')
+        cache.set(request.full_path, response)
+    return response
 
 
 if __name__ == "__main__":
