@@ -225,6 +225,10 @@
   - [Java - Untrusted Sources (XSSI)](./md/Java/kbid-XXX-Untrusted-sources-js.md)
 - TLS Downgrade
   - [Python - TLS Downgrade](./md/Python/kbid-xxx-tls-downgrade.md)
+- WebSocket Message Manipulation
+  - [Python - WebSocket Message Manipulation](./md/Python/kbid-xxx-WebSocket-Message-Manipulation.md)
+- Session Management 1
+  - [Python - Session Management 1](./md/Python/kbid-xxx-Session-Management-1.md)
 - Client Side Restriction Bypass
   - [Python - Client Side Restriction Bypass](./md/Python/kbid-XXX-client-side-restriction-bypass.md)
   - [NodeJS - Client Side Restriction Bypass](./md/NodeJs/kbid-XXX-Client-side-restriction-bypass.md)
