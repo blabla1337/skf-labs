@@ -7,3 +7,4 @@ lib/
 **/*.swp
 .vscode
 **/*.pdf
+python/Attack-Server/logs.txt

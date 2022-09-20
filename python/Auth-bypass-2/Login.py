@@ -1,5 +1,5 @@
 from models.sqlimodel import *
-from flask import Flask, request, url_for, render_template, redirect, make_response, request
+from flask import Flask, request, render_template, make_response, request
 import hashlib
 
 
@@ -26,8 +26,7 @@ def login():
             else:
                 return render_template("index.html")
         return render_template("index.html")
-        
-()
+
 @app.route("/register", methods=['POST', 'GET'])
 def register():
     return render_template("register.html",renderlogout=isloggedin())

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request, session
+from flask import Flask, render_template, request, session
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "fp)73lql-0t_d#9&szqs8&e_ic*mm6v7%!siamgfmq#gkr(a=+"

@@ -1,6 +1,4 @@
-from flask import Flask, render_template, request, redirect
-from io import StringIO  # Python3
-import sys
+from flask import Flask, render_template, redirect
 import yaml
 import base64
 

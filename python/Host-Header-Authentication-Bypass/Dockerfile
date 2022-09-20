@@ -1,10 +1,10 @@
 ### Static layers
 
-FROM alpine:3.7 AS skf-alpine37
+FROM python:3.7-alpine AS skf-alpine37
 LABEL Glenn ten Cate <glenn.ten.cate@owasp.org>
 
 # Installing needed binaries and deps. Then removing unneeded deps:
-RUN apk update --no-cache && apk add python3 python3-dev py3-pip bash git dos2unix
+RUN apk update --no-cache && apk add py3-pip bash dos2unix
 
 ### Dynamic layers
 FROM skf-alpine37
@@ -34,4 +34,4 @@ RUN find . -name "*.sh" -o -name "*.py" -o -name "*.css" -o -name "*.js" | xargs
 RUN find . -name "*.sh" -o -name "*.py" | xargs chmod +x
 
 # Starting the actual application:
-ENTRYPOINT [ "python3", "./host-header-authentication-bypass.py" ]
+ENTRYPOINT [ "python3", "./authentication-bypass.py" ]

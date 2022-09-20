@@ -1,5 +1,5 @@
 FROM codercom/code-server:3.8.0
-MAINTAINER Glenn ten Cate <glenn.ten.cate@owasp.org>
+LABEL Glenn ten Cate <glenn.ten.cate@owasp.org>
 
 USER root
 
