@@ -18,6 +18,8 @@ RUN \
 	rofi \
 	feh \
 	pcmanfm \
+	xdg-utils \
+	libsecret-1-0 \
 	libxss1 
 	
 #install Polybar 
@@ -74,7 +76,6 @@ RUN apt update && apt install -y sublime-text
 
 # install java maven
 RUN apt-get install -y maven
-
 RUN echo "**** clean up ****" && \
  rm -rf \
 	ZAP_2_11_1_unix.sh \ 
@@ -83,8 +84,14 @@ RUN echo "**** clean up ****" && \
 	/var/lib/apt/lists/* \
 	/var/tmp/*
 
+# install VSCode
+RUN curl -L 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' -o /tmp/visualstudio.deb && \
+  dpkg -i /tmp/visualstudio.deb  && \
+  rm -f /tmp/visualstudio.deb 
+
 # add local files
 COPY /root /
+COPY /.m2 /config/.m2
 COPY /runner-script.sh /config
 COPY /.config /config/.config
 COPY /.local /config/.local 

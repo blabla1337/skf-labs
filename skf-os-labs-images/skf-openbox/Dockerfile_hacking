@@ -9,7 +9,7 @@ RUN \
  apt-get install -qy --no-install-recommends \
 	wget \
 	git \
-	firefox \
+	firefox \	
 	psmisc \
 	openjdk-11-jdk \
 	obmenu \
@@ -18,6 +18,8 @@ RUN \
 	rofi \
 	feh \
 	pcmanfm \
+	xdg-utils \
+	libsecret-1-0 \
 	libxss1 
 	
 #install Polybar 
@@ -54,6 +56,11 @@ RUN cd polybar; echo "\n" | ./build.sh -i
 RUN mv /usr/local/bin/polybar /usr/bin/polybar
 RUN mv /usr/local/bin/polybar-msg /usr/bin/polybar-msg
 
+# install VSCode
+RUN curl -L 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' -o /tmp/visualstudio.deb && \
+  dpkg -i /tmp/visualstudio.deb  && \
+  rm -f /tmp/visualstudio.deb 
+  
 # install OWASP SKF Labs
 RUN git clone https://github.com/blabla1337/skf-labs.git
 RUN mv skf-labs/python /config
