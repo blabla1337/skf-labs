@@ -1,0 +1,11 @@
+@startuml
+
+actor User
+participant Service
+database Database
+
+User -> Service: Submits valid username/password combination
+Service -> Database: Read notes assosciated with the User
+Database -> Service: Send notes assosciated with the User
+Service -[#green]->User : Redirect to Notes page
+@enduml

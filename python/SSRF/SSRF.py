@@ -1,4 +1,4 @@
-from flask import Flask, request, url_for, render_template, redirect
+from flask import Flask, request, render_template
 import requests, validators
 from subprocess import Popen
 from urllib.parse import urlparse

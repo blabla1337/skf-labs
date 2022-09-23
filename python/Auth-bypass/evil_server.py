@@ -1,8 +1,5 @@
-import base64
 from models.sqlimodel import *
-from time import gmtime, strftime
-from flask import Flask, request, url_for, render_template, redirect, make_response, session
-import requests
+from flask import Flask, render_template, session
 
 
 app = Flask(__name__, static_url_path='/static', static_folder='static')
@@ -25,5 +22,3 @@ def start():
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=1337)
-	
-

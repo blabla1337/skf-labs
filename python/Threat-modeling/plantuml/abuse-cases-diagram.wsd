@@ -1,0 +1,34 @@
+@startuml
+
+left to right direction
+actor "User" as ur
+rectangle "Application" {
+  usecase "Login" as AppLogin
+   usecase "Reset password" as AppResetPassword
+   rectangle "Notes" {
+       usecase "Write" as AppWriteNotes
+       usecase "Read" as AppReadNotes
+   }
+}
+
+rectangle "Abuse cases" {
+  usecase "Brute force" as HackLogin
+  usecase "Username enumeration" as Enumeration
+  usecase "Data exposure" as DataExposure
+  usecase "Spoofing" as Spoofing
+  usecase "Account take-over" as Account
+}
+
+ur --> AppLogin
+ur --> AppResetPassword
+AppLogin --> AppReadNotes
+AppLogin --> AppWriteNotes
+
+Enumeration ..> AppLogin
+HackLogin ..> AppLogin
+HackLogin ..> AppResetPassword
+Spoofing ..> AppWriteNotes
+DataExposure ..> AppReadNotes
+Account ..> AppResetPassword
+
+@enduml

@@ -1,0 +1,13 @@
+@startuml
+
+actor User
+participant Service
+database Database
+
+User -> Service: Submit username/password/re-password combination
+Service -[#red]->User : Passwords don't match
+Service -[#red]->User : Username is not unique
+Service -> Database: Store new user
+Service -[#green]->User : Redirect to Login page
+
+@enduml

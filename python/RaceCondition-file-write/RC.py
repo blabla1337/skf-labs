@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
-from flask import Flask, request, url_for, render_template, redirect, send_file, make_response
-import os
+from flask import Flask, render_template, send_file, make_response
 
 app = Flask(__name__, static_url_path='/static', static_folder='static')
 app.config['DEBUG'] = True

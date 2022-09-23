@@ -1,6 +1,5 @@
-import pickle, sys, yaml
-from io import StringIO  # Python3
-from flask import Flask, request, url_for, render_template, redirect
+import pickle
+from flask import Flask, request, render_template
 
 app = Flask(__name__, static_url_path='/static', static_folder='static')
 app.config['DEBUG'] = True
