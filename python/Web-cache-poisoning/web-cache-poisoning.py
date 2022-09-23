@@ -7,9 +7,6 @@ app.config.from_object('config.Config')
 
 cache = Cache(app)
 
-EXPLOIT_SERVER = app.config['ATTACK_SERVER_URL']
-
-
 @app.route("/", defaults={'url': ""})
 @app.route("/<path:url>")
 def start(url):
@@ -23,8 +20,7 @@ def start(url):
     else:
         response = make_response(
             render_template('index.html', 
-            tracker_site=request.host,
-            exploit_server=EXPLOIT_SERVER))
+            tracker_site=request.host))
         response.headers.set('X-Cache', 'miss')
         cache.set(request.full_path, response)
     return response
