@@ -1,3 +1,25 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+# 
+# SKF Labs - Security Knowledge Framework (SKF)
+# Copyright (C) 2022, OWASP Foundation, Inc.
+#
+# This software is provided under a slightly modified version
+# of The GNU Affero General Public License. See the accompanying LICENSE 
+# file for more information.
+#
+# Description:
+#   This machine serves as attacker controlled host to send back crafted 
+#   responses to requests from target host. It is usefull in scenarios 
+#   like SSRF, Host Header Injection, Cache Poisoning and etc.
+#
+# Author:
+#   Alex Romero (@NtAlexio2)
+# 
+# Reference:
+#   https://portswigger.net/web-security/web-cache-poisoning/exploiting-design-flaws/lab-web-cache-poisoning-with-an-unkeyed-header
+# 
+
 from utils import remove_colors
 import HTTPResponseParser
 
@@ -19,6 +41,9 @@ LOG_FILE       = 'logs.txt'
 
 @app.route("/", methods=['GET', 'POST'])
 def main():
+    '''
+    Render main page that let users to define new roles.
+    '''
     url = DEFAULT_RULE
     header = DEFAULT_HEADER
     body = DEFAULT_BODY
@@ -46,13 +71,18 @@ def main():
 
 @app.route("/logs", methods=['GET'])
 def logs():
+    '''
+    Access to requests history.
+    '''
     logs = remove_colors(get_logs())
     return render_template('logs.html', logs=logs)
 
 
 @app.route("/<path:rule>", methods=['GET', 'POST'])
 def router(rule):
-
+    '''
+    Match request with defined roles and return matching responses.
+    '''
     rule = '/' + rule
     if rule not in RULES.keys():
         abort(404)
