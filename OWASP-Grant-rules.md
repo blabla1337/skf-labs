@@ -3,9 +3,9 @@
 Hello everybody!
 
 Recently, we got granted a generous amount of money from  
-our friends at [Contrast](https://www.contrastsecurity.com/). This grant
-helps us to develop more labs so we can expand our training curriculum  
-on SKF.
+our friends at [Contrast](https://www.contrastsecurity.com/). 
+This grant helps us to develop more labs so we can expand our  
+training curriculum on SKF.
 
 ---
 
