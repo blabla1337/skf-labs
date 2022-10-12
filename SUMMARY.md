@@ -229,6 +229,8 @@
   - [Python - WebSocket Message Manipulation](./md/Python/kbid-xxx-WebSocket-Message-Manipulation.md)
 - Session Management 1
   - [Python - Session Management 1](./md/Python/kbid-xxx-Session-Management-1.md)
+- Session Management 2
+  - [Python - Session Management 2](./md/Python/kbid-xxx-Session-Management-2.md)
 - Client Side Restriction Bypass
   - [Python - Client Side Restriction Bypass](./md/Python/kbid-XXX-client-side-restriction-bypass.md)
   - [NodeJS - Client Side Restriction Bypass](./md/NodeJs/kbid-XXX-Client-side-restriction-bypass.md)
