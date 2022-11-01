@@ -1,3 +1,29 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+# 
+# SKF Labs - Security Knowledge Framework (SKF)
+# Copyright (C) 2022, OWASP Foundation, Inc.
+#
+# This software is provided under a slightly modified version
+# of The GNU Affero General Public License. See the accompanying LICENSE 
+# file for more information.
+#
+# Description:
+#   In this application, there is a login page that admins
+#   can enter to and manage some products. The point is 
+#   admin allowed to access administration panel only from
+#   local network. To achive this, develoepr used "Host" header
+#   to check if request is from local network or not. But there  
+#   is mistakes in implemention!
+#   NOTE: This application is for demonstration purposes only.
+#
+# Author:
+#   Alex Romero (@NtAlexio2)
+# 
+# Reference:
+#   https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/17-Testing_for_Host_Header_Injection
+# 
+
 from db import dbmodel
 
 from flask import Flask, request, render_template, session, redirect
@@ -10,6 +36,9 @@ app.config['DEBUG'] = True
 
 @app.route("/")
 def main():
+    '''
+    Application main page.
+    '''
     if not is_valid_application_host(request):
         return redirect('/')
     return render_template('index.html')
@@ -17,21 +46,29 @@ def main():
 
 @app.route("/login", methods=['POST', 'GET'])
 def login():
+    '''
+    Create new session for logging users.
+    '''
     if not is_valid_application_host(request):
         return redirect('/')
+
     error = None
     if request.method == 'POST':
-        if dbmodel.valid_login(request.form['username'], request.form['password']):
+        username = request.form['username']
+        password = request.form['password']
+        if dbmodel.valid_login(username, password):
             session['logged_in'] = True
             return get_admin_panel()
         else:
             error = 'Invalid username/password'
-        return render_template("login.html", error=error)
     return render_template('login.html', error=error)
 
 
 @app.route("/dashboard", methods=['POST', 'GET'])
 def dashboard():
+    '''
+    Administration panel.
+    '''
     if is_logged_in():
         return get_admin_panel()
     if not is_valid_application_host(request):
@@ -43,6 +80,9 @@ def dashboard():
 
 @app.route("/admin/delete/<id>", methods=['POST', 'GET'])
 def delete_product(id):
+    '''
+    Delete existing product from products page.
+    '''
     message = None
     if not is_logged_in():
         if not is_valid_application_host(request):
@@ -56,6 +96,9 @@ def delete_product(id):
 
 @app.route("/logout")
 def logout():
+    '''
+    Kill user session.
+    '''
     if not is_valid_application_host(request):
         return redirect('/')
     session.clear()
