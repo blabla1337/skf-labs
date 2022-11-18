@@ -20,11 +20,11 @@ Now that the app is running let's go hacking!
 
 The application shows an input fields that allows the user to change the color of the text shown in the page.
 
-![](../../.gitbook/assets/xss-attribute-1.png)
+![](../../.gitbook/assets/python/XSS-Attribute/1.png)
 
 If we want to make it red, we can just write `red` in the input box and click the Submit Button.
 
-![](../../.gitbook/assets/xss-attribute-2.png)
+![](../../.gitbook/assets/python/XSS-Attribute/2.png)
 
 ```markup
 <center> <p style="font-size:2em;"> {% autoescape false %}<span style='color:{{xss}};' > Let me be a new color!</span>{% endautoescape %}</p></center>
@@ -41,12 +41,12 @@ Now we have seen where the user input is being reflected in the style, we will h
 _note: we disabled auto-escape for the challenge but in order to do it well you need to avoid using the " > < to leverage the attack_
 
 ```
-red ' onmouseover='alert(1337)'
+red ' onmouseover='alert("XSS-Attribute")'
 ```
 
 Now, hovering over the paragraph will trigger our javascript event handler!
 
-![](../../.gitbook/assets/xss-attribute-4.png)
+![](../../.gitbook/assets/python/XSS-Attribute/3.png)
 
 ## Additional sources
 

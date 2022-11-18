@@ -1,6 +1,6 @@
 # Credentials Guessing 2
 
-## Running the app
+## Running the app on Docker
 
 ```text
 $ sudo docker pull blabla1337/owasp-skf-lab:credentials-guessing-2
@@ -14,26 +14,6 @@ $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:credential
 Now that the app is running let's go hacking!
 {% endhint %}
 
-## Running the app Python3
-
-First, make sure python3 and pip are installed on your host machine.
-After installation, we go to the folder of the lab we want to practise
-"i.e /skf-labs/XSS/, /skf-labs/jwt-secret/ " and run the following commands:
-
-```
-$ pip3 install -r requirements.txt
-```
-
-```
-$ python3 <labname>
-```
-
-{% hint style="success" %}
-Now that the app is running let's go hacking!
-{% endhint %}
-
-![Docker image and write-up thanks to Contrahack.io !](../../.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
-
 ## Reconnaissance
 
 It is very common to use very guessable and weak usernames and passwords because they are easier to use and remember.
@@ -42,13 +22,11 @@ It is pretty easy for them to guess or brute force many different credentials un
 
 When we start the application we can see that there is a login form.
 
-![](../../.gitbook/assets/cred-guessing-20.png)
+![](../../.gitbook/assets/python/Credentials-Guessing-2/1.png)
 
 If we try with some wrong and random credentials such as: [ admin:admin ], we don`t get access to the inside of the website and an error message is displayed:
 
-![](../../.gitbook/assets/cred-guessing-21.png)
-
-![](../../.gitbook/assets/cred-guessing-22.png)
+![](../../.gitbook/assets/python/Credentials-Guessing-2/2.png)
 
 ## Exploitation
 
@@ -56,27 +34,31 @@ Provided that once the username is incorrect it will appear an error message and
 we will use Burp in order to brute force different usernames and discover the right one by analysing the length of the HTTP responses for each trial.
 We use the "Intruder" functionality and we will load a prefixed dictionary with multiple usernames that will be tried against the website one by one.
 
-![](../../.gitbook/assets/cred-guessing-23.png)
+![](../../.gitbook/assets/python/Credentials-Guessing-2/3.png)
+
+![](../../.gitbook/assets/python/Credentials-Guessing-2/4.png)
 
 If we check the lenght of the different HTTP responses for each of the password that Burp tried, we find that there's one with a different length than
 the rest of the possibilities:
 
-![](../../.gitbook/assets/cred-guessing-24.png)
+![](../../.gitbook/assets/python/Credentials-Guessing-2/5.png)
 
 We found something promising! This must be the desired username.
 
 We can check now sending the HTTP request using this word as the username:
 
-![](../../.gitbook/assets/cred-guessing-25.png)
+![](../../.gitbook/assets/python/Credentials-Guessing-2/6.png)
 
 No error messages are now displayed (which means that this username must be correct):
 
-![](../../.gitbook/assets/cred-guessing-26.png)
+![](../../.gitbook/assets/python/Credentials-Guessing-2/7.png)
 
 Now, if we follow the same methodology for the password or we simply try the username as the password in the login form, we will get access to the inside
 of the website:
 
-![](../../.gitbook/assets/cred-guessing-27.png)
+![](../../.gitbook/assets/python/Credentials-Guessing-2/8.png)
+
+![](../../.gitbook/assets/python/Credentials-Guessing-2/9.png)
 
 And goal achieved!
 

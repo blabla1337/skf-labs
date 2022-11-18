@@ -26,76 +26,76 @@ The goal of this lab is to get logged in as an administrator without knowing his
 
 Lets start the application and register a new user
 
-![](../../.gitbook/assets/auth-2-register1.png)
+![](../../.gitbook/assets/python/Auth-Bypass-2/1.png)
 
-![](../../.gitbook/assets/auth-2-register2.png)
+![](../../.gitbook/assets/python/Auth-Bypass-2/2.png)
 
 Now that we have valid credentials, we can login:
 
-![](../../.gitbook/assets/auth-2-login.png)
+![](../../.gitbook/assets/python/Auth-Bypass-2/3.png)
 
 ## Exploitation
 
 We can capture the login in the burpsuite proxy and send it to the repeater. We notice that with every login, the session cookie stays the same. It is high likely that this sessionid is related to our user name:
 
-![](../../.gitbook/assets/auth-2-repeater.png)
+![](../../.gitbook/assets/python/Auth-Bypass-2/4.png)
 
 If we quickly google for this sessionid, we find nothing:
 
-![](../../.gitbook/assets/auth-2-google.png)
+![](../../.gitbook/assets/python/Auth-Bypass-2/5.png)
 
-We can check whether it is a hash:
+We can try to identify this hash:
 
-![](../../.gitbook/assets/auth-2-sha1.png)
+![](../../.gitbook/assets/python/Auth-Bypass-2/6.png)
 
-it seems to be a sha1...
+It seems to be a sha1...
 
 It is possible that the developer added a salt to the username and hashed the concatenated string admin+some_salt -> maybe this is also the reason why we can't find with Google what the hash represents.
 
 The about page seem to contain a lot of text, maybe the salt is a typical word for this company that is also mentioned on that page…
 
-Using cewel we can grab all the words from a page like this: cewl -m 4 -w wordlist.txt -d 0 -v [http://127.0.0.1:5000/about](http://127.0.0.1:5000/about)\</br>
+Using cewel we can grab all the words from a page like this: cewl -m 4 -w wordlist.txt -d 0 -v http://127.0.0.1:5000/about
 
 \-m 4: minimum word length is 4 characters\
 &#x20;\-w wordlist: write output to file ‘wordlist’\
 &#x20;\-d 0: follow links x times deep (0=stay on the same page)\
-&#x20;\-v: verbose (show what you are doing)\
+&#x20;\-v: verbose (show what you are doing)
 
 Using a terminal window:
 
-![](../../.gitbook/assets/auth-2-cewl.png)
+![](../../.gitbook/assets/python/Auth-Bypass-2/7.png)
 
-![](../../.gitbook/assets/auth-2-wordlist.png)
+![](../../.gitbook/assets/python/Auth-Bypass-2/8.png)
 
 Let’s use burp intruder to calculate a sha-1 for every admin+word combination:
 
-![](../../.gitbook/assets/auth-2-intruder1.png)
+![](../../.gitbook/assets/python/Auth-Bypass-2/9.png)
 
 Payload position:
 
-![](../../.gitbook/assets/auth-2-intruder2.png)
+![](../../.gitbook/assets/python/Auth-Bypass-2/10.png)
 
 Paste the content of the word list in the payload options and add the payload processing rules as indicated in the following screenshot.
 
-![](../../.gitbook/assets/auth-2-intruder3.png)
+![](../../.gitbook/assets/python/Auth-Bypass-2/11.png)
 
 This will prefix the word 'admin' to each word from the list and calculate a sha1 of the concatenated string. for example sha1(adminBank)
 
 Start the attack
 
-![](../../.gitbook/assets/auth-2-intruder4.png)
+![](../../.gitbook/assets/python/Auth-Bypass-2/12.png)
 
 The result:
 
-![](../../.gitbook/assets/auth-2-intruder5.png)
+![](../../.gitbook/assets/python/Auth-Bypass-2/13.png)
 
 Now we can replace our cookie/sessionID with the value we found.
 
-![](../../.gitbook/assets/auth-2-cookie1.png)
+![](../../.gitbook/assets/python/Auth-Bypass-2/14.png)
 
-After refreshing the screen we're logged in as admin !
+After going back to home page and proceeding to authenticaded section:
 
-![](../../.gitbook/assets/auth-2-admin.png)
+![](../../.gitbook/assets/python/Auth-Bypass-2/15.png)
 
 ## Additional sources
 

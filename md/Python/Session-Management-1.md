@@ -1,6 +1,6 @@
 # Session Management - Part 1
 
-## Running the app
+## Running the app on Docker
 
 ```
 $ sudo docker pull blabla1337/owasp-skf-lab:session-management-1

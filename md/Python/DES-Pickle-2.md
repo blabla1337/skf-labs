@@ -1,6 +1,6 @@
 # Deserialisation Pickle - 2
 
-## Running the app
+## Running the app on Docker
 
 ```
 $ sudo docker pull blabla1337/owasp-skf-lab:des-pickle-2

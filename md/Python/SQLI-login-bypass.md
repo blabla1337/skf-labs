@@ -1,6 +1,6 @@
 # SQLI Login Bypass
 
-## Running the app
+## Running the app on Docker
 
 ```
 $ sudo docker pull blabla1337/owasp-skf-lab:sqli-login-bypass

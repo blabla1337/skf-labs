@@ -3,7 +3,7 @@
 ## Running the app on Docker
 
 ```
-$ sudo docker pull blabla1337/owasp-skf-lab:cmd-blinc
+$ sudo docker pull blabla1337/owasp-skf-lab:cmd-blind
 ```
 
 ```

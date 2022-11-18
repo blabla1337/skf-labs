@@ -20,19 +20,19 @@ While most applications require authentication to gain access to private informa
 
 Let's log in with admin/admin.
 
-![](../../.gitbook/assets/nodejs/Auth-Bypass-simple/1.png)
+![](../../.gitbook/assets/python/Auth-Bypass-Simple/1.png)
 
-![](../../.gitbook/assets/nodejs/Auth-Bypass-simple/2.png)
+![](../../.gitbook/assets/python/Auth-Bypass-Simple/2.png)
 
 We see an API key, let's check the cookies:
 
-![](../../.gitbook/assets/nodejs/Auth-Bypass-simple/3.png)
+![](../../.gitbook/assets/python/Auth-Bypass-Simple/3.png)
 
 ## Exploitation
 
-We have a cookie called userId, maybe this application is relying on this cookie for authentication, let's try changing it to 2.
+We have a cookie called userId, maybe this application is relying on this cookie for authentication, let's try changing to 2 and sending the request again.
 
-![](../../.gitbook/assets/nodejs/Auth-Bypass-simple/4.png)
+![](../../.gitbook/assets/python/Auth-Bypass-Simple/4.png)
 
 The application did indeed use this cookie for authentication and now we have access to another user's API key.
 

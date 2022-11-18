@@ -25,31 +25,31 @@ functioning of the web app in order to find possible injection points.
 
 When we start the application we can see that there is a box where we can write an IP address in order to execute a ping against it.
 
-![](../../.gitbook/assets/cmd4-10.png)
+![](../../.gitbook/assets/python/CMD-4/1.png)
 
 First, we are going to try the functionality and execute the ping against the loopback address. We can also see the resulted output:
 
-![](../../.gitbook/assets/cmd4-11.png)
+![](../../.gitbook/assets/python/CMD-4/2.png)
 
 ## Exploitation
 
 For this lab we are going to try to make the website show us the result of a malicious command executed by the system unintentionally.
 We start by trying methods like:
 
-![](../../.gitbook/assets/cmd4-12.png)
+![](../../.gitbook/assets/python/CMD-4/3.png)
 
-![](../../.gitbook/assets/cmd4-13.png)
+![](../../.gitbook/assets/python/CMD-4/4.png)
 
 It seems that it may not be possible to execute OS commands taking advantage of the ping functionality. However, we suspect that maybe the website is
 filtering some of these special characters usually used for command execution so we try some new:
 
-![](../../.gitbook/assets/cmd4-14.png)
+![](../../.gitbook/assets/python/CMD-4/5.png)
 
 We finally could execute a command (whoami)!!
 
 Now we try with another simple example:
 
-![](../../.gitbook/assets/cmd4-15.png)
+![](../../.gitbook/assets/python/CMD-4/6.png)
 
 Goal achieved and filter bypassed!
 

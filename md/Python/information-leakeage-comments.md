@@ -1,6 +1,6 @@
 # Information Leakeage in Comments
 
-## Running the app
+## Running the app on Docker
 
 ```
 $ sudo docker pull blabla1337/owasp-skf-lab:info-leakeage-comments

@@ -1,6 +1,6 @@
 # Credentials Guessing 1
 
-## Running the app
+## Running the app on Docker
 
 ```text
 $ sudo docker pull blabla1337/owasp-skf-lab:credentials-guessing-1
@@ -22,33 +22,35 @@ It is pretty easy for them to guess or brute force many different credentials un
 
 When we start the application we can see that there is a login form.
 
-![](../../.gitbook/assets/cred-guessing-10.png)
+![](../../.gitbook/assets/python/Credentials-Guessing-1/1.png)
 
 If we try with some wrong and random credentials such as: [ admin:admin ], we don`t get access to the inside of the website.
 
-![](../../.gitbook/assets/cred-guessing-11.png)
-
-![](../../.gitbook/assets/cred-guessing-12.png)
+![](../../.gitbook/assets/python/Credentials-Guessing-1/2.png)
 
 ## Exploitation
 
 Provided that the username will be 12345, we will use Burp in order to brute force the password and discover it.
 We use the "Intruder" functionality and we will load a prefixed dictionary with multiple usernames that will be tried against the website one by one.
 
-![](../../.gitbook/assets/cred-guessing-14.png)
+![](../../.gitbook/assets/python/Credentials-Guessing-1/3.png)
 
-![](../../.gitbook/assets/cred-guessing-15.png)
+![](../../.gitbook/assets/python/Credentials-Guessing-1/4.png)
 
 If we check the lenght of the different HTTP responses for each of the password that Burp tried, we find that there's one with a different length than
 the rest of the possibilities:
 
-![](../../.gitbook/assets/cred-guessing-16.png)
+![](../../.gitbook/assets/python/Credentials-Guessing-1/5.png)
 
 We found something promising!
 
 Now, if we try this password as the credential in the login form we get access to the inside of the website:
 
-![](../../.gitbook/assets/cred-guessing-17.png)
+![](../../.gitbook/assets/python/Credentials-Guessing-1/6.png)
+
+![](../../.gitbook/assets/python/Credentials-Guessing-1/7.png)
+
+![](../../.gitbook/assets/python/Credentials-Guessing-1/8.png)
 
 And goal achieved!
 

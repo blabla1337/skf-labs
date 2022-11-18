@@ -99,6 +99,8 @@ This will now create a POST request to the application and changing the value of
 
 ![](../../.gitbook/assets/screen-shot-2019-03-04-at-21.24.14.png)
 
+![](../../.gitbook/assets/screen-shot-2019-03-04-at-21.24.14.png)
+
 Also when we refresh the original page of the application we can see that the new vaulue has been replaced with the content of our evil app.
 
 ![](../../.gitbook/assets/screen-shot-2019-03-04-at-21.24.28.png)

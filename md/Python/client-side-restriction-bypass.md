@@ -16,18 +16,28 @@ Now that the app is running let's go hacking!
 
 ## Reconnaissance
 
-![](../../.gitbook/assets/csrb10.png)
+The app allows us to select a number between 3 and 13 from the number input form. Let's also try typing numbers outside that interval directly into the field.
 
-![](../../.gitbook/assets/csrb11.png)
+![](../../.gitbook/assets/python/Client-Side-Restriction-Bypass/1.png)
 
-![](../../.gitbook/assets/csrb12.png)
+![](../../.gitbook/assets/python/Client-Side-Restriction-Bypass/2.png)
 
-![](../../.gitbook/assets/csrb13.png)
+![](../../.gitbook/assets/python/Client-Side-Restriction-Bypass/3.png)
+
+![](../../.gitbook/assets/python/Client-Side-Restriction-Bypass/4.png)
 
 ## Exploitation
 
-![](../../.gitbook/assets/csrb14.png)
+We could intercept and modify the request on Burp:
+
+![](../../.gitbook/assets/python/Client-Side-Restriction-Bypass/5.png)
+
+Or alternatively, use devtools to modify the client-side restrictions directly:
+
+![](../../.gitbook/assets/python/Client-Side-Restriction-Bypass/6.png)
 
 And goal achieved! We could bypass the client-side restrictions.
 
 ## Additional sources
+
+{% embed url="https://owasp.org/www-project-proactive-controls/v3/en/c5-validate-inputs" %}

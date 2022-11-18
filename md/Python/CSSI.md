@@ -22,29 +22,29 @@ It is pretty easy for them to guess or brute force many different credentials un
 
 When we start the application we can see that there is a text box that allow you to write a color name.
 
-![](../../.gitbook/assets/cssi-10.png)
+![](../../.gitbook/assets/python/CSSI/1.png)
 
 We can write a color like:
 
-![](../../.gitbook/assets/cssi-11.png)
+![](../../.gitbook/assets/python/CSSI/2.png)
 
 And depending on the color that we chose, this will be the color in the text below:
 
-![](../../.gitbook/assets/cssi-12.png)
+![](../../.gitbook/assets/python/CSSI/3.png)
 
 ## Exploitation
 
 If we check how the text that we wrote in the text box is later put into the code we can see:
 
-![](../../.gitbook/assets/cssi-13.png)
+![](../../.gitbook/assets/python/CSSI/4.png)
 
 If we try to insert a malicious code that we know it will be inserted in the source code, we can try something like this:
 
-![](../../.gitbook/assets/cssi-14.png)
+![](../../.gitbook/assets/python/CSSI/5.png)
 
 This code should show an alert box or pop up alerting the text "CSSI - XSS".
 If we check the website after sending the malicious request:
-![](../../.gitbook/assets/cssi-15.png)
+![](../../.gitbook/assets/python/CSSI/6.png)
 
 And goal achieved!
 

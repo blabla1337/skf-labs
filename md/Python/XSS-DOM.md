@@ -51,7 +51,7 @@ foobar"></
 As you can see the application did not encode or blacklisted any of the dangerous HTML characters. Now lets try the XSS payload to see if this also is reflected back withouth any escaping or blacklist filtering.
 
 ```text
-foobar<script>alert(1337)</script>
+foobar<script>alert("XSS-DOM")</script>
 ```
 
 ![](../../.gitbook/assets/XSS-DOM-3.png)
