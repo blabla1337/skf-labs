@@ -16,22 +16,22 @@ Now that the app is running let's go hacking!
 
 ## Reconnaissance
 
-![Login Form](https://i.postimg.cc/8zyR0bLX/loginform.jpg)
+![](../../.gitbook/assets/python/Ratelimiting/1.png)
 
 The application shows a admin login form, but we don't have the credentials, we'll have to somehow login inorder to solve the challenge, the name of the challenge is 'Ratelimiting', from that we know that we need to bruteforce login, but what would be the username?
 
 Let's do more investigation, upon viewing the source code, there is a base64 message commented out there.
 
-![Source Code](https://i.postimg.cc/d0L2PTBs/sourcecode.jpg)
+![](../../.gitbook/assets/python/Ratelimiting/2.png)
 
 We are going to decrypt the base64 encoded string using terminal as shown in the below image.
 
-![Base64 Decode](https://i.postimg.cc/qMxX8rqT/base64decoding.jpg)
+![](../../.gitbook/assets/python/Ratelimiting/3.png)
 
 ```
-abhi@sh3ll:~$ echo 'RGV2ZWxvcGVyIHVzZXJuYW1lOiBkZXZ0ZWFtCkNsaWVudDogUm9ja3lvdQ==' | base64 --decode
-abhi@sh3ll:~$ Developer username: devteam
-abhi@sh3ll:~$ Client: Rockyou
+echo RGV2ZWxvcGVyIHVzZXJuYW1lOiBkZXZ0ZWFtCkNsaWVudDogUm9ja3lvdQ== | base64 -d
+Developer username: devteam
+Client: Rockyou
 ```
 
 ## Exploitation
@@ -45,7 +45,7 @@ So we'll have to bruteforce the login form which is post based using some tool, 
 Bruteforcing using Hydra
 
 ```
-hydra -l devteam -P Desktop/pentest/rockyou.txt 0.0.0.0 -s 1332 http-post-form "/:username=^USER^&password=^PASS^:F=Invalid"
+hydra -l devteam -P Desktop/pentest/rockyou.txt 0.0.0.0 -s 5000 http-post-form "/:username=^USER^&password=^PASS^:F=Invalid"
 
 let's make this clear since it might be confusing for newbies or those who have never used hydra before.
 
@@ -60,7 +60,7 @@ http-post-form is used to specify that this is a http-post-form.
 
 After you launch a bruteforce attack against the login function, after several minutes, you'll get the password like the below screenshot.
 
-![Bruteforce Success](https://i.postimg.cc/HLRQpsZQ/bruteforcesuccess.jpg)
+![](../../.gitbook/assets/python/Ratelimiting/4.png)
 
 ## Additional sources
 
