@@ -37,7 +37,7 @@ When we are loggedin to the application we can see that we can set our favorite 
 
 If we inspect the request with an intercepting proxy we can see that the application is performing a POST request that results in a data mutation, storing our favorite color into the session of the user and displaying this back to the user in the HTML website.
 
-![](../../.gitbook/assets/CSRF-weak-1.png)
+![](../../.gitbook/assets/nodejs/CSRF-weak/3.png)
 
 Also we can see that the application is using a csrf_token
 

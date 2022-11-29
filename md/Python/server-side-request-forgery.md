@@ -23,7 +23,7 @@ SSRF attack can be used to make requests to other internal resources for accessi
 First lets see what type of services are open on the server that we try to attack.
 
 ```
-nmap -vvvv -sT -sV -p -P0 ip_of_lab_here
+nmap -vvvv -sT -sV -p- -P0 ip_of_lab_here
 ```
 
 ```
@@ -58,17 +58,17 @@ Nmap done: 1 IP address (1 host up) scanned in 22.94 seconds
 
 So as we confirmed the only open port is 5000. Now lets have a look at the application.
 
-![](../../.gitbook/assets/SSRF1.png)
+![](../../.gitbook/assets/python/SSRF/1.png)
 
 Here we have a keep alive functionality where we can verify different website's if they are alive and reachable. Lets try with google.com
 
-![](../../.gitbook/assets/SSRF2.png)
+![](../../.gitbook/assets/python/SSRF/2.png)
 
 ## Exploitation
 
 The keep alive functionality was intended to be used for external websites but we can abuse it to also check for internal IP addresses and enumerate services. Lets try a known port like for example 3306 a Mysql service, maybe this is running on the server?
 
-![](../../.gitbook/assets/SSRF4.png)
+![](../../.gitbook/assets/python/SSRF/3.png)
 
 {% hint style="success" %}
 

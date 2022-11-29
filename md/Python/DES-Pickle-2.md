@@ -66,7 +66,7 @@ From wikipedia: The pickle module implements binary protocols for serializing an
 
 ```python
 import pickle, base64
-b64 = 'gANjX19tYWluX18KdXNyCnEAKYFxAX1xAihYCAAAAHVzZXJuYW1lcQNYBAAAAFJ1ZHlxBFgIAAAAcGFzc3dvcmRxBVgZAAAAZGl0aXNtaWpuaGVlbGxhbmdwYXNzd29yZHEGdWIu'
+b64 = 'gASVQAAAAAAAAACMCF9fbWFpbl9flIwDdXNylJOUKYGUfZQojAh1c2VybmFtZZSMBHVzZXKUjAhwYXNzd29yZJSMBHVzZXKUdWIu'
 print(pickle.loads(base64.b64decode(b64)).__class__)
 ```
 
@@ -78,7 +78,7 @@ class usr(object):
     pass
 
 a= usr()
-b64 = 'gANjX19tYWluX18KdXNyCnEAKYFxAX1xAihYCAAAAHVzZXJuYW1lcQNYBAAAAFJ1ZHlxBFgIAAAAcGFzc3dvcmRxBVgZAAAAZGl0aXNtaWpuaGVlbGxhbmdwYXNzd29yZHEGdWIu'
+b64 = 'gASVQAAAAAAAAACMCF9fbWFpbl9flIwDdXNylJOUKYGUfZQojAh1c2VybmFtZZSMBHVzZXKUjAhwYXNzd29yZJSMBHVzZXKUdWIu'
 a = pickle.loads(base64.b64decode(b64))
 print(dir(a))
 ```
@@ -100,7 +100,7 @@ class usr(object):
     pass
 
 a= usr()
-b64 = 'gANjX19tYWluX18KdXNyCnEAKYFxAX1xAihYCAAAAHVzZXJuYW1lcQNYBAAAAFJ1ZHlxBFgIAAAAcGFzc3dvcmRxBVgZAAAAZGl0aXNtaWpuaGVlbGxhbmdwYXNzd29yZHEGdWIu'
+b64 = 'gASVQAAAAAAAAACMCF9fbWFpbl9flIwDdXNylJOUKYGUfZQojAh1c2VybmFtZZSMBHVzZXKUjAhwYXNzd29yZJSMBHVzZXKUdWIu'
 a = pickle.loads(base64.b64decode(b64))
 print(a.username)
 print(a.password)

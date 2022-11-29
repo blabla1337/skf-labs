@@ -26,14 +26,14 @@ user supplied input.
 To start of we visit the following page:
 
 ```
-http://www.unicode-symbol.com/u/202E.html
+https://unicode-explorer.com/c/202E
 ```
 
 Here we can easily copy the non printable character to paste and use in our payload.
 
 Throughout the rest of the write up, the non-printable character that we just put on our clipboard is refered to as **[RTLO]**
 
-![](../../.gitbook/assets/LTR1.png)
+![](../../.gitbook/assets/python/RTLO/1.png)
 
 #### Step 2
 
@@ -41,22 +41,22 @@ The next step is to look at the target application and where it is used for.
 The target application is used to share links that refer to content stored on
 a different service.
 
-![](../../.gitbook/assets/LTR2.png)
+![](../../.gitbook/assets/python/RTLO/2.png)
 
 We can test if the server is rejecting un expected uni-characters adding the right to left override unicharacter in our input and submit it to the server. First our payload looks as shown in the screenshot below
 
     [RTLO]test input
 
-![](../../.gitbook/assets/LTR3.png)
+![](../../.gitbook/assets/python/RTLO/3.png)
 
 After we put in the right to left override uni-character in fron of the "test input" payload we see the following behaviour with the payload:
 
-![](../../.gitbook/assets/LTR4.png)
+![](../../.gitbook/assets/python/RTLO/4.png)
 
 As you can see the input has been put from right to left.
 After submitting the input we find that the server does not filtered the override uni-character. From here we can start crafting our exploit payload.
 
-![](../../.gitbook/assets/RTL6.png)
+![](../../.gitbook/assets/python/RTLO/5.png)
 
 now in this scenario
 
@@ -67,11 +67,11 @@ now in this scenario
 We inject the payload in the input field with the [RTLO] uni-character between the
 brackets. After submitting this input we find a non suspicous link to an mp4 resource.
 
-![](../../.gitbook/assets/RTL5.png)
+![](../../.gitbook/assets/python/RTLO/6.png)
 
 However as soon as you would hover your mouse over the link you will find how the link itself is actually interpreted by your browser. The behaviour is shown in the screenshot below highlighted in red. Now when a user clicks the link to download a mp4 file he will actually download a potentially malicous executable.
 
-![](../../.gitbook/assets/RTL7.png)
+![](../../.gitbook/assets/python/RTLO/7.png)
 
 #### Additional exploitation options
 

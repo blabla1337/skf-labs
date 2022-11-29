@@ -24,7 +24,7 @@ Some use cases for python pickle: 1) saving a program's state data to disk so th
 
 Lets start the application and check how it works.
 
-![](../../.gitbook/assets/DESPickle1_1.png)
+![](../../.gitbook/assets/python/DES-Pickle/1.png)
 
 The user flow is very simple. The application is expecting a Pickle Serialized object for internal processing and, as expected, the deserialization is done in a unsafe way.
 
@@ -38,7 +38,7 @@ The goal is to achieve Remote Code Execution through this weakness.
 
 Press F12 on the browser, to open the Developer Toolbar.Click on the Network tab.
 
-![](../../.gitbook/assets/DESPickle1_2.png)
+![](../../.gitbook/assets/python/DES-Pickle/2.png)
 
 ### Step 2
 
@@ -84,11 +84,11 @@ _Note: Running the exploit script on Windows 10 might generate a invalid results
 
 Copy the output of previous step, paste it on the text field and click on _Submit Button_.
 
-![](../../.gitbook/assets/DESPickle1_3.png)
+![](../../.gitbook/assets/python/DES-Pickle/3.png)
 
 Check the Network tab and note the _sync_ request takes approximately 5 seconds to respond. It proves that the _sleep 5_ command was executed successfully and the Remote Code Execution was achieved.
 
-![](../../.gitbook/assets/DESPickle1_4.png)
+![](../../.gitbook/assets/python/DES-Pickle/4.png)
 
 ## Additional sources
 

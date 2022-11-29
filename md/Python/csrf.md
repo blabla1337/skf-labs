@@ -29,15 +29,15 @@ username : admin\
 password: admin
 {% endhint %}
 
-![](../../.gitbook/assets/screen-shot-2019-03-04-at-21.00.48.png)
+![](../../.gitbook/assets/python/CSRF/1.png)
 
 When we are loggedin to the application we can see that we can set our favorite color and this will be stored in the session of the user.
 
-![](../../.gitbook/assets/screen-shot-2019-03-04-at-21.01.09.png)
+![](../../.gitbook/assets/python/CSRF/2.png)
 
 If we inspect the request with an intercepting proxy we can see that the application is performing a POST request that results in a data mutation, storing our favorite color into the session of the user and displaying this back to the user in the HTML website.
 
-![](../../.gitbook/assets/screen-shot-2019-03-04-at-21.01.51.png)
+![](../../.gitbook/assets/python/CSRF/3.png)
 
 Also we can see that the application is not using any form of protection for preventing CSRF because there is no unique token being send in the POST request.
 
@@ -76,7 +76,7 @@ Now that the service is running we want to serve the malicious piece of javascri
 
 ```markup
 <iframe style="display:none" name="csrf-frame"></iframe>
-<form method='POST' action='http://localhost:5000/update' target="csrf-frame" id="csrf-form">
+<form method='POST' action='http://0.0.0.0:5000/update' target="csrf-frame" id="csrf-form">
   <input type='hidden' name='color' value='Hackzord!'>
   <input type='submit' value='submit'>
 </form>
@@ -97,13 +97,11 @@ http://localhost:1337/
 
 This will now create a POST request to the application and changing the value of blue to the new value of 'Hackzord!' As you can see the Referer is set to our evil website where the request originated from.
 
-![](../../.gitbook/assets/screen-shot-2019-03-04-at-21.24.14.png)
-
-![](../../.gitbook/assets/screen-shot-2019-03-04-at-21.24.14.png)
+![](../../.gitbook/assets/python/CSRF/4.png)
 
 Also when we refresh the original page of the application we can see that the new vaulue has been replaced with the content of our evil app.
 
-![](../../.gitbook/assets/screen-shot-2019-03-04-at-21.24.28.png)
+![](../../.gitbook/assets/python/CSRF/5.png)
 
 ## Additional sources
 

