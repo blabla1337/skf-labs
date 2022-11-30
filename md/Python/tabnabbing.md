@@ -24,11 +24,11 @@ Basically every application that opens a link to a "\_blank" page is interesting
 
 Let's assume that the domain in the link of the following demo is under our control as a malicious attacker. When we click on the link 'Tab me" we find that a new page is opened on another browser tab. This is exactly the behaviour we are looking for!
 
-![](../../.gitbook/assets/tab1%20%281%29.png)
+![](../../.gitbook/assets/python/Tabnabbing/1.png)
 
 If we were now to inspect the browsers source code of the target application, our assumptions are validated. We can perform a reverse tabnabbing phishing attack!
 
-![](../../.gitbook/assets/code.png)
+![](../../.gitbook/assets/python/Tabnabbing/2.png)
 
 ## Exploitation
 
@@ -65,7 +65,7 @@ Of course you can also run your app on whatever service you want it does not hav
 
 Now that the service is running we want to serve the malicious piece of javascript that is responsible for redirecting the parent tab to a new location. Below is what happens under the hood:
 
-![](../../.gitbook/assets/tabnabbing_overview_with_link-1.png)
+![](../../.gitbook/assets/python/Tabnabbing/3.png)
 
 Now, let's add the following piece of javascript to the evil webserver we just created.
 
@@ -79,7 +79,7 @@ Now, let's add the following piece of javascript to the evil webserver we just c
 
 Now, after serving the evil web application open the target application and click on the link with the domain that is under our control. Notice how the parent tab immediately redirect itself to the web page of the security knowledge framework?
 
-![](../../.gitbook/assets/tab2.png)
+![](../../.gitbook/assets/python/Tabnabbing/4.png)
 
 A visitor of an application that follows the link will be unexpectedly redirected to a phishing application. This evil application could look identical to the original application i.e. ask for the users credentials because his "session expired".
 
