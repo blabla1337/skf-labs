@@ -16,7 +16,24 @@
 		<link
 			href="https://fonts.googleapis.com/css2?family=Hind:wght@700&display=swap"
 			rel="stylesheet">
-
+			<script>
+				function myFunction() {
+				
+					count = document.getElementById("foo").style.opacity;
+					
+					if(count == 1){
+						document.getElementById("foo").style.opacity = "0";
+						
+					}
+					
+					if(count == 0){
+						document.getElementById("foo").style.opacity = "1";
+						
+					}
+					
+					console.log(count);
+				}
+				</script>
 	</head>
 
 	<body>

