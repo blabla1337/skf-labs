@@ -221,6 +221,12 @@ checkbox.addEventListener('change', ()=>{
 document.body.classList.toggle('dark');
 });
 
+function getRndInteger(min, max) {
+	return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+var nr = getRndInteger(99999999,99999999999);
+document.getElementById('imageBox').src = "/img/bones.png?" + nr;
+
 </script>
 </body>
 

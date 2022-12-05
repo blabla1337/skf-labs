@@ -107,39 +107,43 @@
 					<div class="wrap small">
 						<div class="inner pt6 pb6">
 		
-							<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-								<div class="row">
-						
-								</div>
-								<!--/.row-->
-						
-								<div class="row">
-									<div class="col-lg-12">
-										<h1 class="page-header">Live demonstration!</h1>
-									</div>
-								</div>
-								<!--/.row-->
-						
-						
-								<div class="row">
-									<div class="col-lg-12">
-										<div class="panel panel-default">
-											<div class="panel-heading">Auth-bypass 3!</div>
-											<div class="panel-body">
-												<div class="col-md-6">
-													<form method="post" action="/signup">
-													<input type="text" class="form-control" name="username" placeholder="username"/><br/>
-													<input type="password" class="form-control" name="password" placeholder="password"/><br/>
-													   <button class="btn btn-primary" type="submit">Submit Button</button>
-												   </div>
-												</form>
-											</div>
-										</div>
-									</div><!-- /.col-->
-								</div><!-- /.row -->
-						
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
+		<div class="row">
+
+		</div><!--/.row-->
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">Live demonstration!</h1>
+			</div>
+		</div><!--/.row-->
+				
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">Session Prediction</div>
+					<div class="panel-body">
+
+						<div class="col-md-6">
+                                                        <form method="post" action="/signup" >
+                                                        <div class="form-group">
+                                                                        <label>Create new user:</label></br>
+
+                                                                        Username:  <input type="text" name="username"><br>
+                                                        		Password:  <input type="text" name="password"></br>
 							</div>
-							<!--/.main-->
+                                                                    <button class="btn btn-primary" type="submit">Create user</button>
+
+                                       	</div>
+                                                </form>
+												<th:block th:text="${url?:''}"></th:block>
+					</div>
+				</div>
+			</div><!-- /.col-->
+		</div><!-- /.row -->
+
+	</div><!--/.main-->
 
 </div>
 </div>
@@ -219,3 +223,4 @@ document.body.classList.toggle('dark');
 </body>
 
 </html>
+
