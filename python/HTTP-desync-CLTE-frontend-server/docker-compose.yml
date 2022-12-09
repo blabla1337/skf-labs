@@ -1,0 +1,17 @@
+version: '3'
+services:
+  backend:
+    container_name: backend-server
+    build: ../HTTP-desync-CLTE-backend-server
+    ports:
+      - 8081:8081
+  frontend:
+    container_name: frontend-server
+    build: .
+    entrypoint: python3 http-desync-clte-frontend-server.py
+    depends_on:
+      - backend
+    env_file:
+      - .env
+    ports:
+      - 80:80
