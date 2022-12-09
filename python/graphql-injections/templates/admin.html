@@ -126,7 +126,7 @@
 			<div class="row" id="actions">
 
 				<div class="col-sm-6 col-lg-6 ">
-					<span> Check SQL Server Status:</span>
+					<span><b> Check SQL Server Status: </b></span>
 					<form class="check-server"  >
 					  <label for="ip">SQL Server IP:port</label>
 					  <input type="text" class="form-control" id="ip"> <br>
@@ -135,10 +135,10 @@
 				</div>
 
 				<div class="col-sm-6 col-lg-6 ">
-					<span> Query User detiails:</span>
+					<span><b> Query User detiails:</b></span>
 					<form class="check-server"  >
 					  <label for="username">Username:</label>
-					  <input type="username" class="form-control" id="username"> <br>
+					  <input type="text" class="form-control" id="username"> <br>
 					  <button type="submit" class="btn btn-primary btn-sm" onclick="queryUserDetails(); return false;">Submit</button>
 					</form>
 				</div>
@@ -265,7 +265,7 @@ document.body.classList.toggle('dark');
 			  .then(res => res.json())
 			  .then(json => {
 				  console.log(json);
-				  $('#result-text').text("Info retrieved: " + json.data.getUser)
+				  $('#result-text').text("Info retrieved: userId - " + json.data.getUser.id)
 			  })
 			  .catch(console.error);
 			  

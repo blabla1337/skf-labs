@@ -270,17 +270,18 @@
 
       	function createNewPost(){
       		fetch('/graphql', {
-      			  method: 'POST',
-      			  headers: { 'Content-Type': 'application/json' },
-      			  body: JSON.stringify({query : `mutation{ createPost(input: {body: "This is a new post" , title: "This is a new title", authorId: 2}) {post {body authorId title}}}`})
+        			method: 'POST',
+        			headers: { 'Content-Type': 'application/json' },
+        			body: JSON.stringify({query : `mutation{ createPost(input: {body: "This is a new post" , title: "This is a new title", authorId: 2}) {post {body authorId title}}}`})
 
       		})
-      		  .then(res => res.json())
-      		  .then(json => {
-      			  console.log(json);
-      			  location.reload();
-      		  })
-      		  .catch(console.error);
+        		.then(res => res.json())
+        		.then(json => {
+      	  		console.log(json);
+      	  		location.reload();
+
+      	  	})
+        		.catch(console.error);
         }
         {% endraw %}
     </script>

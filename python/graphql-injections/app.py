@@ -1,12 +1,12 @@
 # Imports
-from flask import Flask, request,render_template, make_response, redirect
+from flask import Flask, request, render_template, make_response, redirect
 from flask_sqlalchemy import SQLAlchemy
 import os
 import graphene
 from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
 from flask_graphql import GraphQLView
 from flask_httpauth import HTTPBasicAuth
-from sqlalchemy.sql import text 
+from sqlalchemy.sql import text
 
 
 auth = HTTPBasicAuth()
@@ -21,24 +21,24 @@ app.debug = True
 
 # Configs
 
-## Configuring the database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' +    os.path.join(basedir, 'data.sqlite')
+# Configuring the database
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + \
+    os.path.join(basedir, 'data.sqlite')
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
 # Modules
 
-## Declaring the database
+# Declaring the database
 db = SQLAlchemy(app)
 
 # Models
 
 
-#     1 User -> N Post 
+#     1 User -> N Post
 #
 #     1 Post -> 1 User
 #
-
 
 
 class User(db.Model):
@@ -46,12 +46,14 @@ class User(db.Model):
     uuid = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(256), index=True, unique=True)
     password = db.Column(db.String(256), index=True, unique=True)
-    isAdmin = db.Column(db.Boolean) 
-    #posts = db.relationship('Post', backref='users') ## HERE is the problem, that enables to create recursive queries
+    isAdmin = db.Column(db.Boolean)
+    # posts = db.relationship('Post', backref='users') ## HERE is the problem, that enables to create recursive queries
     posts = db.relationship('Post', backref='author')
-    
+
     def __repr__(self):
         return '<User %r>' % self.username
+
+
 class Post(db.Model):
     __tablename__ = 'posts'
     uuid = db.Column(db.Integer, primary_key=True)
@@ -61,6 +63,7 @@ class Post(db.Model):
 
     def __repr__(self):
         return '<Post %r>' % self.title
+
 
 class UserInfo(db.Model):
     __tablename__ = 'user_info'
@@ -73,10 +76,7 @@ class UserInfo(db.Model):
 
     def __repr__(self):
         return '<UserInfo %r>' % self.name
-    
-   
-    
-    
+
 
 # Schema Objects
 
@@ -84,19 +84,24 @@ class PostObject(SQLAlchemyObjectType):
     class Meta:
         model = Post
         interfaces = (graphene.relay.Node, )
+
+
 class UserObject(SQLAlchemyObjectType):
-   class Meta:
-       model = User
-       exclude_fields = ('password') #this hides the password in the query for the Users
-       filter_fields = {
+    class Meta:
+        model = User
+        # this hides the password in the query for the Users
+        exclude_fields = ('password')
+        filter_fields = {
             'username': ['exact', 'icontains', 'istartswith']
         }
-       interfaces = (graphene.relay.Node, )
+        interfaces = (graphene.relay.Node, )
+
+
 class UserInfoObject(SQLAlchemyObjectType):
-   class Meta:
-       model = UserInfo
-       filter_fields = ['user']
-       interfaces = (graphene.relay.Node, )
+    class Meta:
+        model = UserInfo
+        filter_fields = ['user']
+        interfaces = (graphene.relay.Node, )
 
 
 class Query(graphene.ObjectType):
@@ -106,10 +111,11 @@ class Query(graphene.ObjectType):
     all_users = SQLAlchemyConnectionField(UserObject)
 
     """ query a single user"""
-    single_user = graphene.Field(UserInfoObject,user=graphene.Argument(type=graphene.Int,required=True))
+    single_user = graphene.Field(
+        UserInfoObject, user=graphene.Argument(type=graphene.Int, required=True))
 
     @staticmethod
-    def resolve_single_user(args,info,user):
+    def resolve_single_user(args, info, user):
         query = UserInfoObject.get_query(info=info)
         if user:
             query = query.filter(UserInfo.user == user)
@@ -118,25 +124,73 @@ class Query(graphene.ObjectType):
 
     """query the status of a server after ping"""
     is_sql_up = graphene.String(ip=graphene.String(required=True))
+
     @staticmethod
     def resolve_is_sql_up(self, info, ip):
-        #exec ping command against the IP; return status code
-        host,port = ip.split(':')
+        # exec ping command against the IP; return status code
+        host, port = ip.split(':')
         res = os.system('nc -w 3 ' + host + " " + port)
-        return res 
+        return res
 
     """ query User information by username """
-    get_user = graphene.Field(UserObject, username=graphene.String(required=True))
+    get_user = graphene.Field(
+        UserObject, username=graphene.String(required=True))
+
     @staticmethod
     def resolve_get_user(self, info, username):
-        res = db.session.query(User).filter(text("username ='" + username + "'")).first()
+        res = db.session.query(User).filter(
+            text("username ='" + username + "'")).first()
         if res:
             return res
         else:
-            return None;
+            return None
+
 
 schema = graphene.Schema(query=Query)
 
+
+class PostAttribute:
+    title = graphene.String(description="Title of the post")
+    body = graphene.String(description="Description")
+    author_id = graphene.Int()
+
+
+class CreatePostInput(graphene.InputObjectType, PostAttribute):
+    """Arguments to create a post."""
+    pass
+
+
+class CreatePost(graphene.Mutation):
+    """Mutation to create a post."""
+    post = graphene.Field(lambda: PostObject,
+                          description="Post created by this mutation.")
+
+    class Arguments:
+
+        input = CreatePostInput(required=True)
+
+    def mutate(self, info, input):
+
+        post = Post(**input)
+        db.session.add(post)
+        db.session.commit()
+
+        return CreatePost(post=post)
+
+# 4
+
+
+class Mutation(graphene.ObjectType):
+    create_post = CreatePost.Field()
+
+
+class Query(graphene.ObjectType):
+    node = graphene.relay.Node.Field()
+    all_posts = SQLAlchemyConnectionField(PostObject)
+    all_users = SQLAlchemyConnectionField(UserObject)
+
+
+schema = graphene.Schema(query=Query, mutation=Mutation)
 
 # Routes
 
@@ -145,24 +199,26 @@ app.add_url_rule(
     view_func=GraphQLView.as_view(
         'graphql',
         schema=schema,
-        graphiql=True # for having the GraphiQL interface
+        graphiql=True  # for having the GraphiQL interface
     )
 )
 
 
 def verify_apikey():
-    
-    query=db.session.query(UserInfo).filter_by(api_key=request.cookies.get("X-Api-Key"))
+
+    query = db.session.query(UserInfo).filter_by(
+        api_key=request.cookies.get("X-Api-Key"))
     user_info = query.first()
     if user_info:
-        
+
         return user_info
     else:
         return None
 
+
 def verify_is_admin_user(id):
-    
-    query=db.session.query(User).filter_by(isAdmin=True).filter_by(uuid=id)
+
+    query = db.session.query(User).filter_by(isAdmin=True).filter_by(uuid=id)
     user_info = query.first()
     if user_info:
         return True
@@ -170,16 +226,16 @@ def verify_is_admin_user(id):
         return False
 
 
-
 @app.route('/')
 def index():
 
     user_info = verify_apikey()
-    if  user_info != None:
-        user =  user_info.name + " " + user_info.surname 
-        return render_template("index.html",username=user)
+    if user_info != None:
+        user = user_info.name + " " + user_info.surname
+        return render_template("index.html", username=user)
     else:
         return render_template("login.html")
+
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
@@ -187,31 +243,33 @@ def login():
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
-        query = db.session.query(User).filter_by(username=username,password=password)
+        query = db.session.query(User).filter_by(
+            username=username, password=password)
         user = query.first()
         if user:
-            query_api_key = db.session.query(UserInfo).filter_by(user=user.uuid)
+            query_api_key = db.session.query(
+                UserInfo).filter_by(user=user.uuid)
             user_info = query_api_key.first()
             response = make_response(redirect('/'))
             response.set_cookie('X-Api-Key', user_info.api_key)
-            response.set_cookie('uuid', str(user_info.user))          
+            response.set_cookie('uuid', str(user_info.user))
             return response
         else:
-            return render_template("login.html",error="username or password are not correct") 
-            
-        
-    
+            return render_template("login.html", error="username or password are not correct")
+
     if request.method == 'GET':
-        return render_template("login.html", error = "")
-   
+        return render_template("login.html", error="")
+
+
 @app.route('/settings')
 def settings():
 
     user_info = verify_apikey()
-    if  user_info != None:
-        return render_template("settings.html",username=user_info.name)
+    if user_info != None:
+        return render_template("settings.html", username=user_info.name)
     else:
         return render_template("login.html")
+
 
 @app.route('/admin')
 def admin():
@@ -222,4 +280,4 @@ def admin():
 
 
 if __name__ == '__main__':
-     app.run('0.0.0.0')
+    app.run('0.0.0.0')
