@@ -30,7 +30,7 @@ When start the application we can see that we have a "create new user" functiona
 
 If we inspect the request with an intercepting proxy \(we are using Burp\) we can see that the application is performing a POST request to /signup:
 
-![](../../.gitbook/assets/python/Auth-Bypass-3/3.pngpng)
+![](../../.gitbook/assets/python/Auth-Bypass-3/3.png)
 
 From there we can access our private user's space using a GET request, that we analyze below:
 

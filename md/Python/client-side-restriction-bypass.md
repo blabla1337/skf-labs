@@ -36,6 +36,8 @@ Or alternatively, use devtools to modify the client-side restrictions directly:
 
 ![](../../.gitbook/assets/python/Client-Side-Restriction-Bypass/6.png)
 
+![](../../.gitbook/assets/python/Client-Side-Restriction-Bypass/7.png)
+
 And goal achieved! We could bypass the client-side restrictions.
 
 ## Additional sources

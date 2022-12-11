@@ -41,7 +41,7 @@ We are going to use the same payload of the XSS lab
 
 Unfortunately the alert does not trigger :(
 
-![](../../.gitbook/assets/nodejs/CSTI/1.png)
+![](../../.gitbook/assets/python/CSTI/1.png)
 
 This is becuase AngularJS sanitize by default the input that will be reflected in the page.
 
@@ -51,7 +51,7 @@ How do we get XSS?
 
 AngularJS parses and renders every expression between curly brackets. So if we pass an arithmentic expression, such as `{{7*7}}`, we should expect `49` as a result.
 
-!![](../../.gitbook/assets/nodejs/CSTI/2.png)
+!![](../../.gitbook/assets/python/CSTI/2.png)
 
 Bingo!!
 
@@ -89,7 +89,7 @@ We are not going in the details on how the exploit works, but you can refer to a
 
 As we can see, our `alert(1)` is present in the payload. If we copy it in our input box we see that the full payload is reflected 'as-it-is', but the JavaScript is executed
 
-![](../../.gitbook/assets/nodejs/CSTI/3.png)
+![](../../.gitbook/assets/python/CSTI/3.png)
 
 Now we are able to execute JavaScript code in our DOM.
 

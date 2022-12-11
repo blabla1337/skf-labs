@@ -22,7 +22,7 @@ Now that the app is running let's go hacking!
 Congratulations, you won the race
 {% endhint %}
 
-![](../../.gitbook/assets/nodejs/RaceCondition/1.png)
+![](../../.gitbook/assets/python/RaceCondition/1.png)
 
 All you need to do now is to add your name to the board and get your price.
 
@@ -32,11 +32,11 @@ The application verifies whether the username contains special characaters such 
 
 `[A-Za-z0-9 ]*`
 
-![](../../.gitbook/assets/nodejs/RaceCondition/2.png)
+![](../../.gitbook/assets/python/RaceCondition/2.png)
 
 If the username is correct, clicking `Boot` will put us on the score board. Yeah!!
 
-![](../../.gitbook/assets/nodejs/RaceCondition/3.png)
+![](../../.gitbook/assets/python/RaceCondition/3.png)
 
 #### Step 2
 
@@ -141,7 +141,7 @@ http://localhost:5000/?person=Default+User`id`&action=validate
 
 If we look in the logs we will see:
 
-![](../../.gitbook/assets/nodejs/RaceCondition/4.png)
+![](../../.gitbook/assets/python/RaceCondition/4.png)
 
 Congratulations, you won the race for real now!!!!!!!!
 

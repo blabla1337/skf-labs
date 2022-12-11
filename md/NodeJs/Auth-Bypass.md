@@ -16,13 +16,13 @@ Now that the app is running let's go hacking!
 
 ## Reconnaissance
 
-The application suggests we login with admin/admin as username/password.
+Let's login with admin/admin.
 
-![](../../.gitbook/assets/nodejs/Auth-Bypass/1.png)
+![](../../.gitbook/assets/python/Auth-Bypass/1.png)
 
 Once we login we see an API key.
 
-![](../../.gitbook/assets/nodejs/Auth-Bypass/2.png)
+![](../../.gitbook/assets/python/Auth-Bypass/2.png)
 
 Let's have a look at the source code:
 
@@ -110,15 +110,15 @@ We are ready to start our server:
 $ node evil_server.js
 ```
 
-![](../../.gitbook/assets/nodejs/Auth-Bypass/3.png)
+![](../../.gitbook/assets/python/Auth-Bypass/3.png)
 
 Now we can replace our original cookie with the tampered cookie.
 
-![](../../.gitbook/assets/nodejs/Auth-Bypass/4.png)
+![](../../.gitbook/assets/python/Auth-Bypass/4.png)
 
 Refresh the page:
 
-![](../../.gitbook/assets/nodejs/Auth-Bypass/5.png)
+![](../../.gitbook/assets/python/Auth-Bypass/5.png)
 
 ## Additional sources
 

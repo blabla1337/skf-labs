@@ -58,11 +58,17 @@ We could try to modify the "intro" item and attempt to access the world-readable
 
 If we however would create the folowing payload:
 
+```
 ..././
+```
 
 the result will be a ../ sequence after the webserver filtered out the ../ patern in the middle of our string.
 
-So lets try a payload like this: /..././..././..././..././..././..././..././etc/passwd
+So lets try a payload like this:
+
+```
+/..././..././..././..././..././..././..././etc/passwd
+```
 
 ![](../../.gitbook/assets/python/LFI-2/1.png)
 ![](../../.gitbook/assets/python/LFI-2/2.png)
