@@ -138,7 +138,7 @@
 							</form>
 						</div>
 						<center> 		
-							<img id="imageBox" src=""/> 		<br/>
+							<img id="imageBox" style="width:auto; height:auto" src=""/> 		<br/>
 						</center>
 					</div>
 				</div><!-- /.col-->
@@ -215,34 +215,18 @@
 
 <script>
 
-const checkbox = document.getElementById('checkbox');
-checkbox.addEventListener('change', ()=>{
-document.body.classList.toggle('dark');
-});
-
-</script>
-<script>
-	!function ($) {
-		$(document).on("click","ul.nav li.parent > a > span.icon", function(){		  
-			$(this).find('em:first').toggleClass("glyphicon-minus");	  
-		}); 
-		$(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
-	}(window.jQuery);
-
-	$(window).on('resize', function () {
-	  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
-	})
-	$(window).on('resize', function () {
-	  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
-	})
-
+	const checkbox = document.getElementById('checkbox');
+	checkbox.addEventListener('change', ()=>{
+	document.body.classList.toggle('dark');
+	});
+	
 	function getRndInteger(min, max) {
 		return Math.floor(Math.random() * (max - min + 1) ) + min;
 	}
 	var nr = getRndInteger(99999999,99999999999);
 	document.getElementById('imageBox').src = "/img/bones.png?" + nr;
-
-</script>	
+	
+	</script>
 </body>
 
 </html>
