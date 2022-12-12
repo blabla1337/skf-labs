@@ -24,15 +24,15 @@ a system shell. In the first step, the attacker needs to inspect the
 functioning of the web app in order to find possible injection points.
 When we start the application we can see that there is an image and the option to resize the image.
 
-![](../../.gitbook/assets/java/CMD/1.png)
+![](../../.gitbook/assets/python/CMD/1.png)
 
 Now, we are going to select a value and press the button.
 
-![](../../.gitbook/assets/java/CMD/2.png)
+![](../../.gitbook/assets/python/CMD/2.png)
 
 If we inspect the request with an intercepting proxy \(we are using
 Burp\) we can see that the application is performing a POST request to
-/home. In the request we send the number (in pixels) to resize the image.
+/home. In the request we send the number (in percentage) to resize the image.
 In the response, we can check that the image has been resized.
 
 ## Exploitation
@@ -41,7 +41,7 @@ For this lab we are going to try to write in the source code the output of a com
 
 First, we check the source code:
 
-![](../../.gitbook/assets/java/CMD/3.png)
+![](../../.gitbook/assets/python/CMD/3.png)
 
 Now, we send a new HTTP request trying to write the output of the command
 whoami (supposing that it will be executed in the target system) at the end of the index.html (main website view) code.
@@ -50,7 +50,7 @@ whoami (supposing that it will be executed in the target system) at the end of t
 
 Now we access the source code of the website
 
-![](../../.gitbook/assets/java/CMD/5.png)
+![](../../.gitbook/assets/python/CMD/5.png)
 
 to check that the output of the whoami command ("root") was appended at the end of the source code.
 As we can see, the output of the command whoami, is showing us the priviledge

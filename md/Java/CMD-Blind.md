@@ -22,14 +22,15 @@ In the first step, the attacker needs to inspect the functioning of the web app 
 
 When we start the application we can see that there is text box to write who we are. We are going to write our name and press the button:
 
-![](../../.gitbook/assets/java/CMD-Blind/1.png)
+![](../../.gitbook/assets/python/CMD-Blind/1.png)
 
-If we inspect the request with an intercepting proxy \(we are using Burp\) we can see that the application is performing a POST request to /. In the request we send the text we have just written as our name. However in the response, we just get a "WELCOME!" string independently to what we have written.
+![](../../.gitbook/assets/python/CMD-Blind/2.png)
 
-![](../../.gitbook/assets/java/CMD-Blind/2.png)
+If we inspect the request with an intercepting proxy (we are using Burp) we can see that the application is performing a POST request to /. In the request we send the text we have just written as our name. However in the response, we just get a "WELCOME!" string independently to what we have written.
 
-If that was black box, as an input field we should try here different ways of attacking the web app until we realize that we can perform a command injection (blind).
-As it is a blind command injection (also called blind OS command injection) we need to find out a way to inject commands to the system and see the output of these results.
+![](../../.gitbook/assets/python/CMD-Blind/3.png)
+
+If that was black box, as an input field we should try here different ways of attacking the web app until we realize that we can perform a command injection (blind). As it is a blind command injection (also called blind OS command injection) we need to find out a way to inject commands to the system and see the output of these results.
 
 In this case we are going to use a local "hall-of-fame" file in the lab were the name is written after we type and press the button in the website.
 
@@ -37,14 +38,14 @@ In this case we are going to use a local "hall-of-fame" file in the lab were the
 
 We send a new HTTP request trying to send the output of the command whoami (supposing that it will be executed in the target system).
 
-![](../../.gitbook/assets/java/CMD-Blind/3.png)
+![](../../.gitbook/assets/python/CMD-Blind/4.png)
 
 Now we access the file welcome to check that the first name we wrote (shayu) was recorded, but in this case, also the output of the command whoami, showing us the priviledge of the target user in the target system and that the web app is actually vulnerable to OS command injection.
 
-![](../../.gitbook/assets/java/CMD-Blind/4.png)
+![](../../.gitbook/assets/python/CMD-Blind/5.png)
 
 As a blind command injection, we could try other methods to detect that it is vulnerable and how to show the result of the command executed (because many times we will not have access to the inner files, like we did here with the file welcome, supposing a white box pentest).
 
 ## Additional sources
 
-{% embed url="https://owasp.org/www-community/attacks/Command_Injection" %}
+[https://www.owasp.org/index.php/Command_Injection](https://www.owasp.org/index.php/Command_Injection)
