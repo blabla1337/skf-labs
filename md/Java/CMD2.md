@@ -43,7 +43,7 @@ Then, if we try the other functionality we get something like that:
 
 ![](../../.gitbook/assets/java/CMD2/4.png)
 
-This request would seem like that:
+This request would look like this:
 
 ![](../../.gitbook/assets/java/CMD2/5.png)
 

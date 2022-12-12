@@ -25,6 +25,8 @@ We will look at two of the most common ones:
 
 We still see the blog that we should be familiar by now.
 
+![](../../.gitbook/assets/python/Graphql-Injection/1.png)
+
 If you run your DirBuster against it or just manually try to guess few of the rountes you will notice the new `/admin` section of the web app.
 
 ```

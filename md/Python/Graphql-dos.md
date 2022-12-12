@@ -19,6 +19,8 @@ Now that the app is running let's go hacking!
 The application implements a small blog where only admin profiles can create posts.
 Non authenticated users can only read the latest posts.
 
+![](../../.gitbook/assets/python/Graphql-DOS/1.png)
+
 When we navigate to `http://0.0.0.0:5000/` the frontend asks the application for the latest
 posts using the GraphQL query
 
@@ -77,6 +79,8 @@ The response will contain all the latest posts:
 }
 ```
 
+![](../../.gitbook/assets/python/Graphql-DOS/2.png)
+
 > What can go wrong here?
 
 If we look at the two classes `Users` and `Post`:
@@ -109,6 +113,10 @@ we can see that each User can have multiple Post and each Post is assigned to an
 ## Exploitation
 
 > Let's exploit it!
+
+If you go to http://localhost:5000/graphql, you can play with the graphql queries to understand better what's happening.
+
+![](../../.gitbook/assets/python/Graphql-DOS/3.png)
 
 If we craft a malicious payload like:
 

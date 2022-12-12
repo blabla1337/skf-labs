@@ -18,6 +18,8 @@ Now that the app is running let's go hacking!
 
 The application implements a very basic mutation to create a new post on the blog. The mutation used is the following
 
+![](../../.gitbook/assets/python/Graphql-Mutations/1.png)
+
 ```
 mutation {
   createPost(input: {body: "' -- ", title: "test_title", authorId: 2}) {
@@ -29,6 +31,8 @@ mutation {
   }
 }
 ```
+
+![](../../.gitbook/assets/python/Graphql-Mutations/2.png)
 
 If we look at the code we have a class `CreatePost` that will implement our logic to create a post.
 

