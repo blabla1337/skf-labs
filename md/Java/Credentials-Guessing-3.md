@@ -22,11 +22,11 @@ It is pretty easy for them to guess or brute force many different credentials un
 
 When we start the application we can see that there is a login form.
 
-![](../../.gitbook/assets/java/Credentials-Guessing-3/1.png)
+![](../../.gitbook/assets/cred-guessing-30.png)
 
-If we try with some wrong and random credentials such as: [ asdasd:asdasd ], we don`t get access to the inside of the website and an error message is displayed:
+If we try with some wrong and random credentials such as: [ asdf:asdf ], we don`t get access to the inside of the website and an error message is displayed:
 
-![](../../.gitbook/assets/java/Credentials-Guessing-3/2.png)
+![](../../.gitbook/assets/cred-guessing-31.png)
 
 It says that the username is incorrect.
 
@@ -36,27 +36,29 @@ Provided that once the username is incorrect it will appear an error message and
 we will use Burp in order to brute force different usernames and discover the right one by analysing the length of the HTTP responses for each trial.
 We use the "Intruder" functionality and we will load a prefixed dictionary with multiple usernames that will be tried against the website one by one.
 
-![](../../.gitbook/assets/java/Credentials-Guessing-3/3.png)
+![](../../.gitbook/assets/cred-guessing-32.png)
 
 If we check the lenght of the different HTTP responses for each of the password that Burp tried, we find that there's one with a different length than
 the rest of the possibilities:
 
-![](../../.gitbook/assets/java/Credentials-Guessing-3/4.png)
+![](../../.gitbook/assets/cred-guessing-33.png)
 
 We have found something promising! This must be the desired username.
 
 We can check now sending the HTTP request using this word as the username:
 
-![](../../.gitbook/assets/java/Credentials-Guessing-3/5.png)
+![](../../.gitbook/assets/cred-guessing-34.png)
 
 No error messages related to a wront username is displayed now (which means that this username must be correct), but it now says that the password is incorrect:
 
-![](../../.gitbook/assets/java/Credentials-Guessing-3/6.png)
+![](../../.gitbook/assets/cred-guessing-35.png)
 
-Now, if we follow the same methodology for the password, we will find the right password and get access to the inside of the website
+Now, if we follow the same methodology for the password, we will find the right password and get access to the inside of the website:
+
+![](../../.gitbook/assets/cred-guessing-36.png)
 
 And goal achieved!
 
 ## Additional sources
 
-{% embed url="https://www.owasp.org/index.php/Testing_for_User_Enumeration_and_Guessable_User_Account_(OWASP-AT-002)" %}
+https://www.owasp.org/index.php/Testing_for_User_Enumeration_and_Guessable_User_Account_(OWASP-AT-002)

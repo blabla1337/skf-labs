@@ -54,7 +54,7 @@ Log in as the new user
 
 ![](../../.gitbook/assets/java/ParameterBinding/4.png)
 
-Let's register a new user and check the request on Burp.
+Let's register a new user and intercept the request on Burp.
 
 ![](../../.gitbook/assets/java/ParameterBinding/5.png)
 

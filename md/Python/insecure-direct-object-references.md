@@ -61,7 +61,7 @@ https://www.hackingarticles.in/beginners-guide-burpsuite-payloads-part-1/
 
 ![](../../.gitbook/assets/python/IDOR/5.png)
 
-So from the fuzzing results, if we observe closesly the index ID="51" seems interesting as the other ID's seem to have the same response length. Let's check what do we achieve with ID=51.
+So from the fuzzing results, if we observe closesly the index ID="46" seems interesting as the other ID's seem to have the same response length. Let's check what do we achieve with ID=46.
 
 ![](../../.gitbook/assets/python/IDOR/6.png)
 

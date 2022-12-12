@@ -26,84 +26,77 @@ The goal of this lab is to get logged in as an administrator without knowing his
 
 Lets start the application and register a new user
 
-![](../../.gitbook/assets/java/Auth-Bypass-2/1.png)
+![](../../.gitbook/assets/python/Auth-Bypass-2/1.png)
 
-![](../../.gitbook/assets/java/Auth-Bypass-2/2.png)
-
-Please note that (for convenience) your password will be reset if the user already exists.
-Also note that the username and password are case sensitive.
+![](../../.gitbook/assets/python/Auth-Bypass-2/2.png)
 
 Now that we have valid credentials, we can login:
 
-![](../../.gitbook/assets/java/Auth-Bypass-2/3.png)
-
-After providing the correct credentials we're logged in:
-
-![](../../.gitbook/assets/java/Auth-Bypass-2/4.png)
+![](../../.gitbook/assets/python/Auth-Bypass-2/3.png)
 
 ## Exploitation
 
 We can capture the login in the burpsuite proxy and send it to the repeater. We notice that with every login, the session cookie stays the same. It is high likely that this sessionid is related to our user name:
 
-![](../../.gitbook/assets/java/Auth-Bypass-2/5.png)
+![](../../.gitbook/assets/python/Auth-Bypass-2/4.png)
 
 If we quickly google for this sessionid, we find nothing:
 
-![](../../.gitbook/assets/java/Auth-Bypass-2/6.png)
+![](../../.gitbook/assets/python/Auth-Bypass-2/5.png)
 
-We can check whether it is a hash:
+We can try to identify this hash:
 
-![](../../.gitbook/assets/java/Auth-Bypass-2/7.png)
+![](../../.gitbook/assets/python/Auth-Bypass-2/6.png)
 
-it seems to be a sha1...
+It seems to be a sha1...
 
-It is possible that the developer added a salt to the username and hashed the concatenated string
-admin+some_salt
--> maybe this is also the reason why we can't find with Google what the hash represents.
+It is possible that the developer added a salt to the username and hashed the concatenated string admin+some_salt -> maybe this is also the reason why we can't find with Google what the hash represents.
 
 The about page seem to contain a lot of text, maybe the salt is a typical word for this company that is also mentioned on that page…
 
-Using cewel we can grab all the words from a page like this:
-cewl -m 4 -w wordlist.txt -d 0 -v http://127.0.0.1:5000/about</br>
-<I>-m 4: minimum word length is 4 characters</br>
--w wordlist: write output to file ‘wordlist’</br>
--d 0: follow links x times deep (0=stay on the same page)</br>
--v: verbose (show what you are doing)</br></I>
+Using cewel we can grab all the words from a page like this: cewl -m 4 -w wordlist.txt -d 0 -v http://127.0.0.1:5000/about
+
+\-m 4: minimum word length is 4 characters\
+&#x20;\-w wordlist: write output to file ‘wordlist’\
+&#x20;\-d 0: follow links x times deep (0=stay on the same page)\
+&#x20;\-v: verbose (show what you are doing)
 
 Using a terminal window:
 
-![](../../.gitbook/assets/java/Auth-Bypass-2/8.png)
+![](../../.gitbook/assets/python/Auth-Bypass-2/7.png)
 
-![](../../.gitbook/assets/java/Auth-Bypass-2/9.png)
+![](../../.gitbook/assets/python/Auth-Bypass-2/8.png)
 
-Let’s use burp intruder to calculate a sha-1 for every admin+word combination.
+Let’s use burp intruder to calculate a sha-1 for every admin+word combination:
+
+![](../../.gitbook/assets/python/Auth-Bypass-2/9.png)
 
 Payload position:
 
-![](../../.gitbook/assets/java/Auth-Bypass-2/10.png)
+![](../../.gitbook/assets/python/Auth-Bypass-2/10.png)
 
 Paste the content of the word list in the payload options and add the payload processing rules as indicated in the following screenshot.
 
-![](../../.gitbook/assets/java/Auth-Bypass-2/11.png)
+![](../../.gitbook/assets/python/Auth-Bypass-2/11.png)
 
-This will prefix the word 'admin' to each word from the list and calculate a sha1 of the concatenated string.
-for example sha1(adminBank)
+This will prefix the word 'admin' to each word from the list and calculate a sha1 of the concatenated string. for example sha1(adminBank)
 
 Start the attack
+
+![](../../.gitbook/assets/python/Auth-Bypass-2/12.png)
+
 The result:
 
-![](../../.gitbook/assets/java/Auth-Bypass-2/12.png)
+![](../../.gitbook/assets/python/Auth-Bypass-2/13.png)
 
 Now we can replace our cookie/sessionID with the value we found.
 
-![](../../.gitbook/assets/java/Auth-Bypass-2/13.png)
+![](../../.gitbook/assets/python/Auth-Bypass-2/14.png)
 
-After refreshing the screen we're logged in as admin !
+After going back to home page and proceeding to authenticaded section:
 
-![](../../.gitbook/assets/java/Auth-Bypass-2/14.png)
+![](../../.gitbook/assets/python/Auth-Bypass-2/15.png)
 
 ## Additional sources
 
-{% embed url="https://owasp.org/www-project-top-ten/2017/A5_2017-Broken_Access_Control" %}
-
-{% embed url="https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/04-Authentication_Testing/04-Testing_for_Bypassing_Authentication_Schema" %}
+{% embed url="https://cheatsheetseries.owasp.org/cheatsheets/Deserialization_Cheat_Sheet.html" %}

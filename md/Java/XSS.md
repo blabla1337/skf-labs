@@ -16,15 +16,15 @@ Now that the app is running let's go hacking!
 
 ## Reconnaissance
 
-#### Step 1
+### Step 1
 
 The application shows an input field box were we can try our injections. Lets first inject a normal test string and see how our input is used in the application.
 
-![](../../.gitbook/assets/java/XSS/1.png)
+![](../../.gitbook/assets/python/XSS/1.png)
 
 As you can see below the request in our intercepting proxy that was made by the application.
 
-![](../../.gitbook/assets/java/XSS/2.png)
+![](../../.gitbook/assets/python/XSS/2.png)
 
 In the source of the application we can see that this application will take the user input and use a template variable to display it in the application.
 
@@ -44,33 +44,32 @@ The variable is then used in the index.html to display the content suplied by th
 
 ## Exploitation
 
-#### Step 1
+### Step 1
 
 Now we have seen where the user input is being reflected in the application we will have to look what dangerous HTML characters are not properly escaped so we can build our XSS payload. So for our first check we use the following string as an input:
 
-```text
-foobar">/<
+```
+foobar"></
 ```
 
-![](../../.gitbook/assets/java/XSS/3.png)
+![](../../.gitbook/assets/python/XSS/3.png)
 
 As you can see the application did not encode or blacklisted any of the dangerous HTML characters. Now lets try the XSS payload to see if this also is reflected back withouth any escaping or blacklist filtering.
 
-```text
-foobar<script>alert(123)</script>
+```
+foobar"><script>alert(123)</script>
 ```
 
-![](../../.gitbook/assets/java/XSS/4.png)
+![](../../.gitbook/assets/python/XSS/4.png)
 
 Again the application is not encoding or blacklisted any of the dangerous HTML characters. This payload seems to work in the intercepting proxy. Now lets try it in our browser.
 
-![](../../.gitbook/assets/java/XSS/5.png)
+![](../../.gitbook/assets/python/XSS/5.png)
 
 In Firefox we can see the XSS alert pop-up and we have successfully performed the XSS attack.
 
 ## Additional sources
 
-Please refer to the OWASP testing guide for a full complete description about cross site scripting!
+Please refer to the OWASP testing guide for a full complete description about path traversal with all the edge cases over different platforms!
 
-{% embed url="https://owasp.org/www-community/attacks/xss/" %}
-{% embed url="https://ejs.co/#docs" %}
+{% embed url="https://www.owasp.org/index.php/Testing_for_Reflected_Cross_site_scripting_(OTG-INPVAL-001)" %}

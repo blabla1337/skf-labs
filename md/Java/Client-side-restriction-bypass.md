@@ -16,20 +16,30 @@ Now that the app is running let's go hacking!
 
 ## Reconnaissance
 
-![](../../.gitbook/assets/java/Client-side-restriction-bypass/1.png)
+The app allows us to select a number between 3 and 13 from the number input form. Let's also try typing numbers outside that interval directly into the field.
 
-![](../../.gitbook/assets/java/Client-side-restriction-bypass/2.png)
+![](../../.gitbook/assets/python/Client-Side-Restriction-Bypass/1.png)
 
-![](../../.gitbook/assets/java/Client-side-restriction-bypass/3.png)
+![](../../.gitbook/assets/python/Client-Side-Restriction-Bypass/2.png)
 
-![](../../.gitbook/assets/java/Client-side-restriction-bypass/4.png)
+![](../../.gitbook/assets/python/Client-Side-Restriction-Bypass/3.png)
+
+![](../../.gitbook/assets/python/Client-Side-Restriction-Bypass/4.png)
 
 ## Exploitation
 
-![](../../.gitbook/assets/java/Client-side-restriction-bypass/5.png)
+We could intercept and modify the request on Burp:
+
+![](../../.gitbook/assets/python/Client-Side-Restriction-Bypass/5.png)
+
+Or alternatively, use devtools to modify the client-side restrictions directly:
+
+![](../../.gitbook/assets/python/Client-Side-Restriction-Bypass/6.png)
+
+![](../../.gitbook/assets/python/Client-Side-Restriction-Bypass/7.png)
 
 And goal achieved! We could bypass the client-side restrictions.
 
 ## Additional sources
 
-{% embed url="https://cwe.mitre.org/data/definitions/602.html" %}
+{% embed url="https://owasp.org/www-project-proactive-controls/v3/en/c5-validate-inputs" %}

