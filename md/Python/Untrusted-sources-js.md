@@ -39,7 +39,7 @@ _note: in a penetration test we would now see if the domain that is used to grab
 #### Step1
 
 Now, in order to leverage a successfull XSS attack we need to set up our own local server on port 8081
-that serves the our malicious javascript:
+that serves the our malicious javascript. You could achieve this in many diferent ways, let's use nodeJs this time:
 
 ```javascript
 const express = require("express");
@@ -79,6 +79,7 @@ alert("evil payload");
 Now it is time to start our web server.
 
 ```text
+npm install express
 node script_provider.js
 ```
 

