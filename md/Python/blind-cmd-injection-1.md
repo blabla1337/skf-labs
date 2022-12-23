@@ -40,7 +40,7 @@ We send a new HTTP request trying to send the output of the command whoami (supp
 
 ![](../../.gitbook/assets/python/CMD-Blind/4.png)
 
-Now we access the file welcome to check that the first name we wrote (shayu) was recorded, but in this case, also the output of the command whoami, showing us the priviledge of the target user in the target system and that the web app is actually vulnerable to OS command injection.
+Now we access the file welcome to check that the first name we wrote (user) was recorded, but in this case, also the output of the command whoami, showing us the priviledge of the target user in the target system and that the web app is actually vulnerable to OS command injection.
 
 ![](../../.gitbook/assets/python/CMD-Blind/5.png)
 
