@@ -29,15 +29,15 @@ username : admin
 password: admin
 ```
 
-![](../../.gitbook/assets/nodejs/CSRF-weak/1.png)
+![](../../.gitbook/assets/python/CSRF-Weak/1.png)
 
 When we are loggedin to the application we can see that we can set our favorite color and this will be stored in the session of the user.
 
-![](../../.gitbook/assets/nodejs/CSRF-weak/2.png)
+![](../../.gitbook/assets/python/CSRF-Weak/2.png)
 
 If we inspect the request with an intercepting proxy we can see that the application is performing a POST request that results in a data mutation, storing our favorite color into the session of the user and displaying this back to the user in the HTML website.
 
-![](../../.gitbook/assets/nodejs/CSRF-weak/3.png)
+![](../../.gitbook/assets/python/CSRF-Weak/3.png)
 
 Also we can see that the application is using a csrf_token
 
@@ -51,13 +51,13 @@ Also we can see that the application is using a csrf_token
 
 Looks like it's Base64 encoded, try decode it.
 
-![](../../.gitbook/assets/nodejs/CSRF-weak/4.png)
+![](../../.gitbook/assets/python/CSRF-Weak/4.png)
 
 The csrf token is simply username + time.
 
 Checking the application code we can how this csrf_token is being implemented.
 
-```python
+```
     time = strftime("%H:%M", gmtime())
     csrf = request.form['username'] + time
     session['csrf_token'] = base64.b64encode(csrf.encode())
@@ -128,13 +128,16 @@ Now when we have in the browser tab our active session of the application we can
 http://localhost:1337/
 ```
 
+![](../../.gitbook/assets/python/CSRF-Weak/5.png)
+
+
 This will now create a POST request to the application and changing the value of blue to the new value of 'Hackzord!' As you can see the Referer is set to our evil website where the request originated from and we have our forged csrf_token with the request.
 
-![](../../.gitbook/assets/CSRF-weak-2.png)
+![](../../.gitbook/assets/python/CSRF-Weak/6.png)
 
 Also when we refresh the original page of the application we can see that the new vaulue has been replaced with the content of our evil app.
 
-![](../../.gitbook/assets/nodejs/CSRF-weak/6.png)
+![](../../.gitbook/assets/python/CSRF-Weak/7.png)
 
 ## Additional sources
 
