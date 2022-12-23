@@ -18,13 +18,15 @@ Now that the app is running let's go hacking!
 
 #### Step 1
 
+![](../../.gitbook/assets/python/SSTI/1.png)
+
 As with all reconnaissance we first have to determine the type of application that is running and the programming language it was written in. This could easily be achieved by setting up an intercepting proxy and study the requests and responses made by the application to the web sever.
 
 Also, trying to trigger error messages on the application can also give away a lot of information about the application under test.
 
 In the screenshot below in the response of the we find the python version that is running, accompanied with the server "Werkzeug". This is a clear indicator the web application might be running python flask, and python flask typically runs with the templating engine, jinja2.
 
-![](../../.gitbook/assets/ssti1.png)
+![](../../.gitbook/assets/python/SSTI/2.png)
 
 #### Step2
 
@@ -48,7 +50,7 @@ As found in the docs:
 
 Let's see what happens of we inject the expression with the operator described above!
 
-![](../../.gitbook/assets/screen-shot-2019-01-10-at-13.13.36.png)
+![](../../.gitbook/assets/python/SSTI/3.png)
 
 ## Exploitation
 
@@ -67,7 +69,7 @@ In order to build our exploit this here already looks pretty promising:
 
 After injecting the payload we now have a list of all the different classes loaded in our target application. Let's see if we can use it to read some information from the file system
 
-![](../../.gitbook/assets/screen-shot-2019-01-10-at-17.59.05.png)
+![](../../.gitbook/assets/python/SSTI/4.png)
 
 On position 40 whilst iterating over the different loaded classes we find the "read" function. Let's use this function to read the "/etc/passwd" file from the filesystem.
 
@@ -75,7 +77,7 @@ On position 40 whilst iterating over the different loaded classes we find the "r
 {{ ''.__class__.__mro__[2].__subclasses__()[40]('/etc/passwd').read() }}
 ```
 
-![](../../.gitbook/assets/screen-shot-2019-01-10-at-17.59.36.png)
+![](../../.gitbook/assets/python/SSTI/5.png)
 
 As mentioned before this attack can ultimately be used also to gain remote code execution on the target application. In order to do so we first would need to set up a listener and than inject the following payloads
 

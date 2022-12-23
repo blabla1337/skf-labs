@@ -27,11 +27,17 @@ We still see the blog that we should be familiar by now.
 
 ![](../../.gitbook/assets/python/Graphql-Injection/1.png)
 
+Let's login with: admin/admin
+
+![](../../.gitbook/assets/python/Graphql-Injection/2.png)
+
 If you run your DirBuster against it or just manually try to guess few of the rountes you will notice the new `/admin` section of the web app.
 
 ```
 http://0.0.0.0:5000/admin
 ```
+
+![](../../.gitbook/assets/python/Graphql-Injection/3.png)
 
 There we have two functionalities:
 
