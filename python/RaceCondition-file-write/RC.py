@@ -18,7 +18,7 @@ def home(value):
         f.closed
         f.closed
     file = open("shared-file.txt", "r") 
-    response = make_response(send_file("shared-file.txt", attachment_filename="shared-file.txt"))
+    response = make_response(send_file("shared-file.txt", download_name="shared-file.txt"))
     response.headers.set("Content-Type", "text/html; charset=utf-8")
     response.headers.set("Content-Disposition", "attachment; filename=shared-file.txt")
     return response
