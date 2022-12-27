@@ -5,7 +5,7 @@ db.serialize(() => {
   db.run(
     "CREATE TABLE IF NOT EXISTS users(UserId INT, UserName TEXT, Password TEXT)"
   );
-  db.run("INSERT OR IGNORE INTO users VALUES(1,'12345','12345')");
+  db.run("INSERT OR IGNORE INTO users VALUES(1,'linux','linux')");
 
   db.run(
     "CREATE TABLE IF NOT EXISTS preferences(PreferenceId INT, Color TEXT, UserId INT)"
