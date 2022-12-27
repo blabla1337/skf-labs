@@ -37,7 +37,10 @@ app.post("/login", (req, res) => {
         session.loggedIn = true;
         res.render("home.ejs");
       } else {
-        res.render("", { error: "Password is incorrect" });
+        res.render("", {
+          error:
+            "Password is incorrect                                                ",
+        });
       }
     } else {
       res.render("", { error: "Username does not exist" });
@@ -51,4 +54,6 @@ app.use(function (req, res) {
 
 const port = process.env.PORT || 5000;
 
-app.listen(port, "0.0.0.0", () => console.log(`Listening on port ${port}...!!!`));
+app.listen(port, "0.0.0.0", () =>
+  console.log(`Listening on port ${port}...!!!`)
+);
