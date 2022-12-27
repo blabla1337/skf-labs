@@ -24,7 +24,7 @@ When we start the application we can see that there is a login form.
 
 ![](../../.gitbook/assets/nodejs/Credentials-Guessing-3/1.png)
 
-If we try with some wrong and random credentials such as: [ asdasd:asdasd ], we don`t get access to the inside of the website and an error message is displayed:
+If we try with some wrong and random credentials such as: [ asdf:asdf ], we don`t get access to the inside of the website and an error message is displayed:
 
 ![](../../.gitbook/assets/nodejs/Credentials-Guessing-3/2.png)
 
@@ -38,25 +38,27 @@ We use the "Intruder" functionality and we will load a prefixed dictionary with 
 
 ![](../../.gitbook/assets/nodejs/Credentials-Guessing-3/3.png)
 
-If we check the lenght of the different HTTP responses for each of the password that Burp tried, we find that there's one with a different length than
+![](../../.gitbook/assets/nodejs/Credentials-Guessing-3/4.png)
+
+If we check the lenght of the different HTTP responses for each of the password that Burp tried, we find that there's one with a bigger length than
 the rest of the possibilities:
 
-![](../../.gitbook/assets/nodejs/Credentials-Guessing-3/4.png)
+![](../../.gitbook/assets/nodejs/Credentials-Guessing-3/5.png)
 
 We have found something promising! This must be the desired username.
 
 We can check now sending the HTTP request using this word as the username:
 
-![](../../.gitbook/assets/nodejs/Credentials-Guessing-3/5.png)
-
-No error messages related to a wront username is displayed now (which means that this username must be correct), but it now says that the password is incorrect:
-
 ![](../../.gitbook/assets/nodejs/Credentials-Guessing-3/6.png)
 
-Now, if we follow the same methodology for the password, we will find the right password and get access to the inside of the website
+No error messages related to a wront username is displayed now (which means that this username must be correct), but it now says that the password is incorrect.
+
+Now, if we follow the same methodology for the password, we will find the right password and get access to the inside of the website:
+
+![](../../.gitbook/assets/nodejs/Credentials-Guessing-3/7.png)
 
 And goal achieved!
 
 ## Additional sources
 
-{% embed url="https://www.owasp.org/index.php/Testing_for_User_Enumeration_and_Guessable_User_Account_(OWASP-AT-002)" %}
+https://www.owasp.org/index.php/Testing_for_User_Enumeration_and_Guessable_User_Account_(OWASP-AT-002)
