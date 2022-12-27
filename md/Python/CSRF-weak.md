@@ -49,7 +49,7 @@ Also we can see that the application is using a csrf_token
     </form>
 ```
 
-Looks like it's Base64 encoded, try decode it.
+Looks like it's Base64 encoded, let's first decoded the URL-encoded format then base64 decode:
 
 ![](../../.gitbook/assets/python/CSRF-Weak/4.png)
 
@@ -66,7 +66,7 @@ Checking the application code we can how this csrf_token is being implemented.
 
 ## Exploitation
 
-In order to to exploit this vulnerability we need to set up our evil webserver to do the malicious CSRF using a POST request from and sending the weak csrf_token with. We could achieve this by creating the following express application:
+In order to to exploit this vulnerability we need to set up our evil webserver to do the malicious CSRF using a POST request from and sending the weak csrf_token with. We could achieve this by creating the following python flask application:
 
 ```python
 import base64
@@ -129,7 +129,6 @@ http://localhost:1337/
 ```
 
 ![](../../.gitbook/assets/python/CSRF-Weak/5.png)
-
 
 This will now create a POST request to the application and changing the value of blue to the new value of 'Hackzord!' As you can see the Referer is set to our evil website where the request originated from and we have our forged csrf_token with the request.
 

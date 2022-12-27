@@ -49,7 +49,7 @@ Also we can see that the application is using a csrf_token
     </form>
 ```
 
-Looks like it's Base64 encoded, try decode it.
+Looks like it's Base64 encoded, let's first decoded the URL-encoded format then base64 decode:
 
 ![](../../.gitbook/assets/nodejs/CSRF-weak/4.png)
 
@@ -89,10 +89,6 @@ app.get("", (req, res) => {
   const csrf_token = "admin" + time;
   const encoded_csrf_token = Buffer.from(csrf_token).toString("base64");
   res.render("evil.ejs", { csrf_token: encoded_csrf_token });
-});
-
-app.use(function (req, res) {
-  res.status(404).render("404.ejs");
 });
 
 const port = process.env.PORT || 1337;
