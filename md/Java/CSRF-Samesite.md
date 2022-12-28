@@ -67,7 +67,6 @@ Save the snippet above to > app.py and run the commands below to install some de
 ```
 $ pip install flask
 $ pip install requests
-$ python app.py
 ```
 
 Of course you can also run your app on whatever service you want it does not have to be python flask.
@@ -131,21 +130,18 @@ In the home page, use the Secure Login form for authentication.
 You can note in Burp's response tab the cookie was set with _samesite=strict_.
 
 ```text
-HTTP/1.1 200 OK
-X-Powered-By: Express
-Content-Type: text/html; charset=utf-8
-Content-Length: 4082
-ETag: W/"ff2-XEMwbjHvGAb56yri6EpFyiL/kY8"
-Set-Cookie: session=eyJ1c2VySWQiOjEsImxvZ2dlZEluIjp0cnVlLCJjb2xvciI6IkhhY2t6b3JkISJ9; path=/; expires=Fri, 07 Jan 2022 09:02:38 GMT; samesite=strict; httponly
-Date: Thu, 06 Jan 2022 09:02:38 GMT
+HTTP/1.1 200
+Set-Cookie: JSESSIONID=A62763579915C1D1610BEDDD1DED23C0; HttpOnly; SameSite=strict
+Content-Type: text/html;charset=UTF-8
+Content-Language: en-US
+Date: Wed, 28 Dec 2022 09:13:57 GMT
 Connection: close
+Content-Length: 9822
 ```
 
 Set your preferred color.
 
 Now, in a different browser tab, try to run again the CSRF attack.
-
-![](../../.gitbook/assets/java/CSRF-Samesite/7.png)
 
 Go back to the first tab and check if the color was changed by the CSRF attack or not by clicking on _refresh the page_.
 

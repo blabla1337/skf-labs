@@ -42,11 +42,21 @@ If we inspect the request with an intercepting proxy we can see that the applica
 Also we can see that the application is using a csrf_token
 
 ```html
-    <form method="post" action="/update">
-        <input type="hidden" class="form-control" name="csrf_token" value="<%=csrf_token %>">
-        <input type="text" class="form-control" name="color" placeholder="favorite color"/><br/>
-        <button class="btn btn-primary" type="submit">Submit Button</button></div>
-    </form>
+<form method="post" action="/update">
+  <input
+    type="hidden"
+    class="form-control"
+    name="csrf_token"
+    value="{% autoescape true %}{{csrf_token}}{% endautoescape %}"
+  />
+  <input
+    type="text"
+    class="form-control"
+    name="color"
+    placeholder="favorite color"
+  /><br />
+  <button class="btn btn-primary" type="submit">Submit Button</button>
+</form>
 ```
 
 Looks like it's Base64 encoded, let's first decoded the URL-encoded format then base64 decode:
@@ -107,8 +117,12 @@ Now that the service is running we want to serve the malicious piece of javascri
   target="csrf-frame"
   id="csrf-form"
 >
-  <input type="hidden" name="csrf_token" value="<%= csrf_token %>" />
   <input type="hidden" name="color" value="Hackzord!" />
+  <input
+    type="hidden"
+    name="csrf_token"
+    value="{% autoescape true %}{{csrf_token}}{% endautoescape %}"
+  />
   <input type="submit" value="submit" />
 </form>
 <script>

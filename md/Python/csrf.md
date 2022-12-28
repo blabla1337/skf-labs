@@ -67,7 +67,6 @@ Save the snippet above to > app.py and run the commands below to install some de
 ```
 $ pip install flask
 $ pip install requests
-$ python app.py
 ```
 
 Of course you can also run your app on whatever service you want it does not have to be python flask.

