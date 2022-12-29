@@ -63,7 +63,13 @@ of course only if authenticated. But how does this page retrieve the information
 
 ```
 
-> Knowing that, use the IDOR vulnerability to authenticate as another user
+![](../../.gitbook/assets/nodejs/GraphQL-IDOR/4.png)
+
+> Knowing that, we can use the IDOR vulnerability to get the information from other users.
+
+![](../../.gitbook/assets/nodejs/GraphQL-IDOR/5.png)
+
+![](../../.gitbook/assets/nodejs/GraphQL-IDOR/6.png)
 
 ## Solution
 
