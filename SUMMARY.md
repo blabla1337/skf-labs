@@ -152,10 +152,7 @@
 - Information Leakeage in Metadata
   - [Python - Information Leakeage in Metadata](./md/Python/information-leakeage-metadata.md)
   - [NodeJS - Information Leakeage in Metadata](./md/NodeJs/Info-leakage-metadata.md)
-  - [Java - Information Leakeage in Meta- HttpOnly Session Hijacking XSS
-  - [Python - HttpOnly Session Hijacking XSS](./md/Python/HttpOnly-Session-hijacking-xss.md)
-  - [NodeJS - HttpOnly Session Hijacking XSS](./md/NodeJs/Session-hijacking-XSS.md)
-  - [Java - HttpOnly Session Hijacking XSS](./md/Java/Session-hijacking-XSS.md)data](./md/Java/Info-leakage-metadata.md)
+  - [Java - Information Leakeage in Metadata](./md/Java/Info-leakage-metadata.md)
 - Insecure Direct Object References (IDOR)
   - [Python - Insecure Direct Object References (IDOR)](./md/Python/insecure-direct-object-references.md)
   - [NodeJS - Insecure Direct Object References (IDOR)](./md/NodeJs/IDOR.md)
@@ -220,6 +217,10 @@
   - [Java - Server Side Request Forgery (SSRF)]()
 - Server Side Template Injection (SSTI)
   - [Python - Server Side Template Injection (SSTI)](./md/Python/server-side-template-injection.md)
+- Session Hijacking XSS
+  - [Python - HttpOnly Session Hijacking XSS](./md/Python/HttpOnly-Session-hijacking-xss.md)
+  - [NodeJS - HttpOnly Session Hijacking XSS](./md/NodeJs/Session-hijacking-XSS.md)
+  - [Java - HttpOnly Session Hijacking XSS](./md/Java/Session-hijacking-XSS.md)
 - Session Puzzling
   - [Python - Session Puzzling](./md/Python/session-puzzling.md)
   - [NodeJS - Session Puzzling](./md/NodeJs/Session-Puzzling.md)

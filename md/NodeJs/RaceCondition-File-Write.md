@@ -20,15 +20,15 @@ Now that the app is running let's go hacking!
 
 We can download a file from the server by doing a GET request to the server.
 
-![](../../.gitbook/assets/nodejs/RaceCondition-File-Write/1.png)
+![](../../.gitbook/assets/python/RaceCondition-file-write/1.png)
 
 Let's try:
 
-![](../../.gitbook/assets/nodejs/RaceCondition-File-Write/2.png)
+![](../../.gitbook/assets/python/RaceCondition-file-write/2.png)
 
 Once we download the file we can see whatever we add to the URL is being written in a file called shared-file.
 
-![](../../.gitbook/assets/nodejs/RaceCondition-File-Write/3.png)
+![](../../.gitbook/assets/python/RaceCondition-file-write/3.png)
 
 #### Step 2
 
@@ -52,8 +52,6 @@ app.get("/:value", (req, res) => {
 ```
 
 #### Step 3
-
-How can we exploit this?
 
 We have a very small window between the writing of the file:
 
@@ -94,11 +92,13 @@ done
 
 and in the meantime we will send a couple requests from Burp:
 
-![](../../.gitbook/assets/nodejs/RaceCondition-File-Write/4.png)
+![](../../.gitbook/assets/python/RaceCondition-file-write/4.png)
 
 If we look in the logs we will see:
 
-![](../../.gitbook/assets/nodejs/RaceCondition-File-Write/5.png)
+![](../../.gitbook/assets/python/RaceCondition-file-write/5.png)
+
+![](../../.gitbook/assets/python/RaceCondition-file-write/6.png)
 
 ## Additional sources
 

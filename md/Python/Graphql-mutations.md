@@ -58,4 +58,17 @@ The method mutate will just get the new Post object and insert an instance in th
 
 ## Exploit
 
-> What can you exploit? ;)
+There are many ways we could exploit this, one would be to create posts as another user:
+
+![](../../.gitbook/assets/python/Graphql-Mutations/3.png)
+
+Bingo! We have create a new post as another user. Let's refresh the page:
+
+![](../../.gitbook/assets/python/Graphql-Mutations/4.png)
+
+You could, of course, achieve the same goal with burp.
+What else can you exploit using this vulnerability?
+
+## Additional resources
+
+{% embed url="https://cheatsheetseries.owasp.org/cheatsheets/GraphQL_Cheat_Sheet.html" %}

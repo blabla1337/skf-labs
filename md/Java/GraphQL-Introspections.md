@@ -26,7 +26,7 @@ We want to use the introspection feature (enabled) in this case, to understand m
 
 Let' use the `GraphiQL` UI to send queries to the backend and discover what is available.
 
-Go to `http://0.0.0.0:5000/graphql`. We can query the generic `__schema` using:
+Go to `http://0.0.0.0:5000/graphiql`. We can query the generic `__schema` using:
 
 ```
 {
