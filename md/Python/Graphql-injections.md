@@ -25,11 +25,11 @@ We will look at two of the most common ones:
 
 We still see the blog that we should be familiar by now.
 
-![](../../.gitbook/assets/python/Graphql-Injection/1.png)
-
 Let's login with: admin/admin
 
-![](../../.gitbook/assets/python/Graphql-Injection/2.png)
+![](../../.gitbook/assets/python/Graphql-Injections/1.png)
+
+![](../../.gitbook/assets/python/Graphql-Injections/2.png)
 
 If you run your DirBuster against it or just manually try to guess few of the rountes you will notice the new `/admin` section of the web app.
 
@@ -37,7 +37,7 @@ If you run your DirBuster against it or just manually try to guess few of the ro
 http://0.0.0.0:5000/admin
 ```
 
-![](../../.gitbook/assets/python/Graphql-Injection/3.png)
+![](../../.gitbook/assets/python/Graphql-Injections/3.png)
 
 There we have two functionalities:
 
@@ -62,6 +62,8 @@ Go about and try check if some of the well known SQL Server ports are open on th
 
 Probablly your first try was MySQL 3306 - 127.0.0.1:3306. Play around with few other ports and IPs and observe the _Status codes_ we receive as results.
 
+![](../../.gitbook/assets/python/Graphql-Injections/4.png)
+
 Now go ahead and try to execute some other system commands, append, pipe, ...
 
 Apparently our input is being passed to a system command which gets executed and we get response code of it. By looking in the code we can see it is passed to a `os.system()` call.
@@ -71,6 +73,10 @@ This makes it a bit harder as we don't see the actual output of the command but 
 How about we try to a valid command that time effective and we can observe that... kind of an oracle, a Time Oracle.
 
 Let's try: `127.0.0.1:3306; sleep 5`
+
+![](../../.gitbook/assets/python/Graphql-Injections/5.png)
+
+![](../../.gitbook/assets/python/Graphql-Injections/6.png)
 
 As you have observed, the applciation took additional extra 5 seconds to respond, meaning our `sleep` command got executed. w00t, w00t!
 
@@ -89,23 +95,29 @@ Example:
 ' UNION SELECT uuid, username FROM users --")
 ```
 
+![](../../.gitbook/assets/python/Graphql-Injections/7.png)
+
 By now we are aboslutly sure that this is an SQL Injection point and it is pretty that we are dealing with UNION style SQL Injection. Next up, let's try to find the other blog admins:
 
 ```
-{getUser(username:"' UNION SELECT uuid, username, null, null FROM users WHERE isadmin = true --") {
+{getUser(username:"' UNION SELECT uuid, username, null, null FROM users WHERE isadmin = true --) {
   id
   username
 }}
 ```
+
+![](../../.gitbook/assets/python/Graphql-Injections/8.png)
 
 Lets try to get the password of some user:
 
 ```
-{getUser(username:"' UNION SELECT uuid, username, password, null FROM users WHERE username = 'johndoe'  --") {
+{getUser(username:"' UNION SELECT uuid, username, password, null FROM users WHERE username = 'johndoe'  --) {
   id
   username
 }}
 ```
+
+![](../../.gitbook/assets/python/Graphql-Injections/9.png)
 
 We face few hurdles here:
 
@@ -134,6 +146,7 @@ The laziest approach, if our target is to get the password, is to return in all 
 
 }}
 ```
+![](../../.gitbook/assets/python/Graphql-Injections/10.png)
 
 w00t w00t!
 
@@ -156,3 +169,5 @@ The solution?
 - Use SQLAlchemy as described in documentation
 
 ## Additional resources
+
+{% embed url="https://cheatsheetseries.owasp.org/cheatsheets/GraphQL_Cheat_Sheet.html" %}
