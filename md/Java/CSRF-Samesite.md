@@ -130,13 +130,13 @@ In the home page, use the Secure Login form for authentication.
 You can note in Burp's response tab the cookie was set with _samesite=strict_.
 
 ```text
-HTTP/1.1 200
-Set-Cookie: JSESSIONID=A62763579915C1D1610BEDDD1DED23C0; HttpOnly; SameSite=strict
+HTTP/1.1 200 
+Set-Cookie: JSESSIONID=F731CD26227108D231BBEA2BB3645FF5; HttpOnly; SameSite=strict
 Content-Type: text/html;charset=UTF-8
 Content-Language: en-US
-Date: Wed, 28 Dec 2022 09:13:57 GMT
+Date: Fri, 30 Dec 2022 13:32:13 GMT
 Connection: close
-Content-Length: 9822
+Content-Length: 9828
 ```
 
 Set your preferred color.

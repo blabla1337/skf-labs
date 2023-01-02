@@ -111,7 +111,7 @@ Next up, let's try to find the other blog admins:
 
 ![](../../.gitbook/assets/nodejs/Graphql-Injections/8.png)
 
-Looks like there's only one admin account. Lets try to get the password of some user:
+Lets try to get the password of some user:
 
 ```
 {
