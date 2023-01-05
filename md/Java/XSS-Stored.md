@@ -68,7 +68,7 @@ In the source of the application we can see that this application will take the 
       </center>
 ```
 
-The variable is then used in the index.html to display the content suplied by the user. But as you can see the tag being used is th:utext which means is not being escaped by the thymeleaf template engine . This indicates that is should be possible to perform a Cross Site Scripting \(XSS\) injection.
+The variable is then used in the index.html to display the content supplied by the user. But as you can see the tag being used is th:utext which means is not being escaped by the thymeleaf template engine . This indicates that is should be possible to perform a Cross Site Scripting \(XSS\) injection.
 
 ## Exploitation
 

@@ -67,6 +67,7 @@ Save the snippet above to > app.py and run the commands below to install some de
 ```
 $ pip install flask
 $ pip install requests
+$ python app.py
 ```
 
 Of course you can also run your app on whatever service you want it does not have to be python flask.
@@ -131,10 +132,10 @@ You can note in Burp's response tab the cookie was set with _samesite=strict_.
 
 ```text
 HTTP/1.1 200 
-Set-Cookie: JSESSIONID=F731CD26227108D231BBEA2BB3645FF5; HttpOnly; SameSite=strict
+Set-Cookie: JSESSIONID=05ACDD9FB186330F2C669995FE596C70; HttpOnly; SameSite=strict
 Content-Type: text/html;charset=UTF-8
 Content-Language: en-US
-Date: Fri, 30 Dec 2022 13:32:13 GMT
+Date: Wed, 04 Jan 2023 15:05:14 GMT
 Connection: close
 Content-Length: 9828
 ```
@@ -142,6 +143,8 @@ Content-Length: 9828
 Set your preferred color.
 
 Now, in a different browser tab, try to run again the CSRF attack.
+
+![](../../.gitbook/assets/java/CSRF-Samesite/7.png)
 
 Go back to the first tab and check if the color was changed by the CSRF attack or not by clicking on _refresh the page_.
 
@@ -162,13 +165,13 @@ Let's see how _Lax_ mode works, by using the _Login Still Insecure_ authenticati
 You can note in Burp's response tab the cookie was set with _samesite=lax_.
 
 ```text
-HTTP/1.1 200
-Set-Cookie: JSESSIONID=47E66DEEF0573AA9424106A5F6F59940; HttpOnly; SameSite=lax
+HTTP/1.1 200 
+Set-Cookie: JSESSIONID=7F34B3F8E5C0636C3C653A3A65F08241; HttpOnly; SameSite=lax
 Content-Type: text/html;charset=UTF-8
 Content-Language: en-US
-Date: Thu, 17 Mar 2022 09:36:03 GMT
+Date: Wed, 04 Jan 2023 15:13:25 GMT
 Connection: close
-Content-Length: 3531
+Content-Length: 9822
 ```
 
 Set your preferred color and once again run the CSRF attack in a different tab.
