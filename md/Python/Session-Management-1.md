@@ -26,20 +26,20 @@ The goal of this lab is to get access to admin panel, without knowing his/her cr
 
 At the first look, there is default credentials and site leads us to perform new login:
 
-![](../../.gitbook/assets/session-management-1-1.png)
+![](../../.gitbook/assets/python/Session-Management/session-management-1-1.png)
 
 Before performing new login, let's check if there is any cookie(s):
 
-![](../../.gitbook/assets/session-management-1-2.png)
+![](../../.gitbook/assets/python/Session-Management/session-management-1-2.png)
 
 No cookies for now. so we just continue to login as user `john`:
 
-![](../../.gitbook/assets/session-management-1-3.png)
+![](../../.gitbook/assets/python/Session-Management/session-management-1-3.png)
 
 An interesting cookie found! after submiting login request, server respond us with 302 redirect and new cookie named `sessionid` and a base64-looking value for it. To make sure, decoding value `am9obg==` as base64, gives us very interesting string: `john`! It keeps track of submitting username. Let's check next response, which server redirects us to:
 
-![](../../.gitbook/assets/session-management-1-5.png)
-![](../../.gitbook/assets/session-management-1-4.png)
+![](../../.gitbook/assets/python/Session-Management/session-management-1-5.png)
+![](../../.gitbook/assets/python/Session-Management/session-management-1-4.png)
 
 We logged in to user panel with a cookie named `sessionid` that keeps username as base64 encoded string.
 
@@ -53,12 +53,12 @@ A common mistake is to include specific data in the Token instead of issuing a g
 
 Let's see server reaction to manipulating cookie. To do so, we can totally remove cookie or change it's value to something random. For example I base64 `blahblah` and put the result(`YmxhaGJsYWg=`) in `sessionid` cookie:
 
-![](../../.gitbook/assets/session-management-1-6.png)
+![](../../.gitbook/assets/python/Session-Management/session-management-1-6.png)
 
 It redirects us to login page. Now we try with possible valid value like `admin`, to check how it reacts.
 
-![](../../.gitbook/assets/session-management-1-7.png)
-![](../../.gitbook/assets/session-management-1-8.png)
+![](../../.gitbook/assets/python/Session-Management/session-management-1-7.png)
+![](../../.gitbook/assets/python/Session-Management/session-management-1-8.png)
 
 We successfully logged in as user `admin` without knowing his password. Mission complete!
 

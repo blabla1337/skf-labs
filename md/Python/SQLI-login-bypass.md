@@ -26,12 +26,12 @@ The goal of this lab is to get logged in as an admin without knowing his/her cre
 
 Let's start with an elementary test. Fill username and password fields with something random, to figure out the answer for "Can we enumerate users or not?":
 
-![](../../.gitbook/assets/sqli-login-bypass-1.png)
+![](../../.gitbook/assets/python/SQLI-Login-Bypass/sqli-login-bypass-1.png)
 
 Sometimes the server gives us useful information in the error message, like "User XXX not found". It explicitly mentions the username in the error message, and we can figure out user exists or not. The other case is that the server returns a general error message, like "username/password is wrong". No details here, but we know the problem. Finally, we have no errors here totally after clicking on "Submit Botton". It means no enumerations and no points of where the problem is. To find out more, we give it a SQL injection test, with a single quotation:
 
-![](../../.gitbook/assets/sqli-login-bypass-2.png)
-![](../../.gitbook/assets/sqli-login-bypass-3.png)
+![](../../.gitbook/assets/python/SQLI-Login-Bypass/sqli-login-bypass-2.png)
+![](../../.gitbook/assets/python/SQLI-Login-Bypass/sqli-login-bypass-3.png)
 
 We have a syntax error! more errors and details that shows us it seems to be vulnerable to SQL injection attacks somehow.
 
@@ -66,8 +66,8 @@ if (query(user_inputs) == True)
 
 Let's try:
 
-![](../../.gitbook/assets/sqli-login-bypass-4.png)
-![](../../.gitbook/assets/sqli-login-bypass-5.png)
+![](../../.gitbook/assets/python/SQLI-Login-Bypass/sqli-login-bypass-4.png)
+![](../../.gitbook/assets/python/SQLI-Login-Bypass/sqli-login-bypass-5.png)
 
 ## Additional sources
 

