@@ -14,12 +14,12 @@ RUN addgroup -g 1000 app
 RUN adduser -u 1000 -G app -D -h /home/app app
 RUN rm -rf /var/cache/apk/APKINDEX*
 
-COPY ./ /home/app/Host-Header-Authentication-Bypass
+COPY ./ /home/app/HTTP-desync-CLTE-frontend-server
 
 # Switching to the new app location:
-WORKDIR /home/app/Host-Header-Authentication-Bypass
+WORKDIR /home/app/HTTP-desync-CLTE-frontend-server
 
-RUN chown -R app:app /home/app/Host-Header-Authentication-Bypass
+RUN chown -R app:app /home/app/HTTP-desync-CLTE-frontend-server
 
 # Switching to the limited user
 USER app
@@ -34,4 +34,4 @@ RUN find . -name "*.sh" -o -name "*.py" -o -name "*.css" -o -name "*.js" | xargs
 RUN find . -name "*.sh" -o -name "*.py" | xargs chmod +x
 
 # Starting the actual application:
-ENTRYPOINT [ "python3", "./host-header-authentication-bypass.py" ]
+ENTRYPOINT [ "python3", "./http-desync-clte-frontend-server.py" ]
