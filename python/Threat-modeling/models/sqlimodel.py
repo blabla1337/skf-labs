@@ -30,8 +30,8 @@ class Classes:
 
     def getNotes(self, userId):
         db = database_con()
-        sql_select_query = """select Title, Body from notes where userId = ?"""
-        cur = db.execute(sql_select_query, (userId,))
+        sql_select_query = "select Title, Body from notes where userId = " + userId
+        cur = db.execute(sql_select_query)
         records = cur.fetchall()
         db.close()
         return records
