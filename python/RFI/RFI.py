@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template
-import requests
+import requests, os
 from urllib.parse import urlparse
 
 app = Flask(__name__, static_url_path='/static', static_folder='static')
