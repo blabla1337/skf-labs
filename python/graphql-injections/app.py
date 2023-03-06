@@ -1,5 +1,5 @@
 # Imports
-from flask import Flask, request,render_template, make_response, redirect
+from flask import Flask, request,render_template, render_template_string, make_response, redirect, session
 from flask_sqlalchemy import SQLAlchemy
 import os
 import graphene
@@ -135,8 +135,38 @@ class Query(graphene.ObjectType):
         else:
             return None;
 
-schema = graphene.Schema(query=Query)
+class PostAttribute:
+    title = graphene.String(description="Title of the post")
+    body = graphene.String(description="Description")
+    author_id = graphene.Int()
 
+
+class CreatePostInput(graphene.InputObjectType, PostAttribute):
+    """Arguments to create a post."""
+    pass
+
+
+class CreatePost(graphene.Mutation):
+    """Mutation to create a post."""
+    post = graphene.Field(lambda: PostObject,
+                          description="Post created by this mutation.")
+
+    class Arguments:
+
+        input = CreatePostInput(required=True)
+
+    def mutate(self, info, input):
+
+        post = Post(**input)
+        db.session.add(post)
+        db.session.commit()
+
+        return CreatePost(post=post)
+
+class Mutation(graphene.ObjectType):
+    create_post = CreatePost.Field()
+
+schema = graphene.Schema(query=Query, mutation=Mutation)
 
 # Routes
 
@@ -148,7 +178,6 @@ app.add_url_rule(
         graphiql=True # for having the GraphiQL interface
     )
 )
-
 
 def verify_apikey():
     

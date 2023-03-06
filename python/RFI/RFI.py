@@ -1,9 +1,12 @@
 from flask import Flask, request, render_template
 import requests
+import datetime
+import os
 from urllib.parse import urlparse
 
 app = Flask(__name__, static_url_path='/static', static_folder='static')
 app.config['DEBUG'] = True
+
 
 @app.route("/")
 def start():
@@ -25,6 +28,7 @@ def cmd():
     except Exception:
         return render_template("index.html", result="Unexpected error during the execution of the predefined command.")
 
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template("404.html")
@@ -32,4 +36,3 @@ def page_not_found(e):
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', threaded=True)
-

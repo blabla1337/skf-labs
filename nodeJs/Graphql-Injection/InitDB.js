@@ -14,7 +14,7 @@ db.serialize(() => {
   db.run("INSERT OR IGNORE INTO users VALUES(6,'user5','user55745', 0)");
   db.run("INSERT OR IGNORE INTO users VALUES(7,'user6','user61239', 0)");
   db.run("INSERT OR IGNORE INTO users VALUES(8,'user7','user71112', 0)");
-  db.run("INSERT OR IGNORE INTO users VALUES(9,'admin','password1337', 1)");
+  db.run("INSERT OR IGNORE INTO users VALUES(9,'admin','admin', 1)");
   db.run("INSERT OR IGNORE INTO users VALUES(10,'jimcarry','password88', 1)");
   // create posts table
   db.run(
