@@ -15,7 +15,7 @@ public class RatelimitingController {
             @RequestParam(name = "password", required = true) String password, Model model,
             HttpServletRequest request) {
 
-        if (!username.equals("devteam") || !password.equals("manchesterunited")) {
+        if (!username.equals("devteam") || !password.equals("letmein")) {
             model.addAttribute("error", "Invalid username or password");
             return "index";
         } else {

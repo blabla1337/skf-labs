@@ -6,7 +6,7 @@ INSERT INTO user (username, password, admin) VALUES ('user4','password1231', 0);
 INSERT INTO user (username, password, admin) VALUES ('user5','password1444', 0);
 INSERT INTO user (username, password, admin) VALUES ('user6','password111', 0);
 INSERT INTO user (username, password, admin) VALUES ('user7','password12', 0);
-INSERT INTO user (username, password, admin) VALUES ('admin','password444555', 1);
+INSERT INTO user (username, password, admin) VALUES ('admin','admin', 1);
 INSERT INTO user (username, password, admin) VALUES ('jimcarrey','password88', 0);
 
 

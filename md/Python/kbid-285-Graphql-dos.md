@@ -32,7 +32,7 @@ $ python3 <labname>
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker Image and write-up thanks to defev!](../../.gitbook/assets/logo.defdev.1608z.whtonblk.256.png)
+![Docker Image and write-up thanks to defev!](../../.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
 
 ## Reconnaissance
 

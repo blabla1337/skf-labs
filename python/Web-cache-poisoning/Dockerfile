@@ -4,7 +4,7 @@ FROM python:3.7-alpine AS skf-alpine37
 LABEL Glenn ten Cate <glenn.ten.cate@owasp.org>
 
 # Installing needed binaries and deps. Then removing unneeded deps:
-RUN apk update --no-cache && apk add py3-pip bash dos2unix redis
+RUN apk update --no-cache && apk add py3-pip bash dos2unix
 
 ### Dynamic layers
 FROM skf-alpine37

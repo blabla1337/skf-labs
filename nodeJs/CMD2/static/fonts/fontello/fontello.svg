@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2022 by original authors @ fontello.com</metadata>
+<defs>
+<font id="fontello" horiz-adv-x="1000" >
+<font-face font-family="fontello" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="sun" unicode="&#xe8ca;" d="M542 766l-51-152-53 152q-7 22 3 42t31 28q30 10 56-11t14-59z m-469-363l153-53-153-52q-21-8-42 3t-28 32q-10 30 12 56t58 14z m365-469l53 152 51-152q7-21-3-42t-31-28q-30-10-56 12t-14 58z m469 364l-153 52 153 53q21 7 42-3t28-32q10-30-12-57t-58-13z m-675 383l71-145-145 72q-21 10-28 31t3 42q16 32 50 30t49-30z m-74-588l145 71-71-145q-10-21-31-28t-43 3q-31 16-30 50t30 49z m590-74l-71 145 145-71q21-10 28-32t-3-42q-16-31-50-30t-49 30z m74 589l-145-72 71 145q10 22 31 29t43-4q31-16 30-50t-30-48z m-331-493q-97 0-166 70t-69 165 69 166 166 69 165-69 68-166-68-165-165-70z m0 365q-54 0-93-38t-39-92 39-92 93-38 92 38 38 92-38 92-92 38z" horiz-adv-x="980" />
+
+<glyph glyph-name="moon" unicode="&#xe8cb;" d="M200-41q-67 0-131 23l-69 26 46 56q102 124 102 285t-102 285l-46 58 69 25q67 24 131 24 161 0 276-115t115-277-115-275-276-115z m-26 105q9-1 26-1 118 0 202 84t84 202-84 203-202 84q-17 0-26-2 79-132 79-285t-79-285z" horiz-adv-x="591" />
+</font>
+</defs>
+</svg>

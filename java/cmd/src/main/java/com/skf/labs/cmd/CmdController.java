@@ -10,10 +10,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class CmdController {
-    
-    @PostMapping("/home")
-	public String login(@RequestParam(name="size", required=true) String sizeImg) throws IOException, InterruptedException{
-        Process pb = new ProcessBuilder("/bin/sh","-c","convert repo/bones.png -resize "+sizeImg+"% repo/bones.png").redirectErrorStream(true).start();
-        return "index";
-      }
+
+  @PostMapping("/home")
+  public String login(@RequestParam(name = "size", required = true) String sizeImg)
+      throws IOException, InterruptedException {
+    ProcessBuilder pb = new ProcessBuilder("/bin/sh", "-c",
+        "convert src/main/resources/static/img/bones.png -resize " + sizeImg
+            + "%  src/main/resources/static/img/bones.png");
+    pb.start();
+    return "index";
+  }
 }

@@ -45,7 +45,8 @@ public class CsrfSameSiteController {
           if(users.size() > 0 && (users.get(0).getPassword().equals(password))){
               request.getSession();
               request.changeSessionId();
-              String sessionID = request.getRequestedSessionId();
+              String sessionID = request.getSession().getId();
+              System.out.print(sessionID);
               response.setHeader("Set-Cookie", "JSESSIONID="+sessionID+"; HttpOnly; SameSite=strict");
               request.getSession().setAttribute("loggedin",true);
               request.getSession().setAttribute("username",username);
@@ -67,7 +68,7 @@ public class CsrfSameSiteController {
             if(users.size() > 0 && (users.get(0).getPassword().equals(password))){
                 request.getSession();
                 request.changeSessionId();
-                String sessionID = request.getRequestedSessionId();
+                String sessionID = request.getSession().getId();
                 response.setHeader("Set-Cookie", "JSESSIONID="+sessionID+"; HttpOnly; SameSite=lax");
                 request.getSession().setAttribute("loggedin",true);
                 request.getSession().setAttribute("username",username);
@@ -87,7 +88,7 @@ public class CsrfSameSiteController {
 	public String updatePost(@RequestParam(name="color", required=true) String color, Model model,HttpSession session,HttpServletRequest request) {
         if(null !=session.getAttribute("loggedin")){
             csrfModel.updateColor((int)session.getAttribute("userId"), color);
-            return "loggedin";
+            return "redirect:/update";
         }
         return "index";
       } 

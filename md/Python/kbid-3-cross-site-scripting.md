@@ -30,7 +30,7 @@ $ python3 <labname>
 Now that the app is running let's go hacking!
 {% endhint %}
 
-![Docker image and write-up thanks to DefDev!](../../.gitbook/assets/logo.defdev.1608z.whtonblk.256.png)
+![Docker image and write-up thanks to Contrahack!](../../.gitbook/assets/screen-shot-2019-03-04-at-21.33.32.png)
 
 ## Reconnaissance
 

@@ -30,6 +30,8 @@ def login():
         if values[0][2] == request.form['password']:
             session['userId'] = values[0][0]
             session['loggedin'] = True
+            # save username to session to generate CSRF token in loggedin.html page
+            session['username'] = request.form['username']
             time = strftime("%H:%M", gmtime())
             csrf = request.form['username'] + time
             session['csrf_token'] = base64.b64encode(csrf.encode())
@@ -53,7 +55,14 @@ def update():
             return render_template("loggedin.html", error = "CSRF Token was not correct")
     pref = sqli.getColor(session.get('userId'))
     color = pref[0][0]
-    return render_template("loggedin.html", color = color)
+
+    #ADDED
+    time = strftime("%H:%M", gmtime())
+    csrf = session['username'] + time
+    session['csrf_token'] = base64.b64encode(csrf.encode())
+    csrf_token = str(session['csrf_token'], 'utf-8')
+
+    return render_template("loggedin.html", color = color, csrf_token = csrf_token)
 
 @app.errorhandler(404)
 def page_not_found(e):

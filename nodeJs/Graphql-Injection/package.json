@@ -17,6 +17,6 @@
     "express-graphql": "^0.12.0",
     "graphql": "^16.2.0",
     "nodemon": "^2.0.15",
-    "sqlite3": "^5.0.2"
+    "sqlite3": "^5.1.4"
   }
 }

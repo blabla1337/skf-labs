@@ -128,7 +128,7 @@ def page_not_found(e):
                   <div class="row">
                      <div class="col-lg-12">
                         <div class="panel panel-default">
-                           <div class="panel-heading">Server side request forgery</div>
+                           <div class="panel-heading">Server side template injection </div>
                            <div class="panel-body">
                               <div class="col-md-6">
 								<center>
@@ -220,4 +220,3 @@ def page_not_found(e):
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
-

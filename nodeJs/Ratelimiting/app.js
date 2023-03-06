@@ -11,7 +11,7 @@ app.get("", (req, res) => {
 app.post("/login", (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
-  if (username != "devteam" || password != "manchesterunited") {
+  if (username != "devteam" || password != "letmein") {
     return res.render("index.ejs", { error: "Invalid username or password" });
   } else {
     res.render("pwned.ejs");
@@ -25,4 +25,6 @@ app.use(function (req, res) {
 
 const port = process.env.PORT || 5000;
 
-app.listen(port, "0.0.0.0", () => console.log(`Listening on port ${port}...!!!`));
+app.listen(port, "0.0.0.0", () =>
+  console.log(`Listening on port ${port}...!!!`)
+);
