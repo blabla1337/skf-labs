@@ -16,8 +16,8 @@ docker push blabla1337/owasp-skf-lab:base-v0.1
 
 ```
 cd skf-os-labs-images/skf-openbox
-docker build -t blabla1337/owasp-skf-lab:hacking-v0.1 -f Dockerfile_hacking .
-docker push blabla1337/owasp-skf-lab:hacking-v0.1
+docker build -t blabla1337/owasp-skf-lab:hacking-v2-java -f Dockerfile_secdev_java .
+docker push blabla1337/owasp-skf-lab:hacking-v2-java
 ```
 
 Running and testing the SKF OS image:
