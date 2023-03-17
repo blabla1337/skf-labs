@@ -63,7 +63,7 @@ admin+some_salt
 
 The about page seem to contain a lot of text, maybe the salt is a typical word for this company that is also mentioned on that page…
 
-Using cewel we can grab all the words from a page like this:
+Using cewl we can grab all the words from a page like this:
 cewl -m 4 -w wordlist.txt -d 0 -v http://127.0.0.1:5000/about</br>
 <I>-m 4: minimum word length is 4 characters</br>
 -w wordlist: write output to file ‘wordlist’</br>
