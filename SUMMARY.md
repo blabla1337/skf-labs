@@ -266,7 +266,6 @@
   - [NodeJS - XXE](./md/NodeJs/XXE.md)
   - [Java - XXE](./md/Java/XXE.md)
 - Exposed docker daemon
-
   - [Python - Exposed docker daemon](./md/Python/exposed-docker.md)
 
 - [template item](template.md)
