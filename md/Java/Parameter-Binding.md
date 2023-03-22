@@ -43,20 +43,20 @@ public User(String username, String password, Boolean isAdmin) {
 
 Now, let's examine the target application and determine the objective.
 
-![](../../.gitbook/assets/java/ParameterBinding/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/ParameterBinding/1.png)
 
 Let's register a new user
 
-![](../../.gitbook/assets/java/ParameterBinding/2.png)
-![](../../.gitbook/assets/java/ParameterBinding/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/ParameterBinding/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/ParameterBinding/3.png)
 
 Log in as the new user
 
-![](../../.gitbook/assets/java/ParameterBinding/4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/ParameterBinding/4.png)
 
 Let's register a new user and intercept the request on Burp.
 
-![](../../.gitbook/assets/java/ParameterBinding/5.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/ParameterBinding/5.png)
 
 As we saw in this line of code:
 
@@ -66,11 +66,11 @@ public String createUser(User user, Model model)
 
 Maybe if we add another parameter in the request this parameter will also pass to our new User.
 
-![](../../.gitbook/assets/java/ParameterBinding/6.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/ParameterBinding/6.png)
 
 Now if we login.
 
-![](../../.gitbook/assets/java/ParameterBinding/7.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/ParameterBinding/7.png)
 
 Bingo! We have now created a new user with Admin privileges.
 

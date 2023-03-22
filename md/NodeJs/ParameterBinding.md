@@ -95,19 +95,19 @@ app.post("/create", upload.none(), async (req, res) => {
 
 Now, let's examine the target application and determine the objective.
 
-![](../../.gitbook/assets/nodejs/ParameterBinding/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/nodejs/ParameterBinding/1.png)
 
 Let's log in with one of the credentials the application is suggesting.
 
-![](../../.gitbook/assets/nodejs/ParameterBinding/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/nodejs/ParameterBinding/2.png)
 
 If we logout and go back to the home page we see an option to register a new user.
 
-![](../../.gitbook/assets/nodejs/ParameterBinding/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/nodejs/ParameterBinding/3.png)
 
 Let's register a new user and check the request on Burp.
 
-![](../../.gitbook/assets/nodejs/ParameterBinding/4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/nodejs/ParameterBinding/4.png)
 
 As we saw in this line of code:
 
@@ -118,11 +118,11 @@ const user = new UserModel(req.body);
 The application is creating a new User using the OBM UserModel with req.body instead of using Object destructuring to extract only the username and password.
 Maybe if we add another parameter in the request this parameter will also pass to our new User.
 
-![](../../.gitbook/assets/nodejs/ParameterBinding/5.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/nodejs/ParameterBinding/5.png)
 
 Now if we login.
 
-![](../../.gitbook/assets/nodejs/ParameterBinding/6.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/nodejs/ParameterBinding/6.png)
 
 Bingo! We have now created a new user with Admin privileges.
 

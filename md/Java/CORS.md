@@ -24,18 +24,18 @@ Nowadays most modern frameworks do dynamical allocation of the origin header. Th
 
 Now that we have our proxies set-up let's first start and authenticate against the target application as admin/admin.
 
-![](../../.gitbook/assets/python/CORS/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/CORS/1.png)
 
 {% hint style="info" %}
 username : admin  
 password: admin
 {% endhint %}
 
-![](../../.gitbook/assets/python/CORS/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/CORS/2.png)
 
 Now that we have logged in as the target user let's look at some intercepted traffic from the application.
 
-![](../../.gitbook/assets/java/CORS/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/CORS/1.png)
 
 The image above shows highlighted in red that indeed the application has CORS enabled and has set a wildcard for the "Access-Control-Allow-Origin" response header.
 
@@ -107,7 +107,7 @@ Let's intercept the request from the evil application to the target application.
 
 In this request we find the "Origin" header appended to the request from source "[http://0.0.0.0:1337](http://0.0.0.0:1337)" as to be expected. It is now good to note when we remove this header from the request the attack is no longer working.
 
-![](../../.gitbook/assets/java/CORS/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/CORS/2.png)
 
 This is due to the fact that the application framework has no value to do the dynamically allocation of the origin header from. Now the "Access-Control-Allow-Origin" response header falls back to it's default which is the "\*" \(wildcard\).
 
@@ -115,7 +115,7 @@ Now, whenever the browser discovers the following header combination:
 
 Let's open our evil app
 
-![](../../.gitbook/assets/python/CORS/6.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/CORS/6.png)
 
 We now find that we have successfully have performed a XHR GET request on the authenticated victim users behalf and stolen the sensitive information from the target application!
 

@@ -16,17 +16,17 @@ Now that the app is running let's go hacking!
 
 ## Reconnaissance
 
-![](../../.gitbook/assets/python/Ratelimiting/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Ratelimiting/1.png)
 
 The application shows a admin login form, but we don't have the credentials, we'll have to somehow login inorder to solve the challenge, the name of the challenge is 'Ratelimiting', from that we know that we need to bruteforce login, but what would be the username?
 
 Let's do more investigation, upon viewing the source code, there is a base64 message commented out there.
 
-![](../../.gitbook/assets/python/Ratelimiting/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Ratelimiting/2.png)
 
 We are going to decrypt the base64 encoded string using terminal as shown in the below image.
 
-![](../../.gitbook/assets/python/Ratelimiting/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Ratelimiting/3.png)
 
 ```
 echo RGV2ZWxvcGVyIHVzZXJuYW1lOiBkZXZ0ZWFtCkNsaWVudDogUm9ja3lvdQ== | base64 -d
@@ -60,7 +60,7 @@ http-post-form is used to specify that this is a http-post-form.
 
 After you launch a bruteforce attack against the login function, after several minutes, you'll get the password like the below screenshot.
 
-![](../../.gitbook/assets/python/Ratelimiting/4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Ratelimiting/4.png)
 
 ## Additional sources
 

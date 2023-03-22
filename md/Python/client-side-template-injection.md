@@ -20,7 +20,7 @@ Now that the app is running let's go hacking!
 
 This application has a very cool interface, powered by a very cool framework that, every time the page is rendered, will scan the page for template expressions and evaluate them.
 
-![](https://github.com/blabla1337/skf-labs/tree/8c1992bae3824fa9d454e4263a20543419265204/../../.gitbook/assets/csti-1.png)
+![](https://github.com/blabla1337/skf-labs/tree/8c1992bae3824fa9d454e4263a20543419265204/https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/csti-1.png)
 
 Before we deep dive in the exploitation phase, let's introduce how a template engins renders elements inside the page and how we can detect a Client Side Template Injection. If we look at the `index.html` page in the source code, we can see that a variable `{{CSTI}}` is used in the page
 
@@ -42,7 +42,7 @@ We are going to use the same payload of the XSS lab
 
 Unfortunately the alert does not trigger :(
 
-![](../../.gitbook/assets/python/CSTI/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/CSTI/1.png)
 
 This is becuase AngularJS sanitize by default the input that will be reflected in the page.
 
@@ -54,7 +54,7 @@ How do we get XSS?
 
 AngularJS parses and renders every expression between curly brackets. So if we pass an arithmentic expression, such as `{{7*7}}`, we should expect `49` as a result.
 
-!![](../../.gitbook/assets/python/CSTI/2.png)
+!![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/CSTI/2.png)
 
 {% hint style="success" %}
 Bingo!!
@@ -119,7 +119,7 @@ We are not going in the details on how the exploit works, but you can refer to a
 
 As we can see, our `alert(1)` is present in the payload. If we copy it in our input box we see that the full payload is reflected 'as-it-is', but the JavaScript is executed
 
-![](../../.gitbook/assets/python/CSTI/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/CSTI/3.png)
 
 Now we are able to execute JavaScript code in our DOM.
 

@@ -27,9 +27,9 @@ We still see the blog that we should be familiar by now.
 
 Let's login with: admin/admin
 
-![](../../.gitbook/assets/nodejs/Graphql-Injections/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/nodejs/Graphql-Injections/1.png)
 
-![](../../.gitbook/assets/nodejs/Graphql-Injections/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/nodejs/Graphql-Injections/2.png)
 
 If you run your DirBuster against it or just manually try to guess few of the rountes you will notice the new `/admin` section of the web app.
 
@@ -37,7 +37,7 @@ If you run your DirBuster against it or just manually try to guess few of the ro
 http://0.0.0.0:5000/admin
 ```
 
-![](../../.gitbook/assets/nodejs/Graphql-Injections/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/nodejs/Graphql-Injections/3.png)
 
 There we have two functionalities:
 
@@ -62,7 +62,7 @@ Go about and try check if some of the well known SQL Server ports are open on th
 
 Probablly your first try was MySQL 3306 - 127.0.0.1:3306. Play around with few other ports and IPs and observe the results we receive.
 
-![](../../.gitbook/assets/java/Graphql-Injections/4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/Graphql-Injections/4.png)
 
 Now go ahead and try to execute some other system commands, append, pipe, ...
 
@@ -74,13 +74,13 @@ How about we try to a valid command that time effective and we can observe that.
 
 Let's try: `127.0.0.1:3306; sleep 5`
 
-![](../../.gitbook/assets/java/Graphql-Injections/5.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/Graphql-Injections/5.png)
 
-![](../../.gitbook/assets/java/Graphql-Injections/6.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/Graphql-Injections/6.png)
 
 The application is taking a bit longer to reply, let's try another os command to make sure:
 
-![](../../.gitbook/assets/java/Graphql-Injections/7.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/Graphql-Injections/7.png)
 
 As you have observed the `xcalc` command got executed and we were able to open the calculator. w00t, w00t!
 
@@ -99,7 +99,7 @@ Example:
 ' UNION SELECT id, null, null FROM user --")
 ```
 
-![](../../.gitbook/assets/java/Graphql-Injections/8.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/Graphql-Injections/8.png)
 
 By now we are aboslutly sure that this is an SQL Injection point and it is pretty that we are dealing with UNION style SQL Injection.
 Next up, let's try to find the other blog admins:
@@ -108,7 +108,7 @@ Next up, let's try to find the other blog admins:
 {getUser(username:\"' UNION SELECT id, username,null FROM user WHERE admin = true --\"){id, username}}
 ```
 
-![](../../.gitbook/assets/java/Graphql-Injections/9.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/Graphql-Injections/9.png)
 
 Lets try to get the password of some user:
 
@@ -116,7 +116,7 @@ Lets try to get the password of some user:
 {getUser(username:\"' UNION SELECT id, username, password FROM user WHERE username = 'johndoe' --\"){id, username}}
 ```
 
-![](../../.gitbook/assets/java/Graphql-Injections/10.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/Graphql-Injections/10.png)
 
 We face few hurdles here:
 
@@ -139,7 +139,7 @@ The laziest approach, if our target is to get the password, is to return in all 
 {getUser(username:\"' UNION SELECT password, password, password FROM user WHERE username = 'johndoe' --\"){id, username}}
 ```
 
-![](../../.gitbook/assets/java/Graphql-Injections/11.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/Graphql-Injections/11.png)
 
 w00t w00t!
 

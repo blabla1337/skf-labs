@@ -20,13 +20,13 @@ Now that the app is running let's go hacking!
 
 The application shows an input field box were we can try our injections. Lets first inject a normal test string and see how our input is used in the application.
 
-![](../../.gitbook/assets/python/XSS-DOM/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/XSS-DOM/1.png)
 
 As you can see below the input is reflected in the DOM.
 
 Inspecting the source code of the application we can see that this application will take the user input and use it in the application where id="dom".
 
-![](../../.gitbook/assets/python/XSS-DOM/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/XSS-DOM/2.png)
 
 ```javascript
 function submit() {
@@ -46,7 +46,7 @@ Now we have seen where the user input is being reflected in the application we w
 foobar"></
 ```
 
-![](../../.gitbook/assets/python/XSS-DOM/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/XSS-DOM/3.png)
 
 As you can see the application did not encode or blacklisted any of the dangerous HTML characters. Now lets try the XSS payload to see if this also is reflected back withouth any escaping or blacklist filtering.
 
@@ -54,7 +54,7 @@ As you can see the application did not encode or blacklisted any of the dangerou
 foobar<script>alert("XSS-DOM")</script>
 ```
 
-![](../../.gitbook/assets/python/XSS-DOM/4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/XSS-DOM/4.png)
 
 In Firefox we can see the XSS alert pop-up and we have successfully performed the XSS attack.
 

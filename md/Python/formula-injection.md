@@ -18,7 +18,7 @@ Now that the app is running let's go hacking!
 
 The first step is to identify input forms and parameters that can be exported as CSV, XLS, XLSX or ODS. In this example we find that it's possible to add new pages and, after clicking on the button "Export pages", generate a XLS report of all pages created.
 
-![](../../.gitbook/assets/python/Formula-Injection/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Formula-Injection/1.png)
 
 ```text
 http://localhost:5000/
@@ -28,7 +28,7 @@ http://localhost:5000/
 
 Now let's see if we can inject a simple spreadsheet formula.
 
-![](../../.gitbook/assets/python/Formula-Injection/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Formula-Injection/2.png)
 
 ```text
 =1+1
@@ -36,7 +36,7 @@ Now let's see if we can inject a simple spreadsheet formula.
 
 The page "Injection2" was created and the formula was fully accepted.
 
-![](../../.gitbook/assets/python/Formula-Injection/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Formula-Injection/3.png)
 
 Of course the formula has no effect on browser. This test is important for us to know the application is not validating the operator "=", so it can be used to inject formulas in our spreadsheet.
 
@@ -46,11 +46,11 @@ Now, let's export the pages and see in our spreedsheet application (Excel, Calc)
 
 Once the report is loaded into the spreadsheet application, we can notice the formula is not immediatelly executed and it's shown as text. This behavior can vary depending on the version and which application is being used.
 
-![](../../.gitbook/assets/python/Formula-Injection/4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Formula-Injection/4.png)
 
 However, any interaction with the cell containing the injected formula will cause the application to execute it.
 
-![](../../.gitbook/assets/python/Formula-Injection/5.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Formula-Injection/5.png)
 
 By doing it so we are sure the application has a Formula Injection vulnerability.
 
@@ -80,15 +80,15 @@ We need to choose the correct formula to inject, based on the spreadsheet reader
 
 Create a new page, injecting the correct formula, and export the pages as XLS.
 
-![](../../.gitbook/assets/python/Formula-Injection/6.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Formula-Injection/6.png)
 
 #### Step 3
 
 Open the exported file in the spreadsheet app. After the interaction with the cell containing the injected formula, we can verify the command is executed.
 
-![](../../.gitbook/assets/python/Formula-Injection/7.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Formula-Injection/7.png)
 
-![](../../.gitbook/assets/python/Formula-Injection/8.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Formula-Injection/8.png)
 
 What else can be done?
 

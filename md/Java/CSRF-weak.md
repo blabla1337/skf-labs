@@ -29,15 +29,15 @@ username : admin
 password: admin
 ```
 
-![](../../.gitbook/assets/java/CSRF-Weak/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/CSRF-Weak/1.png)
 
 When we are loggedin to the application we can see that we can set our favorite color and this will be stored in the session of the user.
 
-![](../../.gitbook/assets/java/CSRF-Weak/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/CSRF-Weak/2.png)
 
 If we inspect the request with an intercepting proxy we can see that the application is performing a POST request that results in a data mutation, storing our favorite color into the session of the user and displaying this back to the user in the HTML website.
 
-![](../../.gitbook/assets/java/CSRF-Weak/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/CSRF-Weak/3.png)
 
 Also we can see that the application is using a csrf_token
 
@@ -61,7 +61,7 @@ Also we can see that the application is using a csrf_token
 
 Looks like it's Base64 encoded, try decode it.
 
-![](../../.gitbook/assets/java/CSRF-Weak/4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/CSRF-Weak/4.png)
 
 The csrf token is simply username + time.
 
@@ -146,11 +146,11 @@ http://localhost:1337/
 
 This will now create a POST request to the application and changing the value of blue to the new value of 'Hackzord!' As you can see the Referer is set to our evil website where the request originated from and we have our forged csrf_token with the request.
 
-![](../../.gitbook/assets/java/CSRF-Weak/5.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/CSRF-Weak/5.png)
 
 Also when we refresh the original page of the application we can see that the new vaulue has been replaced with the content of our evil app.
 
-![](../../.gitbook/assets/java/CSRF-Weak/6.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/CSRF-Weak/6.png)
 
 ## Additional sources
 

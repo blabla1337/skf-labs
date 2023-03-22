@@ -18,7 +18,7 @@ Now that the app is running let's go hacking!
 
 As soon as we browse on `http://0.0.0.0:5000` we see the few posts published by 2 users
 
-![](../../.gitbook/assets/python/Graphql-Introspection/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Graphql-Introspection/1.png)
 
 ## Exploitation
 
@@ -38,7 +38,7 @@ Go to `http://0.0.0.0:5000/graphql`. We can query the generic `__schema` using:
 }
 ```
 
-![](../../.gitbook/assets/python/Graphql-Introspection/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Graphql-Introspection/2.png)
 
 The application gives us interesting `Types`. Let's explore the `UserObject` one. If we build a more complex query we can ask for more information, exploring every field available. Let's send the following:
 
@@ -61,7 +61,7 @@ The application gives us interesting `Types`. Let's explore the `UserObject` one
 }
 ```
 
-![](../../.gitbook/assets/python/Graphql-Introspection/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Graphql-Introspection/3.png)
 
 In this case, for each field we we want to know what are the subfields and of which type.
 
@@ -144,7 +144,7 @@ query availableQueries {
 }
 ```
 
-![](../../.gitbook/assets/python/Graphql-Introspection/4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Graphql-Introspection/4.png)
 
 That will give us the `allUsers` query. Now we need to understand what are the fields. We can do that in different ways, using GraphiQL or doing some more introspection. In this case we use GraphiQL, sending the following query:
 
@@ -161,7 +161,7 @@ That will give us the `allUsers` query. Now we need to understand what are the f
 }
 ```
 
-![](../../.gitbook/assets/python/Graphql-Introspection/5.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Graphql-Introspection/5.png)
 
 ## Remediation
 

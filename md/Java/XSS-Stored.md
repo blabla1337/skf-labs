@@ -20,19 +20,19 @@ Now that the app is running let's go hacking!
 
 The application home page shows links to different pages.
 
-![](../../.gitbook/assets/java/XSS-Stored/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/XSS-Stored/1.png)
 
 By clicking in one of the links and on the _Edit_ button,the application shows an input field box were we can try our injections.
 
-![](../../.gitbook/assets/java/XSS-Stored/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/XSS-Stored/2.png)
 
 Lets first inject a normal test string and see how our input is used in the application.
 
-![](../../.gitbook/assets/java/XSS-Stored/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/XSS-Stored/3.png)
 
 Now, clicking on save, the page content is updated.
 
-![](../../.gitbook/assets/java/XSS-Stored/4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/XSS-Stored/4.png)
 
 In the source of the application we can see that this application will take the user input and save the page updates in the database. Thereafter, the page is reloaded and the new information is displayed via template variable.
 
@@ -80,11 +80,11 @@ Now we have seen where the user input is stored in the database and reflected in
 foobar">/<
 ```
 
-![](../../.gitbook/assets/java/XSS-Stored/5.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/XSS-Stored/5.png)
 
 The application automatically reloads the page with a redirection. Let's see how the payload is loaded in the HTTP response:
 
-![](../../.gitbook/assets/java/XSS-Stored/6.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/XSS-Stored/6.png)
 
 As you can see the application did not encode or blacklisted any of the dangerous HTML characters. Now lets try the XSS payload to see if this also is reflected back withouth any escaping or blacklist filtering.
 
@@ -94,7 +94,7 @@ foobar<script>alert(123)</script>
 
 Again the application is not encoding or blacklisted any of the dangerous HTML characters. This payload seems to work in the intercepting proxy. Now lets try it in our browser.
 
-![](../../.gitbook/assets/java/XSS-Stored/7.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/XSS-Stored/7.png)
 
 We can see the XSS alert pop-up and we have successfully performed the XSS attack.
 

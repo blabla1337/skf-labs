@@ -24,45 +24,45 @@ The goal of this lab is to find some client side vulnerability abusing websocket
 
 The home paage looks pretty simple:
 
-![](../../.gitbook/assets/python/Websocket-Message-Manipulation/websocket-1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Websocket-Message-Manipulation/websocket-1.png)
 
 So lets try it by entering some text in input:
 
-![](../../.gitbook/assets/python/Websocket-Message-Manipulation/websocket-2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Websocket-Message-Manipulation/websocket-2.png)
 
 The application is an echo server. It reflects our input directly on page. The first thing we comes to mind is to check for XSS. Let's try:
 
-![](../../.gitbook/assets/python/Websocket-Message-Manipulation/websocket-3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Websocket-Message-Manipulation/websocket-3.png)
 
 At the first look, nothing happens and the application shows us two empty rows:
 
-![](../../.gitbook/assets/python/Websocket-Message-Manipulation/websocket-5.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Websocket-Message-Manipulation/websocket-5.png)
 
 Since our input is not empty, it means something happened. Maybe parsed somehow or it's trunicated. To ensure this, let's take a look at the page source code by pressing F12 and use "inspect elemnt" feature of our browser (mine is mozilla firefox):
 
-![](../../.gitbook/assets/python/Websocket-Message-Manipulation/websocket-6.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Websocket-Message-Manipulation/websocket-6.png)
 
 Bingo! our input is right here. So we refresh the page to re-render the entire page and check if inputs are persistent or not:
 
-![](../../.gitbook/assets/python/Websocket-Message-Manipulation/websocket-4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Websocket-Message-Manipulation/websocket-4.png)
 
 ## Exploitation
 
 In this scenario, we capture the request using proxy and manipulate websocket messages as we want. OWASP-ZAP makes it easy to us:
 
-![](../../.gitbook/assets/python/Websocket-Message-Manipulation/websocket-7.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Websocket-Message-Manipulation/websocket-7.png)
 
 As you can see, websocket handshake performed on page load. Let's write some message:
 
-![](../../.gitbook/assets/python/Websocket-Message-Manipulation/websocket-8.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Websocket-Message-Manipulation/websocket-8.png)
 
 Click on "Open/Resend with Message Editor..." option and write your payload:
 
-![](../../.gitbook/assets/python/Websocket-Message-Manipulation/websocket-9.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Websocket-Message-Manipulation/websocket-9.png)
 
 Server respoend us with correctly. Refresh the page to check result:
 
-![](../../.gitbook/assets/python/Websocket-Message-Manipulation/websocket-10.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Websocket-Message-Manipulation/websocket-10.png)
 
 Bingo! we successfully executed code on page. Also we could set breakpoint before sending request ^\_^
 

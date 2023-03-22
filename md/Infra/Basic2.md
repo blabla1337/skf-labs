@@ -22,18 +22,18 @@ Take a closer look at this mechanism to escalate your privileges.
 
 ## Exploitation
 Let's login via ssh with guest/guest and look at the contents of the passwd file:
-<img  src="../../.gitbook/assets/infra/basic2/passwdfile.png" style="box-shadow: 15px 15px 10px #999;  border: 1px solid #999" />
+<img  src="https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/infra/basic2/passwdfile.png" style="box-shadow: 15px 15px 10px #999;  border: 1px solid #999" />
 
 
 If we look at the /etc/passwd file we can see that we have write access !
-<img  src="../../.gitbook/assets/infra/basic2/writeaccess.png" style="box-shadow: 15px 15px 10px #999;  border: 1px solid #999" />
+<img  src="https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/infra/basic2/writeaccess.png" style="box-shadow: 15px 15px 10px #999;  border: 1px solid #999" />
 
 
 So we can edit the passwd file. If we remove the x in the second column of the /etc/passwd file, the password is set to blank !
-<img  src="../../.gitbook/assets/infra/basic2/editpasswd.png" style="box-shadow: 15px 15px 10px #999;  border: 1px solid #999" />
+<img  src="https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/infra/basic2/editpasswd.png" style="box-shadow: 15px 15px 10px #999;  border: 1px solid #999" />
 
 After saving the file, we cannot login with ssh using the root account but we can switch the user to root !
-<img  src="../../.gitbook/assets/infra/basic2/swithctoroot.png" style="box-shadow: 15px 15px 10px #999;  border: 1px solid #999" />
+<img  src="https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/infra/basic2/swithctoroot.png" style="box-shadow: 15px 15px 10px #999;  border: 1px solid #999" />
 
 ## Lessons learned
 Sometimes system administrators change permissions to quickly solve a problem but forget to clean up/undo their actions.

@@ -24,7 +24,7 @@ When visiting [https://localhost:5000](https://localhost:5000) our browser warns
 
 After confirming the exception, we will be greeted by the following web app. It has no functionality to play with, it's just a friendly page of text.
 
-![SKF website says hello](../../.gitbook/assets/tls-downgrade-1.png)
+![SKF website says hello](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/tls-downgrade-1.png)
 
 Let's take a look under the hood!
 
@@ -206,13 +206,13 @@ Dockerfile            TLS-downgrade.py      requirements.txt      static
 
 The shell script `start-interceptor.sh` is used to add a local firewall rule and to start the Python script (`interceptor.py`) that interacts with this firewall rule.
 
-![Starting the interceptor from the command line](../../.gitbook/assets/tls-downgrade-5.png)
+![Starting the interceptor from the command line](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/tls-downgrade-5.png)
 
 The firewall rule that we create will make sure every incoming TCP/IP packet is parsed by the Python script `interceptor.py`. This script passes every packet onwards to the Docker container, **except** for TLSv1.2 "_Client Hello_" packets. This packet is the first step in setting up a working TLS connection, all of which is explained in grand details in [_The Illustrated TLS connection_](https://tls.ulfheim.net).
 
 If you start the interceptor without any modifications, it will pass on the TLS _Client Hello_ unaltered. Doing so will show debugging output in your Bash session. TLSv1.0 and v1.1 connections don't trigger the MitM, while TLSv1.2 does.
 
-![Debug logging of the interceptor](../../.gitbook/assets/tls-downgrade-2.png)
+![Debug logging of the interceptor](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/tls-downgrade-2.png)
 
 The screenshot above shows the interceptor's debugging output for three consecutive OpenSSL tests.
 
@@ -244,11 +244,11 @@ SSL-Session:
 
 Go back to your Bash session in the Docker container and interupt/kill the running `start-interceptor.sh`. You can do this by pressing .
 
-![Interupting the interceptor](../../.gitbook/assets/tls-downgrade-3.png)
+![Interupting the interceptor](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/tls-downgrade-3.png)
 
 Edit the interceptor.py script, with `vi`. You need to be on line 87, where you need to change one byte from "\x03" to "\x01". Make the change, save the file and exit the text editor.
 
-![Arming the interceptor](../../.gitbook/assets/tls-downgrade-4.png)
+![Arming the interceptor](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/tls-downgrade-4.png)
 
 Now start the interceptor again using `./start-interceptor.sh`.
 
@@ -256,7 +256,7 @@ Then, perform the `openssl s_client` command again through `docker exec`.
 
 The interception logs should show that the "\x03\x03" was changed into "\x03\x01":
 
-![Packet contents changed](../../.gitbook/assets/tls-downgrade-7.png)
+![Packet contents changed](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/tls-downgrade-7.png)
 
 And the `openssl s_client` command should show that the TLS standard was downgraded by the MiTM, to TLSv1.0.
 
@@ -273,7 +273,7 @@ SSL-Session:
 
 If you now visit the web application with your browser, it should warn you that it does not want to visit sites running TLSv1.0 or v1.1.
 
-![The browser refuses](../../.gitbook/assets/tls-downgrade-6.png)
+![The browser refuses](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/tls-downgrade-6.png)
 
 One important take-away is that modern browsers have been built in such a way as to protect you against attacks like these. But more importantly: don't take it at face-value that a site offering HTTPS will always offer you the best and strongest configuration. A man-in-the-middle can in some cases force both client and server to downgrade their algorithms to something more easily cracked. Your browser had no intentions of asking for TLSv1.0, but the _Man In The Middle_ changed the setting along the way.
 

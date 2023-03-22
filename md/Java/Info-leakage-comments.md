@@ -20,21 +20,21 @@ It is very common, and even recommended, for programmers to include detailed com
 
 When we start the application we can see that there is a login form.
 
-![](../../.gitbook/assets/python/Info-Leakage-Comments/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Info-Leakage-Comments/1.png)
 
 ## Exploitation
 
 What we are going to do is explore and check the source code of the website in order to find some useful information that the programmer may have forgotten in the source code.
 
-![](../../.gitbook/assets/python/Info-Leakage-Comments/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Info-Leakage-Comments/2.png)
 
 We found something promising! Now, we try these words as the credentials in the login form:
 
-![](../../.gitbook/assets/python/Info-Leakage-Comments/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Info-Leakage-Comments/3.png)
 
 And goal achieved!
 
-![](../../.gitbook/assets/python/Info-Leakage-Comments/4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Info-Leakage-Comments/4.png)
 
 ## Additional sources
 

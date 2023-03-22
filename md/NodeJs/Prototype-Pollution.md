@@ -26,24 +26,24 @@ Interestingly, attackers don’t even need to directly modify object – they ca
 
 Let's open the application, we have a login screen:
 
-![](../../.gitbook/assets/nodejs/Prototype-Pollution/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/nodejs/Prototype-Pollution/1.png)
 
 Loggin in with user/user.
 
-![](../../.gitbook/assets/nodejs/Prototype-Pollution/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/nodejs/Prototype-Pollution/2.png)
 
 We see this user has no Admin privileges, also we have a feature to send a message to an admin. Let's use this and check the request
 
-![](../../.gitbook/assets/nodejs/Prototype-Pollution/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/nodejs/Prototype-Pollution/3.png)
 
 Post request with email and username as expected.
 We also noticed in the homepage a functionality to create a new user.
 
-![](../../.gitbook/assets/nodejs/Prototype-Pollution/5.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/nodejs/Prototype-Pollution/5.png)
 
 Login with the newly created user.
 
-![](../../.gitbook/assets/nodejs/Prototype-Pollution/6.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/nodejs/Prototype-Pollution/6.png)
 
 ## Exploitation
 
@@ -64,19 +64,19 @@ Now lets use to curl to request the application with evil.json
 curl -H "content-type: application/json" -d@evil.json http://localhost:5000/message
 ```
 
-![](../../.gitbook/assets/nodejs/Prototype-Pollution/4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/nodejs/Prototype-Pollution/4.png)
 
 We get a response back from the server. Let's refresh the page to see if it worked.
 
-![](../../.gitbook/assets/nodejs/Prototype-Pollution/7.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/nodejs/Prototype-Pollution/7.png)
 
 Success! We now have a user with admin privileges!
 
 If we create another user we see the new user will also have admin set to True.
 
-![](../../.gitbook/assets/nodejs/Prototype-Pollution/8.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/nodejs/Prototype-Pollution/8.png)
 
-![](../../.gitbook/assets/nodejs/Prototype-Pollution/9.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/nodejs/Prototype-Pollution/9.png)
 
 ## Additional sources
 

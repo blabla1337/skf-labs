@@ -22,21 +22,21 @@ As we have done with previous labs, be sure to start Burp Suite so you can play 
 
 Let us visit [http://0.0.0.0:5000](http://0.0.0.0:5000). It presents us with a familiar login screen.
 
-![](../../.gitbook/assets/python/Client-Side-Restriction-Bypass-2/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Client-Side-Restriction-Bypass-2/1.png)
 
 For now, let's try user "admin" and password "admin". Which does let us inside!
 
-![](../../.gitbook/assets/python/Client-Side-Restriction-Bypass-2/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Client-Side-Restriction-Bypass-2/2.png)
 
 We're told that the "admin" user really likes the color blue and that they enjoy feasting on apple pie. That's great news! And since we're logged in as the user "admin", we can even update our favorite color!
 
 After submitting the form with a different color, the output has changed.
 
-![](../../.gitbook/assets/python/Client-Side-Restriction-Bypass-2/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Client-Side-Restriction-Bypass-2/3.png)
 
 Let's take a look at Burp Suite's proxy history, to see what's happening in the background.
 
-![](../../.gitbook/assets/python/Client-Side-Restriction-Bypass-2/4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Client-Side-Restriction-Bypass-2/4.png)
 
 Burp shows us that a POST request was made to [http://0.0.0.0:5000/updatecolor](http://0.0.0.0:5000/updatecolor). The form was submitted with one key:value pair, being "color=Green".
 
@@ -50,11 +50,11 @@ If you right-click the POST request in Burp's proxy history, you can select "_Se
 
 Let's change the called URL to [http://0.0.0.0:5000/updatefood](http://0.0.0.0:5000/updatefood) and let's change the form key to "food". Then if we click the "_Send_" button, maybe we'll get lucky!
 
-![](../../.gitbook/assets/python/Client-Side-Restriction-Bypass-2/5.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Client-Side-Restriction-Bypass-2/5.png)
 
 Alternatively, let's take a closer look at that front-end code! By right-clicking the form in our browser (or ctrl+shift+i) and choosing "_Inspect_" we can investigate the HTML in question.
 
-![](../../.gitbook/assets/python/Client-Side-Restriction-Bypass-2/6.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Client-Side-Restriction-Bypass-2/6.png)
 
 What's this?!
 
@@ -62,7 +62,7 @@ The developer left us the clues right there in the HTML? And we manually did the
 
 If you right-click the commented text and choose "_Edit as HTML_" we can just remove the `<!--` and `-->` comment markers. And presto, there's our other form which will let us change the favorite food as well.
 
-![](../../.gitbook/assets/python/Client-Side-Restriction-Bypass-2/7.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Client-Side-Restriction-Bypass-2/7.png)
 
 If the developer wanted to prevent us from updating the food, they should have either disabled the endpoint temporarily or added an additional security check. In its current state, it's just "_security through obscurity_. "Hiding" functionality by not turning it on, by not using it and so on does nothing to secure your applications.
 

@@ -25,27 +25,27 @@ functioning of the web app in order to find possible injection points.
 When we start the application we can see that there are two forms: the first one to select the logs and second one to select the color
 in the logs.
 
-![](../../.gitbook/assets/java/CMD2/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/CMD2/1.png)
 
 We are going to perform a basic exploration of the website trying the different options available.
 
 We start by trying the Log Viewer Tool:
 
-![](../../.gitbook/assets/java/CMD2/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/CMD2/2.png)
 
 If we select the red color, the word log for the logs, will be red.
 We can inspect the request with an intercepting proxy \(we are using
 Burp\):
 
-![](../../.gitbook/assets/java/CMD2/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/CMD2/3.png)
 
 Then, if we try the other functionality we get something like that:
 
-![](../../.gitbook/assets/java/CMD2/4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/CMD2/4.png)
 
 This request would look like this:
 
-![](../../.gitbook/assets/java/CMD2/5.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/CMD2/5.png)
 
 It compresses the file and outputs the information message.
 
@@ -53,11 +53,11 @@ It compresses the file and outputs the information message.
 
 We guess that the output is related to what we write in log_type (access), so we change the input to ABCDEF:
 
-![](../../.gitbook/assets/java/CMD2/6.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/CMD2/6.png)
 
 Now, we discover that it outputs what we write in log_type as parte of the name of the file. So let's see if that is also being executed in the system by entering a os command:
 
-![](../../.gitbook/assets/java/CMD2/7.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/CMD2/7.png)
 
 Finally, we have sent a new HTTP request trying to send the output of the command
 whoami to the message in the website and we got it.

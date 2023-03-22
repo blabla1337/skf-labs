@@ -26,34 +26,34 @@ The goal of this lab is to get logged in as an administrator without knowing his
 
 Lets start the application and register a new user
 
-![](../../.gitbook/assets/python/Auth-Bypass-2/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Auth-Bypass-2/1.png)
 
-![](../../.gitbook/assets/python/Auth-Bypass-2/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Auth-Bypass-2/2.png)
 
 Please note that (for convenience) your password will be reset if the user already exists.
 Also note that the username and password are case sensitive.
 
 Now that we have valid credentials, we can login:
 
-![](../../.gitbook/assets/python/Auth-Bypass-2/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Auth-Bypass-2/3.png)
 
 After providing the correct credentials we're logged in:
 
-![](../../.gitbook/assets/python/Auth-Bypass-2/4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Auth-Bypass-2/4.png)
 
 ## Exploitation
 
 We can capture the login in the burpsuite proxy and send it to the repeater. We notice that with every login, the session cookie stays the same. It is high likely that this sessionid is related to our user name:
 
-![](../../.gitbook/assets/python/Auth-Bypass-2/5.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Auth-Bypass-2/5.png)
 
 If we quickly google for this sessionid, we find nothing:
 
-![](../../.gitbook/assets/python/Auth-Bypass-2/6.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Auth-Bypass-2/6.png)
 
 We can check whether it is a hash:
 
-![](../../.gitbook/assets/python/Auth-Bypass-2/7.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Auth-Bypass-2/7.png)
 
 it seems to be a sha1...
 
@@ -72,38 +72,38 @@ cewl -m 4 -w wordlist.txt -d 0 -v http://127.0.0.1:5000/about</br>
 
 Using a terminal window:
 
-![](../../.gitbook/assets/python/Auth-Bypass-2/8.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Auth-Bypass-2/8.png)
 
-![](../../.gitbook/assets/python/Auth-Bypass-2/9.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Auth-Bypass-2/9.png)
 
 Let’s use burp intruder to calculate a sha-1 for every admin+word combination.
 
 Payload position:
 
-![](../../.gitbook/assets/python/Auth-Bypass-2/10.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Auth-Bypass-2/10.png)
 
 Paste the content of the word list in the payload options and add the payload processing rules as indicated in the following screenshot.
 
-![](../../.gitbook/assets/python/Auth-Bypass-2/11.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Auth-Bypass-2/11.png)
 
 This will prefix the word 'admin' to each word from the list and calculate a sha1 of the concatenated string.
 for example sha1(adminBank)
 
 Start the attack
 
-![](../../.gitbook/assets/python/Auth-Bypass-2/12.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Auth-Bypass-2/12.png)
 
 The result:
 
-![](../../.gitbook/assets/python/Auth-Bypass-2/13.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Auth-Bypass-2/13.png)
 
 Now we can replace our cookie/sessionID with the value we found.
 
-![](../../.gitbook/assets/python/Auth-Bypass-2/14.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Auth-Bypass-2/14.png)
 
 After going back to home page and proceeding to authenticaded section:
 
-![](../../.gitbook/assets/python/Auth-Bypass-2/15.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Auth-Bypass-2/15.png)
 
 ## Additional sources
 

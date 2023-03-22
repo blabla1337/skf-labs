@@ -18,11 +18,11 @@ Now that the app is running let's go hacking!
 
 This application is using a yaml serialised object to display the content in the HTML. As you can see below, the default base64 encoded string is loaded as part of the URL.
 
-![](../../.gitbook/assets/java/DES-YAML/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/DES-YAML/1.png)
 
 By Base64 decoding you can see it uses a key value pair -> foo : value
 
-![](../../.gitbook/assets/java/DES-YAML/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/DES-YAML/2.png)
 
 Also we can have a look at the documentation of the Python implementation for the .yaml file here:
 
@@ -30,7 +30,7 @@ Also we can have a look at the documentation of the Python implementation for th
 
 The application works by loading the Base64 encoded string to be processed by the application and use YAML to parse parse the key value to display the content in the application as shown below.
 
-![](../../.gitbook/assets/java/DES-YAML/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/DES-YAML/3.png)
 
 In the code example the _input_ URL parameter is used to read the input value but as you can see this is under the users control. Instead of just sending the intended text over the request, a potential attacker could abuse this function to also supply his own crafted yaml that the attacker controls.
 
@@ -64,7 +64,7 @@ Encode it in Base64 and put it in place the original yaml object.
 eWFtbDoga25vdCBrbm9vb3QK
 ```
 
-![](../../.gitbook/assets/java/DES-YAML/4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/DES-YAML/4.png)
 
 As you can see our yaml object was accepted and parsed by the application.
 
@@ -86,7 +86,7 @@ ISFqYXZheC5zY3JpcHQuU2NyaXB0RW5naW5lTWFuYWdlciBbCiAgISFqYXZhLm5ldC5VUkxDbGFzc0xv
 
 Now when we submit the new yaml object we can see it launched HTTP request to destionation and we observed this outbound request on our web server. 
 
-![](../../.gitbook/assets/java/DES-YAML/5.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/DES-YAML/5.png)
 
 Let's try getting a revershell!
 
@@ -125,7 +125,7 @@ Please! change IP:Port according to your setup before usage.
 
 The setup is ready and let's execute the attack...
 
-![](../../.gitbook/assets/java/DES-YAML/6.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/DES-YAML/6.png)
 
 ## Additional sources
 

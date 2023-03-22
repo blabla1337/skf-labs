@@ -28,23 +28,23 @@ Session puzzles can be detected and exploited by enumerating all of the session 
 
 Let us see how can we exploit the session puzzles in a real world scenario, the application here allows us to the user to sign in and also provides "forgot password" functionality. By making an educated guess and as highlighted by the placeholders we log in using the well known credentials set(admin/admin). On successful authentication we are gifted with some confidential C level information. So, all good uptil now.
 
-![](../../.gitbook/assets/python/SessionPuzzle/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/SessionPuzzle/1.png)
 
 On successful authentication we are gifted with some confidential C level information. So, all good uptil now.
 
-![](../../.gitbook/assets/python/SessionPuzzle/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/SessionPuzzle/2.png)
 
 Now, lets assume the user logs out and forgets his password and attempts to recover his password by providing his username(admin) and if the username is valid the app says he/she should recieve his new password through an email.
 
-![](../../.gitbook/assets/python/SessionPuzzle/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/SessionPuzzle/3.png)
 
 Also if we observe closely the application sets a new session cookie once the user provides a username as requested by the app.
 
-![](../../.gitbook/assets/python/SessionPuzzle/4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/SessionPuzzle/4.png)
 
 As we know the session puzzling attack is possible since the app uses session variables for more than one purpose what if in this scenario we try to access /dashboard page which provides some confidential C level information. Lets try accessing /dashboard and what do we see :-) we can actually access authenticated pages without logging in to the application thus proving that we are able to successfully bypass authentication mechanism.
 
-![](../../.gitbook/assets/python/SessionPuzzle/5.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/SessionPuzzle/5.png)
 
 ## Additional sources
 

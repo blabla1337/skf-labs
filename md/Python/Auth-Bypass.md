@@ -18,11 +18,11 @@ Now that the app is running let's go hacking!
 
 Let's login with admin/admin:
 
-![](../../.gitbook/assets/python/Auth-Bypass/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Auth-Bypass/1.png)
 
 Once we login we see an API key.
 
-![](../../.gitbook/assets/python/Auth-Bypass/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Auth-Bypass/2.png)
 
 Let's have a look at the source code:
 
@@ -104,15 +104,15 @@ We are ready to start our server:
 $ python3 evil_server.py
 ```
 
-![](../../.gitbook/assets/python/Auth-Bypass/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Auth-Bypass/3.png)
 
 Now we can replace our original cookie with the tampered cookie.
 
-![](../../.gitbook/assets/python/Auth-Bypass/4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Auth-Bypass/4.png)
 
 Send the request again:
 
-![](../../.gitbook/assets/python/Auth-Bypass/5.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Auth-Bypass/5.png)
 
 ## Additional sources
 

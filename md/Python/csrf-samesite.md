@@ -29,15 +29,15 @@ username : admin\
 password: admin
 {% endhint %}
 
-![](../../.gitbook/assets/python/CSRF-SameSite/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/CSRF-SameSite/1.png)
 
 When we are loggedin to the application we can see that we can set our favorite color and this will be stored in the session of the user.
 
-![](../../.gitbook/assets/python/CSRF-SameSite/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/CSRF-SameSite/2.png)
 
 If we inspect the request with an intercepting proxy we can see that the application is performing a POST request that results in a data mutation, storing our favorite color into the session of the user and displaying this back to the user in the HTML website.
 
-![](../../.gitbook/assets/python/CSRF-SameSite/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/CSRF-SameSite/3.png)
 
 Also we can see that the application is not using any form of protection for preventing CSRF because there is no unique token being send in the POST request.
 
@@ -97,11 +97,11 @@ http://localhost:1337/
 
 This will now create a POST request to the application and changing the value of blue to the new value of 'Hackzord!' As you can see the Referer is set to our evil website where the request originated from.
 
-![](../../.gitbook/assets/python/CSRF-SameSite/4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/CSRF-SameSite/4.png)
 
 Also when we refresh the original page of the application we can see that the new value has been replaced with the content of our evil app.
 
-![](../../.gitbook/assets/python/CSRF-SameSite/5.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/CSRF-SameSite/5.png)
 
 ## SameSite Attribute
 
@@ -126,7 +126,7 @@ To make this concept more clear, let's exercise it within this SKF Lab.
 
 In the home page, use the Secure Login form for authentication.
 
-![](../../.gitbook/assets/python/CSRF-SameSite/6.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/CSRF-SameSite/6.png)
 
 You can note in Burp's response tab the cookie was set with _SameSite=Strict_.
 
@@ -144,23 +144,23 @@ Set your preferred color.
 
 Now, in a different browser tab, try to run again the CSRF attack.
 
-![](../../.gitbook/assets/python/CSRF-SameSite/7.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/CSRF-SameSite/7.png)
 
 Go back to the first tab and check if the color was changed by the CSRF attack or not by clicking on _refresh the page_.
 
-![](../../.gitbook/assets/python/CSRF-SameSite/8.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/CSRF-SameSite/8.png)
 
 Nothing has changed!
 
 Looking at request logged in Burp, we can understand the reason.
 
-![](../../.gitbook/assets/python/CSRF-SameSite/9.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/CSRF-SameSite/9.png)
 
 As the cookie was set in _Strict_ mode, the browser was instructed to not send it with any cross-site-request. Thus, as Color Change requires an authenticated session, this request is treated as anonymous one and, therefore,rejected by the application.
 
 Let's see how _Lax_ mode works, by using the _Login Still Insecure_ authentication form.
 
-![](../../.gitbook/assets/python/CSRF-SameSite/10.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/CSRF-SameSite/10.png)
 
 You can note in Burp's response tab the cookie was set with _SameSite=Lax_.
 
@@ -179,11 +179,11 @@ Set your preferred color and once again run the CSRF attack in a different tab.
 
 Go back to the first tab and check if the color has changed by the CSRF attack or not, by clicking on _refresh the page_.
 
-![](../../.gitbook/assets/python/CSRF-SameSite/11.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/CSRF-SameSite/11.png)
 
 Nothing has changed again! _Lax_ mode also blocked the cookie to be sent over POST cross-site-request.
 
-![](../../.gitbook/assets/python/CSRF-SameSite/12.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/CSRF-SameSite/12.png)
 
 This lab was specially designed to also accept GET query string parameters for color changing.
 
@@ -193,13 +193,13 @@ Now adapt the CSRF Evil Server page to send a GET request as link and click on i
 <a href="http://localhost:5000/update?color=Hackzord%21">Try with GET method</a>
 ```
 
-![](../../.gitbook/assets/python/CSRF-SameSite/13.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/CSRF-SameSite/13.png)
 
 The request will be executed containing the required cookies, therefore, the CSRF attack is successful.
 
-![](../../.gitbook/assets/python/CSRF-SameSite/14.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/CSRF-SameSite/14.png)
 
-![](../../.gitbook/assets/python/CSRF-SameSite/15.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/CSRF-SameSite/15.png)
 
 _Lax_ mode allowed the browser to send the cookie through the cross-site-request after top-level navigation using a non-CSFR method (GET). In other words, if the application accepts GET query string parameters to change data in persistence(or allows POST requests being converted into GET), CSRF attack will also succeed.
 

@@ -20,11 +20,11 @@ LDAP Injection is an attack used to exploit web based applications that construc
 
 Let's open the app.
 
-![](../../.gitbook/assets/python/Ldap-Harder/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Ldap-Harder/1.png)
 
 Trying to loggin with a random username and password.
 
-![](../../.gitbook/assets/python/Ldap-Harder/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Ldap-Harder/2.png)
 
 The application architecture that supports LDAP includes both server-side and client-side components. The LDAP queries submitted to the server are known as LDAP search filters, which are constructed using prefix notation. Below is an example of an LDAP search filter:
 
@@ -49,7 +49,7 @@ We can see that the filter is constructed by concatenating the username and pass
 String filter = "(&(cn="+username+")(sn="+secret_answer+"))";
 ```
 
-![](../../.gitbook/assets/python/Ldap-Harder/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Ldap-Harder/3.png)
 
 No luck, maybe this application is sanitizing the user input somehow, let's check the code again.
 
@@ -65,7 +65,7 @@ username = admin)(!(&(1=0
 password = q))
 ```
 
-![](../../.gitbook/assets/python/Ldap-Harder/4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Ldap-Harder/4.png)
 
 We successfully logged in as the Admin.
 

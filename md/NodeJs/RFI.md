@@ -46,13 +46,13 @@ Sensitive Information Disclosure
 
 Let us see how can we exploit the file inclusion vulnerability in a real world scenario, the application here allows us to run 2 commands from the drop down list. One is running Date and the other is Calendar.
 
-![](../../.gitbook/assets/nodejs/RFI/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/nodejs/RFI/1.png)
 
-![](../../.gitbook/assets/nodejs/RFI/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/nodejs/RFI/2.png)
 
 When we will have a look in our intercepting proxy we can see that the application uses a predefined file that contains the command to execute and prints the results of it.
 
-![](../../.gitbook/assets/nodejs/RFI/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/nodejs/RFI/3.png)
 
 ## Exploitation
 
@@ -88,7 +88,7 @@ $ python3 evil_server.py
 
 Our remote file inclusion worked and the application seems to load javascript files and eval() the content of them.
 
-![](../../.gitbook/assets/nodejs/RFI/4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/nodejs/RFI/4.png)
 
 Success! As we observed, we can include our own files through RFI.
 

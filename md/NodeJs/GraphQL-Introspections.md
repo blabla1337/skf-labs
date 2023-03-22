@@ -18,7 +18,7 @@ Now that the app is running let's go hacking!
 
 As soon as we browse on `http://0.0.0.0:5000` we see the few posts published by 2 users
 
-![](../../.gitbook/assets/nodejs/GraphQL-Introspection/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/nodejs/GraphQL-Introspection/1.png)
 
 ## Exploitation
 
@@ -107,7 +107,7 @@ That will give us the `Users` query. Now we need to understand what are the fiel
 
 ```
 
-![](../../.gitbook/assets/nodejs/GraphQL-Introspection/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/nodejs/GraphQL-Introspection/2.png)
 
 ## Solution
 

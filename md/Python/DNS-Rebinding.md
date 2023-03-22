@@ -30,7 +30,7 @@ It is a trial and error to check which internally running services are accessibl
 Let's check it a little bit deeper the application responses.
 There is a running service locally on port 80. We need a DNS service which resolves the same local IP address as localhost.
 
-![](../../.gitbook/assets/python/DNS-Rebinding/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/DNS-Rebinding/1.png)
 
 It is seen in the below code snippet that the DNS resolution is performed and only DNS names that resolves 127.0.0.1 are allowed to access that resource. Immediately we think of 'localhost' which is by default resolves as 127.0.0.1, but it is restricted. 
 
@@ -50,7 +50,7 @@ if((str(request.args.get('hostname')).lower() == "localhost".lower() or str(requ
 
 The localhost is not allowed, therefore we should find a way such that provided DNS name will be resolved as 127.0.0.1.
 
-![](../../.gitbook/assets/python/DNS-Rebinding/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/DNS-Rebinding/2.png)
 
 
 As a solution, we can setup a rogue DNS server that returns 127.0.0.1 for specific DNS names.
@@ -63,7 +63,7 @@ sudo npm update
 sudo npm install --cli -g whonow@latest
 ```
 
-![](../../.gitbook/assets/python/DNS-Rebinding/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/DNS-Rebinding/3.png)
 
 
 After running the whonow DNS server, we can test if we resolve expected local IP and it resolves the DNS name as expected (127.0.0.1).
@@ -74,12 +74,12 @@ A.<ip-address>.<rule>[.<ip-address>.<rule>[.<ip-address>.<rule>]][.uuid/random-s
 ```
 
 
-![](../../.gitbook/assets/python/DNS-Rebinding/4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/DNS-Rebinding/4.png)
 
 
 Having the working rogue DNS server, we can try to resolve this DNS on our lab. The response shows that we are able to access to the service running on 127.0.0.1:80 using a rogue DNS server with a custom DNS name.
 
-![](../../.gitbook/assets/python/DNS-Rebinding/5.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/DNS-Rebinding/5.png)
 
 ## Additional sources
 

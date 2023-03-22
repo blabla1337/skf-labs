@@ -51,17 +51,17 @@ Nmap done: 1 IP address (1 host up) scanned in 22.94 seconds
 
 So as we confirmed the only open port is 5000. Now let's have a look at the application.
 
-![](../../.gitbook/assets/java/SSRF/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/SSRF/1.png)
 
 Here we have a keep alive functionality where we can verify different website's if they are alive and reachable. Lets try with google.com
 
-![](../../.gitbook/assets/java/SSRF/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/SSRF/2.png)
 
 ## Exploitation
 
 The keep alive functionality was intended to be used for external websites but we can abuse it to also check for internal IP addresses and enumerate services. Lets try a known port like for example 3306 a Mysql service, maybe this is running on the server?
 
-![](../../.gitbook/assets/java/SSRF/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/SSRF/3.png)
 
 {% hint style="success" %}
 

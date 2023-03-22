@@ -50,15 +50,15 @@ Sensitive Information Disclosure
 
 Let us see how can we exploit the file inclusion vulnerability in a real world scenario, the application here allows us to view details on Intro, Chapter1, Chapter2 and so on.
 
-![](../../.gitbook/assets/python/LFI/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/LFI/1.png)
 
-![](../../.gitbook/assets/python/LFI/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/LFI/2.png)
 
 To exploit let us try to modify the "Intro item" and attempt to access the world-readable /etc/passwd file by directory traversal.
 
-![](../../.gitbook/assets/python/LFI/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/LFI/3.png)
 
-![](../../.gitbook/assets/python/LFI/4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/LFI/4.png)
 
 {% hint style="success" %}
 

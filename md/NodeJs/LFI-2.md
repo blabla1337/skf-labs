@@ -48,9 +48,9 @@ Sensitive Information Disclosure
 
 Let us see how can we exploit the file inclusion vulnerability in a real world scenario, the application here allows us to view details on Intro, Chapter1, Chapter2 and so on.
 
-![](../../.gitbook/assets/python/LFI/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/LFI/1.png)
 
-![](../../.gitbook/assets/python/LFI/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/LFI/2.png)
 
 We could try to modify the "intro" item and attempt to access the world-readable /etc/passwd file by directory traversal. This will not work since the developer implemented a protection by filtering out the '../' sequence.
 
@@ -68,8 +68,8 @@ So lets try a payload like this:
  /..././..././..././..././..././..././..././etc/passwd
 ```
 
-![](../../.gitbook/assets/python/LFI-2/1.png)
-![](../../.gitbook/assets/python/LFI-2/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/LFI-2/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/LFI-2/2.png)
 
 {% hint style="success" %}
 

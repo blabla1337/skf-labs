@@ -20,11 +20,11 @@ Now that the app is running let's go hacking!
 
 The application shows an input fields that allows the user to change the color of the text shown in the page.
 
-![](../../.gitbook/assets/python/XSS-Attribute/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/XSS-Attribute/1.png)
 
 If we want to make it red, we can just write `red` in the input box and click the Submit Button.
 
-![](../../.gitbook/assets/python/XSS-Attribute/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/XSS-Attribute/2.png)
 
 ```markup
 <center> <p style="font-size:2em;"> {% autoescape false %}<span style='color:{{xss}};' > Let me be a new color!</span>{% endautoescape %}</p></center>
@@ -46,7 +46,7 @@ red ' onmouseover='alert("XSS-Attribute")'
 
 Now, hovering over the paragraph will trigger our javascript event handler!
 
-![](../../.gitbook/assets/python/XSS-Attribute/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/XSS-Attribute/3.png)
 
 ## Additional sources
 

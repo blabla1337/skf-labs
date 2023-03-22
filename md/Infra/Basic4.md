@@ -20,20 +20,20 @@ It is likely that the A at the end of the username stands 'acceptance' and the A
 
 Creating such a password list can easily be accomplished with MSExcel.
 The screenshot below shows the first few passwords in Excel and the formula that you can use to create them.
-<img  src="../../.gitbook/assets/infra/basic4/excel1.png" style="box-shadow: 15px 15px 10px #999;  border: 1px solid #999" />
+<img  src="https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/infra/basic4/excel1.png" style="box-shadow: 15px 15px 10px #999;  border: 1px solid #999" />
 
 If we pull down our formula till number 99 with a '*' and till 99 with and '!' and this for 'Aprom' and 'PProm', we get 396 likely combinations:
-<img  src="../../.gitbook/assets/infra/basic4/excel2.png" style="box-shadow: 15px 15px 10px #999;  border: 1px solid #999" />
+<img  src="https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/infra/basic4/excel2.png" style="box-shadow: 15px 15px 10px #999;  border: 1px solid #999" />
 
 Lets paste the results in two text files:
-<img  src="../../.gitbook/assets/infra/basic4/p.png" style="box-shadow: 15px 15px 10px #999;  border: 1px solid #999" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img  src="../../.gitbook/assets/infra/basic4/u.png" style="box-shadow: 15px 15px 10px #999;  border: 1px solid #999" />
+<img  src="https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/infra/basic4/p.png" style="box-shadow: 15px 15px 10px #999;  border: 1px solid #999" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img  src="https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/infra/basic4/u.png" style="box-shadow: 15px 15px 10px #999;  border: 1px solid #999" />
 
 
 Now we can try the credentials with 792 combinations using the following command:
-<img  src="../../.gitbook/assets/infra/basic4/nmap1.png" style="box-shadow: 15px 15px 10px #999;  border: 1px solid #999" />
+<img  src="https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/infra/basic4/nmap1.png" style="box-shadow: 15px 15px 10px #999;  border: 1px solid #999" />
 
 The screenshot below shows the password has been found:
-<img  src="../../.gitbook/assets/infra/basic4/nmap2.png" style="box-shadow: 15px 15px 10px #999;  border: 1px solid #999" />
+<img  src="https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/infra/basic4/nmap2.png" style="box-shadow: 15px 15px 10px #999;  border: 1px solid #999" />
 
 
 ## Lessons learned

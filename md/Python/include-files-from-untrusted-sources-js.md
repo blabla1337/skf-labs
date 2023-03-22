@@ -24,7 +24,7 @@ This might lead to many different consequences depending on the included functio
 
 First, let's check the application to see if there are any sources being loaded in the app that return a 404.
 
-![](../../.gitbook/assets/python/Untrusted-Sources-Js/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Untrusted-Sources-Js/1.png)
 
 When inspecting the network tab we see that the application fails to load a JS file to the URL
 
@@ -59,13 +59,13 @@ if __name__ == '__main__':
 
 We ofcourse also need to set the right path where to serve the file from:
 
-![](../../.gitbook/assets/python/Untrusted-Sources-Js/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Untrusted-Sources-Js/2.png)
 
 ### Step3
 
 The content of the JS file that we use to deliver the malicious XSS from looks no more basic than this:
 
-![](../../.gitbook/assets/python/Untrusted-Sources-Js/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Untrusted-Sources-Js/3.png)
 
 ### Step4
 
@@ -77,5 +77,5 @@ $ python3 evil_server.py
 
 We visit the target application where we now find our 'alert' that we coded in our javascript.js file
 
-![](../../.gitbook/assets/python/Untrusted-Sources-Js/4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Untrusted-Sources-Js/4.png)
 

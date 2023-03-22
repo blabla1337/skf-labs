@@ -24,21 +24,21 @@ Some use cases for python pickle: 1) saving a program's state data to disk so th
 
 Lets start the application and register a new user
 
-![](../../.gitbook/assets/python/DES-Pickle-2/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/DES-Pickle-2/1.png)
 
-![](../../.gitbook/assets/python/DES-Pickle-2/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/DES-Pickle-2/2.png)
 
 Please note that (for convenience) your password will be reset if the user already exists. Also note that the username and password are case sensitive.
 
 Now that we have valid credentials, we can login:
 
-![](../../.gitbook/assets/python/DES-Pickle-2/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/DES-Pickle-2/3.png)
 
 You can check the 'remember me' checkbox if you want to login next time without providing credentials.
 
 After providing the correct credentials we're logged in:
 
-![](../../.gitbook/assets/python/DES-Pickle-2/4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/DES-Pickle-2/4.png)
 
 To logout, use the link/button in the upper right corner.
 
@@ -48,15 +48,15 @@ The goal is to find where the application uses serialization and create your own
 
 Once we've successfully logged in using the rememberme checkbox, we can return to the login screen any time and login just by clicking the 'Submit Button' without providing credentials:
 
-![](../../.gitbook/assets/python/DES-Pickle-2/5.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/DES-Pickle-2/5.png)
 
 This results in the following request and response:
 
-![](../../.gitbook/assets/python/DES-Pickle-2/6.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/DES-Pickle-2/6.png)
 
 This works because we received a rememberme cookie during our initial login:
 
-![](../../.gitbook/assets/python/DES-Pickle-2/7.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/DES-Pickle-2/7.png)
 
 As you might have guessed, the remember me cookie is a serialized object, (probably containing your credentials) which will be deserialised and verified, once you submit the login form. This functionality provides you an easy login without entering credentials, but it is not without risk ! If we can deserialise it, the credentials will be leaked. In addition, we can create our own object that that will be deserialized and instantiated if we submit it to the webserver.
 
@@ -132,13 +132,13 @@ gANjcG9zaXgKc3lzdGVtCnEAWCAAAABuYyAtbnYgMTI3LjAuMC4xIDEyMzQgLWUgL2Jpbi9zaHEBhXEC
 
 Now we prepare a net cat listner on our machine, ready to receive the reverse shell:
 
-![](../../.gitbook/assets/python/DES-Pickle-2/8.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/DES-Pickle-2/8.png)
 
 We can submit our malicious payload in Burp Suite Repeater by replacing the cookie value with the one we generated above:
-![](../../.gitbook/assets/python/DES-Pickle-2/9.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/DES-Pickle-2/9.png)
 
 A revers shell is is connected:
-![](../../.gitbook/assets/python/DES-Pickle-2/10.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/DES-Pickle-2/10.png)
 
 ## Additional sources
 

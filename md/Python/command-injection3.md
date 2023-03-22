@@ -20,7 +20,7 @@ The command injecion is an attack in which the goal is the execution of arbitrar
 
 We will start by exploring the application, we see there are file upload possibilities and also the home page displays the command prompt output of `'ls -lart *'`.
 
-![](../../.gitbook/assets/python/CMD-3/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/CMD-3/1.png)
 
 On attempting to upload file through the file upload functionality, we can notice the uploaded file can be found in the /uploads directory in a normal flow. And what about the command prompt output?, if you closely analyse the index.html file under /templates folder it includes a system call function. That's interesting right? Is it possible that the application consumes system_call function?
 
@@ -59,15 +59,15 @@ _Modified index.html:_
          </div>
 ```
 
-Upload the modified file and changed the upload path as follows: ![](../../.gitbook/assets/python/CMD-3/2.png)
+Upload the modified file and changed the upload path as follows: ![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/CMD-3/2.png)
 
 Incase, you havent already modified the system_call locally you may also do it within the intercepted request in burpsuite as follows:
 
-![](../../.gitbook/assets/python/CMD-3/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/CMD-3/3.png)
 
 Forward the modified request and what do you see :-)? We successfully managed to overwrite the index.html and ran OS command of our choice.
 
-![](../../.gitbook/assets/python/CMD-3/4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/CMD-3/4.png)
 
 Can you explore other possibilities using the same attack vector? Why not try to replace some icons or deface the application :-P?
 

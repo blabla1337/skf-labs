@@ -18,11 +18,11 @@ Now that the app is running let's go hacking!
 
 When we start the application we can see that we can ping an adress.
 
-![](../../.gitbook/assets/java/CMD4/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/CMD4/1.png)
 
 Let's try to ping 127.0.0.1
 
-![](../../.gitbook/assets/java/CMD4/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/CMD4/2.png)
 
 We get back the output of the ping command which tell us this might be vulnerable to a command injection.
 
@@ -53,7 +53,7 @@ Let's try piping the commands:
 127.0.0.1 | whoami
 ```
 
-![](../../.gitbook/assets/java/CMD4/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/CMD4/3.png)
 
 And we have a command injection!
 

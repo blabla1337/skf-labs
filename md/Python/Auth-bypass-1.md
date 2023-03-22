@@ -26,43 +26,43 @@ The goal of this lab is to get logged in as an administrator without knowing his
 
 Lets start the application and register a new user
 
-![](../../.gitbook/assets/python/Auth-Bypass-1/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Auth-Bypass-1/1.png)
 
-![](../../.gitbook/assets/python/Auth-Bypass-1/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Auth-Bypass-1/2.png)
 
 Now that we have valid credentials, we can login:
 
-![](../../.gitbook/assets/python/Auth-Bypass-1/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Auth-Bypass-1/3.png)
 
 ## Exploitation
 
 We can capture the login in the burpsuite proxy and send it to the repeater. We notice that with every login, the session cookie stays the same. It is high likely that this sessionid is related to our user name:
 
-![](../../.gitbook/assets/python/Auth-Bypass-1/4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Auth-Bypass-1/4.png)
 
 If we quickly google for this sessionid, we find that the sessionID seems to be corresponding to 'user':
 
-![](../../.gitbook/assets/python/Auth-Bypass-1/5.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Auth-Bypass-1/5.png)
 
 We can check try to identify the hash:
 
-![](../../.gitbook/assets/python/Auth-Bypass-1/6.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Auth-Bypass-1/6.png)
 
 it seems to be a sha1...
 
 Ok, let's lookup the hash of 'admin':
 
-![](../../.gitbook/assets/python/Auth-Bypass-1/7.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Auth-Bypass-1/7.png)
 
 \-> D033E22AE348AEB5660FC2140AEC35850C4DA997
 
 Now we can set our sessionID to the sha1 hash of admin:
 
-![](../../.gitbook/assets/python/Auth-Bypass-1/8.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Auth-Bypass-1/8.png)
 
 Click 'proceed' to go to the authenticated section of the application:
 
-![](../../.gitbook/assets/python/Auth-Bypass-1/9.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Auth-Bypass-1/9.png)
 
 ## Additional sources
 

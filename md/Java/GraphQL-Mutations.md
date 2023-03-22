@@ -18,7 +18,7 @@ Now that the app is running let's go hacking!
 
 The application implements a very basic mutation to create a new post on the blog. The mutation used is the following
 
-![](../../.gitbook/assets/java/Graphql-Mutation/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/Graphql-Mutation/1.png)
 
 ```
 mutation {
@@ -30,7 +30,7 @@ mutation {
 }
 ```
 
-![](../../.gitbook/assets/java/Graphql-Mutation/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/Graphql-Mutation/2.png)
 
 If we look at the code we have a class `CreatePost` that will implement our logic to create a post.
 
@@ -52,11 +52,11 @@ The method mutate will just get the new Post object and insert an instance in th
 There are many ways we could exploit this, one would be to delete any post we want.
 If there is a createPost class there might be another class called deletePost, let's try:
 
-![](../../.gitbook/assets/java/Graphql-Mutation/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/Graphql-Mutation/3.png)
 
 Bingo! Post with id:4 was deleted. If we go back and refresh the application:
 
-![](../../.gitbook/assets/java/Graphql-Mutation/4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/Graphql-Mutation/4.png)
 
 You could, of course, achieve the same goal with burp.
 What else can you exploit using this vulnerability?

@@ -18,7 +18,7 @@ Now that the app is running let's go hacking!
 
 As soon as we browse on `http://0.0.0.0:5000` we see that now our app implements a login screen to support multiple users
 
-![](../../.gitbook/assets/java/Graphql-IDOR/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/Graphql-IDOR/1.png)
 
 We already registered a user , the famous Jhon Doe and we can authneticate with the credentials
 
@@ -27,7 +27,7 @@ jhondoe
 password1
 ```
 
-![](../../.gitbook/assets/java/Graphql-IDOR/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/Graphql-IDOR/2.png)
 
 Now that we are in, we discover that every time a user logs in, the application sets a cookie called
 
@@ -35,7 +35,7 @@ Now that we are in, we discover that every time a user logs in, the application 
 `X-Api-Key`
 ```
 
-![](../../.gitbook/assets/java/Graphql-IDOR/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/Graphql-IDOR/3.png)
 
 That is used by the app to authenticate the keep the session active and recognize the user.
 
@@ -51,7 +51,7 @@ What's new in this application is that an user can see his settings, browsing to
 `http://0.0.0.0:5000/settings`
 ```
 
-![](../../.gitbook/assets/java/Graphql-IDOR/4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/Graphql-IDOR/4.png)
 
 of course only if authenticated. But how does this page retrieve the information is crucial. If we intercept the traffic we can see that the application sends a GraphQL query to the backend to ask for the information we see in the page. The query looks like this:
 
@@ -68,13 +68,13 @@ of course only if authenticated. But how does this page retrieve the information
 
 ```
 
-![](../../.gitbook/assets/java/Graphql-IDOR/5.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/Graphql-IDOR/5.png)
 
 > Knowing that, we can use the IDOR vulnerability to get the information from other users.
 
-![](../../.gitbook/assets/java/Graphql-IDOR/6.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/Graphql-IDOR/6.png)
 
-![](../../.gitbook/assets/java/Graphql-IDOR/7.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/Graphql-IDOR/7.png)
 
 ## Remediation
 

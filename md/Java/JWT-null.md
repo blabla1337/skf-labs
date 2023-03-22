@@ -20,7 +20,7 @@ Now that the app is running let's go hacking!
 
 The application shows a dropdown menu from which we can choose an intro or chapters to be displayed on the client-side.
 
-![](../../.gitbook/assets/python/JWT-Null/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/JWT-Null/1.png)
 
 First thing we need to do know is to do more investigation on the requests that are being made. We do this by setting up our intercepting proxy so we can gain more understanding of the application under test.
 
@@ -28,7 +28,7 @@ After we set up our favourite intercepting proxy we are going to look at the tra
 
 The first thing to notice is after sucessful logon, the response contains an access token.
 
-![](../../.gitbook/assets/python/JWT-Null/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/JWT-Null/2.png)
 
 The image above shows the access-token contains three base64 encoded splitted with two dots (.) separators, which indicates it's a JSON Web Token (JWT):
 
@@ -62,7 +62,7 @@ Last encrypted part, containing the digital signature for the token..
 
 A potential attacker can now decode the token in [http://jwt.io](http://jwt.io) website to check its content.
 
-![](../../.gitbook/assets/python/JWT-Null/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/JWT-Null/3.png)
 
 As shown in the above picture, there are 2 points which can be tampered.
 
@@ -106,11 +106,11 @@ As the signature is not required, the new tampered JWT token will look like this
 
 Open the local storage tab within the browser and replace the original token:
 
-![](../../.gitbook/assets/python/JWT-Null/4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/JWT-Null/4.png)
 
 Now hit the _Admin_ button and check if the tampered token was accepted.
 
-![](../../.gitbook/assets/python/JWT-Null/5.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/JWT-Null/5.png)
 
 Yes! The server accepted the tampered access-token. Can we check if there are more users available which can be impersonated?
 

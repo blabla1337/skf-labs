@@ -22,19 +22,19 @@ In the first step, the attacker needs to collect some valid session ID values th
 
 In addition, the attacker can implement a brute force technique to generate and test different values of session ID until he successfully gets access to the application.
 
-![](../../.gitbook/assets/python/Auth-Bypass-3/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Auth-Bypass-3/1.png)
 
 When start the application we can see that we have a "create new user" functionality and we will be redirected to out private user space. First let's try to create a new user to see how the application behaves.
 
-![](../../.gitbook/assets/python/Auth-Bypass-3/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Auth-Bypass-3/2.png)
 
 If we inspect the request with an intercepting proxy \(we are using Burp\) we can see that the application is performing a POST request to /signup:
 
-![](../../.gitbook/assets/python/Auth-Bypass-3/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Auth-Bypass-3/3.png)
 
 From there we can access our private user's space using a GET request, that we analyze below:
 
-![](../../.gitbook/assets/python/Auth-Bypass-3/4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Auth-Bypass-3/4.png)
 
 ## Exploitation
 
@@ -42,7 +42,7 @@ It seems that the only parameter which takes care of which private space we are 
 
 Lets try with user02.
 
-![](../../.gitbook/assets/python/Auth-Bypass-3/5.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/Auth-Bypass-3/5.png)
 
 As you can see we got access to another user's account whose ID was 02. This proves the weak mechanism of sessions management implemented here. Thanks to it, we can get all the user's private information. In this case this allow us to get admin credentials for the website.
 

@@ -18,7 +18,7 @@ Now that the app is running let's go hacking!
 
 The application implements a very basic mutation to create a new post on the blog. The mutation used is the following
 
-![](../../.gitbook/assets/nodejs/Graphql-Mutations/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/nodejs/Graphql-Mutations/1.png)
 
 ```
 mutation{
@@ -31,7 +31,7 @@ mutation{
 }
 ```
 
-![](../../.gitbook/assets/nodejs/Graphql-Mutations/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/nodejs/Graphql-Mutations/2.png)
 
 If we look at the code we have a class `CreatePost` that will implement our logic to create a post.
 
@@ -82,11 +82,11 @@ The method mutate will just get the new Post object and insert an instance in th
 
 There are many ways we could exploit this, one would be to create posts as another user:
 
-![](../../.gitbook/assets/nodejs/Graphql-Mutations/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/nodejs/Graphql-Mutations/3.png)
 
 Bingo! We have create a new post as another user. Let's refresh the page:
 
-![](../../.gitbook/assets/nodejs/Graphql-Mutations/4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/nodejs/Graphql-Mutations/4.png)
 
 You could, of course, achieve the same goal with burp.
 What else can you exploit using this vulnerability?

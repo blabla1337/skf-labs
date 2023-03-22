@@ -24,7 +24,7 @@ This might lead to many different consequences depending on the included functio
 
 First, let's check the application to see if there are any sources being loaded in the app that return a 404.
 
-![](../../.gitbook/assets/nodejs/Untrusted-sources/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/nodejs/Untrusted-sources/1.png)
 
 When inspecting the network tab we see that the application fails to load a JS file to the URL
 
@@ -87,7 +87,7 @@ node script_provider.js
 
 We visit the target application where we now find our 'alert' that we coded in our javascript.js file
 
-![](../../.gitbook/assets/nodejs/Untrusted-sources/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/nodejs/Untrusted-sources/2.png)
 
 ## Additional sources
 

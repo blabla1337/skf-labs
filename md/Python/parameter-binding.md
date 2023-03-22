@@ -102,11 +102,11 @@ Now, let's examine the target application and determine the objective.
 
 First we find a table with some details about active users on the target application
 
-![](../../.gitbook/assets/parameter-binding-1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/parameter-binding-1.png)
 
 When we click a user to update his settings we find that the application does not intend us to update "privileged" the property
 
-![](../../.gitbook/assets/parameter-binding-2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/parameter-binding-2.png)
 
 So, let's recap this important part of the introduction
 
@@ -147,15 +147,15 @@ The exploitation phase is rather simpel with all the information we gathered abo
 
 Now, let's set up our intercepting proxy and intercept a update request. The first screenshot shows the request as is without any tampering.
 
-![](../../.gitbook/assets/parameter-binding-3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/parameter-binding-3.png)
 
 By simply adding the is_authorized property to the request it is passed to the model and processed on the server-side.
 
-![](../../.gitbook/assets/parameter-binding-4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/parameter-binding-4.png)
 
 Thus updating the "Guest" user his authorized status.
 
-![](../../.gitbook/assets/parameter-binding-5.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/parameter-binding-5.png)
 
 ## Additional sources
 
