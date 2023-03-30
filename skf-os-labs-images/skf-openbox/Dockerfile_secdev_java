@@ -7,6 +7,8 @@ RUN \
  echo "**** install deps ****" && \
  apt-get update && \
  apt-get install -qy --no-install-recommends \
+ 	build-essential \
+	gnupg \
 	wget \
 	git \
 	firefox \	
@@ -20,6 +22,8 @@ RUN \
 	pcmanfm \
 	xdg-utils \
 	libsecret-1-0 \
+	imagemagick \
+	hydra \
 	libxss1 
 	
 #install Polybar 
@@ -47,10 +51,11 @@ RUN apt-get install -qy cmake \
 	libcurl4-openssl-dev \
 	libpulse-dev \
 	libxcb-composite0-dev \
+	libpthread-stubs0-dev \
 	xcb \
 	libxcb-ewmh2
 RUN pip3 install packaging
-RUN git clone https://github.com/jaagr/polybar.git
+RUN git clone https://github.com/jaagr/polybar.git -b 3.4
 RUN sed -e s/sudo//g -i polybar/build.sh
 RUN cd polybar; echo "\n" | ./build.sh -i
 RUN mv /usr/local/bin/polybar /usr/bin/polybar
@@ -88,6 +93,14 @@ RUN echo "**** clean up ****" && \
 RUN curl -L 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' -o /tmp/visualstudio.deb && \
   dpkg -i /tmp/visualstudio.deb  && \
   rm -f /tmp/visualstudio.deb 
+RUN mv /usr/bin/code /usr/bin/vscode
+RUN echo '#!/bin/sh' > /usr/bin/code
+RUN echo 'exec /usr/bin/vscode --no-sandbox' >> /usr/bin/code
+RUN chmod +x /usr/bin/code
+
+# download the 134MB rockyou dictionary file
+RUN curl -L -o /config/rockyou.txt https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt
+RUN wc -l /config/rockyou.txt
 
 # add local files
 COPY /root /
