@@ -136,6 +136,43 @@
 													</select>
 												</div>
 												<button class="btn btn-primary" type="submit">Submit Button</button>
+												{% if flag %}
+												<style>
+													.message-box {
+														display: none;
+														position: fixed;
+														top: 50%;
+														left: 50%;
+														transform: translate(-50%, -50%);
+														background-color: #fff;
+														border: 1px solid #428bca;
+														padding: 20px;
+														border-radius: 10px;
+														box-shadow: 0 0 10px #2d6ca2;
+														z-index: 9999;
+													}
+													.message-box h2 {
+														margin-top: 0;
+													}
+													.message-box p {
+														margin-bottom: 0;
+													}
+												</style>
+												<div id="messageBox" class="message-box">
+													<h2>Flag</h2>
+													<p>{{ flag }}</p>
+													<div class="btn btn-primary" onclick="hideMessageBox()">Close</div>
+												</div>
+												<script>
+													function showMessageBox() {
+														document.getElementById("messageBox").style.display = "block";
+													}
+													function hideMessageBox() {
+														document.getElementById("messageBox").style.display = "none";
+													}
+													showMessageBox();
+												</script>
+												{% endif %}
 										</div>
 										</form>
 									</div>
