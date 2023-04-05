@@ -65,8 +65,8 @@ if __name__ == "__main__":
 Save the snippet above to > app.py and run the commands below to install some dependencies.
 
 ```
-$ pip install flask
-$ pip install requests
+$ pip3 install flask
+$ pip3 install requests
 ```
 
 Of course you can also run your app on whatever service you want it does not have to be python flask.
@@ -85,13 +85,13 @@ Now that the service is running we want to serve the malicious piece of javascri
 Save the snippet above to > templates/evil.html and run the command below to start our evil application.
 
 ```
-$ python app.py
+$ python3 app.py
 ```
 
 Now when we have in the browser tab our active session of the application we can open a new tab where we will load our evil page we just created.
 
 ```
-http://localhost:1337/
+http://0.0.0.0:1337/
 ```
 
 This will now create a POST request to the application and changing the value of blue to the new value of 'Hackzord!' As you can see the Referer is set to our evil website where the request originated from.

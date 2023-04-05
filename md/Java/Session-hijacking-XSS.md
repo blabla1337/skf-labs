@@ -77,9 +77,9 @@ if __name__ == "__main__":
 Save the snippet above to > app.py and run the commands below to install some dependencies.
 
 ```
-$ pip install flask
-$ pip install requests
-$ python app.py
+$ pip3 install flask
+$ pip3 install requests
+$ python3 app.py
 ```
 
 Of course you can also run your app on whatever service you want it does not have to be python flask.

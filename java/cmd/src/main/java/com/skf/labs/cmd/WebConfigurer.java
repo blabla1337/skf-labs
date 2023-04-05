@@ -16,7 +16,7 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 public class WebConfigurer implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/repo/**","/css/**","/js/**","/img/**").addResourceLocations("file:/skf/repo/","classpath:/static/css/","classpath:/static/js/","classpath:/static/img/");
+        registry.addResourceHandler("/repo/**","/css/**","/js/**","/img/**").addResourceLocations("file:"+System.getProperty("user.dir")+"/repo/","classpath:/static/css/","classpath:/static/js/","classpath:/static/img/");
     }
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {

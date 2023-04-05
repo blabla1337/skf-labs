@@ -28,7 +28,7 @@ When we start the application we can see that there is an image and the option t
 
 Now, we are going to select a value and press the button.
 
-![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/CMD/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/CMD/1.png)
 
 If we inspect the request with an intercepting proxy \(we are using
 Burp\) we can see that the application is performing a POST request to
@@ -37,25 +37,15 @@ In the response, we can check that the image has been resized.
 
 ## Exploitation
 
-For this lab we are going to try to write in the source code the output of a command executed in the system.
+Let's try to get remote code execution.
 
-First, we check the source code:
+Intercepting the request on burp, we can try to pipe other commands, like opening the calculator on linux (xcalc) as PoC.
 
-![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/CMD/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/CMD/2.png)
 
-Now, we send a new HTTP request trying to write the output of the command
-whoami (supposing that it will be executed in the target system) at the end of the index.html (main website view) code.
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/CMD/3.png)
 
-![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/CMD/4.png)
-
-Now we access the source code of the website
-
-![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/CMD/5.png)
-
-to check that the output of the whoami command ("root") was appended at the end of the source code.
-As we can see, the output of the command whoami, is showing us the priviledge
-of the target user in the target system and that the web app is actually
-vulnerable to OS command injection.
+Bingo! 
 
 ## Additional sources
 

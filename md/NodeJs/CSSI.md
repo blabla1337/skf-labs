@@ -16,10 +16,6 @@ Now that the app is running let's go hacking!
 
 ## Reconnaissance
 
-It is very common to use very guessable and weak usernames and passwords because they are easier to use and remember.
-However, this ease for the users becomes a great advantage for potential attackers who are trying to crack the user's credentials.
-It is pretty easy for them to guess or brute force many different credentials until they get to the right ones.
-
 When we start the application we can see that there is a text box that allow you to write a color name.
 
 ![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/CSSI/1.png)
@@ -44,6 +40,7 @@ If we try to insert a malicious code that we know it will be inserted in the sou
 
 This code should show an alert box or pop up alerting the text "CSSI - XSS".
 If we check the website after sending the malicious request:
+
 ![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/CSSI/6.png)
 
 And goal achieved!

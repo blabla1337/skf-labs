@@ -23,7 +23,7 @@ As soon as we browse on `http://0.0.0.0:5000` we see that now our app implements
 We already registered a user , the famous Jhon Doe and we can authneticate with the credentials
 
 ```
-jhondoe
+johndoe
 password1
 ```
 

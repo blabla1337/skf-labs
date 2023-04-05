@@ -23,16 +23,23 @@ public class Cmd4Controller {
   @PostMapping("/")
   public String home(@RequestParam(name = "ip") String ip, Model model)
       throws IOException, InterruptedException {
-    ip.replace("`", " ");
-    ip.replace(";", " ");
-    ip.replace("&", " ");
+    
+    ip = ip.replace("`", " ").replace(";", " ").replace("&"," ");
+   
+    System.out.println(ip);
     Process pb = new ProcessBuilder("/bin/sh", "-c",
         "ping -c1 " + ip + " > ./ping_output")
         .redirectErrorStream(true)
         .start();
     pb.waitFor(5, TimeUnit.SECONDS);
+
     BufferedReader br = new BufferedReader(new FileReader("./ping_output"));
-    model.addAttribute("read", br.readLine());
+    StringBuilder content = new StringBuilder();
+            String line;
+            while((line = br.readLine())!= null){
+                content.append(line+"</br>");
+            }
+    model.addAttribute("read", content.toString());
     return "index";
   }
 }

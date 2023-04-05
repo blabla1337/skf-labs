@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class CstiController {
     @PostMapping("/home")
 	public String home(@RequestParam(name="string", required=false, defaultValue="World") String name, Model model) {
-		model.addAttribute("xss", name);
+		model.addAttribute("csti", name);
 		return "index";
 	}
 }

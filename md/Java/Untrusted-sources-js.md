@@ -39,22 +39,19 @@ _note: in a penetration test we would now see if the domain that is used to grab
 #### Step1
 
 Now, in order to leverage a successfull XSS attack we need to set up our own local server on port 8081
-that serves the our malicious javascript. You could achieve this in many diferent ways, let's use nodeJs this time:
+that serves the our malicious javascript. You could achieve this in many diferent ways, let's use python flask:
 
-```javascript
-const express = require("express");
-const app = express();
+```python
+from flask import Flask, send_file, request
 
-app.use(express.static(__dirname));
-app.use(express.urlencoded({ extended: true }));
+app = Flask(__name__, static_folder='.', static_url_path='')
 
-app.get("/:path", (req, res) => {
-  res.sendFile("/script_provider/" + req.params.path);
-});
+@app.route('/<path:path>')
+def send_js(path):
+    return send_file(f'script-provider/{path}')
 
-const port = process.env.PORT || 8081;
-
-app.listen(port, () => console.log(`Listening on port ${port}...!!!`));
+if __name__ == '__main__':
+    app.run(port=8081)
 ```
 
 #### Step2
@@ -62,7 +59,7 @@ app.listen(port, () => console.log(`Listening on port ${port}...!!!`));
 We ofcourse also need to set the right path where to serve the file from:
 
 ```text
-./script_provider/javascript.js
+./script-provider/javascript.js
 ```
 
 #### Step3
@@ -79,8 +76,8 @@ alert("evil payload");
 Now it is time to start our web server.
 
 ```text
-npm install express
-node script_provider.js
+$ pip3 install flask requests send_file
+$ python3 app.py
 ```
 
 #### Step5

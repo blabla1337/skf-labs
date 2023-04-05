@@ -18,9 +18,9 @@ Now that the app is running let's go hacking!
 
 ### Step1
 
-The application shows a dropdown menu from which we can choose an intro or chapters to be displayed on the client-side.
+The application let us authenticate an user and see its privileges.
 
-![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/JWT-Null/1.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/JWT-Null/1.png)
 
 First thing we need to do know is to do more investigation on the requests that are being made. We do this by setting up our intercepting proxy so we can gain more understanding of the application under test.
 
@@ -28,7 +28,7 @@ After we set up our favourite intercepting proxy we are going to look at the tra
 
 The first thing to notice is after sucessful logon, the response contains an access token.
 
-![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/JWT-Null/2.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/JWT-Null/2.png)
 
 The image above shows the access-token contains three base64 encoded splitted with two dots (.) separators, which indicates it's a JSON Web Token (JWT):
 
@@ -45,9 +45,6 @@ The image above shows the access-token contains three base64 encoded splitted wi
 
 ```javascript
 {
- "exp": 1553003718,
- "iat": 1553003418,
- "nbf": 1553003418,
  "identity": 1
 }
 ```
@@ -62,7 +59,7 @@ Last encrypted part, containing the digital signature for the token..
 
 A potential attacker can now decode the token in [http://jwt.io](http://jwt.io) website to check its content.
 
-![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/JWT-Null/3.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/JWT-Null/3.png)
 
 As shown in the above picture, there are 2 points which can be tampered.
 
@@ -82,35 +79,32 @@ The NONE algorithm means signature is not required, so the token can be tampered
 ```
 {
   "typ": "JWT",
-  "alg": "NONE"
+  "alg": "none"
 }
-#base64 eyJ0eXAiOiJKV1QiLCAiYWxnIjoiTk9ORSJ9
+#base64 eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0= 
 ```
 
 Now, let's play with the identity:
 
 ```
 {
-  "exp": 1553003718,
-  "iat": 1553003418,
-  "nbf": 1553003418,
   "identity": 2
 }
 ```
 
 As the signature is not required, the new tampered JWT token will look like this:
 
-> eyJ0eXAiOiJKV1QiLCAiYWxnIjoiTk9ORSJ9.eyJleHAiOjE1NTMwMDM3MTgsImlhdCI6MTU1MzAwMzQxOCwibmJmIjoxNTUzMDAzNDE4LCJpZGVudGl0eSI6Mn0.
+> eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0=.eyJpZGVudGl0eSI6IDJ9.
 
 ### Step 2
 
 Open the local storage tab within the browser and replace the original token:
 
-![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/JWT-Null/4.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/JWT-Null/4.png)
 
 Now hit the _Admin_ button and check if the tampered token was accepted.
 
-![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/JWT-Null/5.png)
+![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/java/JWT-Null/5.png)
 
 Yes! The server accepted the tampered access-token. Can we check if there are more users available which can be impersonated?
 

@@ -18,7 +18,7 @@ Now that the app is running let's go hacking!
 
 ### Step1
 
-The application shows a dropdown menu from which we can choose an intro or chapters to be displayed on the client-side.
+The application let us authenticate an user and see its privileges.
 
 ![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/JWT-Null/1.png)
 
