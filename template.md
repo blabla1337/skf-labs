@@ -1,8 +1,6 @@
-# template
+# LAB NAME
 
 ## Running the app
-
-Becoming a super hero is a fairly straight forward process:
 
 ```
 $ sudo docker pull blabla1337/owasp-skf-lab:XXXXXX
@@ -18,13 +16,13 @@ $ sudo docker run -ti -p 127.0.0.1:5000:5000 blabla1337/owasp-skf-lab:XXXXX
 
 ## Reconnaissance
 
-paragraphh
+TXT     
 
 ## Exploitation
 
-Paragrapgh
+TXT
 
 ## Additional sources
 
-par
+TXT
 

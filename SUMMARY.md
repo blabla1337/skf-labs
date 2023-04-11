@@ -31,6 +31,7 @@
 - Client Side Template Injection (CSTI)
   - [Python - Client Side Template Injection (CSTI)](./md/Python/client-side-template-injection.md)
   - [NodeJS - Client Side Template Injection (CSTI)](./md/NodeJs/CSTI.md)
+  - [Java - Client Side Template Injection (CSTI)](./md/Java/client-side-template-injection.md)
 - Command Injection (CMD)
   - [Python - Command Injection (CMD)](./md/Python/cmd-injection-1.md)
   - [NodeJS - Command Injection (CMD)](./md/NodeJs/CMD.md)
@@ -56,6 +57,7 @@
   - [Java - Content-Security-Policy (CSP)](./md/Java/CSP.md)
 - CORS exploitation
   - [Python - CORS exploitation](./md/Python/cors-exploitation.md)
+  - [Java - CORS exploitation](./md/Java/CORS.md)
 - Credentials Guessing
   - [Python - Credentials Guessing](./md/Python/credentials-guessing-1.md)
   - [NodeJS - Credentials Guessing](./md/NodeJs/Credentials-Guessing-1.md)
@@ -83,6 +85,8 @@
   - [Python - XSS-DOM-2](./md/Python/XSS-DOM-2.md)
   - [NodeJS - XSS-DOM-2](./md/NodeJs/XSS-DOM-2.md)
   - [Java - XSS-DOM-2](./md/Java/XSS-DOM-2.md)
+- Cross Site Scripting - Stored (XSS-Stored)
+  - [Java - XSS-Stored](./md/Java/XSS-Stored.md)
 - CSRF
   - [Python - CSRF](./md/Python/csrf.md)
   - [NodeJS - CSRF](./md/NodeJs/CSRF.md)
@@ -99,6 +103,8 @@
   - [Python - CSS Injection (CSSI)](./md/Python/CSSI.md)
   - [NodeJS - CSS Injection (CSSI)](./md/NodeJs/CSSI.md)
   - [Java - CSS Injection (CSSI)](./md/Java/CSSI.md)
+- Deserialisation Java (DES-Java)
+  - [Java - Deserialisation Java (DES-Java)](./md/Java/DES-JAVA.md)
 - Deserialisation Yaml (DES-Yaml)
   - [Python - Deserialisation Yaml (DES-Yaml)](./md/Python/deserialisation-yaml.md)
 - Deserialisation Pickle (DES-Pickle)
@@ -213,6 +219,7 @@
   - [Java - Server Side Request Forgery (SSRF)]()
 - Server Side Template Injection (SSTI)
   - [Python - Server Side Template Injection (SSTI)](./md/Python/server-side-template-injection.md)
+  - [Java - Server Side Template Injection (SSTI)](./md/Java/SSTI.md)
 - Session Hijacking XSS
   - [Python - HttpOnly Session Hijacking XSS](./md/Python/HttpOnly-Session-hijacking-xss.md)
   - [NodeJS - HttpOnly Session Hijacking XSS](./md/NodeJs/Session-hijacking-XSS.md)
@@ -254,7 +261,7 @@
 - URL Redirection - Harder-2
   - [Python - URL Redirection - Harder-2](./md/Python/open-redirect-harder-2.md)
   - [NodeJS - URL Redirection - Harder-2](./md/NodeJs/Url-redirection-harder2.md)
-  - [Java - URL Redirection - Harder-2](./md/Java/Url-redirection-harder-2.md)
+  - [Java - URL Redirection - Harder-2](./md/Java/url-redirection-harder-2.md)
 - WebSocket Message Manipulation
   - [Python - WebSocket Message Manipulation](./md/Python/WebSocket-Message-Manipulation.md)
 - XML External Entity (XXE)

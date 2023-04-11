@@ -18,8 +18,10 @@ public class ClientSideRestrictionBypassController {
                 model.addAttribute("result", "You sleep a proper while");
             }else if( Integer.parseInt(sleepingTime) > 9 &&  Integer.parseInt(sleepingTime) <= 13){
                 model.addAttribute("result", "You sleep a proper while");
-            }else if( Integer.parseInt(sleepingTime) == 2 || ( Integer.parseInt(sleepingTime) > 13 &&  Integer.parseInt(sleepingTime) >24)){
+            }else if( Integer.parseInt(sleepingTime) == 2 || ( Integer.parseInt(sleepingTime) > 13 &&  Integer.parseInt(sleepingTime) < 24)){
                 model.addAttribute("result", "OMG!");
+            }else{
+                model.addAttribute("result", "That's not possible... HACKER!!!");
             }
             return "index";
         }catch(java.lang.NumberFormatException e){

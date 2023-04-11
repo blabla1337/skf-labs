@@ -49,7 +49,7 @@ public class IdorController {
 
     @GetMapping("/notfound")
     public String nofound(Model model){
-        model.addAttribute("content", "Pdf not found. Try with another id between 1 and 1500.");
+        model.addAttribute("content", "Pdf not found. Try with another id between 1 and 100.");
         return "index";
     }
 

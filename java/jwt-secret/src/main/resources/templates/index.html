@@ -21,7 +21,7 @@
 					var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
 					xmlhttp.open("POST", "/auth");
 					xmlhttp.setRequestHeader("Content-Type", "application/json");
-					foo = xmlhttp.send(JSON.stringify({username:"admin", password:"admin"}));
+					foo = xmlhttp.send(JSON.stringify({username:"user", password:"user"}));
 					
 					xmlhttp.onreadystatechange = function () {
 					if (xmlhttp.readyState == XMLHttpRequest.DONE) {

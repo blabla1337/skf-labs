@@ -13,7 +13,7 @@ ARG STATIC_FILES=src/main/resources/static
 COPY ${STATIC_FILES} /skf/static
 ARG TEMPLATES_FILES=src/main/resources/templates
 COPY ${TEMPLATES_FILES} /skf/templates
-ARG REPO_FILES=src/main/resources/static/img/bones.png
+ARG REPO_FILES=repo/bones.png
 COPY ${REPO_FILES} /skf/repo/bones.png
 
 

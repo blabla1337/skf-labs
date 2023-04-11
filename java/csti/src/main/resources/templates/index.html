@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app>
 	<head>
 
 		<meta charset="utf-8">
@@ -11,12 +11,14 @@
 		<link href="/css/styles.css" rel="stylesheet">
 
 		<!--Icons-->
+
 		<script src="/js/lumino.glyphs.js"></script>
 		<script src="/js/hints.js"></script>
 		<link
 			href="https://fonts.googleapis.com/css2?family=Hind:wght@700&display=swap"
 			rel="stylesheet">
 
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>	
 	</head>
 
 	<body>
@@ -135,7 +137,7 @@
 			</div><!-- /.col-->
 		</div><!-- /.row -->
 	
-     <center><p style="font-size:2em;" th:utext="${xss} ?: '' " /></center>
+     <center><p style="font-size:2em;" th:text="${csti} ?: '' " /></center>
 	
 	</div><!--/.main-->
 
@@ -203,6 +205,7 @@
 
 </main>
 
+<script src="/js/jquery-1.11.1.min.js"></script>
 <script src="/js/jquery-3.6.0.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 
@@ -214,6 +217,7 @@ document.body.classList.toggle('dark');
 });
 
 </script>
+
 </body>
 
 </html>

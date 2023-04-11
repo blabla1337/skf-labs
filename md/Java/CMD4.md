@@ -37,13 +37,7 @@ Let's try chaining commands
 We get nothing back, maybe this application has a blacklist
 
 ```java
-ip.replace("`", " ");
-ip.replace(";", " ");
-ip.replace("&", " ");
-Process pb = new ProcessBuilder("/bin/sh", "-c",
-    "ping -c1 " + ip + " > ./ping_output")
-    .redirectErrorStream(true)
-    .start();
+ ip = ip.replace("`", " ").replace(";", " ").replace("&"," ");
 ```
 
 We can see in this piece of code the app is removing certain dangerous characters in an attempt to avoid some kind of command injection. Unfortunately there are ways to bypass this blacklist approach.
