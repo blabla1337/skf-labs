@@ -34,5 +34,6 @@ COPY ./assets/wordpress_4.9.5+dfsg1-1_all.deb /var/tmp/wordpress_4.9.5+dfsg1-1_a
 RUN apt install -y /var/tmp/wordpress_4.9.5+dfsg1-1_all.deb
 COPY ./assets/wordpress.sql /var/tmp/wordpress.sql
 COPY ./assets/startup.sh /startup.sh
+RUN chmod +x /startup.sh
 EXPOSE 21 80 7000-7010
 ENTRYPOINT /startup.sh 

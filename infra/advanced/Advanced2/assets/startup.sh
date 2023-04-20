@@ -9,6 +9,8 @@ service apache2 reload
 sed -i 's/database_name_here/wordpress/' /usr/share/wordpress/wp-config.php
 sed -i 's/username_here/wordpress/' /usr/share/wordpress/wp-config.php
 sed -i 's/password_here/String001/' /usr/share/wordpress/wp-config.php
+sed -i 's/localhost/127.0.0.1/' /usr/share/wordpress/wp-config.php
+
 service mysql start 
 mysql -u root -e "CREATE DATABASE wordpress;"
 mysql -u root -e "CREATE USER wordpress@localhost IDENTIFIED BY 'String001';"
