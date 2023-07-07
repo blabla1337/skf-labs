@@ -1,5 +1,6 @@
 import os
 from flask import Flask, request, render_template
+from ctf import get_flag_by_user_input
 
 
 app = Flask(__name__, static_url_path='/static', static_folder='static')
@@ -16,7 +17,8 @@ def home():
     sizeImg = request.form['size']
     os.system('convert static/img/bones.png -resize ' +
               sizeImg+'% static/img/bones.png')
-    return render_template("index.html")
+    flag = get_flag_by_user_input(sizeImg)
+    return render_template("index.html", flag=flag)
 
 
 @app.errorhandler(404)
