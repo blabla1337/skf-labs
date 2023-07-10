@@ -41,9 +41,23 @@ Here's an example:
 | User Logout | Attacker continues the session even after user logout | Session Hijacking | Implement secure session management |
 
 
+## The challenge
+
+For each use case, consider how it could be abused or what vulnerabilities may exist. These could be due to issues in the code itself or due to broader architectural problems. Consider various types of vulnerabilities, such as Injection attacks, Broken Authentication, Sensitive Data Exposure, etc.
+
+Once you have created your RTM, use it to analyze the provided code and diagrams, and see how many potential vulnerabilities you can identify.
+
+This process will not only help you understand the potential threats and vulnerabilities but also allow you to practice threat modeling, which is a crucial skill in cybersecurity
+
+After you've created your Requirements Traceability Matrix, try to identify as many potential vulnerabilities in this application as possible. Use the OWASP Top 10 as a guide and see if you can identify threats that fall into each category. Be sure to consider both the code itself and the way the application is structured. Note that some vulnerabilities may not be immediately obvious, and may require a deeper understanding of how different components of the application interact with each other.
+
+This exercise will test your ability to think like an attacker, which is a valuable perspective for any security professional. Remember, the goal isn't just to find vulnerabilities, but to understand why they're there, how they can be exploited, and how they can be mitigated or eliminated.
+
+When you've identified as many vulnerabilities as you can, compare your findings with your peers. Did you all find the same issues, or were there some that only you noticed? This can be a great opportunity for discussion and learning.
+
 ## Python Flask Application Lab
 
-In the context of this lab, you'll work with a small Python Flask application. You can find the source code [here](#). For each functionality of the application, diagrams and flowcharts are provided to give you an understanding of the data flow and interactions between components.
+In the context of this lab, you'll work with a small Python Flask application. You can find the source code [here]([#](https://github.com/blabla1337/skf-labs/blob/master/python/Threat-modeling/TM.py)). For each functionality of the application, diagrams and flowcharts are provided to give you an understanding of the data flow and interactions between components.
 
 ```mermaid
 graph LR
@@ -231,17 +245,3 @@ sequenceDiagram
 
 
 This functionality logs out the currently logged-in user. It clears the session, effectively terminating the user's authenticated session. After logging out, the user is typically redirected to the login page or the home page.
-
-## The challenge
-
-For each use case, consider how it could be abused or what vulnerabilities may exist. These could be due to issues in the code itself or due to broader architectural problems. Consider various types of vulnerabilities, such as Injection attacks, Broken Authentication, Sensitive Data Exposure, etc.
-
-Once you have created your RTM, use it to analyze the provided code and diagrams, and see how many potential vulnerabilities you can identify.
-
-This process will not only help you understand the potential threats and vulnerabilities but also allow you to practice threat modeling, which is a crucial skill in cybersecurity
-
-After you've created your Requirements Traceability Matrix, try to identify as many potential vulnerabilities in this application as possible. Use the OWASP Top 10 as a guide and see if you can identify threats that fall into each category. Be sure to consider both the code itself and the way the application is structured. Note that some vulnerabilities may not be immediately obvious, and may require a deeper understanding of how different components of the application interact with each other.
-
-This exercise will test your ability to think like an attacker, which is a valuable perspective for any security professional. Remember, the goal isn't just to find vulnerabilities, but to understand why they're there, how they can be exploited, and how they can be mitigated or eliminated.
-
-When you've identified as many vulnerabilities as you can, compare your findings with your peers. Did you all find the same issues, or were there some that only you noticed? This can be a great opportunity for discussion and learning.
