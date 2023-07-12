@@ -20,11 +20,12 @@ Threat modeling answers the following four key questions:
 
 ## Approaches to Threat Modeling
 
-There are three general approaches to threat modeling:
+There are four general approaches to threat modeling:
 
 1. **Asset-centric:** This approach starts by identifying and classifying a system's assets, and then focuses on the threats to those assets.
 2. **System-centric (or architecture-centric):** This approach focuses on the system's design and components, and their interactions. It identifies threats based on the attack surface exposed by the system's architecture.
 3. **Attacker-centric:** This approach starts by assuming the perspective of the attacker, their skills, motives, and objectives, and then identifies threats based on what parts of the system the attacker would likely target.
+4. **List-centric:** List-centric approaches to threat modeling, using tools such as the Application Security Verification Standard (ASVS) from the Open Web Application Security Project (OWASP), provide a systematic and comprehensive checklist for evaluating the security of software applications.
 
 ## Requirements Traceability Matrix (RTM)
 
