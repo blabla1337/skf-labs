@@ -1,0 +1,2 @@
+# Session Hijacking XSS
+

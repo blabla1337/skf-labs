@@ -1,0 +1,2 @@
+# JWT Secret
+

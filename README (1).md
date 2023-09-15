@@ -1,6 +1,6 @@
 # Introduction
 
-![security knowledge framework](python/CSRF-weak/static/img/logo.svg)
+![OWASP security knowledge framework](./python/CSRF-weak/static/img/logo.svg)
 
 Here we find all the labs and write-ups for the security knowledge framework!\
 These labs are correlated to knowledge-base id's which are on their place\
@@ -38,3 +38,4 @@ After the pull request you can find your nice styled write-up here: [https://skf
 ## Deploying SKF Lab's from your terminal
 
 You can now deploy skf-lab from your terminal, with [joyghoshs/skf-cli](https://github.com/joyghoshs/skf-cli), you don't need to setup server if you don't want to with skf-cli you can deploy lab with security knowledge frameworks own api, if you want you can also search and deploy lab using skf-cli.
+
