@@ -1,4 +1,4 @@
-# KBID 156 - SQLI \(Blind\)
+# KBID xxx - Insecure Random
 
 ## Running the app
 
