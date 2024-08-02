@@ -271,4 +271,5 @@
 * [Exposed docker daemon](exposed-docker-daemon/README.md)
   * [Python - Exposed docker daemon](md/Python/exposed-docker.md)
 * [Insecure Random](insecure-random/README.md)
+  * [Python - Insecure Random](md/Python/insecure-random.md)
 * [template item](template.md)
