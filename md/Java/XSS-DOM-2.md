@@ -77,7 +77,7 @@ Of course you can also run your app on whatever service you want it does not hav
 $ pip3 install flask
 ```
 
-Now we need to create our malicous js file, save the following snippet code into /static/js/welcome.js
+Now we need to create our malicious js file, save the following snippet code into /static/js/welcome.js
 
 ```javascript
 document.getElementsByClassName("panel-body")[0].innerText = "pwned!";
